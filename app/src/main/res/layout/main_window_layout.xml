@@ -74,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
+                android:onClick="onMarketClick"
                 android:scaleType="fitXY"
                 android:text="חיטה" />
 
@@ -82,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
+                android:onClick="onMarketClick"
                 android:scaleType="fitXY"
                 android:text="זיתים" />
 
@@ -90,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
+                android:onClick="onMarketClick"
                 android:scaleType="fitXY"
                 android:text="נחושת" />
 

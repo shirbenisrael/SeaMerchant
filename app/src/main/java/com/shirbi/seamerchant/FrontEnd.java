@@ -71,4 +71,14 @@ public class FrontEnd {
         textView = findViewById(R.id.current_state_text_view);
         textView.setText(getString(mLogic.mCurrentState.toStringId()));
     }
+
+    public void onMarketClick(View view) {
+        findViewById(R.id.main_window_layout).setVisibility(View.GONE);
+        findViewById(R.id.market_layout).setVisibility(View.VISIBLE);
+    }
+
+    public void onDealDoneClick(View view) {
+        findViewById(R.id.market_layout).setVisibility(View.GONE);
+        findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
+    }
 }

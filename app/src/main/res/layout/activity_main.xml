@@ -7,7 +7,13 @@
     android:orientation="vertical">
 
     <include
+        android:visibility="visible"
         android:id="@+id/main_window_layout"
         layout="@layout/main_window_layout" />
+
+    <include
+        android:visibility="gone"
+        android:id="@+id/market_layout"
+        layout="@layout/market_layout" />
 
 </LinearLayout>

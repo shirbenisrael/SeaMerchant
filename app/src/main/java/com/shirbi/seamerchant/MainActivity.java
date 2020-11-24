@@ -2,6 +2,7 @@ package com.shirbi.seamerchant;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends Activity {
     Logic mLogic;
@@ -18,4 +19,13 @@ public class MainActivity extends Activity {
         mLogic.startNewGame();
         mFrontEnd.ShowState();
     }
+
+    public void onMarketClick(View view) {
+        mFrontEnd.onMarketClick(null);
+    }
+
+    public void onDealDoneClick(View view) {
+        mFrontEnd.onDealDoneClick(null);
+    }
+
 }
