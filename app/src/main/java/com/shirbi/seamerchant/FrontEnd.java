@@ -9,6 +9,7 @@ import androidx.annotation.StringRes;
 
 public class FrontEnd {
     MainActivity mActivity;
+    Logic mLogic;
 
     private <T extends View> T findViewById(@IdRes int id) {
         return mActivity.getWindow().findViewById(id);
@@ -20,9 +21,10 @@ public class FrontEnd {
 
     public FrontEnd(MainActivity activity) {
         mActivity = activity;
+        mLogic = activity.mLogic;
     }
 
-    public void ShowPrices(PriceTable priceTable) {
+    private void ShowPrices(PriceTable priceTable) {
         LinearLayout statesLayout = findViewById(R.id.prices_layout);
         for (State state : State.values()) {
             LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
@@ -32,5 +34,17 @@ public class FrontEnd {
                 textView.setText(String.valueOf(priceTable.getPrice(state, goods)));
             }
         }
+    }
+
+    public void ShowState() {
+        ShowPrices(mLogic.mPriceTable);
+
+        TextView textView;
+
+        textView = findViewById(R.id.current_hour_text_view);
+        textView.setText(String.valueOf(mLogic.mCurrentHour) + ":00");
+
+        textView = findViewById(R.id.current_day_text_view);
+        textView.setText(getString(mLogic.mCurrentDay.toStringId()));
     }
 }

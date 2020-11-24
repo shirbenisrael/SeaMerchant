@@ -10,7 +10,7 @@ public class Logic {
     public PriceTable mPriceTable = new PriceTable();
     public int mCash;
     public int mBankDeposit;
-    public int mCurrentDay;
+    public WeekDay mCurrentDay;
     public int mCurrentHour;
     public State mCurrentState;
     public State mWeatherState;
@@ -22,7 +22,7 @@ public class Logic {
         mPriceTable.generateRandomPrices();
         mCash = START_GAME_CASH;
         mBankDeposit = 0;
-        mCurrentDay = 0;
+        mCurrentDay = WeekDay.SUNDAY;
         mCurrentHour = START_HOUR;
         mCurrentState = START_STATE;
         mWeatherState = START_STATE;

@@ -4,16 +4,18 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class MainActivity extends Activity {
-
-    FrontEnd mFrontEnd = new FrontEnd(this);
-    Logic mLogic = new Logic();
+    Logic mLogic;
+    FrontEnd mFrontEnd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mLogic = new Logic();
+        mFrontEnd = new FrontEnd(this);
+
         mLogic.startNewGame();
-        mFrontEnd.ShowPrices(mLogic.mPriceTable);
+        mFrontEnd.ShowState();
     }
 }
