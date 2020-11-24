@@ -22,14 +22,14 @@ public class FrontEnd {
         mActivity = activity;
     }
 
-    public void ShowPrices() {
+    public void ShowPrices(PriceTable priceTable) {
         LinearLayout statesLayout = findViewById(R.id.prices_layout);
         for (State state : State.values()) {
             LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
 
             for (Goods goods: Goods.values()) {
                 TextView textView = (TextView)stateLayout.getChildAt(goods.getValue() + 1);
-                textView.setText(String.valueOf(state.getValue() + goods.getValue()));
+                textView.setText(String.valueOf(priceTable.getPrice(state, goods)));
             }
         }
     }
