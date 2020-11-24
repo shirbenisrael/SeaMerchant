@@ -1,6 +1,7 @@
 package com.shirbi.seamerchant;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,12 @@ public class FrontEnd {
     public FrontEnd(MainActivity activity) {
         mActivity = activity;
         mLogic = activity.mLogic;
+
+        LinearLayout stateLayout = findViewById(R.id.goods_buttons);
+        for (Goods goods: Goods.values()) {
+            Button imageButton = (Button)stateLayout.getChildAt(goods.getValue());
+            imageButton.setBackgroundResource(goods.toWideButtonId());
+        }
     }
 
     private void ShowPrices(PriceTable priceTable) {

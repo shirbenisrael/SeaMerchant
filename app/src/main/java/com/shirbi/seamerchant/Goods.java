@@ -14,6 +14,9 @@ public enum Goods {
     static private int[] minimum = {7, 7, 25};
     static private int[] numValues = {8, 7, 11};
 
+    private static final int[] mWideButtonImageId = {
+            R.drawable.wide_wheat_button, R.drawable.wide_olives_button, R.drawable.wide_copper_button};
+
     private final int value;
     Goods(int value){
         this.value = value;
@@ -25,5 +28,9 @@ public enum Goods {
 
     public int generateRandom() {
         return (rand.nextInt(numValues[value]) + minimum[value]) * multiplier[value];
+    }
+
+    public int toWideButtonId() {
+        return mWideButtonImageId[value];
     }
 }
