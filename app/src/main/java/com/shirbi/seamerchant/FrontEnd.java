@@ -46,5 +46,8 @@ public class FrontEnd {
 
         textView = findViewById(R.id.current_day_text_view);
         textView.setText(getString(mLogic.mCurrentDay.toStringId()));
+
+        textView = findViewById(R.id.current_state_text_view);
+        textView.setText(getString(mLogic.mCurrentState.toStringId()));
     }
 }

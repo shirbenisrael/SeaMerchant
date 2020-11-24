@@ -29,6 +29,7 @@
             android:text="יום ראשון " />
 
         <TextView
+            android:id="@+id/current_state_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

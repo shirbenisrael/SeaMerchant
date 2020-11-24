@@ -9,4 +9,10 @@
     <string name="FRIDAY">Friday</string>
     <string name="SATURDAY">Saturday</string>
 
+    <string name="EGYPT">Egypt</string>
+    <string name="ISRAEL">Israel</string>
+    <string name="TURKEY">Turkey</string>
+    <string name="CYPRUS">Cyprus</string>
+    <string name="GREECE">Greece</string>
+
 </resources>
