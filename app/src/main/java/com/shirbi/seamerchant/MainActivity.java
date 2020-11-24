@@ -14,6 +14,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mLogic.startNewGame();
-        mFrontEnd.ShowPrices(mLogic.priceTable);
+        mFrontEnd.ShowPrices(mLogic.mPriceTable);
     }
 }
