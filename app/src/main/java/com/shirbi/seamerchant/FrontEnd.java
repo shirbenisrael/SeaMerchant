@@ -44,6 +44,12 @@ public class FrontEnd {
         for (State state : State.values()) {
             LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
 
+            if (state == mLogic.mCurrentState) {
+                stateLayout.setBackgroundColor(mActivity.getColor(R.color.transparent_red));
+            } else {
+                stateLayout.setBackgroundColor(mActivity.getColor(R.color.transparent));
+            }
+
             for (Goods goods: Goods.values()) {
                 TextView textView = (TextView)stateLayout.getChildAt(goods.getValue() + 1);
                 textView.setText(String.valueOf(priceTable.getPrice(state, goods)));
