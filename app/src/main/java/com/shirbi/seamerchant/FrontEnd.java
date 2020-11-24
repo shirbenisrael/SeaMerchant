@@ -24,10 +24,18 @@ public class FrontEnd {
         mActivity = activity;
         mLogic = activity.mLogic;
 
-        LinearLayout stateLayout = findViewById(R.id.goods_buttons);
+        LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
         for (Goods goods: Goods.values()) {
-            Button imageButton = (Button)stateLayout.getChildAt(goods.getValue());
+            Button imageButton = (Button)goodsLayout.getChildAt(goods.getValue());
             imageButton.setBackgroundResource(goods.toWideButtonId());
+        }
+
+        LinearLayout statesLayout = findViewById(R.id.prices_layout);
+        for (State state : State.values()) {
+            LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
+
+            Button flagButton = (Button)stateLayout.getChildAt(0);
+            flagButton.setBackgroundResource(state.toFlagId());
         }
     }
 
