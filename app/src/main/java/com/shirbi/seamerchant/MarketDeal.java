@@ -6,6 +6,7 @@ public class MarketDeal {
     int mPrice;
     int mCash;
     int mCapacityForThisGoods;
+    int mMaxUnitsToHold;
 
     public MarketDeal(Goods goods, Logic logic) {
         mGoods = goods;
@@ -18,6 +19,8 @@ public class MarketDeal {
                 mCapacityForThisGoods -= logic.mInventory[otherGoods.getValue()];
             }
         }
+
+        mMaxUnitsToHold = mGoodsUnits + mCash / mPrice;
     }
 
     public int getGoodsValue() {

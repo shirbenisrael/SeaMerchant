@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.IdRes;
@@ -116,11 +117,17 @@ public class FrontEnd {
         String value = getString(R.string.TOTAL_VALUE) + ": " + mLogic.mMarketDeal.getGoodsValue() + " " +
                 getString(R.string.CASH_UNITS);
         ((TextView)findViewById(R.id.goods_value)).setText(value);
+
+        SeekBar seekBar = (SeekBar)findViewById(R.id.market_seek_bar);
+        seekBar.setProgress(mLogic.mMarketDeal.mGoodsUnits);
     }
 
     public void onMarketClick() {
         Goods goods = mLogic.mMarketDeal.mGoods;
         ((ImageView)findViewById(R.id.market_goods_image)).setImageResource(goods.toMainImageId());
+
+        SeekBar seekBar = (SeekBar)findViewById(R.id.market_seek_bar);
+        seekBar.setMax(mLogic.mMarketDeal.mMaxUnitsToHold);
 
         showDealState();
 
