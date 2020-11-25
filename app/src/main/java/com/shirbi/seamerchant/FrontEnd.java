@@ -71,6 +71,9 @@ public class FrontEnd {
 
         textView = findViewById(R.id.current_state_text_view);
         textView.setText(getString(mLogic.mCurrentState.toStringId()));
+
+        textView = findViewById(R.id.wide_capacity_button);
+        textView.setText(String.valueOf(mLogic.mCapacity) + " " + getString(R.string.TONNE));
     }
 
     public Goods viewToGoods(View view) {
