@@ -20,6 +20,8 @@ public enum Goods {
     private static final int[] mMainImageId = {
             R.drawable.wheat, R.drawable.olives, R.drawable.copper};
 
+    private static final int[] mStringId = {R.string.WHEAT, R.string.OLIVES, R.string.COPPER};
+
     private final int value;
     Goods(int value){
         this.value = value;
@@ -39,5 +41,9 @@ public enum Goods {
 
     public int toMainImageId() {
         return mMainImageId[value];
+    }
+
+    public int toStringId() {
+        return mStringId[value];
     }
 }

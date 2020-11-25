@@ -15,4 +15,8 @@
     <string name="CYPRUS">Cyprus</string>
     <string name="GREECE">Greece</string>
 
+    <string name="WHEAT">wheat</string>
+    <string name="OLIVES">olives</string>
+    <string name="COPPER">copper</string>
+
 </resources>
