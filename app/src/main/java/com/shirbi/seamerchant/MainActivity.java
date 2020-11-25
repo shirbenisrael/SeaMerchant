@@ -37,6 +37,11 @@ public class MainActivity extends Activity {
         mFrontEnd.showDealState();
     }
 
+    public void onMarketFillCapacityClick(View view) {
+        mLogic.mMarketDeal.fillCapacity();
+        mFrontEnd.showDealState();
+    }
+
     public void onDealDoneClick(View view) {
         mFrontEnd.onDealDoneClick(null);
     }

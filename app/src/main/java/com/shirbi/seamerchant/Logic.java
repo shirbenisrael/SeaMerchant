@@ -5,7 +5,7 @@ public class Logic {
     private static final int START_HOUR = 6;
     private static final Weather START_WEATHER = Weather.GOOD_SAILING;
     private static final State START_STATE = State.ISRAEL;
-    private static final int START_CAPACITY = 5000;
+    private static final int START_CAPACITY = 100;
 
     public PriceTable mPriceTable = new PriceTable();
     public int mCash;

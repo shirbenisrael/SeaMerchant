@@ -5,12 +5,14 @@ public class MarketDeal {
     int mGoodsUnits;
     int mPrice;
     int mCash;
+    int mCapacityForThisGoods;
 
     public MarketDeal(Goods goods, Logic logic) {
         mGoods = goods;
         mGoodsUnits = 0;
         mPrice = logic.mPriceTable.getPrice(logic.mCurrentState, goods);
         mCash = logic.mCash;
+        mCapacityForThisGoods = logic.mCapacity; // TODO: ignore other goods in inventory.
     }
 
     public int getGoodsValue() {
@@ -22,6 +24,8 @@ public class MarketDeal {
         if (mCash >= totalPrice) {
             mGoodsUnits += units;
             mCash -= totalPrice;
+        } else {
+            buyAll();
         }
     }
 
@@ -29,6 +33,8 @@ public class MarketDeal {
         if (mGoodsUnits >= units) {
             mGoodsUnits -= units;
             mCash += units * mPrice;;
+        } else {
+            sellAll();
         }
     }
 
@@ -39,5 +45,14 @@ public class MarketDeal {
 
     public void sellAll() {
         removeGoods(mGoodsUnits);
+    }
+
+    public void fillCapacity() {
+        int unitsToAdd = mCapacityForThisGoods - mGoodsUnits;
+        if (unitsToAdd > 0) {
+            addGoods(unitsToAdd);
+        } else {
+            removeGoods(-unitsToAdd);
+        }
     }
 }
