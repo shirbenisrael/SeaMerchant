@@ -40,7 +40,7 @@ public class FrontEnd {
         }
     }
 
-    private void ShowPrices(PriceTable priceTable) {
+    private void showPrices(PriceTable priceTable) {
         LinearLayout statesLayout = findViewById(R.id.prices_layout);
         for (State state : State.values()) {
             LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
@@ -58,8 +58,8 @@ public class FrontEnd {
         }
     }
 
-    public void ShowState() {
-        ShowPrices(mLogic.mPriceTable);
+    public void showState() {
+        showPrices(mLogic.mPriceTable);
 
         TextView textView;
 
@@ -112,7 +112,7 @@ public class FrontEnd {
         findViewById(R.id.market_layout).setVisibility(View.VISIBLE);
     }
 
-    public void onDealDoneClick(View view) {
+    public void exitMarket() {
         findViewById(R.id.market_layout).setVisibility(View.GONE);
         findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
     }

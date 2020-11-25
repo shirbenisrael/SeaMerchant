@@ -42,4 +42,11 @@ public class Logic {
     public void initMarketDeal(Goods goods) {
         mMarketDeal = new MarketDeal(goods, this);
     }
+
+    public void applyMarketDeal() {
+        mCash = mMarketDeal.mCash;
+        mInventory[mMarketDeal.mGoods.getValue()] = mMarketDeal.mGoodsUnits;
+        mMarketDeal = null;
+        mCurrentHour++;
+    }
 }

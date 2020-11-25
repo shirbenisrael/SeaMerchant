@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
         mFrontEnd = new FrontEnd(this);
 
         mLogic.startNewGame();
-        mFrontEnd.ShowState();
+        mFrontEnd.showState();
     }
 
     public void onMarketClick(View view) {
@@ -43,7 +43,14 @@ public class MainActivity extends Activity {
     }
 
     public void onDealDoneClick(View view) {
-        mFrontEnd.onDealDoneClick(null);
+        mLogic.applyMarketDeal();
+        mFrontEnd.showState();
+        mFrontEnd.exitMarket();
     }
+
+    public void onDealCancelClick(View view) {
+        mFrontEnd.exitMarket();
+    }
+
 
 }
