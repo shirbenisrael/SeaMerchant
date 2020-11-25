@@ -17,7 +17,7 @@ public class MarketDeal {
         return mGoodsUnits * mPrice;
     }
 
-    public void AddGoods(int units) {
+    public void addGoods(int units) {
         int totalPrice = units * mPrice;
         if (mCash >= totalPrice) {
             mGoodsUnits += units;
@@ -25,10 +25,15 @@ public class MarketDeal {
         }
     }
 
-    public void RemoveGoods(int units) {
+    public void removeGoods(int units) {
         if (mGoodsUnits >= units) {
             mGoodsUnits -= units;
             mCash += units * mPrice;;
         }
+    }
+
+    public void buyAll() {
+        int unitsToBuy = mCash / mPrice;
+        addGoods(unitsToBuy);
     }
 }

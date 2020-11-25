@@ -83,7 +83,7 @@ public class FrontEnd {
         return null;
     }
 
-    private void showDealState() {
+    public void showDealState() {
         Goods goods = mLogic.mMarketDeal.mGoods;
 
         String units = getString(goods.toStringId()) + ": " + mLogic.mMarketDeal.mGoodsUnits + " " +

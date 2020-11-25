@@ -160,6 +160,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_horizontal"
+            android:onClick="onMarketBuyAllClick"
             android:text="קנה כמה שאפשר" />
 
     </LinearLayout>
