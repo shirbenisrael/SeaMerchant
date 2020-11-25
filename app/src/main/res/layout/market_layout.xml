@@ -72,8 +72,7 @@
             android:gravity="center_horizontal"
             android:text="שווי כולל: 2900 שח" />
 
-        <include
-            layout="@layout/empty_horizontal_text" />
+        <include layout="@layout/empty_horizontal_text" />
 
     </LinearLayout>
 
@@ -175,29 +174,26 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <include
-            layout="@layout/empty_horizontal_text" />
+        <include layout="@layout/empty_horizontal_text" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/no_button"
             android:gravity="center_horizontal"
-            android:onClick="onDealDoneClick"
-            android:text="בטל" />
+            android:onClick="onDealDoneClick" />
 
-        <include
-            layout="@layout/empty_horizontal_text" />
+        <include layout="@layout/empty_horizontal_text" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="בצע עסקה" />
+            android:background="@drawable/yes_button"
+            android:gravity="center_horizontal" />
 
-        <include
-            layout="@layout/empty_horizontal_text" />
+        <include layout="@layout/empty_horizontal_text" />
 
     </LinearLayout>
 
