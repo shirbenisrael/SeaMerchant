@@ -9,7 +9,7 @@ public class MarketDeal {
 
     public MarketDeal(Goods goods, Logic logic) {
         mGoods = goods;
-        mGoodsUnits = 0;
+        mGoodsUnits = logic.mInventory[goods.getValue()];
         mPrice = logic.mPriceTable.getPrice(logic.mCurrentState, goods);
         mCash = logic.mCash;
         mCapacityForThisGoods = logic.mCapacity;
