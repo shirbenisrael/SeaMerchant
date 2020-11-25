@@ -22,8 +22,9 @@ public class MainActivity extends Activity {
 
     public void onMarketClick(View view) {
         Goods goods = mFrontEnd.viewToGoods(view);
+        mLogic.initMarketDeal(goods);
 
-        mFrontEnd.onMarketClick(goods);
+        mFrontEnd.onMarketClick();
     }
 
     public void onDealDoneClick(View view) {

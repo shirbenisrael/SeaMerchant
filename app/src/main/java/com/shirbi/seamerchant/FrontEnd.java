@@ -83,8 +83,27 @@ public class FrontEnd {
         return null;
     }
 
-    public void onMarketClick(Goods goods) {
+    private void showDealState() {
+        Goods goods = mLogic.mMarketDeal.mGoods;
+
+        String units = getString(goods.toStringId()) + ": " + mLogic.mMarketDeal.mGoodsUnits + " " +
+                getString(R.string.TONNE);
+        ((TextView)findViewById(R.id.market_goods_units)).setText(units);
+
+        String cash = getString(R.string.CASH) + ": " + mLogic.mMarketDeal.mCash + " " +
+                getString(R.string.CASH_UNITS);
+        ((TextView)findViewById(R.id.market_cash)).setText(cash);
+
+        String value = getString(R.string.TOTAL_VALUE) + ": " + mLogic.mMarketDeal.getGoodsValue() + " " +
+                getString(R.string.CASH_UNITS);
+        ((TextView)findViewById(R.id.goods_value)).setText(value);
+    }
+
+    public void onMarketClick() {
+        Goods goods = mLogic.mMarketDeal.mGoods;
         ((ImageView)findViewById(R.id.market_goods_image)).setImageResource(goods.toMainImageId());
+
+        showDealState();
 
         findViewById(R.id.main_window_layout).setVisibility(View.GONE);
         findViewById(R.id.market_layout).setVisibility(View.VISIBLE);

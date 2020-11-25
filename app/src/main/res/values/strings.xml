@@ -19,4 +19,9 @@
     <string name="OLIVES">olives</string>
     <string name="COPPER">copper</string>
 
+    <string name="TONNE">tonne</string>
+    <string name="CASH">cash</string>
+    <string name="CASH_UNITS">$</string>
+    <string name="TOTAL_VALUE">total value</string>
+
 </resources>

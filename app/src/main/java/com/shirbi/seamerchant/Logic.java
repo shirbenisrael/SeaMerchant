@@ -17,8 +17,10 @@ public class Logic {
     public Weather mWeather;
     public int mDamage;
     public int mCapacity;
+    MarketDeal mMarketDeal;
 
     public void startNewGame() {
+
         mPriceTable.generateRandomPrices();
         mCash = START_GAME_CASH;
         mBankDeposit = 0;
@@ -29,5 +31,9 @@ public class Logic {
         mWeather = START_WEATHER;
         mDamage = 0;
         mCapacity = START_CAPACITY;
+    }
+
+    public void initMarketDeal(Goods goods) {
+        mMarketDeal = new MarketDeal(goods, this);
     }
 }
