@@ -17,6 +17,9 @@ public enum Goods {
     private static final int[] mWideButtonImageId = {
             R.drawable.wide_wheat_button, R.drawable.wide_olives_button, R.drawable.wide_copper_button};
 
+    private static final int[] mMainImageId = {
+            R.drawable.wheat, R.drawable.olives, R.drawable.copper};
+
     private final int value;
     Goods(int value){
         this.value = value;
@@ -32,5 +35,9 @@ public enum Goods {
 
     public int toWideButtonId() {
         return mWideButtonImageId[value];
+    }
+
+    public int toMainImageId() {
+        return mMainImageId[value];
     }
 }

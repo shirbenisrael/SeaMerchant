@@ -2,6 +2,7 @@ package com.shirbi.seamerchant;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -72,7 +73,19 @@ public class FrontEnd {
         textView.setText(getString(mLogic.mCurrentState.toStringId()));
     }
 
-    public void onMarketClick(View view) {
+    public Goods viewToGoods(View view) {
+        LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
+        for (Goods goods: Goods.values()) {
+            if (goodsLayout.getChildAt(goods.getValue()) == view) {
+                return goods;
+            }
+        }
+        return null;
+    }
+
+    public void onMarketClick(Goods goods) {
+        ((ImageView)findViewById(R.id.market_goods_image)).setImageResource(goods.toMainImageId());
+
         findViewById(R.id.main_window_layout).setVisibility(View.GONE);
         findViewById(R.id.market_layout).setVisibility(View.VISIBLE);
     }
