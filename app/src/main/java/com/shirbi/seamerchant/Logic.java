@@ -19,6 +19,8 @@ public class Logic {
     public int mCapacity;
     MarketDeal mMarketDeal;
 
+    public int mInventory[];
+
     public void startNewGame() {
 
         mPriceTable.generateRandomPrices();
@@ -31,6 +33,10 @@ public class Logic {
         mWeather = START_WEATHER;
         mDamage = 0;
         mCapacity = START_CAPACITY;
+        mInventory = new int[Goods.NUM_GOODS_TYPES];
+        for (int i = 0 ; i < mInventory.length ; i++) {
+            mInventory[i] = 0;
+        }
     }
 
     public void initMarketDeal(Goods goods) {

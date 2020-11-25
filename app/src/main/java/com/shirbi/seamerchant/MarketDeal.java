@@ -12,7 +12,12 @@ public class MarketDeal {
         mGoodsUnits = 0;
         mPrice = logic.mPriceTable.getPrice(logic.mCurrentState, goods);
         mCash = logic.mCash;
-        mCapacityForThisGoods = logic.mCapacity; // TODO: ignore other goods in inventory.
+        mCapacityForThisGoods = logic.mCapacity;
+        for (Goods otherGoods : Goods.values()) {
+            if (otherGoods != goods) {
+                mCapacityForThisGoods -= logic.mInventory[otherGoods.getValue()];
+            }
+        }
     }
 
     public int getGoodsValue() {
