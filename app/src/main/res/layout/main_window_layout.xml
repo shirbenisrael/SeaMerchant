@@ -296,24 +296,25 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:background="@drawable/wide_ship_button"
+            android:gravity="right|center"
             android:text="ספינה תקינה" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:background="@drawable/wide_capacity_button"
+            android:gravity="left|center"
             android:text="קיבולת 100" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="לך לישון" />
+            android:background="@drawable/wide_sleep_button" />
 
     </LinearLayout>
 
