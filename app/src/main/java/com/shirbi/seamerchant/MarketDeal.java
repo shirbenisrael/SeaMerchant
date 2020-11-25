@@ -36,4 +36,8 @@ public class MarketDeal {
         int unitsToBuy = mCash / mPrice;
         addGoods(unitsToBuy);
     }
+
+    public void sellAll() {
+        removeGoods(mGoodsUnits);
+    }
 }
