@@ -40,6 +40,15 @@ public class FrontEnd {
         }
     }
 
+    private void showInventory() {
+        LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
+
+        for (Goods goods: Goods.values()) {
+            Button goodsButton = (Button)goodsLayout.getChildAt(goods.getValue());
+            goodsButton.setText(String.valueOf(mLogic.mInventory[goods.getValue()]));
+        }
+    }
+
     private void showPrices(PriceTable priceTable) {
         LinearLayout statesLayout = findViewById(R.id.prices_layout);
         for (State state : State.values()) {
@@ -60,6 +69,7 @@ public class FrontEnd {
 
     public void showState() {
         showPrices(mLogic.mPriceTable);
+        showInventory();
 
         TextView textView;
 
