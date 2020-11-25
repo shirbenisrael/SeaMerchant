@@ -84,6 +84,12 @@ public class FrontEnd {
 
         textView = findViewById(R.id.wide_capacity_button);
         textView.setText(String.valueOf(mLogic.mCapacity) + " " + getString(R.string.TONNE));
+
+        textView = findViewById(R.id.wide_cash_button);
+        textView.setText(mActivity.getString(R.string.MONEY_STRING, mLogic.mCash));
+
+        textView = findViewById(R.id.wide_bank_button);
+        textView.setText(mActivity.getString(R.string.MONEY_STRING, mLogic.mBankDeposit));
     }
 
     public Goods viewToGoods(View view) {

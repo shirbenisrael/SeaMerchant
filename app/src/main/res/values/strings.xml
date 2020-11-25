@@ -24,4 +24,6 @@
     <string name="CASH_UNITS">$</string>
     <string name="TOTAL_VALUE">total value</string>
 
+    <string name="MONEY_STRING">%1$d\$</string>
+
 </resources>
