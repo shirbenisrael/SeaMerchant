@@ -27,6 +27,26 @@ public class MainActivity extends Activity {
         mFrontEnd.onMarketClick();
     }
 
+    public void onMarketMinusTenClick(View view) {
+        mLogic.mMarketDeal.removeGoods(10);
+        mFrontEnd.showDealState();
+    }
+
+    public void onMarketMinusOneClick(View view) {
+        mLogic.mMarketDeal.removeGoods(1);
+        mFrontEnd.showDealState();
+    }
+
+    public void onMarketPlusOneClick(View view) {
+        mLogic.mMarketDeal.addGoods(1);
+        mFrontEnd.showDealState();
+    }
+
+    public void onMarketPlusTenClick(View view) {
+        mLogic.mMarketDeal.addGoods(10);
+        mFrontEnd.showDealState();
+    }
+
     public void onMarketBuyAllClick(View view) {
         mLogic.mMarketDeal.buyAll();
         mFrontEnd.showDealState();

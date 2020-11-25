@@ -90,6 +90,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_horizontal"
+            android:onClick="onMarketMinusTenClick"
             android:text="-10" />
 
         <Button
@@ -97,6 +98,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_horizontal"
+            android:onClick="onMarketMinusOneClick"
             android:text="-1" />
 
         <Button
@@ -104,6 +106,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_horizontal"
+            android:onClick="onMarketPlusOneClick"
             android:text="+1" />
 
         <Button
@@ -111,6 +114,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_horizontal"
+            android:onClick="onMarketPlusTenClick"
             android:text="+10" />
 
     </LinearLayout>
@@ -198,7 +202,7 @@
             android:layout_weight="1"
             android:background="@drawable/yes_button"
             android:gravity="center_horizontal"
-            android:onClick="onDealDoneClick"/>
+            android:onClick="onDealDoneClick" />
 
         <include layout="@layout/empty_horizontal_text" />
 
