@@ -7,6 +7,8 @@ public class MarketDeal {
     int mCash;
     int mCapacityForThisGoods;
     int mMaxUnitsToHold;
+    int mMaxUnitsWithEnoughGuardShips;
+    int mPercentageOfValueForEnoughGuardShips;
 
     public MarketDeal(Goods goods, Logic logic) {
         mGoods = goods;
@@ -21,6 +23,8 @@ public class MarketDeal {
         }
 
         mMaxUnitsToHold = mGoodsUnits + mCash / mPrice;
+        mPercentageOfValueForEnoughGuardShips = 90;         // TODO: Set this according relevant dangers.
+        mMaxUnitsWithEnoughGuardShips = (mMaxUnitsToHold * mPercentageOfValueForEnoughGuardShips / 100);
     }
 
     public int getGoodsValue() {
@@ -70,5 +74,9 @@ public class MarketDeal {
         } else {
             removeGoods(-unitsToAdd);
         }
+    }
+
+    public void leaveCashForGuards() {
+        setGoods(mMaxUnitsWithEnoughGuardShips);
     }
 }

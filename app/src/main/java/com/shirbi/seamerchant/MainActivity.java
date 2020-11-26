@@ -62,6 +62,11 @@ public class MainActivity extends Activity {
         mFrontEnd.showDealState();
     }
 
+    public void onMarketPercentageForGuardsClick(View view) {
+        mLogic.mMarketDeal.leaveCashForGuards();
+        mFrontEnd.showDealState();
+    }
+
     public void onDealDoneClick(View view) {
         mLogic.applyMarketDeal();
         mFrontEnd.showState();

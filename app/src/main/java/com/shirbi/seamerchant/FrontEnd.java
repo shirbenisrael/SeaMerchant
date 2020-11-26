@@ -142,6 +142,9 @@ public class FrontEnd {
         SeekBar seekBar = (SeekBar)findViewById(R.id.market_seek_bar);
         seekBar.setMax(mLogic.mMarketDeal.mMaxUnitsToHold);
 
+        String string = String.valueOf(mLogic.mMarketDeal.mPercentageOfValueForEnoughGuardShips) +"%";
+        ((Button)findViewById(R.id.market_percentage_with_guards)).setText(string);
+
         showDealState();
 
         findViewById(R.id.main_window_layout).setVisibility(View.GONE);

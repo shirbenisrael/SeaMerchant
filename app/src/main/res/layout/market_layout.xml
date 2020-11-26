@@ -140,10 +140,12 @@
             android:text="השלמה לקיבולת מלאה" />
 
         <Button
+            android:id="@+id/market_percentage_with_guards"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_horizontal"
+            android:onClick="onMarketPercentageForGuardsClick"
             android:text="90%" />
 
     </LinearLayout>
