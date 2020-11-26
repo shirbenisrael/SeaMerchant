@@ -16,4 +16,8 @@
         android:id="@+id/market_layout"
         layout="@layout/market_layout" />
 
+    <include
+        android:visibility="gone"
+        android:id="@+id/sail_layout"
+        layout="@layout/sail_layout" />
 </LinearLayout>

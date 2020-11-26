@@ -78,4 +78,12 @@ public class MainActivity extends Activity {
     public void onDealCancelClick(View view) {
         mFrontEnd.exitMarket();
     }
+
+    public void onFlagClick(View view) {
+        mFrontEnd.showSailWindow();
+    }
+
+    public void onSailCancelClick(View view) {
+        mFrontEnd.exitSail();
+    }
 }
