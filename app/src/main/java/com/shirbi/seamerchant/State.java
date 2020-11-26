@@ -16,6 +16,9 @@ public enum State {
             R.drawable.flag_egypt, R.drawable.flag_israel, R.drawable.flag_turkey,
             R.drawable.flag_cyprus, R.drawable.flag_greece};
 
+    public static final float[] mLocationsX = {0.55f, 0.90f, 0.87f, 0.63f, 0.07f};
+    public static final float[] mLocationsY = {0.75f, 0.53f, 0.03f, 0.27f, 0.05f};
+
     private final int value;
     State(int value){
         this.value = value;
@@ -31,5 +34,13 @@ public enum State {
 
     public int toFlagId() {
         return mFlags[value];
+    }
+
+    public float toLocationX() {
+        return mLocationsX[value];
+    }
+
+    public float toLocationY() {
+        return mLocationsY[value];
     }
 }

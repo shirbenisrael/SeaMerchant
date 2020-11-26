@@ -8,6 +8,7 @@ public class MainActivity extends Activity {
     Logic mLogic;
     FrontEnd mFrontEnd;
     FrontEndMarket mFrontEndMarket;
+    FrontEndSail mFrontEndSail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,7 @@ public class MainActivity extends Activity {
         mLogic = new Logic();
         mFrontEnd = new FrontEnd(this);
         mFrontEndMarket = new FrontEndMarket(this);
+        mFrontEndSail = new FrontEndSail(this);
 
         mLogic.startNewGame();
         mFrontEnd.showState();
@@ -80,6 +82,9 @@ public class MainActivity extends Activity {
     }
 
     public void onFlagClick(View view) {
+        State destination = mFrontEnd.viewToState(view);
+        mLogic.initSail(destination);
+        mFrontEndSail.initSailRoute();
         mFrontEnd.showSailWindow();
     }
 

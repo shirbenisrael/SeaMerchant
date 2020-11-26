@@ -18,6 +18,7 @@ public class Logic {
     public int mDamage;
     public int mCapacity;
     MarketDeal mMarketDeal;
+    Sail mSail;
 
     public int mInventory[];
 
@@ -48,5 +49,9 @@ public class Logic {
         mInventory[mMarketDeal.mGoods.getValue()] = mMarketDeal.mGoodsUnits;
         mMarketDeal = null;
         mCurrentHour++;
+    }
+
+    public void initSail(State destination) {
+        mSail = new Sail(this, destination);
     }
 }

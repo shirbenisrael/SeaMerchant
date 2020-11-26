@@ -86,6 +86,17 @@ public class FrontEnd extends FrontEndGeneric {
         return null;
     }
 
+    public State viewToState(View view) {
+        LinearLayout priceLayout = findViewById(R.id.prices_layout);
+        for (int i = 0; i < State.NUM_STATES; i ++) {
+            LinearLayout stateLayout = (LinearLayout)priceLayout.getChildAt(i);
+            if (stateLayout.getChildAt(0) == view) {
+                return State.values()[i];
+            }
+        }
+        return null;
+    }
+
     public void exitMarket() {
         findViewById(R.id.market_layout).setVisibility(View.GONE);
         findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
