@@ -85,11 +85,27 @@ public class FrontEndSail extends FrontEndGeneric {
 
     Runnable mTimerTick = new Runnable() {
         public void run() {
-            float locationX = mProgress * mLogic.mSail.mDestination.toLocationX() +
-                    (1.0f- mProgress) * mLogic.mSail.mSource.toLocationX();
+            float startX, startY;
+            float endX, endY;
+            float locationX, locationY;
+            float actualProgress;
 
-            float locationY = mProgress * mLogic.mSail.mDestination.toLocationY() +
-                    (1.0f- mProgress) * mLogic.mSail.mSource.toLocationY();
+            if (mProgress < 0.5f) {
+                startX = mLogic.mSail.mSource.toLocationX();
+                startY = mLogic.mSail.mSource.toLocationY();
+                endX = mLogic.mSail.mSource.toMiddlePointX(mLogic.mSail.mDestination);
+                endY = mLogic.mSail.mSource.toMiddlePointY(mLogic.mSail.mDestination);
+                actualProgress = mProgress * 2;
+            } else {
+                startX = mLogic.mSail.mSource.toMiddlePointX(mLogic.mSail.mDestination);
+                startY = mLogic.mSail.mSource.toMiddlePointY(mLogic.mSail.mDestination);
+                endX = mLogic.mSail.mDestination.toLocationX();
+                endY = mLogic.mSail.mDestination.toLocationY();
+                actualProgress = (mProgress - 0.5f) * 2;
+            }
+
+            locationX = actualProgress * endX + (1.0f - actualProgress) * startX;
+            locationY = actualProgress * endY + (1.0f - actualProgress) * startY;
 
             putObjectOnMap(R.id.circle_on_map,
                     locationX,
