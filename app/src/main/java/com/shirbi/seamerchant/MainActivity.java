@@ -7,6 +7,7 @@ import android.view.View;
 public class MainActivity extends Activity {
     Logic mLogic;
     FrontEnd mFrontEnd;
+    FrontEndMarket mFrontEndMarket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +16,7 @@ public class MainActivity extends Activity {
 
         mLogic = new Logic();
         mFrontEnd = new FrontEnd(this);
+        mFrontEndMarket = new FrontEndMarket(this);
 
         mLogic.startNewGame();
         mFrontEnd.showState();
@@ -24,47 +26,47 @@ public class MainActivity extends Activity {
         Goods goods = mFrontEnd.viewToGoods(view);
         mLogic.initMarketDeal(goods);
 
-        mFrontEnd.onMarketClick();
+        mFrontEndMarket.onMarketClick();
     }
 
     public void onMarketMinusTenClick(View view) {
         mLogic.mMarketDeal.removeGoods(10);
-        mFrontEnd.showDealState();
+        mFrontEndMarket.showDealState();
     }
 
     public void onMarketMinusOneClick(View view) {
         mLogic.mMarketDeal.removeGoods(1);
-        mFrontEnd.showDealState();
+        mFrontEndMarket.showDealState();
     }
 
     public void onMarketPlusOneClick(View view) {
         mLogic.mMarketDeal.addGoods(1);
-        mFrontEnd.showDealState();
+        mFrontEndMarket.showDealState();
     }
 
     public void onMarketPlusTenClick(View view) {
         mLogic.mMarketDeal.addGoods(10);
-        mFrontEnd.showDealState();
+        mFrontEndMarket.showDealState();
     }
 
     public void onMarketBuyAllClick(View view) {
         mLogic.mMarketDeal.buyAll();
-        mFrontEnd.showDealState();
+        mFrontEndMarket.showDealState();
     }
 
     public void onMarketSellAllClick(View view) {
         mLogic.mMarketDeal.sellAll();
-        mFrontEnd.showDealState();
+        mFrontEndMarket.showDealState();
     }
 
     public void onMarketFillCapacityClick(View view) {
         mLogic.mMarketDeal.fillCapacity();
-        mFrontEnd.showDealState();
+        mFrontEndMarket.showDealState();
     }
 
     public void onMarketPercentageForGuardsClick(View view) {
         mLogic.mMarketDeal.leaveCashForGuards();
-        mFrontEnd.showDealState();
+        mFrontEndMarket.showDealState();
     }
 
     public void onDealDoneClick(View view) {
@@ -76,6 +78,4 @@ public class MainActivity extends Activity {
     public void onDealCancelClick(View view) {
         mFrontEnd.exitMarket();
     }
-
-
 }
