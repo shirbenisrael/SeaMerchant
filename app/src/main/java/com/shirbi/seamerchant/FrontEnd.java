@@ -39,6 +39,19 @@ public class FrontEnd {
             Button flagButton = (Button)stateLayout.getChildAt(0);
             flagButton.setBackgroundResource(state.toFlagId());
         }
+
+        SeekBar  marketSeekBar=(SeekBar)findViewById(R.id.market_seek_bar);
+        marketSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    mLogic.mMarketDeal.setGoods(progress);
+                    showDealState();
+                }
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
     }
 
     private void showInventory() {

@@ -27,6 +27,14 @@ public class MarketDeal {
         return mGoodsUnits * mPrice;
     }
 
+    public void setGoods(int units) {
+        if (units > mGoodsUnits) {
+            addGoods(units - mGoodsUnits);
+        } else {
+            removeGoods(mGoodsUnits - units);
+        }
+    }
+
     public void addGoods(int units) {
         int totalPrice = units * mPrice;
         if (mCash >= totalPrice) {
