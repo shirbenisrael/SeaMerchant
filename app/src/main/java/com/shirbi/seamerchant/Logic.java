@@ -7,6 +7,14 @@ public class Logic {
     private static final State START_STATE = State.ISRAEL;
     private static final int START_CAPACITY = 100;
 
+    private int mSailDurations[][] = {
+            {0, 3, 6, 3, 0}, // From Egypt
+            {3, 0, 3, 3, 0}, // From Israel
+            {6, 3, 0, 3, 0}, // From Turkey
+            {3, 3, 3, 0, 6}, // From Cyprus
+            {0, 0, 0, 6, 0}  // From Greece
+    };
+
     public PriceTable mPriceTable = new PriceTable();
     public int mCash;
     public int mBankDeposit;
@@ -57,5 +65,10 @@ public class Logic {
 
     public void finishSail() {
         mCurrentState = mSail.mDestination;
+        mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
+    }
+
+    public int getSailDuration(State from, State to) {
+        return mSailDurations[from.getValue()][to.getValue()];
     }
 }
