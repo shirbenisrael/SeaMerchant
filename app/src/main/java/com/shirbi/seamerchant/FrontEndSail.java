@@ -157,7 +157,6 @@ public class FrontEndSail extends FrontEndGeneric {
 
     private void sailEnd() {
         mLogic.finishSail();
-        mActivity.mFrontEnd.exitSail();
-        mActivity.mFrontEnd.showState();
+        mActivity.mFrontEnd.endSail();
     }
 }

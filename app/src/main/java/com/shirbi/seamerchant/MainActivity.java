@@ -101,4 +101,9 @@ public class MainActivity extends Activity {
 
         mFrontEndSail.startSail();
     }
+
+    public void onSailEndClick(View view) {
+        mFrontEnd.closeEndSailWindow();
+        mFrontEnd.showState();
+    }
 }

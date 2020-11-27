@@ -20,4 +20,9 @@
         android:visibility="gone"
         android:id="@+id/sail_layout"
         layout="@layout/sail_layout" />
+
+    <include
+        android:visibility="gone"
+        android:id="@+id/end_of_sail_layout"
+        layout="@layout/end_sail_layout" />
 </LinearLayout>

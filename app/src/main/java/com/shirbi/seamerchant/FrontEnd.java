@@ -113,4 +113,14 @@ public class FrontEnd extends FrontEndGeneric {
         findViewById(R.id.sail_layout).setVisibility(View.GONE);
         findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
     }
+
+    public void endSail() {
+        findViewById(R.id.sail_layout).setVisibility(View.GONE);
+        findViewById(R.id.end_of_sail_layout).setVisibility(View.VISIBLE);
+    }
+
+    public void closeEndSailWindow() {
+        findViewById(R.id.end_of_sail_layout).setVisibility(View.GONE);
+        findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
+    }
 }
