@@ -74,6 +74,8 @@ public class FrontEnd extends FrontEndGeneric {
 
         textView = findViewById(R.id.wide_bank_button);
         textView.setText(mActivity.getString(R.string.MONEY_STRING, mLogic.mBankDeposit));
+
+        findViewById(R.id.main_window_layout).setBackgroundResource(mLogic.getDayPart().toImageId());
     }
 
     public Goods viewToGoods(View view) {

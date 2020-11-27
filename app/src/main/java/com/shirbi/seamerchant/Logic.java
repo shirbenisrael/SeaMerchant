@@ -6,6 +6,8 @@ public class Logic {
     private static final Weather START_WEATHER = Weather.GOOD_SAILING;
     private static final State START_STATE = State.ISRAEL;
     private static final int START_CAPACITY = 100;
+    private static final int EVENING_TIME = 16;
+    private static final int NIGHT_TIME = 21;
 
     private int mSailDurations[][] = {
             {0, 3, 6, 3, 0}, // From Egypt
@@ -74,5 +76,17 @@ public class Logic {
 
     public int getSailDuration(State from, State to) {
         return mSailDurations[from.getValue()][to.getValue()];
+    }
+
+    public DayPart getDayPart() {
+        if (mCurrentHour < EVENING_TIME) {
+            return DayPart.SUN_SHINES;
+        }
+
+        if (mCurrentHour < NIGHT_TIME) {
+            return DayPart.EVENING;
+        }
+
+        return DayPart.NIGHT;
     }
 }
