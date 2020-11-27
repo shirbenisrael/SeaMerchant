@@ -54,4 +54,8 @@ public class Logic {
     public void initSail(State destination) {
         mSail = new Sail(this, destination);
     }
+
+    public void finishSail() {
+        mCurrentState = mSail.mDestination;
+    }
 }

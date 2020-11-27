@@ -140,6 +140,7 @@ public class FrontEndSail extends FrontEndGeneric {
             if (mProgress > 1.0f) {
                 if (mRealSail) {
                     mTimer.cancel();
+                    sailEnd();
                 } else {
                     mProgress = 0.0f;
                 }
@@ -152,5 +153,11 @@ public class FrontEndSail extends FrontEndGeneric {
         mProgress = 0;
         mImageToAnimate = R.id.boat_on_map;
         mRealSail = true;
+    }
+
+    private void sailEnd() {
+        mLogic.finishSail();
+        mActivity.mFrontEnd.exitSail();
+        mActivity.mFrontEnd.showState();
     }
 }
