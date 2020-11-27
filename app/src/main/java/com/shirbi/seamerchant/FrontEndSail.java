@@ -3,6 +3,7 @@ package com.shirbi.seamerchant;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -60,8 +61,25 @@ public class FrontEndSail extends FrontEndGeneric {
         relativeLayout.addView(object, params);
     }
 
+    private void putBoatOnHarbor() {
+        putObjectOnMap(R.id.boat_on_map,
+                mLogic.mSail.mSource.toLocationX(),
+                mLogic.mSail.mSource.toLocationY(),
+                0.10f, 0.10f);
+
+        ImageView boat = findViewById(R.id.boat_on_map);
+
+        if (mLogic.mSail.mSource.toLocationX() > mLogic.mSail.mDestination.toLocationX()) {
+            boat.setImageResource(R.drawable.boat_left);
+        } else {
+            boat.setImageResource(R.drawable.boat_right);
+        }
+    }
+
     public void initSailRoute() {
         calculateMapSize();
+        putBoatOnHarbor();
+
         putObjectOnMap(R.id.destination,
                 mLogic.mSail.mDestination.toLocationX(),
                 mLogic.mSail.mDestination.toLocationY(),
