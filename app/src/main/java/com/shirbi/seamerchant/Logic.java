@@ -89,4 +89,10 @@ public class Logic {
 
         return DayPart.NIGHT;
     }
+
+    public void startNewDay() {
+        mPriceTable.generateRandomPrices();
+        mCurrentHour = START_HOUR;
+        mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
+    }
 }

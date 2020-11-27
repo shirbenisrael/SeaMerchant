@@ -123,4 +123,14 @@ public class FrontEnd extends FrontEndGeneric {
         findViewById(R.id.end_of_sail_layout).setVisibility(View.GONE);
         findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
     }
+
+    public void openGoToSleepWindow() {
+        findViewById(R.id.main_window_layout).setVisibility(View.GONE);
+        findViewById(R.id.go_to_sleep_layout).setVisibility(View.VISIBLE);
+    }
+
+    public void closeGoToSleepWindow() {
+        findViewById(R.id.go_to_sleep_layout).setVisibility(View.GONE);
+        findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
+    }
 }

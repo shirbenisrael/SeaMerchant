@@ -25,4 +25,9 @@
         android:visibility="gone"
         android:id="@+id/end_of_sail_layout"
         layout="@layout/end_sail_layout" />
+
+    <include
+        android:visibility="gone"
+        android:id="@+id/go_to_sleep_layout"
+        layout="@layout/go_to_sleep_layout" />
 </LinearLayout>

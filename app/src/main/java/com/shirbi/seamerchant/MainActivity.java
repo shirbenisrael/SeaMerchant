@@ -106,4 +106,18 @@ public class MainActivity extends Activity {
         mFrontEnd.closeEndSailWindow();
         mFrontEnd.showState();
     }
+
+    public void onSleepClick(View view) {
+        mFrontEnd.openGoToSleepWindow();
+    }
+
+    public void onCancelSleep(View view) {
+        mFrontEnd.closeGoToSleepWindow();
+    }
+
+    public void onApproveSleep(View view) {
+        mLogic.startNewDay();
+        mFrontEnd.closeGoToSleepWindow();
+        mFrontEnd.showState();
+    }
 }
