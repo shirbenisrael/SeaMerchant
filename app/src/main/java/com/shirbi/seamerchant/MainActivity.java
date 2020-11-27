@@ -83,6 +83,10 @@ public class MainActivity extends Activity {
 
     public void onFlagClick(View view) {
         State destination = mFrontEnd.viewToState(view);
+        if (mLogic.getSailDuration(destination) == 0) {
+            return;
+        }
+
         mLogic.initSail(destination);
         mFrontEndSail.initSailRoute();
         mFrontEnd.showSailWindow();

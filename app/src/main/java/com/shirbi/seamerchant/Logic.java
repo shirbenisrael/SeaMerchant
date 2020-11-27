@@ -68,6 +68,10 @@ public class Logic {
         mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
     }
 
+    public int getSailDuration(State to) {
+        return getSailDuration(mCurrentState, to);
+    }
+
     public int getSailDuration(State from, State to) {
         return mSailDurations[from.getValue()][to.getValue()];
     }
