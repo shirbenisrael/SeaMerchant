@@ -91,4 +91,10 @@ public class MainActivity extends Activity {
     public void onSailCancelClick(View view) {
         mFrontEnd.exitSail();
     }
+
+    public void onSailClick(View view) {
+        // TODO: start sail in logic - change time, reduce cash of guards...
+
+        mFrontEndSail.startSail();
+    }
 }

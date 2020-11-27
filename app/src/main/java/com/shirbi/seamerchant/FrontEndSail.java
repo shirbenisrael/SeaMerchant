@@ -17,6 +17,8 @@ public class FrontEndSail extends FrontEndGeneric {
     private TimerTask mTimerTask;
     private Point mMapSize;
     private float mProgress;
+    private @IdRes int mImageToAnimate;
+    private boolean mRealSail;
 
     public FrontEndSail(MainActivity activity) {
         super(activity);
@@ -86,6 +88,9 @@ public class FrontEndSail extends FrontEndGeneric {
                 0.05f, 0.10f);
 
         mProgress = 0.0f;
+        mImageToAnimate = R.id.circle_on_map;
+        mRealSail = false;
+        findViewById(R.id.circle_on_map).setVisibility(View.VISIBLE);
 
         if (mTimer != null) {
             mTimer.cancel();
@@ -125,7 +130,7 @@ public class FrontEndSail extends FrontEndGeneric {
             locationX = actualProgress * endX + (1.0f - actualProgress) * startX;
             locationY = actualProgress * endY + (1.0f - actualProgress) * startY;
 
-            putObjectOnMap(R.id.circle_on_map,
+            putObjectOnMap(mImageToAnimate,
                     locationX,
                     locationY,
                     0.05f, 0.05f);
@@ -133,8 +138,19 @@ public class FrontEndSail extends FrontEndGeneric {
             mProgress += 0.02f;
 
             if (mProgress > 1.0f) {
-                mProgress = 0.0f;
+                if (mRealSail) {
+                    mTimer.cancel();
+                } else {
+                    mProgress = 0.0f;
+                }
             }
         }
     };
+
+    public void startSail() {
+        findViewById(R.id.circle_on_map).setVisibility(View.GONE);
+        mProgress = 0;
+        mImageToAnimate = R.id.boat_on_map;
+        mRealSail = true;
+    }
 }
