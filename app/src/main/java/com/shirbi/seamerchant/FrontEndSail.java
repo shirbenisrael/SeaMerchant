@@ -79,6 +79,8 @@ public class FrontEndSail extends FrontEndGeneric {
     }
 
     public void initSailRoute() {
+        findViewById(R.id.sail_or_cancel_layout).setVisibility(View.VISIBLE);
+
         calculateMapSize();
         putBoatOnHarbor();
 
@@ -150,6 +152,8 @@ public class FrontEndSail extends FrontEndGeneric {
 
     public void startSail() {
         findViewById(R.id.circle_on_map).setVisibility(View.GONE);
+        findViewById(R.id.sail_or_cancel_layout).setVisibility(View.INVISIBLE);
+
         mProgress = 0;
         mImageToAnimate = R.id.boat_on_map;
         mRealSail = true;
