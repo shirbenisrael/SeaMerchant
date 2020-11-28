@@ -133,29 +133,9 @@
                     android:onClick="onFlagClick"
                     android:text="מצרים" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="35"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="500"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="3000"
-                    android:textColor="#000000" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
 
             </LinearLayout>
 
@@ -173,29 +153,9 @@
                     android:onClick="onFlagClick"
                     android:text="ישראל" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="35"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="500"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="3000"
-                    android:textColor="#000000" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
 
             </LinearLayout>
 
@@ -213,29 +173,9 @@
                     android:onClick="onFlagClick"
                     android:text="תורכיה" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="35"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="500"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="3000"
-                    android:textColor="#000000" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
 
             </LinearLayout>
 
@@ -253,29 +193,9 @@
                     android:onClick="onFlagClick"
                     android:text="קפריסין" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="35"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="500"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="3000"
-                    android:textColor="#000000" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
 
             </LinearLayout>
 
@@ -293,29 +213,9 @@
                     android:onClick="onFlagClick"
                     android:text="יוון" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="35"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="500"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:text="3000"
-                    android:textColor="#000000" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
+                <include layout="@layout/one_price_layout" />
 
             </LinearLayout>
 
