@@ -42,7 +42,6 @@ public class FrontEndSail extends FrontEndGeneric {
     void putSquareObjectOnMap(View object, float x, float y, float size) {
         putObjectOnRelativeLayout(object,
                 x, y, size, size * mMapSize.x / mMapSize.y, // square
-                (RelativeLayout)findViewById(R.id.map_container),
                 mMapSize);
     }
 
@@ -73,7 +72,7 @@ public class FrontEndSail extends FrontEndGeneric {
                 mLogic.mSail.mDestination.toLocationX(),
                 mLogic.mSail.mDestination.toLocationY(),
                 0.05f, 0.10f,
-                (RelativeLayout)findViewById(R.id.map_container), mMapSize);
+                mMapSize);
 
         mProgress = 0.0f;
         mImageToAnimate = R.id.circle_on_map;

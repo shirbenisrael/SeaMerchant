@@ -32,8 +32,7 @@ public class FrontEndGeneric {
         return size;
     }
 
-    void putObjectOnRelativeLayout(View object, float x, float y, float width, float height,
-                                   RelativeLayout relativeLayout, Point layoutSize) {
+    void putObjectOnRelativeLayout(View object, float x, float y, float width, float height, Point layoutSize) {
 
         RelativeLayout.LayoutParams params =
                 new RelativeLayout.LayoutParams((int)(width * layoutSize.x), (int)(height * layoutSize.y));
@@ -43,7 +42,6 @@ public class FrontEndGeneric {
         params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
         params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
 
-        relativeLayout.removeView(object);
-        relativeLayout.addView(object, params);
+        object.setLayoutParams(params);
     }
 }

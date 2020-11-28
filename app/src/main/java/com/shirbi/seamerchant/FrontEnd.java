@@ -20,6 +20,8 @@ public class FrontEnd extends FrontEndGeneric {
             imageButton.setBackgroundResource(goods.toWideButtonId());
         }
 
+        calculateFlagSize();
+
         LinearLayout statesLayout = findViewById(R.id.prices_layout);
         for (State state : State.values()) {
             LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
@@ -27,9 +29,13 @@ public class FrontEnd extends FrontEndGeneric {
             RelativeLayout flagButtonWrapper = (RelativeLayout)stateLayout.getChildAt(0);
             Button flagButton = (Button)flagButtonWrapper.getChildAt(0);
             flagButton.setBackgroundResource(state.toFlagId());
-        }
 
-        calculateFlagSize();
+            ImageView flagSailDuration = (ImageView)flagButtonWrapper.getChildAt(1);
+            putObjectOnRelativeLayout(flagSailDuration, 0, 0, 0.33f, 0.5f, mFlagSize );
+
+            ImageView flagWeather = (ImageView)flagButtonWrapper.getChildAt(2);
+            putObjectOnRelativeLayout(flagWeather, 0, 0.5f, 0.33f, 0.5f, mFlagSize );
+        }
     }
 
     private void showInventory() {
@@ -86,6 +92,7 @@ public class FrontEnd extends FrontEndGeneric {
         findViewById(R.id.main_window_layout).setBackgroundResource(mLogic.getDayPart().toImageId());
 
         showWeatherOnFlag();
+        showSailDurationOnFlag();
     }
 
     public Goods viewToGoods(View view) {
@@ -130,7 +137,6 @@ public class FrontEnd extends FrontEndGeneric {
         if (weather == Weather.GOOD_SAILING) {
             weatherString = mActivity.getString(weather.toStringId());
         } else {
-
             weatherString = mActivity.getString(weather.toStringId(), getString(mLogic.mWeatherState.toStringId()));
         }
         ((TextView)findViewById(R.id.weather_message)).setText(weatherString);
@@ -162,17 +168,36 @@ public class FrontEnd extends FrontEndGeneric {
 
             RelativeLayout flagButtonWrapper = (RelativeLayout)stateLayout.getChildAt(0);
             ImageView flagWeather = (ImageView)flagButtonWrapper.getChildAt(2);
-
             if (state == mLogic.mWeatherState && mLogic.mWeather != Weather.GOOD_SAILING) {
-                //flagButtonWrapper.getChildAt(0).setVisibility(View.INVISIBLE);
-
                 flagWeather.setVisibility(View.VISIBLE);
                 flagWeather.setImageResource(mLogic.mWeather.toBackground());
-                putObjectOnRelativeLayout(flagWeather, 0, 0.5f, 0.33f, 0.5f, flagButtonWrapper, mFlagSize );
-                flagButtonWrapper.getChildAt(0).setZ(1);
-                flagWeather.setZ(2);
             } else {
                 flagWeather.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void showSailDurationOnFlag() {
+        LinearLayout statesLayout = findViewById(R.id.prices_layout);
+        for (State state : State.values()) {
+            LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
+
+            RelativeLayout flagButtonWrapper = (RelativeLayout)stateLayout.getChildAt(0);
+            ImageView flagSailDuration = (ImageView)flagButtonWrapper.getChildAt(1);
+
+            int sail_duration = mLogic.getSailDuration(state);
+            switch (sail_duration) {
+                case 3:
+                    flagSailDuration.setImageResource(R.drawable.duration_3);
+                    break;
+                case 5:
+                    flagSailDuration.setImageResource(R.drawable.duration_5);
+                    break;
+                case 6:
+                    flagSailDuration.setImageResource(R.drawable.duration_6);
+                    break;
+                default:
+                    flagSailDuration.setImageResource(R.drawable.duration_invalid);
             }
         }
     }
