@@ -30,4 +30,9 @@
         android:visibility="gone"
         android:id="@+id/go_to_sleep_layout"
         layout="@layout/go_to_sleep_layout" />
+
+    <include
+        android:visibility="gone"
+        android:id="@+id/weather_layout"
+        layout="@layout/weather_layout" />
 </LinearLayout>
