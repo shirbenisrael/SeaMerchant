@@ -3,6 +3,7 @@ package com.shirbi.seamerchant;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class FrontEnd extends FrontEndGeneric {
@@ -19,7 +20,8 @@ public class FrontEnd extends FrontEndGeneric {
         for (State state : State.values()) {
             LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
 
-            Button flagButton = (Button)stateLayout.getChildAt(0);
+            RelativeLayout flagButtonWrapper = (RelativeLayout)stateLayout.getChildAt(0);
+            Button flagButton = (Button)flagButtonWrapper.getChildAt(0);
             flagButton.setBackgroundResource(state.toFlagId());
         }
     }
@@ -92,7 +94,9 @@ public class FrontEnd extends FrontEndGeneric {
         LinearLayout priceLayout = findViewById(R.id.prices_layout);
         for (int i = 0; i < State.NUM_STATES; i ++) {
             LinearLayout stateLayout = (LinearLayout)priceLayout.getChildAt(i);
-            if (stateLayout.getChildAt(0) == view) {
+
+            RelativeLayout flagButtonWrapper = (RelativeLayout)stateLayout.getChildAt(0);
+            if (flagButtonWrapper.getChildAt(0) == view) {
                 return State.values()[i];
             }
         }
