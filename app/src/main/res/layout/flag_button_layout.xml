@@ -11,4 +11,16 @@
         android:gravity="center_horizontal"
         android:onClick="onFlagClick" />
 
+    <!--For sail duration -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
+
+    <!--For weather on state -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
+
 </RelativeLayout>

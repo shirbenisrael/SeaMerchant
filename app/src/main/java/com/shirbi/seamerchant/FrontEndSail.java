@@ -1,7 +1,6 @@
 package com.shirbi.seamerchant;
 
 import android.graphics.Point;
-import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,13 +23,6 @@ public class FrontEndSail extends FrontEndGeneric {
         super(activity);
     }
 
-    private Point getWindowSize() {
-        Display display = mActivity.getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        return size;
-    }
-
     private void calculateMapSize() {
         mMapSize = getWindowSize(); // need to adjust y
 
@@ -47,27 +39,18 @@ public class FrontEndSail extends FrontEndGeneric {
         mMapSize.y *= weight / totalWeights;
     }
 
-    void putObjectOnMap(@IdRes int id, float x, float y, float width, float height) {
-        RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.map_container);
-        View object = findViewById(id);
-
-        RelativeLayout.LayoutParams params =
-                new RelativeLayout.LayoutParams((int)(width * mMapSize.x), (int)(height * mMapSize.x));
-
-        params.leftMargin = (int)(x * mMapSize.x);
-        params.topMargin = (int)(y * mMapSize.y);
-        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
-        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
-
-        relativeLayout.removeView(object);
-        relativeLayout.addView(object, params);
+    void putSquareObjectOnMap(View object, float x, float y, float size) {
+        putObjectOnRelativeLayout(object,
+                x, y, size, size * mMapSize.x / mMapSize.y, // square
+                (RelativeLayout)findViewById(R.id.map_container),
+                mMapSize);
     }
 
     private void putBoatOnHarbor() {
-        putObjectOnMap(R.id.boat_on_map,
+        putSquareObjectOnMap(findViewById(R.id.boat_on_map),
                 mLogic.mSail.mSource.toLocationX(),
                 mLogic.mSail.mSource.toLocationY(),
-                0.10f, 0.10f);
+                0.10f);
 
         ImageView boat = findViewById(R.id.boat_on_map);
 
@@ -86,10 +69,11 @@ public class FrontEndSail extends FrontEndGeneric {
         calculateMapSize();
         putBoatOnHarbor();
 
-        putObjectOnMap(R.id.destination,
+        putObjectOnRelativeLayout(findViewById(R.id.destination),
                 mLogic.mSail.mDestination.toLocationX(),
                 mLogic.mSail.mDestination.toLocationY(),
-                0.05f, 0.10f);
+                0.05f, 0.10f,
+                (RelativeLayout)findViewById(R.id.map_container), mMapSize);
 
         mProgress = 0.0f;
         mImageToAnimate = R.id.circle_on_map;
@@ -134,10 +118,10 @@ public class FrontEndSail extends FrontEndGeneric {
             locationX = actualProgress * endX + (1.0f - actualProgress) * startX;
             locationY = actualProgress * endY + (1.0f - actualProgress) * startY;
 
-            putObjectOnMap(mImageToAnimate,
+            putSquareObjectOnMap(findViewById(mImageToAnimate),
                     locationX,
                     locationY,
-                    0.05f, 0.05f);
+                    0.05f);
 
             mProgress += 0.02f;
 

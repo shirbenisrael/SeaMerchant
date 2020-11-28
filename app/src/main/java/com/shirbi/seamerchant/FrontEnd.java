@@ -1,12 +1,16 @@
 package com.shirbi.seamerchant;
 
+import android.graphics.Point;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class FrontEnd extends FrontEndGeneric {
+    private Point mFlagSize;
+
     public FrontEnd(MainActivity activity) {
         super(activity);
 
@@ -24,6 +28,8 @@ public class FrontEnd extends FrontEndGeneric {
             Button flagButton = (Button)flagButtonWrapper.getChildAt(0);
             flagButton.setBackgroundResource(state.toFlagId());
         }
+
+        calculateFlagSize();
     }
 
     private void showInventory() {
@@ -78,6 +84,8 @@ public class FrontEnd extends FrontEndGeneric {
         textView.setText(mActivity.getString(R.string.MONEY_STRING, mLogic.mBankDeposit));
 
         findViewById(R.id.main_window_layout).setBackgroundResource(mLogic.getDayPart().toImageId());
+
+        showWeatherOnFlag();
     }
 
     public Goods viewToGoods(View view) {
@@ -126,5 +134,46 @@ public class FrontEnd extends FrontEndGeneric {
             weatherString = mActivity.getString(weather.toStringId(), getString(mLogic.mWeatherState.toStringId()));
         }
         ((TextView)findViewById(R.id.weather_message)).setText(weatherString);
+    }
+
+    private void calculateFlagSize() {
+        mFlagSize = getWindowSize(); // need to adjust y
+
+        float weightY = 1.0f;
+
+        LinearLayout main_window_layout = findViewById(Window.MAIN_WINDOW.toLayoutId());
+        main_window_layout = (LinearLayout)main_window_layout.getChildAt(0);
+
+        float totalWeightsY = 0;
+        for (int i = 0 ; i < main_window_layout.getChildCount(); i++) {
+            View view = main_window_layout.getChildAt(i);
+            totalWeightsY += ((LinearLayout.LayoutParams)view.getLayoutParams()).weight;
+        }
+
+        mFlagSize.y *= weightY / totalWeightsY;
+
+        mFlagSize.x /= 4; // Flags sit near 3 prices.
+    }
+
+    private void showWeatherOnFlag() {
+        LinearLayout statesLayout = findViewById(R.id.prices_layout);
+        for (State state : State.values()) {
+            LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
+
+            RelativeLayout flagButtonWrapper = (RelativeLayout)stateLayout.getChildAt(0);
+            ImageView flagWeather = (ImageView)flagButtonWrapper.getChildAt(2);
+
+            if (state == mLogic.mWeatherState && mLogic.mWeather != Weather.GOOD_SAILING) {
+                //flagButtonWrapper.getChildAt(0).setVisibility(View.INVISIBLE);
+
+                flagWeather.setVisibility(View.VISIBLE);
+                flagWeather.setImageResource(mLogic.mWeather.toBackground());
+                putObjectOnRelativeLayout(flagWeather, 0, 0.5f, 0.33f, 0.5f, flagButtonWrapper, mFlagSize );
+                flagButtonWrapper.getChildAt(0).setZ(1);
+                flagWeather.setZ(2);
+            } else {
+                flagWeather.setVisibility(View.GONE);
+            }
+        }
     }
 }
