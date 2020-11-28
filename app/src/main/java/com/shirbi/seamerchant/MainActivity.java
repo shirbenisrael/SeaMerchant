@@ -118,6 +118,7 @@ public class MainActivity extends Activity {
     public void onApproveSleep(View view) {
         mLogic.startNewDay();
         mFrontEnd.showWindow(Window.WEATHER_WINDOW);
+        mFrontEnd.showNewWeather();
     }
 
     public void onExitWeatherWindow(View view) {

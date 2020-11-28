@@ -1,5 +1,7 @@
 package com.shirbi.seamerchant;
 
+import java.util.Random;
+
 public class Logic {
     private static final int START_GAME_CASH = 5000;
     private static final int START_HOUR = 6;
@@ -91,8 +93,12 @@ public class Logic {
     }
 
     public void startNewDay() {
+        Random random = new Random();
+
         mPriceTable.generateRandomPrices();
         mCurrentHour = START_HOUR;
         mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
+        mWeather = Weather.values()[random.nextInt(Weather.NUM_WEATHER_TYPES)];
+        mWeatherState = State.values()[random.nextInt(State.NUM_STATES)];
     }
 }

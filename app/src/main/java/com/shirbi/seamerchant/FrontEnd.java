@@ -108,4 +108,19 @@ public class FrontEnd extends FrontEndGeneric {
             }
         }
     }
+
+    public void showNewWeather() {
+        ((TextView)findViewById(R.id.day_message)).setText(mLogic.mCurrentDay.toStringId());
+
+        Weather weather = mLogic.mWeather;
+        String weatherString;
+        findViewById(Window.WEATHER_WINDOW.toLayoutId()).setBackgroundResource(weather.toBackground());
+        if (weather == Weather.GOOD_SAILING) {
+            weatherString = mActivity.getString(weather.toStringId());
+        } else {
+
+            weatherString = mActivity.getString(weather.toStringId(), getString(mLogic.mWeatherState.toStringId()));
+        }
+        ((TextView)findViewById(R.id.weather_message)).setText(weatherString);
+    }
 }

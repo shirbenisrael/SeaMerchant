@@ -26,4 +26,9 @@
 
     <string name="MONEY_STRING">%1$d\$</string>
 
+    <string name="GOOD_SEA_STRING">The sea looks good today</string>
+    <string name="STORM_STRING">Storm develops near %1$s today</string>
+    <string name="FOG_STRING">Fog at %1$s today</string>
+    <string name="WIND_STRING">Wind near %1$s today</string>
+
 </resources>
