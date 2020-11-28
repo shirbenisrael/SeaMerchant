@@ -99,38 +99,13 @@ public class FrontEnd extends FrontEndGeneric {
         return null;
     }
 
-    public void exitMarket() {
-        findViewById(R.id.market_layout).setVisibility(View.GONE);
-        findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
-    }
-
-    public void showSailWindow() {
-        findViewById(R.id.sail_layout).setVisibility(View.VISIBLE);
-        findViewById(R.id.main_window_layout).setVisibility(View.GONE);
-    }
-
-    public void exitSail() {
-        findViewById(R.id.sail_layout).setVisibility(View.GONE);
-        findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
-    }
-
-    public void endSail() {
-        findViewById(R.id.sail_layout).setVisibility(View.GONE);
-        findViewById(R.id.end_of_sail_layout).setVisibility(View.VISIBLE);
-    }
-
-    public void closeEndSailWindow() {
-        findViewById(R.id.end_of_sail_layout).setVisibility(View.GONE);
-        findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
-    }
-
-    public void openGoToSleepWindow() {
-        findViewById(R.id.main_window_layout).setVisibility(View.GONE);
-        findViewById(R.id.go_to_sleep_layout).setVisibility(View.VISIBLE);
-    }
-
-    public void closeGoToSleepWindow() {
-        findViewById(R.id.go_to_sleep_layout).setVisibility(View.GONE);
-        findViewById(R.id.main_window_layout).setVisibility(View.VISIBLE);
+    public void showWindow(Window windowToShow) {
+        for (Window window : Window.values()) {
+            if (window == windowToShow) {
+                findViewById(window.toLayoutId()).setVisibility(View.VISIBLE);
+            } else {
+                findViewById(window.toLayoutId()).setVisibility(View.GONE);
+            }
+        }
     }
 }

@@ -74,11 +74,11 @@ public class MainActivity extends Activity {
     public void onDealDoneClick(View view) {
         mLogic.applyMarketDeal();
         mFrontEnd.showState();
-        mFrontEnd.exitMarket();
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
 
     public void onDealCancelClick(View view) {
-        mFrontEnd.exitMarket();
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
 
     public void onFlagClick(View view) {
@@ -89,11 +89,11 @@ public class MainActivity extends Activity {
 
         mLogic.initSail(destination);
         mFrontEndSail.initSailRoute();
-        mFrontEnd.showSailWindow();
+        mFrontEnd.showWindow(Window.SAIL_WINDOW);
     }
 
     public void onSailCancelClick(View view) {
-        mFrontEnd.exitSail();
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
 
     public void onSailClick(View view) {
@@ -103,21 +103,21 @@ public class MainActivity extends Activity {
     }
 
     public void onSailEndClick(View view) {
-        mFrontEnd.closeEndSailWindow();
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
     }
 
     public void onSleepClick(View view) {
-        mFrontEnd.openGoToSleepWindow();
+        mFrontEnd.showWindow(Window.SLEEP_WINDOW);
     }
 
     public void onCancelSleep(View view) {
-        mFrontEnd.closeGoToSleepWindow();
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
 
     public void onApproveSleep(View view) {
         mLogic.startNewDay();
-        mFrontEnd.closeGoToSleepWindow();
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
     }
 }
