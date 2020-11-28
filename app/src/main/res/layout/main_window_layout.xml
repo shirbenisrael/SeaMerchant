@@ -125,14 +125,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:onClick="onFlagClick"
-                    android:text="מצרים" />
-
+                <include layout="@layout/flag_button_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
@@ -145,14 +138,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:onClick="onFlagClick"
-                    android:text="ישראל" />
-
+                <include layout="@layout/flag_button_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
@@ -165,14 +151,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:onClick="onFlagClick"
-                    android:text="תורכיה" />
-
+                <include layout="@layout/flag_button_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
@@ -185,14 +164,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:onClick="onFlagClick"
-                    android:text="קפריסין" />
-
+                <include layout="@layout/flag_button_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
@@ -205,14 +177,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:onClick="onFlagClick"
-                    android:text="יוון" />
-
+                <include layout="@layout/flag_button_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
                 <include layout="@layout/one_price_layout" />
