@@ -32,5 +32,7 @@
     <string name="WIND_STRING">Wind near %1$s today</string>
 
     <string name="ONE_GUARD_COST">One guard ship cost %1$d (%2$d%%)</string>
+    <string name="SAIL_DESTINATION">Sail destination: %1$s</string>
+    <string name="SAIL_LANDING_HOUR">Landing hour %1$d:00</string>
 
 </resources>

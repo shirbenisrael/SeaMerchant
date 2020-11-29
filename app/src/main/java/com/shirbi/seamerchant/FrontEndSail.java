@@ -170,5 +170,15 @@ public class FrontEndSail extends FrontEndGeneric {
         TextView guardsPriceTextView = findViewById(R.id.guard_price);
         String costString = mActivity.getString(R.string.ONE_GUARD_COST, sail.mGuardShipCost, sail.mGuardShipCostPercent);
         guardsPriceTextView.setText(costString);
+
+        TextView sailDestinationTextView = findViewById(R.id.sail_destination);
+        String destinationString = mActivity.getString(R.string.SAIL_DESTINATION,
+                getString(sail.mDestination.toStringId()));
+        sailDestinationTextView.setText(destinationString);
+
+        TextView landingHourTextView = findViewById(R.id.landing_hour);
+        String landingHour= mActivity.getString(R.string.SAIL_LANDING_HOUR, sail.mLandingHour);
+        landingHourTextView.setText(landingHour);
+
     }
 }

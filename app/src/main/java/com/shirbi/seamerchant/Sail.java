@@ -3,6 +3,7 @@ package com.shirbi.seamerchant;
 public class Sail {
     State mDestination;
     State mSource;
+    int mLandingHour;
     int mValueOnShip; // inventory + cash
     int mGuardShipCost;
     int mMaxGuardShips;
@@ -14,6 +15,7 @@ public class Sail {
     public Sail(Logic logic, State destination) {
         mDestination = destination;
         mSource = logic.mCurrentState;
+        mLandingHour = logic.mCurrentHour + logic.getSailDuration(mDestination);
         mValueOnShip = logic.mCash;
         for (Goods goods : Goods.values()) {
             mValueOnShip += logic.mInventory[goods.getValue()] * logic.mPriceTable.getPrice(mSource, goods);
