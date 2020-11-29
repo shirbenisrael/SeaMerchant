@@ -6,7 +6,8 @@ public class Sail {
     int mValueOnShip; // inventory + cash
     int mGuardShipCost;
     int mMaxGuardShips;
-    static final float DEFAULT_GUARD_COST = 0.02f;
+    int mGuardShipCostPercent;
+    static final int DEFAULT_GUARD_COST_PERCENT = 2;
     static final int MAX_GUARD_SHIPS = 5;
     static final int MIN_GUARD_SHIP_COST = 50;
 
@@ -17,7 +18,9 @@ public class Sail {
         for (Goods goods : Goods.values()) {
             mValueOnShip += logic.mInventory[goods.getValue()] * logic.mPriceTable.getPrice(mSource, goods);
         }
-        mGuardShipCost = Math.max(MIN_GUARD_SHIP_COST, (int)(DEFAULT_GUARD_COST * mValueOnShip));
+
+        mGuardShipCostPercent = DEFAULT_GUARD_COST_PERCENT;
+        mGuardShipCost = Math.max(MIN_GUARD_SHIP_COST, (mGuardShipCostPercent * mValueOnShip / 100));
         mMaxGuardShips = Math.min(MAX_GUARD_SHIPS, logic.mCash / mGuardShipCost);
     }
 }

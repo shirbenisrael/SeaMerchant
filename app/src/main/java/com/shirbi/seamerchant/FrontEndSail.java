@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.IdRes;
 
@@ -154,14 +155,20 @@ public class FrontEndSail extends FrontEndGeneric {
     }
 
     public void showGuardShips() {
+        Sail sail = mLogic.mSail;
+
         LinearLayout guardsLayout = findViewById(R.id.guards_layout);
-        for (int i = 1; i <= mLogic.mSail.MAX_GUARD_SHIPS; i++) {
+        for (int i = 1; i <= sail.MAX_GUARD_SHIPS; i++) {
             Button button = (Button)guardsLayout.getChildAt(i);
-            button.setVisibility(i <= mLogic.mSail.mMaxGuardShips ? View.VISIBLE : View.INVISIBLE);
+            button.setVisibility(i <= sail.mMaxGuardShips ? View.VISIBLE : View.INVISIBLE);
             button.setText(String.valueOf(i));
         }
         Button button = (Button)guardsLayout.getChildAt(0);
         button.setText(String.valueOf(0));
         button.setBackgroundResource(R.drawable.guard_ship_gray);
+
+        TextView guardsPriceTextView = findViewById(R.id.guard_price);
+        String costString = mActivity.getString(R.string.ONE_GUARD_COST, sail.mGuardShipCost, sail.mGuardShipCostPercent);
+        guardsPriceTextView.setText(costString);
     }
 }
