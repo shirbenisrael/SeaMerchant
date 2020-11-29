@@ -2,6 +2,7 @@ package com.shirbi.seamerchant;
 
 import android.graphics.Point;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -67,6 +68,7 @@ public class FrontEndSail extends FrontEndGeneric {
 
         calculateMapSize();
         putBoatOnHarbor();
+        showGuardShips();
 
         putObjectOnRelativeLayout(findViewById(R.id.destination),
                 mLogic.mSail.mDestination.toLocationX(),
@@ -149,5 +151,17 @@ public class FrontEndSail extends FrontEndGeneric {
     private void sailEnd() {
         mLogic.finishSail();
         mActivity.mFrontEnd.showWindow(Window.SAIL_END_WINDOW);
+    }
+
+    public void showGuardShips() {
+        LinearLayout guardsLayout = findViewById(R.id.guards_layout);
+        for (int i = 1; i <= mLogic.mSail.MAX_GUARD_SHIPS; i++) {
+            Button button = (Button)guardsLayout.getChildAt(i);
+            button.setVisibility(i <= mLogic.mSail.mMaxGuardShips ? View.VISIBLE : View.INVISIBLE);
+            button.setText(String.valueOf(i));
+        }
+        Button button = (Button)guardsLayout.getChildAt(0);
+        button.setText(String.valueOf(0));
+        button.setBackgroundResource(R.drawable.guard_ship_gray);
     }
 }
