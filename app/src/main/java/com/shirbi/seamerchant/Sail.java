@@ -10,11 +10,14 @@ public class Sail {
     boolean mTooLoaded;
     int mGuardShipCost;
     int mMaxGuardShips;
+    int mSelectedNumGuardShips;
+    int mTotalGuardShipsCost;
     int mGuardShipCostPercent;
     Weather mSailWeather;
     static final int DEFAULT_GUARD_COST_PERCENT = 2;
     static final int MAX_GUARD_SHIPS = 5;
     static final int MIN_GUARD_SHIP_COST = 50;
+    static final int DEFAULT_NUM_GUARDS = 0;
 
     public Sail(Logic logic, State destination) {
         mDestination = destination;
@@ -53,5 +56,12 @@ public class Sail {
 
         mBrokenShip = (logic.mDamage != 0);
         mTooLoaded = (totalLoad > logic.mCapacity);
+
+        selectNumGuardShips(DEFAULT_NUM_GUARDS);
+    }
+
+    public void selectNumGuardShips(int numGuards) {
+        mSelectedNumGuardShips = numGuards;
+        mTotalGuardShipsCost = mSelectedNumGuardShips * mGuardShipCost;
     }
 }

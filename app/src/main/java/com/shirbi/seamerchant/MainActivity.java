@@ -125,4 +125,8 @@ public class MainActivity extends Activity {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
     }
+
+    public void onGuardShipClick(View view) {
+        mFrontEndSail.guardShipClick(view);
+    }
 }

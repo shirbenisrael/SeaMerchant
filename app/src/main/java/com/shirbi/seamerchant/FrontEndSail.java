@@ -70,6 +70,7 @@ public class FrontEndSail extends FrontEndGeneric {
         calculateMapSize();
         putBoatOnHarbor();
         showGuardShips();
+        showTotalGuardShipsPrice();
 
         putObjectOnRelativeLayout(findViewById(R.id.destination),
                 mLogic.mSail.mDestination.toLocationX(),
@@ -189,5 +190,18 @@ public class FrontEndSail extends FrontEndGeneric {
         findViewById(R.id.danger_broken_ship).setVisibility(sail.mBrokenShip ? View.VISIBLE : View.INVISIBLE);
 
         findViewById(R.id.danger_weight).setVisibility(sail.mTooLoaded ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    private void showTotalGuardShipsPrice() {
+        String guardCostMessage =
+                mActivity.getString(R.string.TOTAL_GUARD_COST, mLogic.mSail.mTotalGuardShipsCost, mLogic.mCash);
+        ((TextView)findViewById(R.id.total_guard_cost)).setText(guardCostMessage);
+    }
+
+    public void guardShipClick(View view) {
+        TextView textView = (TextView)view;
+        int numGuards = Integer.parseInt(textView.getText().toString());
+        mLogic.mSail.selectNumGuardShips(numGuards);
+        showTotalGuardShipsPrice();
     }
 }

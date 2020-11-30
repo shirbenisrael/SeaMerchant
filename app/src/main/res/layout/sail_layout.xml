@@ -163,7 +163,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/total_guard_price"
+        android:id="@+id/total_guard_cost"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

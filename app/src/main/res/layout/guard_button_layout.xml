@@ -5,5 +5,6 @@
     android:layout_weight="1"
     android:background="@drawable/guard_ship"
     android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:onClick="onGuardShipClick"
     android:gravity="center">
 </Button>
