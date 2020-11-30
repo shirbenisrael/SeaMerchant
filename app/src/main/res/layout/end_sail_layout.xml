@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/yes_button"
         android:gravity="center_horizontal"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:onClick="onSailEndClick" />
 
     <TextView

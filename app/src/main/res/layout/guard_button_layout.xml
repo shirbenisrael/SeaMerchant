@@ -4,5 +4,6 @@
     android:layout_height="match_parent"
     android:layout_weight="1"
     android:background="@drawable/guard_ship"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
     android:gravity="center">
 </Button>

@@ -195,6 +195,7 @@
             android:layout_weight="1"
             android:background="@drawable/no_button"
             android:gravity="center_horizontal"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:onClick="onDealCancelClick" />
 
         <include layout="@layout/empty_horizontal_text" />
@@ -205,6 +206,7 @@
             android:layout_weight="1"
             android:background="@drawable/yes_button"
             android:gravity="center_horizontal"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:onClick="onDealDoneClick" />
 
         <include layout="@layout/empty_horizontal_text" />

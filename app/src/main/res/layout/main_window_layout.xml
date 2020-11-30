@@ -89,6 +89,7 @@
                     android:gravity="left"
                     android:onClick="onMarketClick"
                     android:scaleType="fitXY"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:text="חיטה" />
 
                 <Button
@@ -98,6 +99,7 @@
                     android:gravity="left"
                     android:onClick="onMarketClick"
                     android:scaleType="fitXY"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:text="זיתים" />
 
                 <Button
@@ -107,6 +109,7 @@
                     android:gravity="left"
                     android:onClick="onMarketClick"
                     android:scaleType="fitXY"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:text="נחושת" />
 
             </LinearLayout>
@@ -199,6 +202,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/wide_ship_button"
                 android:gravity="right|center"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="ספינה תקינה" />
 
             <TextView
@@ -208,6 +212,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/wide_capacity_button"
                 android:gravity="left|center"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="קיבולת 100" />
 
             <Button
@@ -216,6 +221,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/wide_sleep_button"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:onClick="onSleepClick"/>
 
         </LinearLayout>
@@ -233,6 +239,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/wide_cash_button"
                 android:gravity="left"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="5000" />
 
             <TextView
@@ -242,6 +249,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/wide_bank_button"
                 android:gravity="left"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="1000" />
 
         </LinearLayout>
@@ -258,6 +266,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="עזור לי"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:textColor="#000000" />
 
             <TextView
