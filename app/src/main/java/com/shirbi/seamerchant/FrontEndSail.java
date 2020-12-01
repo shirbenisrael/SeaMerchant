@@ -70,7 +70,10 @@ public class FrontEndSail extends FrontEndGeneric {
         calculateMapSize();
         putBoatOnHarbor();
         showGuardShips();
+        showDangers();
         showTotalGuardShipsPrice();
+        updateGuardShipButtonColor(mLogic.mSail.mSelectedNumGuardShips);
+        showTextViews();
 
         putObjectOnRelativeLayout(findViewById(R.id.destination),
                 mLogic.mSail.mDestination.toLocationX(),
@@ -154,18 +157,22 @@ public class FrontEndSail extends FrontEndGeneric {
         mActivity.mFrontEnd.showWindow(Window.SAIL_END_WINDOW);
     }
 
-    public void showGuardShips() {
+    private void showDangers() {
         Sail sail = mLogic.mSail;
 
-        LinearLayout guardsLayout = findViewById(R.id.guards_layout);
-        for (int i = 1; i <= sail.MAX_GUARD_SHIPS; i++) {
-            Button button = (Button)guardsLayout.getChildAt(i);
-            button.setVisibility(i <= sail.mMaxGuardShips ? View.VISIBLE : View.INVISIBLE);
-            button.setText(String.valueOf(i));
-        }
-        Button button = (Button)guardsLayout.getChildAt(0);
-        button.setText(String.valueOf(0));
-        button.setBackgroundResource(R.drawable.guard_ship_gray);
+        findViewById(R.id.danger_night).setVisibility(sail.mNightSail ? View.VISIBLE : View.INVISIBLE);
+
+        findViewById(R.id.danger_weather).setVisibility(sail.mSailWeather != Weather.GOOD_SAILING ?
+                View.VISIBLE : View.INVISIBLE);
+        findViewById(R.id.danger_weather).setBackgroundResource(sail.mSailWeather.toBackground());
+
+        findViewById(R.id.danger_broken_ship).setVisibility(sail.mBrokenShip ? View.VISIBLE : View.INVISIBLE);
+
+        findViewById(R.id.danger_weight).setVisibility(sail.mTooLoaded ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    private void showTextViews() {
+        Sail sail = mLogic.mSail;
 
         TextView guardsPriceTextView = findViewById(R.id.guard_price);
         String costString = mActivity.getString(R.string.ONE_GUARD_COST, sail.mGuardShipCost, sail.mGuardShipCostPercent);
@@ -179,16 +186,20 @@ public class FrontEndSail extends FrontEndGeneric {
         TextView landingHourTextView = findViewById(R.id.landing_hour);
         String landingHour= mActivity.getString(R.string.SAIL_LANDING_HOUR, sail.mLandingHour);
         landingHourTextView.setText(landingHour);
+    }
 
-        findViewById(R.id.danger_night).setVisibility(sail.mNightSail ? View.VISIBLE : View.INVISIBLE);
+    public void showGuardShips() {
+        Sail sail = mLogic.mSail;
 
-        findViewById(R.id.danger_weather).setVisibility(sail.mSailWeather != Weather.GOOD_SAILING ?
-                View.VISIBLE : View.INVISIBLE);
-        findViewById(R.id.danger_weather).setBackgroundResource(sail.mSailWeather.toBackground());
-
-        findViewById(R.id.danger_broken_ship).setVisibility(sail.mBrokenShip ? View.VISIBLE : View.INVISIBLE);
-
-        findViewById(R.id.danger_weight).setVisibility(sail.mTooLoaded ? View.VISIBLE : View.INVISIBLE);
+        LinearLayout guardsLayout = findViewById(R.id.guards_layout);
+        for (int i = 1; i <= sail.MAX_GUARD_SHIPS; i++) {
+            Button button = (Button)guardsLayout.getChildAt(i);
+            button.setVisibility(i <= sail.mMaxGuardShips ? View.VISIBLE : View.INVISIBLE);
+            button.setText(String.valueOf(i));
+        }
+        Button button = (Button)guardsLayout.getChildAt(0);
+        button.setText(String.valueOf(0));
+        button.setBackgroundResource(R.drawable.guard_ship_gray);
     }
 
     private void showTotalGuardShipsPrice() {
@@ -197,11 +208,24 @@ public class FrontEndSail extends FrontEndGeneric {
         ((TextView)findViewById(R.id.total_guard_cost)).setText(guardCostMessage);
     }
 
+    private void updateGuardShipButtonColor(int numGuards) {
+        LinearLayout guardsLayout = findViewById(R.id.guards_layout);
+        for (int i = 1; i <= numGuards; i++) {
+            Button button = (Button) guardsLayout.getChildAt(i);
+            button.setBackgroundResource(R.drawable.guard_ship);
+        }
+        for (int i = numGuards + 1; i <= Sail.MAX_GUARD_SHIPS; i++) {
+            Button button = (Button) guardsLayout.getChildAt(i);
+            button.setBackgroundResource(R.drawable.guard_ship_gray);
+        }
+    }
+
     public void guardShipClick(View view) {
         TextView textView = (TextView)view;
         int numGuards = Integer.parseInt(textView.getText().toString());
         mLogic.mSail.selectNumGuardShips(numGuards);
         showTotalGuardShipsPrice();
+        updateGuardShipButtonColor(numGuards);
     }
 
     private void startTimer() {
