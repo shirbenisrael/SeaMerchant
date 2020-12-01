@@ -129,4 +129,19 @@ public class MainActivity extends Activity {
     public void onGuardShipClick(View view) {
         mFrontEndSail.guardShipClick(view);
     }
+
+    public void onAttackClick(View view) {
+        mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        mFrontEndSail.continueSail();
+    }
+
+    public void onEscapeClick(View view) {
+        mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        mFrontEndSail.continueSail();
+    }
+
+    public void onNegotiateClick(View view) {
+        mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        mFrontEndSail.continueSail();
+    }
 }

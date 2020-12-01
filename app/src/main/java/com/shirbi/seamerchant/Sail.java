@@ -64,4 +64,8 @@ public class Sail {
         mSelectedNumGuardShips = numGuards;
         mTotalGuardShipsCost = mSelectedNumGuardShips * mGuardShipCost;
     }
+
+    public boolean isPirateAppear() {
+        return true;
+    }
 }

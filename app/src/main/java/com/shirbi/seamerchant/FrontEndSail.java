@@ -17,7 +17,7 @@ public class FrontEndSail extends FrontEndGeneric {
     private Timer mTimer;
     private TimerTask mTimerTask;
     private Point mMapSize;
-    private float mProgress;
+    private int mProgress;
     private @IdRes int mImageToAnimate;
     private boolean mRealSail;
 
@@ -78,23 +78,12 @@ public class FrontEndSail extends FrontEndGeneric {
                 0.05f, 0.10f,
                 mMapSize);
 
-        mProgress = 0.0f;
+        mProgress = 0;
         mImageToAnimate = R.id.circle_on_map;
         mRealSail = false;
         findViewById(R.id.circle_on_map).setVisibility(View.VISIBLE);
 
-        if (mTimer != null) {
-            mTimer.cancel();
-        }
-        mTimer = new Timer();
-        mTimerTask = (new TimerTask() {
-            @Override
-            public void run() {
-                mActivity.runOnUiThread(mTimerTick);
-            }
-        });
-
-        mTimer.schedule(mTimerTask,0, 100);
+        startTimer();
     }
 
     Runnable mTimerTick = new Runnable() {
@@ -104,19 +93,20 @@ public class FrontEndSail extends FrontEndGeneric {
             float locationX, locationY;
             float actualProgress;
 
-            if (mProgress < 0.5f) {
+            if (mProgress < 50) {
                 startX = mLogic.mSail.mSource.toLocationX();
                 startY = mLogic.mSail.mSource.toLocationY();
                 endX = mLogic.mSail.mSource.toMiddlePointX(mLogic.mSail.mDestination);
                 endY = mLogic.mSail.mSource.toMiddlePointY(mLogic.mSail.mDestination);
-                actualProgress = mProgress * 2;
+                actualProgress = mProgress;
             } else {
                 startX = mLogic.mSail.mSource.toMiddlePointX(mLogic.mSail.mDestination);
                 startY = mLogic.mSail.mSource.toMiddlePointY(mLogic.mSail.mDestination);
                 endX = mLogic.mSail.mDestination.toLocationX();
                 endY = mLogic.mSail.mDestination.toLocationY();
-                actualProgress = (mProgress - 0.5f) * 2;
+                actualProgress = mProgress - 50;
             }
+            actualProgress /= 50;
 
             locationX = actualProgress * endX + (1.0f - actualProgress) * startX;
             locationY = actualProgress * endY + (1.0f - actualProgress) * startY;
@@ -126,14 +116,23 @@ public class FrontEndSail extends FrontEndGeneric {
                     locationY,
                     0.05f);
 
-            mProgress += 0.02f;
+            mProgress += 2;
 
-            if (mProgress > 1.0f) {
+            if ((mProgress == 50) && mRealSail) {
+                if (mLogic.mSail.isPirateAppear()) {
+                    mTimer.cancel();
+                    mTimer = null;
+                    mTimerTask.cancel();
+                    mActivity.mFrontEnd.showWindow(Window.PIRATES_WINDOW);
+                }
+            }
+
+            if (mProgress > 100) {
                 if (mRealSail) {
                     mTimer.cancel();
                     sailEnd();
                 } else {
-                    mProgress = 0.0f;
+                    mProgress = 0;
                 }
             }
         }
@@ -203,5 +202,23 @@ public class FrontEndSail extends FrontEndGeneric {
         int numGuards = Integer.parseInt(textView.getText().toString());
         mLogic.mSail.selectNumGuardShips(numGuards);
         showTotalGuardShipsPrice();
+    }
+
+    private void startTimer() {
+        if (mTimer != null) {
+            mTimer.cancel();
+        }
+        mTimer = new Timer();
+        mTimerTask = (new TimerTask() {
+            @Override
+            public void run() {
+                mActivity.runOnUiThread(mTimerTick);
+            }
+        });
+        mTimer.schedule(mTimerTask,0, 100);
+    }
+
+    public void continueSail() {
+        startTimer();
     }
 }

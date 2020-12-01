@@ -35,4 +35,9 @@
         android:visibility="gone"
         android:id="@+id/weather_layout"
         layout="@layout/weather_layout" />
+
+    <include
+        android:visibility="gone"
+        android:id="@+id/pirates_layout"
+        layout="@layout/pirates_layout" />
 </LinearLayout>
