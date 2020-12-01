@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 public class FrontEnd extends FrontEndGeneric {
     private Point mFlagSize;
 
@@ -80,6 +82,9 @@ public class FrontEnd extends FrontEndGeneric {
         textView = findViewById(R.id.current_state_text_view);
         textView.setText(getString(mLogic.mCurrentState.toStringId()));
 
+        textView = findViewById(R.id.current_weather_text_view);
+        textView.setText(generateWeatherString());
+
         textView = findViewById(R.id.wide_capacity_button);
         textView.setText(String.valueOf(mLogic.mCapacity) + " " + getString(R.string.TONNE));
 
@@ -128,9 +133,7 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
-    public void showNewWeather() {
-        ((TextView)findViewById(R.id.day_message)).setText(mLogic.mCurrentDay.toStringId());
-
+    private @NonNull String generateWeatherString() {
         Weather weather = mLogic.mWeather;
         String weatherString;
         findViewById(Window.WEATHER_WINDOW.toLayoutId()).setBackgroundResource(weather.toBackground());
@@ -139,7 +142,13 @@ public class FrontEnd extends FrontEndGeneric {
         } else {
             weatherString = mActivity.getString(weather.toStringId(), getString(mLogic.mWeatherState.toStringId()));
         }
-        ((TextView)findViewById(R.id.weather_message)).setText(weatherString);
+
+        return weatherString;
+    }
+
+    public void showNewWeather() {
+        ((TextView)findViewById(R.id.day_message)).setText(mLogic.mCurrentDay.toStringId());
+        ((TextView)findViewById(R.id.weather_message)).setText(generateWeatherString());
     }
 
     private void calculateFlagSize() {

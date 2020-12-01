@@ -45,6 +45,10 @@ public class FrontEndMarket extends FrontEndGeneric {
 
     public void onMarketClick() {
         Goods goods = mLogic.mMarketDeal.mGoods;
+
+        String holdQuestion = mActivity.getString(R.string.HOLD_QUESTION, getString(goods.toStringId()));
+        ((TextView)findViewById(R.id.market_hold_question)).setText(holdQuestion);
+
         ((ImageView)findViewById(R.id.market_goods_image)).setImageResource(goods.toMainImageId());
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.market_seek_bar);
