@@ -38,6 +38,13 @@
     <string name="SAIL_LANDING_HOUR">Landing hour %1$d:00</string>
     <string name="DANGERS">Dangers:</string>
 
+    <string name="PIRATES">Pirates!</string>
+    <string name="WHAT_TO_DO_WITH_PIRATES">What would you like to do?</string>
+    <string name="NO_GUARD_SHIPS">You don\'t have guard ships. </string>
+    <string name="NUM_GUARDS_AGAINST_PIRATES">You have %1$d guard ships.</string>
+    <string name="PIRATES_CHANCES_WIN_ESCAPE">Your win chances are %1$d%% and your escape chances are %2$d%%.</string>
+    <string name="PIRATES_TIP">Tip: Battle win will give award. Lose will be painful</string>
+
     <string name="MARKET_STATE">Market State in the middle east</string>
 
 </resources>

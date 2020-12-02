@@ -126,7 +126,7 @@ public class FrontEndSail extends FrontEndGeneric {
                     mTimer.cancel();
                     mTimer = null;
                     mTimerTask.cancel();
-                    mActivity.mFrontEnd.showWindow(Window.PIRATES_WINDOW);
+                    mActivity.showPirates();
                 }
             }
 

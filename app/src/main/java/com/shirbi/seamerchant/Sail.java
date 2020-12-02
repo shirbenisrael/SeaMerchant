@@ -72,4 +72,12 @@ public class Sail {
     public boolean isEscapePiratesSucceeds() {
         return true;
     }
+
+    public int getPercentsToWinPirates() {
+        return 90;
+    }
+
+    public int getPercentsToEscapeFromPirates() {
+        return 70;
+    }
 }

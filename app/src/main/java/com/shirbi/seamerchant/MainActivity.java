@@ -154,4 +154,9 @@ public class MainActivity extends Activity {
         mFrontEnd.showWindow(Window.SAIL_WINDOW);
         mFrontEndSail.continueSail();
     }
+
+    public void showPirates() {
+        mFrontEnd.showWindow(Window.PIRATES_WINDOW);
+        mFrontEndPirates.showChances();
+    }
 }

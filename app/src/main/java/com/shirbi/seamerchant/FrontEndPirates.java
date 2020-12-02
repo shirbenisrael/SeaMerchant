@@ -1,5 +1,7 @@
 package com.shirbi.seamerchant;
 
+import android.widget.TextView;
+
 public class FrontEndPirates extends FrontEndGeneric {
 
     public FrontEndPirates(MainActivity activity) {
@@ -7,7 +9,17 @@ public class FrontEndPirates extends FrontEndGeneric {
     }
 
     public void showChances() {
-        // TODO: Show chances to win or to escape.
+        Sail sail = mLogic.mSail;
+        String whatToDo = getString(R.string.WHAT_TO_DO_WITH_PIRATES);
+        String numGuardsString = sail.mSelectedNumGuardShips == 0 ?
+                getString(R.string.NO_GUARD_SHIPS) :
+                mActivity.getString(R.string.NUM_GUARDS_AGAINST_PIRATES, sail.mSelectedNumGuardShips);
+        String chancesString = mActivity.getString(R.string.PIRATES_CHANCES_WIN_ESCAPE, sail.getPercentsToWinPirates(),
+                sail.getPercentsToEscapeFromPirates());
+
+        String finalString = whatToDo + " " + numGuardsString + " " + chancesString;
+
+        ((TextView)findViewById(R.id.pirates_chances_text_view)).setText(finalString);
     }
 
     public void showFailEscapeMessage() {
