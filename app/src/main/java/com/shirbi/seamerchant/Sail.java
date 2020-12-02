@@ -68,4 +68,8 @@ public class Sail {
     public boolean isPirateAppear() {
         return true;
     }
+
+    public boolean isEscapePiratesSucceeds() {
+        return true;
+    }
 }

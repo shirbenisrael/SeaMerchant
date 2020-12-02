@@ -40,4 +40,9 @@
         android:visibility="gone"
         android:id="@+id/pirates_layout"
         layout="@layout/pirates_layout" />
+
+    <include
+        android:visibility="gone"
+        android:id="@+id/escape_layout"
+        layout="@layout/escape_layout" />
 </LinearLayout>

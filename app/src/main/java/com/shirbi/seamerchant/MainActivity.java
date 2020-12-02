@@ -9,6 +9,7 @@ public class MainActivity extends Activity {
     FrontEnd mFrontEnd;
     FrontEndMarket mFrontEndMarket;
     FrontEndSail mFrontEndSail;
+    FrontEndPirates mFrontEndPirates;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MainActivity extends Activity {
         mFrontEnd = new FrontEnd(this);
         mFrontEndMarket = new FrontEndMarket(this);
         mFrontEndSail = new FrontEndSail(this);
+        mFrontEndPirates = new FrontEndPirates(this);
 
         mLogic.startNewGame();
         mFrontEnd.showState();
@@ -136,11 +138,19 @@ public class MainActivity extends Activity {
     }
 
     public void onEscapeClick(View view) {
+        if (mLogic.mSail.isEscapePiratesSucceeds()) {
+            mFrontEnd.showWindow(Window.ESCAPE_WINDOW);
+        } else {
+            mFrontEndPirates.showFailEscapeMessage();
+        }
+    }
+
+    public void onNegotiateClick(View view) {
         mFrontEnd.showWindow(Window.SAIL_WINDOW);
         mFrontEndSail.continueSail();
     }
 
-    public void onNegotiateClick(View view) {
+    public void onEscapeDoneClick(View view) {
         mFrontEnd.showWindow(Window.SAIL_WINDOW);
         mFrontEndSail.continueSail();
     }
