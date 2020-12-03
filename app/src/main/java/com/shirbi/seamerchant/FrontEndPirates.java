@@ -1,5 +1,6 @@
 package com.shirbi.seamerchant;
 
+import android.view.View;
 import android.widget.TextView;
 
 public class FrontEndPirates extends FrontEndGeneric {
@@ -9,6 +10,8 @@ public class FrontEndPirates extends FrontEndGeneric {
     }
 
     public void showChances() {
+        ((TextView)findViewById(R.id.pirates_title)).setText(R.string.PIRATES);
+
         Sail sail = mLogic.mSail;
         String whatToDo = getString(R.string.WHAT_TO_DO_WITH_PIRATES);
         String numGuardsString = sail.mSelectedNumGuardShips == 0 ?
@@ -20,10 +23,18 @@ public class FrontEndPirates extends FrontEndGeneric {
         String finalString = whatToDo + " " + numGuardsString + " " + chancesString;
 
         ((TextView)findViewById(R.id.pirates_chances_text_view)).setText(finalString);
+
+        findViewById(R.id.escape_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.negotiate_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.pirates_tip).setVisibility(View.VISIBLE);
     }
 
     public void showFailEscapeMessage() {
-        // TODO: Update message to show that escape pirates failed.
-        // TODO: Show only the attack button.
+        ((TextView)findViewById(R.id.pirates_title)).setText(R.string.PIRATES_FAST);
+        ((TextView)findViewById(R.id.pirates_chances_text_view)).setText(R.string.PIRATES_MUST_ATTACK);
+
+        findViewById(R.id.escape_button).setVisibility(View.GONE);
+        findViewById(R.id.negotiate_button).setVisibility(View.GONE);
+        findViewById(R.id.pirates_tip).setVisibility(View.INVISIBLE);
     }
 }

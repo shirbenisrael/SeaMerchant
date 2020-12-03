@@ -1,5 +1,7 @@
 package com.shirbi.seamerchant;
 
+import java.util.Random;
+
 public class Sail {
     Logic mLogic;
     State mDestination;
@@ -73,7 +75,7 @@ public class Sail {
     }
 
     public boolean isEscapePiratesSucceeds() {
-        return true;
+        return tryToDoSomething(getPercentsToEscapeFromPirates());
     }
 
     public int getPercentsToWinPirates() {
@@ -86,5 +88,12 @@ public class Sail {
         }
 
         return 100 * (mLogic.mCapacity - mTotalLoad) / mLogic.mCapacity;
+    }
+
+    private boolean tryToDoSomething(int percentsToSucceed) {
+        Random rand = new Random();
+        int result = rand.nextInt(100);
+
+        return result < percentsToSucceed;
     }
 }

@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/pirates_title"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -23,6 +24,7 @@
         android:text="מה ברצונך לעשות? ספינות משמר? סיכויי ניצחון? סיכויי הימלטות?" />
 
     <TextView
+        android:id="@+id/pirates_tip"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
@@ -46,6 +48,7 @@
         <include layout="@layout/empty_horizontal_text" />
 
         <Button
+            android:id="@+id/attack_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
@@ -57,6 +60,7 @@
         <include layout="@layout/empty_horizontal_text" />
 
         <Button
+            android:id="@+id/escape_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
@@ -68,6 +72,7 @@
         <include layout="@layout/empty_horizontal_text" />
 
         <Button
+            android:id="@+id/negotiate_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"

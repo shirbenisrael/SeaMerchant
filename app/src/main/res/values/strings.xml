@@ -39,6 +39,8 @@
     <string name="DANGERS">Dangers:</string>
 
     <string name="PIRATES">Pirates!</string>
+    <string name="PIRATES_FAST">The fast pirates ship got you!</string>
+    <string name="PIRATES_MUST_ATTACK">You must attack them!</string>
     <string name="WHAT_TO_DO_WITH_PIRATES">What would you like to do?</string>
     <string name="NO_GUARD_SHIPS">You don\'t have guard ships. </string>
     <string name="NUM_GUARDS_AGAINST_PIRATES">You have %1$d guard ships.</string>
