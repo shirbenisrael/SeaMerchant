@@ -18,6 +18,7 @@ public class Sail {
     static final int MAX_GUARD_SHIPS = 5;
     static final int MIN_GUARD_SHIP_COST = 50;
     static final int DEFAULT_NUM_GUARDS = 0;
+    static final int[] mChancesToWinPirates = {1, 51, 76, 88, 94, 97};
 
     public Sail(Logic logic, State destination) {
         mDestination = destination;
@@ -74,7 +75,7 @@ public class Sail {
     }
 
     public int getPercentsToWinPirates() {
-        return 90;
+        return mChancesToWinPirates[mSelectedNumGuardShips];
     }
 
     public int getPercentsToEscapeFromPirates() {
