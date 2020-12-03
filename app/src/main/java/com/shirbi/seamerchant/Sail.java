@@ -1,12 +1,14 @@
 package com.shirbi.seamerchant;
 
 public class Sail {
+    Logic mLogic;
     State mDestination;
     State mSource;
     int mLandingHour;
     int mValueOnShip; // inventory + cash
     boolean mNightSail;
     boolean mBrokenShip;
+    int mTotalLoad;
     boolean mTooLoaded;
     int mGuardShipCost;
     int mMaxGuardShips;
@@ -21,15 +23,15 @@ public class Sail {
     static final int[] mChancesToWinPirates = {1, 51, 76, 88, 94, 97};
 
     public Sail(Logic logic, State destination) {
+        mLogic = logic;
         mDestination = destination;
         mSource = logic.mCurrentState;
         mLandingHour = logic.mCurrentHour + logic.getSailDuration(mDestination);
         mValueOnShip = logic.mCash;
-
-        int totalLoad = 0;
+        mTotalLoad = 0;
         for (Goods goods : Goods.values()) {
             mValueOnShip += logic.mInventory[goods.getValue()] * logic.mPriceTable.getPrice(mSource, goods);
-            totalLoad += logic.mInventory[goods.getValue()];
+            mTotalLoad += logic.mInventory[goods.getValue()];
         }
 
         mGuardShipCostPercent = DEFAULT_GUARD_COST_PERCENT;
@@ -56,7 +58,7 @@ public class Sail {
         }
 
         mBrokenShip = (logic.mDamage != 0);
-        mTooLoaded = (totalLoad > logic.mCapacity);
+        mTooLoaded = (mTotalLoad > logic.mCapacity);
 
         selectNumGuardShips(DEFAULT_NUM_GUARDS);
     }
@@ -79,6 +81,10 @@ public class Sail {
     }
 
     public int getPercentsToEscapeFromPirates() {
-        return 70;
+        if (mTotalLoad >= mLogic.mCapacity) {
+            return 1;
+        }
+
+        return 100 * (mLogic.mCapacity - mTotalLoad) / mLogic.mCapacity;
     }
 }
