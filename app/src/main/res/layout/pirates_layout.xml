@@ -55,7 +55,7 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:onClick="onAttackClick"
-            android:text="להתקיף"/>
+            android:text="@string/ATTACK"/>
 
         <include layout="@layout/empty_horizontal_text" />
 
@@ -67,7 +67,7 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:onClick="onEscapeClick"
-            android:text="לברוח"/>
+            android:text="@string/ESCAPE"/>
 
         <include layout="@layout/empty_horizontal_text" />
 
@@ -79,7 +79,7 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:onClick="onNegotiateClick"
-            android:text="להציע פשרה" />
+            android:text="@string/NEGOTIATE" />
 
         <include layout="@layout/empty_horizontal_text" />
 

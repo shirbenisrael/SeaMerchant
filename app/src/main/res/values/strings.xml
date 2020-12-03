@@ -46,6 +46,9 @@
     <string name="NUM_GUARDS_AGAINST_PIRATES">You have %1$d guard ships.</string>
     <string name="PIRATES_CHANCES_WIN_ESCAPE">Your win chances are %1$d%% and your escape chances are %2$d%%.</string>
     <string name="PIRATES_TIP">Tip: Battle win will give award. Lose will be painful</string>
+    <string name="ATTACK">Attack</string>
+    <string name="ESCAPE">Escape</string>
+    <string name="NEGOTIATE">Negotiate</string>
 
     <string name="MARKET_STATE">Market State in the middle east</string>
 
