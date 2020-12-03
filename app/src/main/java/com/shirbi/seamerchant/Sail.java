@@ -78,6 +78,10 @@ public class Sail {
         return tryToDoSomething(getPercentsToEscapeFromPirates());
     }
 
+    public boolean isWinPiratesSucceeds() {
+        return tryToDoSomething(getPercentsToWinPirates());
+    }
+
     public int getPercentsToWinPirates() {
         return mChancesToWinPirates[mSelectedNumGuardShips];
     }

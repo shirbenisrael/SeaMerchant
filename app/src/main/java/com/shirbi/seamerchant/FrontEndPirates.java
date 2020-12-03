@@ -37,4 +37,25 @@ public class FrontEndPirates extends FrontEndGeneric {
         findViewById(R.id.negotiate_button).setVisibility(View.GONE);
         findViewById(R.id.pirates_tip).setVisibility(View.INVISIBLE);
     }
+
+    public void showWinPiratesMessage() {
+        ((TextView)findViewById(R.id.battle_result_title)).setText(R.string.WIN_THE_BATTLE);
+
+        String result = mActivity.getString(R.string.WIN_CAPACITY, 50);
+        ((TextView)findViewById(R.id.battle_result)).setText(result);
+
+        String damage = mActivity.getString(R.string.WIN_WITH_DAMAGE, 50);
+        ((TextView)findViewById(R.id.battle_damage)).setText(damage);
+
+        findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.capture);
+    }
+
+    public void showLoseToPiratesMessage() {
+        ((TextView)findViewById(R.id.battle_result_title)).setText(R.string.LOSE_THE_BATTLE);
+
+        ((TextView)findViewById(R.id.battle_result)).setText("");
+        ((TextView)findViewById(R.id.battle_damage)).setText("");
+
+        findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.battle);
+    }
 }

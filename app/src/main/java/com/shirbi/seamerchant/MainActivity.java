@@ -133,8 +133,12 @@ public class MainActivity extends Activity {
     }
 
     public void onAttackClick(View view) {
-        mFrontEnd.showWindow(Window.SAIL_WINDOW);
-        mFrontEndSail.continueSail();
+        if (mLogic.mSail.isWinPiratesSucceeds()) {
+            mFrontEndPirates.showWinPiratesMessage();
+        } else {
+            mFrontEndPirates.showLoseToPiratesMessage();
+        }
+        mFrontEnd.showWindow(Window.PIRATES_ATTACK_WINDOW);
     }
 
     public void onEscapeClick(View view) {
@@ -151,6 +155,11 @@ public class MainActivity extends Activity {
     }
 
     public void onEscapeDoneClick(View view) {
+        mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        mFrontEndSail.continueSail();
+    }
+
+    public void onBattleWinDoneClick(View view) {
         mFrontEnd.showWindow(Window.SAIL_WINDOW);
         mFrontEndSail.continueSail();
     }

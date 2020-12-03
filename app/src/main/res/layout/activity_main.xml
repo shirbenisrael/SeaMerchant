@@ -7,42 +7,47 @@
     android:orientation="vertical">
 
     <include
-        android:visibility="visible"
         android:id="@+id/main_window_layout"
-        layout="@layout/main_window_layout" />
+        layout="@layout/main_window_layout"
+        android:visibility="visible" />
 
     <include
-        android:visibility="gone"
         android:id="@+id/market_layout"
-        layout="@layout/market_layout" />
+        layout="@layout/market_layout"
+        android:visibility="gone" />
 
     <include
-        android:visibility="gone"
         android:id="@+id/sail_layout"
-        layout="@layout/sail_layout" />
+        layout="@layout/sail_layout"
+        android:visibility="gone" />
 
     <include
-        android:visibility="gone"
         android:id="@+id/end_of_sail_layout"
-        layout="@layout/end_sail_layout" />
+        layout="@layout/end_sail_layout"
+        android:visibility="gone" />
 
     <include
-        android:visibility="gone"
         android:id="@+id/go_to_sleep_layout"
-        layout="@layout/go_to_sleep_layout" />
+        layout="@layout/go_to_sleep_layout"
+        android:visibility="gone" />
 
     <include
-        android:visibility="gone"
         android:id="@+id/weather_layout"
-        layout="@layout/weather_layout" />
+        layout="@layout/weather_layout"
+        android:visibility="gone" />
 
     <include
-        android:visibility="gone"
         android:id="@+id/pirates_layout"
-        layout="@layout/pirates_layout" />
+        layout="@layout/pirates_layout"
+        android:visibility="gone" />
 
     <include
-        android:visibility="gone"
         android:id="@+id/escape_layout"
-        layout="@layout/escape_layout" />
+        layout="@layout/escape_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/attack_pirates_layout"
+        layout="@layout/attack_pirates_layout"
+        android:visibility="gone" />
 </LinearLayout>

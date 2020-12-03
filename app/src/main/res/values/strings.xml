@@ -41,6 +41,10 @@
     <string name="PIRATES">Pirates!</string>
     <string name="PIRATES_FAST">The fast pirates ship got you!</string>
     <string name="PIRATES_MUST_ATTACK">You must attack them!</string>
+    <string name="WIN_THE_BATTLE">You won the battle!</string>
+    <string name="WIN_CAPACITY">You captured the pirate\'s ship and your capacity was increased by %1$d tonne.</string>
+    <string name="WIN_WITH_DAMAGE">Unfortunately while fighting a damage of %1$d$ caused to your ship.</string>
+    <string name="LOSE_THE_BATTLE">The pirates won the battle!</string>
     <string name="WHAT_TO_DO_WITH_PIRATES">What would you like to do?</string>
     <string name="NO_GUARD_SHIPS">You don\'t have guard ships. </string>
     <string name="NUM_GUARDS_AGAINST_PIRATES">You have %1$d guard ships.</string>
@@ -50,6 +54,6 @@
     <string name="ESCAPE">Escape</string>
     <string name="NEGOTIATE">Negotiate</string>
 
-    <string name="MARKET_STATE">Market State in the middle east</string>
+    <string name="MARKET_STATE">Market state in the middle east</string>
 
 </resources>
