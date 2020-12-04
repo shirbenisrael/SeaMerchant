@@ -10,7 +10,8 @@ public enum Window {
     PIRATES_WINDOW(6),
     ESCAPE_WINDOW(7),
     PIRATES_ATTACK_WINDOW(8),
-    BANK_WINDOW(9);
+    ABANDONED_SHIP_WINDOW(9),
+    BANK_WINDOW(10);
 
     private static final int[] mLayoutId = {
             R.id.main_window_layout,
@@ -22,6 +23,7 @@ public enum Window {
             R.id.pirates_layout,
             R.id.escape_layout,
             R.id.attack_pirates_layout,
+            R.id.abandoned_ship_layout,
             R.id.bank_layout};
 
     private final int value;

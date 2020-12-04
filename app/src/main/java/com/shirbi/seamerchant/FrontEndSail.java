@@ -122,10 +122,11 @@ public class FrontEndSail extends FrontEndGeneric {
             mProgress += 2;
 
             if ((mProgress == 50) && mRealSail) {
-                if (mLogic.mSail.isPirateAppear()) {
-                    mTimer.cancel();
-                    mTimer = null;
-                    mTimerTask.cancel();
+                if (mLogic.mSail.isAbandonedShipAppear()) {
+                    pauseSail();
+                    mActivity.showAbandonedShip();
+                } else if (mLogic.mSail.isPirateAppear()) {
+                    pauseSail();
                     mActivity.showPirates();
                 }
             }
@@ -140,6 +141,12 @@ public class FrontEndSail extends FrontEndGeneric {
             }
         }
     };
+
+    private void pauseSail() {
+        mTimer.cancel();
+        mTimer = null;
+        mTimerTask.cancel();
+    }
 
     public void startSail() {
         findViewById(R.id.circle_on_map).setVisibility(View.GONE);

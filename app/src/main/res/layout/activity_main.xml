@@ -55,4 +55,9 @@
         android:id="@+id/attack_pirates_layout"
         layout="@layout/attack_pirates_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/abandoned_ship_layout"
+        layout="@layout/abandoned_ship_layout"
+        android:visibility="gone" />
 </LinearLayout>

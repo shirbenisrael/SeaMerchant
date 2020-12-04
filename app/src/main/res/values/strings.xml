@@ -60,6 +60,9 @@
     <string name="ESCAPE">Escape</string>
     <string name="NEGOTIATE">Negotiate</string>
 
+    <string name="ABANDONED_SHIP">Abandoned Ship!</string>
+    <string name="ABANDONED_SHIP_INVENTORY">You have found an abandoned ship with %1$d tonne of %2$s on it.</string>
+
     <string name="MARKET_STATE">Market state in the middle east</string>
 
 </resources>

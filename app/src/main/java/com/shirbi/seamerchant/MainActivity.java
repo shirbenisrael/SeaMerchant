@@ -11,6 +11,7 @@ public class MainActivity extends Activity {
     FrontEndBank mFrontEndBank;
     FrontEndSail mFrontEndSail;
     FrontEndPirates mFrontEndPirates;
+    FrontEndAbandonedShip mFrontEndAbandonedShip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MainActivity extends Activity {
         mFrontEndBank = new FrontEndBank(this);
         mFrontEndSail = new FrontEndSail(this);
         mFrontEndPirates = new FrontEndPirates(this);
+        mFrontEndAbandonedShip = new FrontEndAbandonedShip(this);
 
         mLogic.startNewGame();
         mFrontEnd.showState();
@@ -170,6 +172,17 @@ public class MainActivity extends Activity {
     public void showPirates() {
         mFrontEnd.showWindow(Window.PIRATES_WINDOW);
         mFrontEndPirates.showChances();
+    }
+
+    public void showAbandonedShip() {
+        mLogic.mSail.createAbandonedShip();
+        mFrontEnd.showWindow(Window.ABANDONED_SHIP_WINDOW);
+        mFrontEndAbandonedShip.showAbandonedShip();
+    }
+
+    public void onExitAbandonedShopWindow(View view) {
+        mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        mFrontEndSail.continueSail();
     }
 
     public void onBankClick(View view) {

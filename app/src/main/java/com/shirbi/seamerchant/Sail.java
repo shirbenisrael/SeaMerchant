@@ -38,6 +38,9 @@ public class Sail {
     public Goods mPiratesStolenGoods;
     public int mPiratesStolen;
 
+    public Goods mAbandonedShipGoods;
+    public int mAbandonedShipGoodsUnits;
+
     public Sail(Logic logic, State destination) {
         mLogic = logic;
         mDestination = destination;
@@ -82,6 +85,18 @@ public class Sail {
     public void selectNumGuardShips(int numGuards) {
         mSelectedNumGuardShips = numGuards;
         mTotalGuardShipsCost = mSelectedNumGuardShips * mGuardShipCost;
+    }
+
+    public boolean isAbandonedShipAppear() {
+        return true;
+    }
+
+    public void createAbandonedShip() {
+        Random rand = new Random();
+        mAbandonedShipGoods = Goods.values()[rand.nextInt(Goods.NUM_GOODS_TYPES)];
+        mAbandonedShipGoodsUnits = rand.nextInt(mLogic.mBankDeposit + mValueOnShip) /
+                mLogic.mPriceTable.getPrice(mSource, mAbandonedShipGoods) + 1;
+        mLogic.mInventory[mAbandonedShipGoods.getValue()] += mAbandonedShipGoodsUnits;
     }
 
     public boolean isPirateAppear() {
