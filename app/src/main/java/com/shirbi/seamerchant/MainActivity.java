@@ -169,4 +169,38 @@ public class MainActivity extends Activity {
         mFrontEnd.showWindow(Window.PIRATES_WINDOW);
         mFrontEndPirates.showChances();
     }
+
+
+    public void onBankClick(View view) {
+        mFrontEnd.showWindow(Window.BANK_WINDOW);
+    }
+
+    public void onBankMinus10000Click(View view) {
+    }
+
+    public void onBankMinus1000Click(View view) {
+    }
+
+    public void onBankPlus1000Click(View view) {
+    }
+
+    public void onBankPlus10000Click(View view) {
+    }
+
+    public void onDrawAllClick(View view) {
+    }
+
+    public void onCashForGuardsClick(View view) {
+    }
+
+    public void onDepositAllClick(View view) {
+    }
+
+    public void onBankDealCancelClick(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+    }
+
+    public void onBankDealDoneClick(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+    }
 }

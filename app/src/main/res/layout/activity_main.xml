@@ -17,6 +17,11 @@
         android:visibility="gone" />
 
     <include
+        android:id="@+id/bank_layout"
+        layout="@layout/bank_layout"
+        android:visibility="gone" />
+
+    <include
         android:id="@+id/sail_layout"
         layout="@layout/sail_layout"
         android:visibility="gone" />
