@@ -31,6 +31,9 @@ public class Sail {
     }
 
     public BattleResult mBattleResult;
+    public int mPiratesCapacity;
+    public int mPiratesTreasure;
+    public int mPiratesDamage;
 
     public Sail(Logic logic, State destination) {
         mLogic = logic;
@@ -83,6 +86,8 @@ public class Sail {
     }
 
     public void calculateBattleResult() {
+        Random rand = new Random();
+
         if (!isWinPiratesSucceeds()) {
             mBattleResult = BattleResult.LOSE;
             return;
@@ -90,8 +95,18 @@ public class Sail {
 
         if (isWinCapturePirates()) {
             mBattleResult = BattleResult.WIN_AND_CAPTURE;
+            mPiratesCapacity = rand.nextInt(mLogic.mCapacity / 25) * 25 + 25;
+            mLogic.mCapacity += mPiratesCapacity;
         } else {
             mBattleResult = BattleResult.WIN_AND_TREASURE;
+            mPiratesTreasure = 1 + rand.nextInt(mValueOnShip + mLogic.mBankDeposit) / 3;
+            mLogic.mCash += mPiratesTreasure;
+        }
+
+        mPiratesDamage = 0;
+        if (rand.nextInt(6) >= mSelectedNumGuardShips) {
+            mPiratesDamage = 1 + rand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
+            mLogic.mDamage += mPiratesDamage;
         }
     }
 
