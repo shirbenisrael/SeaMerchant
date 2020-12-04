@@ -39,15 +39,22 @@ public class FrontEndPirates extends FrontEndGeneric {
     }
 
     public void showWinPiratesMessage() {
-        ((TextView)findViewById(R.id.battle_result_title)).setText(R.string.WIN_THE_BATTLE);
+        ((TextView) findViewById(R.id.battle_result_title)).setText(R.string.WIN_THE_BATTLE);
 
-        String result = mActivity.getString(R.string.WIN_CAPACITY, 50);
-        ((TextView)findViewById(R.id.battle_result)).setText(result);
+        if (mLogic.mSail.mBattleResult == Sail.BattleResult.WIN_AND_CAPTURE) {
+            String result = mActivity.getString(R.string.WIN_CAPACITY, 50);
+            ((TextView) findViewById(R.id.battle_result)).setText(result);
+
+            findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.capture);
+        } else {
+            String result = mActivity.getString(R.string.WIN_TREASURE, 5000);
+            ((TextView) findViewById(R.id.battle_result)).setText(result);
+
+            findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.treasure);
+        }
 
         String damage = mActivity.getString(R.string.WIN_WITH_DAMAGE, 50);
-        ((TextView)findViewById(R.id.battle_damage)).setText(damage);
-
-        findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.capture);
+        ((TextView) findViewById(R.id.battle_damage)).setText(damage);
     }
 
     public void showLoseToPiratesMessage() {

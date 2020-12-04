@@ -133,10 +133,11 @@ public class MainActivity extends Activity {
     }
 
     public void onAttackClick(View view) {
-        if (mLogic.mSail.isWinPiratesSucceeds()) {
-            mFrontEndPirates.showWinPiratesMessage();
-        } else {
+        mLogic.mSail.calculateBattleResult();
+        if (mLogic.mSail.mBattleResult == Sail.BattleResult.LOSE) {
             mFrontEndPirates.showLoseToPiratesMessage();
+        } else {
+            mFrontEndPirates.showWinPiratesMessage();
         }
         mFrontEnd.showWindow(Window.PIRATES_ATTACK_WINDOW);
     }

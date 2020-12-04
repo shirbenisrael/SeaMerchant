@@ -24,6 +24,14 @@ public class Sail {
     static final int DEFAULT_NUM_GUARDS = 0;
     static final int[] mChancesToWinPirates = {1, 51, 76, 88, 94, 97};
 
+    public enum BattleResult {
+        WIN_AND_CAPTURE,
+        WIN_AND_TREASURE,
+        LOSE
+    }
+
+    public BattleResult mBattleResult;
+
     public Sail(Logic logic, State destination) {
         mLogic = logic;
         mDestination = destination;
@@ -74,12 +82,29 @@ public class Sail {
         return true;
     }
 
+    public void calculateBattleResult() {
+        if (!isWinPiratesSucceeds()) {
+            mBattleResult = BattleResult.LOSE;
+            return;
+        }
+
+        if (isWinCapturePirates()) {
+            mBattleResult = BattleResult.WIN_AND_CAPTURE;
+        } else {
+            mBattleResult = BattleResult.WIN_AND_TREASURE;
+        }
+    }
+
     public boolean isEscapePiratesSucceeds() {
         return tryToDoSomething(getPercentsToEscapeFromPirates());
     }
 
     public boolean isWinPiratesSucceeds() {
         return tryToDoSomething(getPercentsToWinPirates());
+    }
+
+    public boolean isWinCapturePirates() {
+        return tryToDoSomething(50);
     }
 
     public int getPercentsToWinPirates() {
