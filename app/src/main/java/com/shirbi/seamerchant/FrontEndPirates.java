@@ -66,10 +66,20 @@ public class FrontEndPirates extends FrontEndGeneric {
     }
 
     public void showLoseToPiratesMessage() {
-        ((TextView)findViewById(R.id.battle_result_title)).setText(R.string.LOSE_THE_BATTLE);
+        Sail sail = mLogic.mSail;
+        ((TextView)findViewById(R.id.battle_result_title)).setText(R.string.PIRATES);
 
-        ((TextView)findViewById(R.id.battle_result)).setText("");
-        ((TextView)findViewById(R.id.battle_damage)).setText("");
+        String stolen;
+        if (sail.mIsPirateStoleGoods) {
+            String goodString = getString(sail.mPiratesStolenGoods.toStringId());
+            stolen = mActivity.getString(R.string.LOSE_BATTLE_AND_GOODS, sail.mPiratesStolen, goodString);
+        } else {
+            stolen = mActivity.getString(R.string.LOSE_BATTLE_AND_CASH, sail.mPiratesStolen);
+        }
+        ((TextView)findViewById(R.id.battle_result)).setText(stolen);
+
+        String damage = mActivity.getString(R.string.LOSE_BATTLE_DAMAGE, sail.mPiratesDamage);
+        ((TextView)findViewById(R.id.battle_damage)).setText(damage);
 
         findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.battle);
     }

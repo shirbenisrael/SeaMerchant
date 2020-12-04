@@ -45,7 +45,9 @@
     <string name="WIN_CAPACITY">You captured the pirate\'s ship and your capacity was increased by %1$d tonne.</string>
     <string name="WIN_TREASURE">You found on the pirate\'s ship a treasure worth %1$d$.</string>
     <string name="WIN_WITH_DAMAGE">Unfortunately while fighting a damage of %1$d$ caused to your ship.</string>
-    <string name="LOSE_THE_BATTLE">The pirates won the battle!</string>
+    <string name="LOSE_BATTLE_AND_CASH">The pirates won the battle and robbed %1$d$.</string>
+    <string name="LOSE_BATTLE_AND_GOODS">The pirates won the battle and robbed %1$d tonnes of %2$s!</string>
+    <string name="LOSE_BATTLE_DAMAGE">Additionally, The pirates caused damage to your ship, worth %1$d$.</string>
     <string name="WHAT_TO_DO_WITH_PIRATES">What would you like to do?</string>
     <string name="NO_GUARD_SHIPS">You don\'t have guard ships. </string>
     <string name="NUM_GUARDS_AGAINST_PIRATES">You have %1$d guard ships.</string>

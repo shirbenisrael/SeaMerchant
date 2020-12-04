@@ -34,6 +34,9 @@ public class Sail {
     public int mPiratesCapacity;
     public int mPiratesTreasure;
     public int mPiratesDamage;
+    public boolean mIsPirateStoleGoods;
+    public Goods mPiratesStolenGoods;
+    public int mPiratesStolen;
 
     public Sail(Logic logic, State destination) {
         mLogic = logic;
@@ -86,10 +89,31 @@ public class Sail {
     }
 
     public void calculateBattleResult() {
+        mPiratesDamage = 0;
+
         Random rand = new Random();
 
         if (!isWinPiratesSucceeds()) {
             mBattleResult = BattleResult.LOSE;
+            mPiratesDamage = 100 + rand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+            mLogic.mDamage += mPiratesDamage;
+
+            if (mTotalLoad == 0) {
+                mIsPirateStoleGoods = false;
+                mPiratesStolen = rand.nextInt(1 + mLogic.mCash / 2);
+                mLogic.mCash -= mPiratesStolen;
+            } else {
+                mIsPirateStoleGoods = true;
+                mPiratesStolenGoods = Goods.WHEAT;
+                for (Goods goods : Goods.values()) {
+                    if (mLogic.mInventory[goods.getValue()] >= mLogic.mInventory[mPiratesStolenGoods.getValue()]) {
+                        mPiratesStolenGoods = goods;
+                    }
+                }
+                mPiratesStolen = 1 + rand.nextInt(1 + mLogic.mInventory[mPiratesStolenGoods.getValue()] / 2);
+                mLogic.mInventory[mPiratesStolenGoods.getValue()] -= mPiratesStolen;
+            }
+
             return;
         }
 
@@ -103,7 +127,7 @@ public class Sail {
             mLogic.mCash += mPiratesTreasure;
         }
 
-        mPiratesDamage = 0;
+
         if (rand.nextInt(6) >= mSelectedNumGuardShips) {
             mPiratesDamage = 1 + rand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
             mLogic.mDamage += mPiratesDamage;
