@@ -30,6 +30,7 @@ public class Logic {
     public int mDamage;
     public int mCapacity;
     MarketDeal mMarketDeal;
+    BankDeal mBankDeal;
     Sail mSail;
 
     public int mInventory[];
@@ -60,6 +61,16 @@ public class Logic {
         mCash = mMarketDeal.mCash;
         mInventory[mMarketDeal.mGoods.getValue()] = mMarketDeal.mGoodsUnits;
         mMarketDeal = null;
+        mCurrentHour++;
+    }
+
+    public void initBankDeal() {
+        mBankDeal = new BankDeal(this);
+    }
+
+    public void applyBankDeal() {
+        mCash = mBankDeal.mCash;
+        mBankDeposit = mBankDeal.mDeposit;
         mCurrentHour++;
     }
 

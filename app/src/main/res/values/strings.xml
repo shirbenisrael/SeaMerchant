@@ -27,6 +27,9 @@
     <string name="MONEY_STRING">%1$d\$</string>
     <string name="HOLD_QUESTION">How much %1$s to hold?</string>
 
+    <string name="CASH_STRING">Cash: %1$d\$</string>
+    <string name="LOCK_STRING">Lock: %1$d\$</string>
+
     <string name="GOOD_SEA_STRING">The sea looks good today</string>
     <string name="STORM_STRING">Storm develops near %1$s today</string>
     <string name="FOG_STRING">Fog at %1$s today</string>

@@ -8,6 +8,7 @@ public class MainActivity extends Activity {
     Logic mLogic;
     FrontEnd mFrontEnd;
     FrontEndMarket mFrontEndMarket;
+    FrontEndBank mFrontEndBank;
     FrontEndSail mFrontEndSail;
     FrontEndPirates mFrontEndPirates;
 
@@ -19,6 +20,7 @@ public class MainActivity extends Activity {
         mLogic = new Logic();
         mFrontEnd = new FrontEnd(this);
         mFrontEndMarket = new FrontEndMarket(this);
+        mFrontEndBank = new FrontEndBank(this);
         mFrontEndSail = new FrontEndSail(this);
         mFrontEndPirates = new FrontEndPirates(this);
 
@@ -170,30 +172,45 @@ public class MainActivity extends Activity {
         mFrontEndPirates.showChances();
     }
 
-
     public void onBankClick(View view) {
+        mLogic.initBankDeal();
         mFrontEnd.showWindow(Window.BANK_WINDOW);
+        mFrontEndBank.onBankClick();
     }
 
     public void onBankMinus10000Click(View view) {
+        mLogic.mBankDeal.addDeposit(10000);
+        mFrontEndBank.showDealState();
     }
 
     public void onBankMinus1000Click(View view) {
+        mLogic.mBankDeal.addDeposit(1000);
+        mFrontEndBank.showDealState();
     }
 
     public void onBankPlus1000Click(View view) {
+        mLogic.mBankDeal.removeDeposit(1000);
+        mFrontEndBank.showDealState();
     }
 
     public void onBankPlus10000Click(View view) {
+        mLogic.mBankDeal.removeDeposit(10000);
+        mFrontEndBank.showDealState();
     }
 
     public void onDrawAllClick(View view) {
+        mLogic.mBankDeal.drawAll();
+        mFrontEndBank.showDealState();
     }
 
     public void onCashForGuardsClick(View view) {
+        mLogic.mBankDeal.leaveCashForGuards();
+        mFrontEndBank.showDealState();
     }
 
     public void onDepositAllClick(View view) {
+        mLogic.mBankDeal.depositAll();
+        mFrontEndBank.showDealState();
     }
 
     public void onBankDealCancelClick(View view) {
@@ -201,6 +218,8 @@ public class MainActivity extends Activity {
     }
 
     public void onBankDealDoneClick(View view) {
+        mLogic.applyBankDeal();
+        mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
 }
