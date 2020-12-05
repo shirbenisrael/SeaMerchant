@@ -60,4 +60,9 @@
         android:id="@+id/abandoned_ship_layout"
         layout="@layout/abandoned_ship_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/bad_weather_in_sail_layout"
+        layout="@layout/bad_weather_in_sail_layout"
+        android:visibility="gone" />
 </LinearLayout>

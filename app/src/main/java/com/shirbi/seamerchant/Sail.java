@@ -91,6 +91,23 @@ public class Sail {
         return true;
     }
 
+    public boolean isBadWeatherInSail() {
+        if ((mSource == mLogic.mWeatherState) || (mDestination == mLogic.mWeatherState)) {
+            if (mLogic.mWeather == Weather.WIND) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void createBadWeatherInSail() {
+        if (mLogic.mWeather == Weather.WIND) {
+            State temp = mSource;
+            mSource = mDestination;
+            mDestination = temp;
+        }
+    }
+
     public void createAbandonedShip() {
         Random rand = new Random();
         mAbandonedShipGoods = Goods.values()[rand.nextInt(Goods.NUM_GOODS_TYPES)];

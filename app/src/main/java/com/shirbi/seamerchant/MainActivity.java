@@ -12,6 +12,7 @@ public class MainActivity extends Activity {
     FrontEndSail mFrontEndSail;
     FrontEndPirates mFrontEndPirates;
     FrontEndAbandonedShip mFrontEndAbandonedShip;
+    FrontEndBadWeatherInSail mFrontEndBadWeatherInSail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends Activity {
         mFrontEndSail = new FrontEndSail(this);
         mFrontEndPirates = new FrontEndPirates(this);
         mFrontEndAbandonedShip = new FrontEndAbandonedShip(this);
+        mFrontEndBadWeatherInSail = new FrontEndBadWeatherInSail(this);
 
         mLogic.startNewGame();
         mFrontEnd.showState();
@@ -181,6 +183,17 @@ public class MainActivity extends Activity {
     }
 
     public void onExitAbandonedShopWindow(View view) {
+        mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        mFrontEndSail.continueSail();
+    }
+
+    public void showBadWeatherInSail() {
+        mLogic.mSail.createBadWeatherInSail();
+        mFrontEnd.showWindow(Window.BAD_WEATHER_IN_SAIL_WINDOW);
+        mFrontEndBadWeatherInSail.showBadWeather();
+    }
+
+    public void onExistBadWeatherClick(View view) {
         mFrontEnd.showWindow(Window.SAIL_WINDOW);
         mFrontEndSail.continueSail();
     }
