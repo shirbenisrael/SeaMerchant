@@ -136,8 +136,14 @@ public class FrontEndSail extends FrontEndGeneric {
 
             if (mProgress > 100) {
                 if (mRealSail) {
-                    mTimer.cancel();
                     sailEnd();
+                    if (mLogic.mSail.isFogInSail()) {
+                        mProgress = 0;
+                        pauseSail();
+                        mActivity.showBadWeatherInSail();
+                    } else {
+                        mTimer.cancel();
+                    }
                 } else {
                     mProgress = 0;
                 }

@@ -108,11 +108,25 @@ public class Sail {
         return false;
     }
 
+    public boolean isFogInSail() {
+        if ((mDestination == mLogic.mWeatherState)) {
+            if (mLogic.mWeather == Weather.FOG) {
+                return tryToDoSomething(100);
+            }
+        }
+        return false;
+    }
+
+    public void swapSourceAndDestination() {
+        State temp = mSource;
+        mSource = mDestination;
+        mDestination = temp;
+    }
+
     public void createBadWeatherInSail() {
-        if (mLogic.mWeather == Weather.WIND) {
-            State temp = mSource;
-            mSource = mDestination;
-            mDestination = temp;
+        if (mLogic.mWeather == Weather.WIND || mLogic.mWeather == Weather.FOG) {
+            swapSourceAndDestination();
+
         } else if (mLogic.mWeather == Weather.STORM) {
             Random rand = new Random();
             if (mTotalLoad == 0) {

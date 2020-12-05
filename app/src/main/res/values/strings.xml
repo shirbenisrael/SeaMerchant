@@ -70,6 +70,9 @@
     <string name="STORM_WASH_GOODS">The high waves wash %1$d tonne of %2$s from the ship.</string>
     <string name="STORM_HURT_SHIP">The high waves hurt the ship and create damage worth %1$d$.</string>
 
+    <string name="FOG_TITLE">Heavy fog covers the harbor!</string>
+    <string name="FOG_RESULT">The ship cannot land and must return to %1$s.</string>
+
     <string name="MARKET_STATE">Market state in the middle east</string>
 
 </resources>
