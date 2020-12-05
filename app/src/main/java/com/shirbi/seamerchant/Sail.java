@@ -23,6 +23,8 @@ public class Sail {
     static final int MIN_GUARD_SHIP_COST = 50;
     static final int DEFAULT_NUM_GUARDS = 0;
     static final int[] mChancesToWinPirates = {1, 51, 76, 88, 94, 97};
+    static final int PERCENT_OF_WRONG_NAVIGATION_ON_WIND = 33;
+    static final int PERCENT_OF_STORM_APPEAR = 33;
 
     public enum BattleResult {
         WIN_AND_CAPTURE,
@@ -37,6 +39,10 @@ public class Sail {
     public boolean mIsPirateStoleGoods;
     public Goods mPiratesStolenGoods;
     public int mPiratesStolen;
+
+    public boolean mIsStormWashGoods; // else ship damage
+    public Goods mStormLostGoodType;
+    public int mStormLostUnits;
 
     public Goods mAbandonedShipGoods;
     public int mAbandonedShipGoodsUnits;
@@ -94,7 +100,9 @@ public class Sail {
     public boolean isBadWeatherInSail() {
         if ((mSource == mLogic.mWeatherState) || (mDestination == mLogic.mWeatherState)) {
             if (mLogic.mWeather == Weather.WIND) {
-                return true;
+                return tryToDoSomething(PERCENT_OF_WRONG_NAVIGATION_ON_WIND);
+            } else if (mLogic.mWeather == Weather.STORM) {
+                return tryToDoSomething(PERCENT_OF_STORM_APPEAR);
             }
         }
         return false;
@@ -105,6 +113,23 @@ public class Sail {
             State temp = mSource;
             mSource = mDestination;
             mDestination = temp;
+        } else if (mLogic.mWeather == Weather.STORM) {
+            Random rand = new Random();
+            if (mTotalLoad == 0) {
+                mIsStormWashGoods = false; // damage to ship
+                mStormLostUnits = 100 + rand.nextInt(mLogic.mCapacity * mLogic.mCapacity);
+                mLogic.mDamage += mStormLostUnits;
+            } else {
+                mIsStormWashGoods = true;
+                mStormLostGoodType = Goods.WHEAT;
+                for (Goods goods : Goods.values()) {
+                    if (mLogic.mInventory[goods.getValue()] >= mLogic.mInventory[mStormLostGoodType.getValue()]) {
+                        mStormLostGoodType = goods;
+                    }
+                }
+                mStormLostUnits = 1 + rand.nextInt(1 + mLogic.mInventory[mStormLostGoodType.getValue()] / 2);
+                mLogic.mInventory[mStormLostGoodType.getValue()] -= mStormLostUnits;
+            }
         }
     }
 

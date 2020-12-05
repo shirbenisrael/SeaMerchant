@@ -66,6 +66,10 @@
     <string name="NAVIGATION_ERROR_TITLE">Strong winds confuse the navigators!</string>
     <string name="NAVIGATION_ERROR_RESULT">The ship reaches %1$s instead of %2$s!</string>
 
+    <string name="STORM_TITLE">The ship was caught in a storm!</string>
+    <string name="STORM_WASH_GOODS">The high waves wash %1$d tonne of %2$s from the ship.</string>
+    <string name="STORM_HURT_SHIP">The high waves hurt the ship and create damage worth %1$d$.</string>
+
     <string name="MARKET_STATE">Market state in the middle east</string>
 
 </resources>
