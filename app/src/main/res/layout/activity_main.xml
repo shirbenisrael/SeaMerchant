@@ -57,6 +57,11 @@
         android:visibility="gone" />
 
     <include
+        android:id="@+id/negotiate_layout"
+        layout="@layout/negotiate_layout"
+        android:visibility="gone" />
+
+    <include
         android:id="@+id/abandoned_ship_layout"
         layout="@layout/abandoned_ship_layout"
         android:visibility="gone" />

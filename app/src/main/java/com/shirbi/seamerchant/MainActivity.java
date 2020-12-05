@@ -157,8 +157,15 @@ public class MainActivity extends Activity {
     }
 
     public void onNegotiateClick(View view) {
-        mFrontEnd.showWindow(Window.SAIL_WINDOW);
-        mFrontEndSail.continueSail();
+        mFrontEnd.showWindow(Window.PIRATE_NEGOTIATE_WINDOW);
+    }
+
+    public void onCancelOfferToPirates(View view) {
+        mFrontEnd.showWindow(Window.PIRATES_WINDOW);
+    }
+
+    public void onSendOfferToPirates(View view) {
+        mFrontEnd.showWindow(Window.PIRATES_WINDOW);
     }
 
     public void onEscapeDoneClick(View view) {

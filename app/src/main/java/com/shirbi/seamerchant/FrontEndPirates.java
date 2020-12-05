@@ -83,4 +83,8 @@ public class FrontEndPirates extends FrontEndGeneric {
 
         findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.battle);
     }
+
+    public void showNegotiatePirates() {
+
+    }
 }

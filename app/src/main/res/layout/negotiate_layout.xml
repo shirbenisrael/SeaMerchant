@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pirate"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="מה תציע לשודדי הים?"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/negotiate_copper_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="נחושת: 1 מתוך 5 טון"
+        android:textSize="20dp" />
+
+    <SeekBar
+        android:id="@+id/negotiate_copper_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/negotiate_olives_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="זיתים: 1 מתוך 5 טון"
+        android:textSize="20dp" />
+
+    <SeekBar
+        android:id="@+id/negotiate_olives_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/negotiate_wheat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="חיטה: 1 מתוך 5 טון"
+        android:textSize="20dp" />
+
+    <SeekBar
+        android:id="@+id/negotiate_wheat_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/negotiate_cash_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="נחושת: 1 מתוך 5 טון"
+        android:textSize="20dp" />
+
+    <SeekBar
+        android:id="@+id/negotiate_cash_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:gravity="center_horizontal"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <include layout="@layout/empty_horizontal_text" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/no_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:onClick="onCancelOfferToPirates" />
+
+        <include layout="@layout/empty_horizontal_text" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/yes_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:onClick="onSendOfferToPirates" />
+
+        <include layout="@layout/empty_horizontal_text" />
+
+    </LinearLayout>
+
+</LinearLayout>

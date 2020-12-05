@@ -94,7 +94,7 @@ public class Sail {
     }
 
     public boolean isAbandonedShipAppear() {
-        return true;
+        return false;
     }
 
     public boolean isBadWeatherInSail() {
