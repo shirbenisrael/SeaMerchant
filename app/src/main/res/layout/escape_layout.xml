@@ -15,7 +15,6 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/sail_end_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
