@@ -58,6 +58,7 @@
     <string name="PIRATES_TIP">Tip: Battle win will give award. Lose will be painful</string>
     <string name="ATTACK">Attack</string>
     <string name="ESCAPE">Escape</string>
+    <string name="ESCAPE_DONE">You were able to escape from them.</string>
     <string name="NEGOTIATE">Negotiate</string>
 
     <string name="ABANDONED_SHIP">Abandoned Ship!</string>
