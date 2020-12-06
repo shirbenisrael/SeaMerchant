@@ -25,6 +25,7 @@ public class Sail {
     static final int[] mChancesToWinPirates = {1, 51, 76, 88, 94, 97};
     static final int PERCENT_OF_WRONG_NAVIGATION_ON_WIND = 33;
     static final int PERCENT_OF_STORM_APPEAR = 33;
+    static final int PERCENT_OF_ABANDONED_SHIP_APPEAR = 11;
 
     public enum BattleResult {
         WIN_AND_CAPTURE,
@@ -94,7 +95,7 @@ public class Sail {
     }
 
     public boolean isAbandonedShipAppear() {
-        return false;
+        return tryToDoSomething(PERCENT_OF_ABANDONED_SHIP_APPEAR);
     }
 
     public boolean isBadWeatherInSail() {
