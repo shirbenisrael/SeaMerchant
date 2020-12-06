@@ -11,57 +11,62 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center_horizontal"
-        android:text="מה תציע לשודדי הים?"
-        android:textSize="20dp"/>
-
-    <TextView
-        android:id="@+id/negotiate_copper_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="נחושת: 1 מתוך 5 טון"
+        android:text="@string/OFFER_TO_PIRATES"
         android:textSize="20dp" />
 
-    <SeekBar
-        android:id="@+id/negotiate_copper_seek_bar"
+    <LinearLayout
+        android:id="@+id/inventory_for_pirates"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="8"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/negotiate_olives_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="זיתים: 1 מתוך 5 טון"
-        android:textSize="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="20dp" />
 
-    <SeekBar
-        android:id="@+id/negotiate_olives_seek_bar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <SeekBar
+            android:id="@+id/negotiate_copper_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/negotiate_wheat_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="חיטה: 1 מתוך 5 טון"
-        android:textSize="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="20dp" />
 
-    <SeekBar
-        android:id="@+id/negotiate_wheat_seek_bar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="20dp" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/negotiate_cash_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center_vertical"
-        android:text="נחושת: 1 מתוך 5 טון"
+        android:text="מזומן: 1 מתוך 5 דולר"
         android:textSize="20dp" />
 
     <SeekBar
@@ -73,14 +78,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="3"
         android:gravity="center_horizontal"
         android:text="" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="horizontal">
 
         <include layout="@layout/empty_horizontal_text" />
@@ -108,5 +113,12 @@
         <include layout="@layout/empty_horizontal_text" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="" />
 
 </LinearLayout>

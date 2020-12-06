@@ -158,6 +158,7 @@ public class MainActivity extends Activity {
 
     public void onNegotiateClick(View view) {
         mFrontEnd.showWindow(Window.PIRATE_NEGOTIATE_WINDOW);
+        mFrontEndPirates.showNegotiatePirates();
     }
 
     public void onCancelOfferToPirates(View view) {
