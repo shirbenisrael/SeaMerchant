@@ -149,4 +149,27 @@ public class FrontEndPirates extends FrontEndGeneric {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
     }
+
+    public boolean sendOfferToPirates() {
+        LinearLayout inventoryLayout = findViewById(R.id.inventory_for_pirates);
+        int[] goodToOffer = new int[Goods.NUM_GOODS_TYPES];
+        for (Goods goods : Goods.values()) {
+            SeekBar seekBar = (SeekBar)inventoryLayout.getChildAt(goods.getValue() * 2 + 1);
+            goodToOffer[goods.getValue()] = seekBar.getProgress();
+        }
+
+        SeekBar seekBar = findViewById(R.id.negotiate_cash_seek_bar);
+        int cashToOffer = seekBar.getProgress();
+
+        return mLogic.mSail.sendOfferToPirates(goodToOffer, cashToOffer);
+    }
+
+    public void showPiratesRefuseOffer() {
+        ((TextView)findViewById(R.id.pirates_title)).setText(R.string.PIRATES_REFUSE_OFFER);
+        ((TextView)findViewById(R.id.pirates_chances_text_view)).setText(R.string.PIRATES_MUST_ATTACK);
+
+        findViewById(R.id.escape_button).setVisibility(View.GONE);
+        findViewById(R.id.negotiate_button).setVisibility(View.GONE);
+        findViewById(R.id.pirates_tip).setVisibility(View.INVISIBLE);
+    }
 }

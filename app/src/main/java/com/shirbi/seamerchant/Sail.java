@@ -210,6 +210,10 @@ public class Sail {
         return tryToDoSomething(getPercentsToEscapeFromPirates());
     }
 
+    public boolean sendOfferToPirates(int goodsOffer[], int cashOffer) {
+        return false;
+    }
+
     public boolean isWinPiratesSucceeds() {
         return tryToDoSomething(getPercentsToWinPirates());
     }

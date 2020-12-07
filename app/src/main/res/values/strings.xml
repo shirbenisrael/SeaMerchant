@@ -44,6 +44,7 @@
     <string name="PIRATES">Pirates!</string>
     <string name="PIRATES_FAST">The fast pirates ship got you!</string>
     <string name="PIRATES_MUST_ATTACK">You must attack them!</string>
+    <string name="PIRATES_REFUSE_OFFER">The pirates refuse to your offer!</string>
     <string name="WIN_THE_BATTLE">You won the battle!</string>
     <string name="WIN_CAPACITY">You captured the pirate\'s ship and your capacity was increased by %1$d tonne.</string>
     <string name="WIN_TREASURE">You found on the pirate\'s ship a treasure worth %1$d$.</string>
