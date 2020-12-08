@@ -48,18 +48,21 @@ public class Sail {
     public Goods mAbandonedShipGoods;
     public int mAbandonedShipGoodsUnits;
 
+    private void calculateShipValue() {
+        mValueOnShip = mLogic.mCash;
+        mTotalLoad = 0;
+        for (Goods goods : Goods.values()) {
+            mValueOnShip += mLogic.mInventory[goods.getValue()] * mLogic.mPriceTable.getPrice(mSource, goods);
+            mTotalLoad += mLogic.mInventory[goods.getValue()];
+        }
+    }
+
     public Sail(Logic logic, State destination) {
         mLogic = logic;
         mDestination = destination;
         mSource = logic.mCurrentState;
         mLandingHour = logic.mCurrentHour + logic.getSailDuration(mDestination);
-        mValueOnShip = logic.mCash;
-        mTotalLoad = 0;
-        for (Goods goods : Goods.values()) {
-            mValueOnShip += logic.mInventory[goods.getValue()] * logic.mPriceTable.getPrice(mSource, goods);
-            mTotalLoad += logic.mInventory[goods.getValue()];
-        }
-
+        calculateShipValue();
         mGuardShipCostPercent = DEFAULT_GUARD_COST_PERCENT;
         mGuardShipCost = Math.max(MIN_GUARD_SHIP_COST, (mGuardShipCostPercent * mValueOnShip / 100));
         mMaxGuardShips = Math.min(MAX_GUARD_SHIPS, logic.mCash / mGuardShipCost);
@@ -211,7 +214,24 @@ public class Sail {
     }
 
     public boolean sendOfferToPirates(int goodsOffer[], int cashOffer) {
-        return false;
+        int offerValue = cashOffer;
+        for (Goods goods : Goods.values()) {
+            offerValue += goodsOffer[goods.getValue()] * mLogic.mPriceTable.getPrice(mSource, goods);
+        }
+
+        Random rand = new Random();
+        int desired = rand.nextInt(mValueOnShip / 3);
+
+        if (desired > offerValue) {
+            return false;
+        }
+
+        for (Goods goods : Goods.values()) {
+            mLogic.mInventory[goods.getValue()] -= goodsOffer[goods.getValue()];
+        }
+        mLogic.mCash -= cashOffer;
+        calculateShipValue();
+        return true;
     }
 
     public boolean isWinPiratesSucceeds() {

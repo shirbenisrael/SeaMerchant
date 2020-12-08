@@ -167,7 +167,7 @@ public class MainActivity extends Activity {
 
     public void onSendOfferToPirates(View view) {
         if (mFrontEndPirates.sendOfferToPirates()) {
-
+            mFrontEnd.showWindow(Window.PIRATE_ACCEPT_OFFER_WINDOW);
         } else {
             mFrontEndPirates.showPiratesRefuseOffer();
             mFrontEnd.showWindow(Window.PIRATES_WINDOW);
@@ -175,6 +175,11 @@ public class MainActivity extends Activity {
     }
 
     public void onEscapeDoneClick(View view) {
+        mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        mFrontEndSail.continueSail();
+    }
+
+    public void onOfferAcceptedClick(View view) {
         mFrontEnd.showWindow(Window.SAIL_WINDOW);
         mFrontEndSail.continueSail();
     }
