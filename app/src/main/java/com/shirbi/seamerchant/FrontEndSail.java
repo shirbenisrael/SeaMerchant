@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.IdRes;
+import androidx.annotation.StringRes;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -171,6 +172,13 @@ public class FrontEndSail extends FrontEndGeneric {
     private void sailEnd() {
         mLogic.finishSail();
         mActivity.mFrontEnd.showWindow(Window.SAIL_END_WINDOW);
+
+        String stateString = getString(mLogic.mCurrentState.toStringId());
+        @StringRes int stringId = mLogic.mSail.mSailEndedPeacefully ? R.string.SAIL_ENDED_PEACEFULLY :
+                R.string.SAIL_ENDED_BAD;
+        String endMessage = mActivity.getString(stringId, stateString);
+        TextView textView = findViewById(R.id.sail_end_message);
+        textView.setText(endMessage);
     }
 
     private void showDangers() {

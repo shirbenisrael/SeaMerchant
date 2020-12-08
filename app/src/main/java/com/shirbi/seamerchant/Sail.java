@@ -18,6 +18,7 @@ public class Sail {
     int mTotalGuardShipsCost;
     int mGuardShipCostPercent;
     Weather mSailWeather;
+    boolean mSailEndedPeacefully;
     static final int DEFAULT_GUARD_COST_PERCENT = 2;
     static final int MAX_GUARD_SHIPS = 5;
     static final int MIN_GUARD_SHIP_COST = 50;
@@ -90,6 +91,8 @@ public class Sail {
         mTooLoaded = (mTotalLoad > logic.mCapacity);
 
         selectNumGuardShips(DEFAULT_NUM_GUARDS);
+
+        mSailEndedPeacefully = true;
     }
 
     public void selectNumGuardShips(int numGuards) {
@@ -128,9 +131,9 @@ public class Sail {
     }
 
     public void createBadWeatherInSail() {
+        mSailEndedPeacefully = false;
         if (mLogic.mWeather == Weather.WIND || mLogic.mWeather == Weather.FOG) {
             swapSourceAndDestination();
-
         } else if (mLogic.mWeather == Weather.STORM) {
             Random rand = new Random();
             if (mTotalLoad == 0) {
@@ -169,6 +172,7 @@ public class Sail {
         Random rand = new Random();
 
         if (!isWinPiratesSucceeds()) {
+            mSailEndedPeacefully = false;
             mBattleResult = BattleResult.LOSE;
             mPiratesDamage = 100 + rand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
             mLogic.mDamage += mPiratesDamage;
@@ -202,7 +206,6 @@ public class Sail {
             mLogic.mCash += mPiratesTreasure;
         }
 
-
         if (rand.nextInt(6) >= mSelectedNumGuardShips) {
             mPiratesDamage = 1 + rand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
             mLogic.mDamage += mPiratesDamage;
@@ -231,6 +234,7 @@ public class Sail {
         }
         mLogic.mCash -= cashOffer;
         calculateShipValue();
+        mSailEndedPeacefully = false;
         return true;
     }
 
