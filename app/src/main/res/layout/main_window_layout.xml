@@ -196,7 +196,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
+            <Button
                 android:id="@+id/wide_fix_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

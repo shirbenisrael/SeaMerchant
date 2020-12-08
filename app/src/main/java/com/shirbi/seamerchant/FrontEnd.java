@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
 public class FrontEnd extends FrontEndGeneric {
@@ -72,6 +73,7 @@ public class FrontEnd extends FrontEndGeneric {
         showInventory();
 
         TextView textView;
+        Button button;
 
         textView = findViewById(R.id.current_hour_text_view);
         textView.setText(String.valueOf(mLogic.mCurrentHour) + ":00");
@@ -87,6 +89,13 @@ public class FrontEnd extends FrontEndGeneric {
 
         textView = findViewById(R.id.wide_capacity_button);
         textView.setText(String.valueOf(mLogic.mCapacity) + " " + getString(R.string.TONNE));
+
+        button = findViewById(R.id.wide_fix_button);
+        @DrawableRes int resource = (mLogic.mDamage == 0) ? R.drawable.wide_ship_button : R.drawable.wide_fix_button;
+        button.setBackgroundResource(resource);
+        String damageString = (mLogic.mDamage == 0) ? getString(R.string.FIXED_SHIP) :
+                mActivity.getString(R.string.DAMAGED_SHIP, mLogic.mDamage);
+        button.setText(damageString);
 
         textView = findViewById(R.id.wide_cash_button);
         textView.setText(mActivity.getString(R.string.MONEY_STRING, mLogic.mCash));
