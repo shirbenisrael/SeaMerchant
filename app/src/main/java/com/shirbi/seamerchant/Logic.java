@@ -19,6 +19,7 @@ public class Logic {
             {0, 0, 0, 6, 0}  // From Greece
     };
 
+    private Random mRand = new Random();
     public PriceTable mPriceTable = new PriceTable();
     public int mCash;
     public int mBankDeposit;
@@ -107,18 +108,16 @@ public class Logic {
     }
 
     public void startNewDay() {
-        Random random = new Random();
 
         mPriceTable.generateRandomPrices();
         mCurrentHour = START_HOUR;
         mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
-        mWeather = Weather.values()[random.nextInt(Weather.NUM_WEATHER_TYPES)];
-        mWeatherState = State.values()[random.nextInt(State.NUM_STATES)];
+        mWeather = Weather.values()[mRand.nextInt(Weather.NUM_WEATHER_TYPES)];
+        mWeatherState = State.values()[mRand.nextInt(State.NUM_STATES)];
     }
 
     public void generateNewDayEvent() {
-        Random random = new Random();
-        mIsSpecialPriceHigh = random.nextInt(2) == 0;
+        mIsSpecialPriceHigh = mRand.nextInt(2) == 0;
         mSpecialPriceGoods = Goods.generateRandomGoods();
         mSpecialPriceState = State.GREECE;
         while (mSpecialPriceState == State.GREECE) {

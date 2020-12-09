@@ -3,6 +3,7 @@ package com.shirbi.seamerchant;
 import java.util.Random;
 
 public class Sail {
+    private Random mRand = new Random();
     Logic mLogic;
     State mDestination;
     State mSource;
@@ -135,10 +136,9 @@ public class Sail {
         if (mLogic.mWeather == Weather.WIND || mLogic.mWeather == Weather.FOG) {
             swapSourceAndDestination();
         } else if (mLogic.mWeather == Weather.STORM) {
-            Random rand = new Random();
             if (mTotalLoad == 0) {
                 mIsStormWashGoods = false; // damage to ship
-                mStormLostUnits = 100 + rand.nextInt(mLogic.mCapacity * mLogic.mCapacity);
+                mStormLostUnits = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity);
                 mLogic.mDamage += mStormLostUnits;
             } else {
                 mIsStormWashGoods = true;
@@ -148,16 +148,15 @@ public class Sail {
                         mStormLostGoodType = goods;
                     }
                 }
-                mStormLostUnits = 1 + rand.nextInt(1 + mLogic.mInventory[mStormLostGoodType.getValue()] / 2);
+                mStormLostUnits = 1 + mRand.nextInt(1 + mLogic.mInventory[mStormLostGoodType.getValue()] / 2);
                 mLogic.mInventory[mStormLostGoodType.getValue()] -= mStormLostUnits;
             }
         }
     }
 
     public void createAbandonedShip() {
-        Random rand = new Random();
-        mAbandonedShipGoods = Goods.values()[rand.nextInt(Goods.NUM_GOODS_TYPES)];
-        mAbandonedShipGoodsUnits = rand.nextInt(mLogic.mBankDeposit + mValueOnShip) /
+        mAbandonedShipGoods = Goods.values()[mRand.nextInt(Goods.NUM_GOODS_TYPES)];
+        mAbandonedShipGoodsUnits = mRand.nextInt(mLogic.mBankDeposit + mValueOnShip) /
                 mLogic.mPriceTable.getPrice(mSource, mAbandonedShipGoods) + 1;
         mLogic.mInventory[mAbandonedShipGoods.getValue()] += mAbandonedShipGoodsUnits;
     }
@@ -169,17 +168,15 @@ public class Sail {
     public void calculateBattleResult() {
         mPiratesDamage = 0;
 
-        Random rand = new Random();
-
         if (!isWinPiratesSucceeds()) {
             mSailEndedPeacefully = false;
             mBattleResult = BattleResult.LOSE;
-            mPiratesDamage = 100 + rand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+            mPiratesDamage = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
             mLogic.mDamage += mPiratesDamage;
 
             if (mTotalLoad == 0) {
                 mIsPirateStoleGoods = false;
-                mPiratesStolen = rand.nextInt(1 + mLogic.mCash / 2);
+                mPiratesStolen = mRand.nextInt(1 + mLogic.mCash / 2);
                 mLogic.mCash -= mPiratesStolen;
             } else {
                 mIsPirateStoleGoods = true;
@@ -189,7 +186,7 @@ public class Sail {
                         mPiratesStolenGoods = goods;
                     }
                 }
-                mPiratesStolen = 1 + rand.nextInt(1 + mLogic.mInventory[mPiratesStolenGoods.getValue()] / 2);
+                mPiratesStolen = 1 + mRand.nextInt(1 + mLogic.mInventory[mPiratesStolenGoods.getValue()] / 2);
                 mLogic.mInventory[mPiratesStolenGoods.getValue()] -= mPiratesStolen;
             }
 
@@ -198,16 +195,16 @@ public class Sail {
 
         if (isWinCapturePirates()) {
             mBattleResult = BattleResult.WIN_AND_CAPTURE;
-            mPiratesCapacity = rand.nextInt(mLogic.mCapacity / 25) * 25 + 25;
+            mPiratesCapacity = mRand.nextInt(mLogic.mCapacity / 25) * 25 + 25;
             mLogic.mCapacity += mPiratesCapacity;
         } else {
             mBattleResult = BattleResult.WIN_AND_TREASURE;
-            mPiratesTreasure = 1 + rand.nextInt(mValueOnShip + mLogic.mBankDeposit) / 3;
+            mPiratesTreasure = 1 + mRand.nextInt(mValueOnShip + mLogic.mBankDeposit) / 3;
             mLogic.mCash += mPiratesTreasure;
         }
 
-        if (rand.nextInt(6) >= mSelectedNumGuardShips) {
-            mPiratesDamage = 1 + rand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
+        if (mRand.nextInt(6) >= mSelectedNumGuardShips) {
+            mPiratesDamage = 1 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
             mLogic.mDamage += mPiratesDamage;
         }
     }
@@ -222,8 +219,7 @@ public class Sail {
             offerValue += goodsOffer[goods.getValue()] * mLogic.mPriceTable.getPrice(mSource, goods);
         }
 
-        Random rand = new Random();
-        int desired = rand.nextInt(mValueOnShip / 3);
+        int desired = mRand.nextInt(mValueOnShip / 3);
 
         if (desired > offerValue) {
             return false;
@@ -259,8 +255,7 @@ public class Sail {
     }
 
     private boolean tryToDoSomething(int percentsToSucceed) {
-        Random rand = new Random();
-        int result = rand.nextInt(100);
+        int result = mRand.nextInt(100);
 
         return result < percentsToSucceed;
     }
