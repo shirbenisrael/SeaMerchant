@@ -42,6 +42,11 @@
         android:visibility="gone" />
 
     <include
+        android:id="@+id/simple_new_day_event_layout"
+        layout="@layout/simple_new_day_event_layout"
+        android:visibility="gone" />
+
+    <include
         android:id="@+id/pirates_layout"
         layout="@layout/pirates_layout"
         android:visibility="gone" />

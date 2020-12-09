@@ -112,4 +112,8 @@ public class Logic {
         mWeather = Weather.values()[random.nextInt(Weather.NUM_WEATHER_TYPES)];
         mWeatherState = State.values()[random.nextInt(State.NUM_STATES)];
     }
+
+    public void generateNewDayEvent() {
+
+    }
 }

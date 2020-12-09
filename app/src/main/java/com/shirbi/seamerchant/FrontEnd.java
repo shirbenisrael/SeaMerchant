@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 
 public class FrontEnd extends FrontEndGeneric {
     private Point mFlagSize;
@@ -219,4 +220,24 @@ public class FrontEnd extends FrontEndGeneric {
             }
         }
     }
+
+    private @NonNull String generateNewDayEventString() {
+        @StringRes int id = R.string.PRICE_UP;
+        State state = State.EGYPT;
+        Goods goods = Goods.COPPER;
+        int newPrice = 4000;
+        String goodsString = getString(goods.toStringId());
+        String stateString = getString(state.toStringId());
+        String eventString = mActivity.getString(id, goodsString, stateString, newPrice);
+        return eventString;
+    }
+
+    public void showNewEvent() {
+        ((TextView)findViewById(R.id.day_message_with_event)).setText(mLogic.mCurrentDay.toStringId());
+        ((TextView)findViewById(R.id.special_event_message)).setText(generateNewDayEventString());
+
+        @DrawableRes int backgroundId = R.drawable.price_up;
+        findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(backgroundId);
+    }
+
 }
