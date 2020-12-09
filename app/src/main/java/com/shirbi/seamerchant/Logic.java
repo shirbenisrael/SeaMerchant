@@ -32,6 +32,9 @@ public class Logic {
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
     Sail mSail;
+    public State mSpecialPriceState;
+    public Goods mSpecialPriceGoods;
+    public boolean mIsSpecialPriceHigh;
 
     public int mInventory[];
 
@@ -114,6 +117,17 @@ public class Logic {
     }
 
     public void generateNewDayEvent() {
+        Random random = new Random();
+        mIsSpecialPriceHigh = random.nextInt(2) == 0;
+        mSpecialPriceGoods = Goods.generateRandomGoods();
+        mSpecialPriceState = State.GREECE;
+        while (mSpecialPriceState == State.GREECE) {
+            mSpecialPriceState = State.generateRandomState();
+        }
 
+        int specialPrice = mIsSpecialPriceHigh ? mSpecialPriceGoods.generateRandomHigh() :
+                mSpecialPriceGoods.generateRandomLow();
+
+        mPriceTable.setPrice(mSpecialPriceState, mSpecialPriceGoods, specialPrice);
     }
 }

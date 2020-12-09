@@ -8,11 +8,17 @@ public enum Goods {
     COPPER(2);
 
     public static final int NUM_GOODS_TYPES = 3;
-    private Random rand = new Random();
+    static private Random rand = new Random();
 
     static private int[] multiplier = {5,50,100};
     static private int[] minimum = {7, 7, 25};
     static private int[] numValues = {8, 7, 11};
+
+    static private int[] lowMinimum = {4, 4, 15};
+    static private int[] lowNumValues = {3, 3, 5};
+
+    static private int[] highMinimum = {15, 14, 36};
+    static private int[] highNumValues = {3, 3, 10};
 
     private static final int[] mWideButtonImageId = {
             R.drawable.wide_wheat_button, R.drawable.wide_olives_button, R.drawable.wide_copper_button};
@@ -35,6 +41,14 @@ public enum Goods {
         return (rand.nextInt(numValues[value]) + minimum[value]) * multiplier[value];
     }
 
+    public int generateRandomLow() {
+        return (rand.nextInt(lowNumValues[value]) + lowMinimum[value]) * multiplier[value];
+    }
+
+    public int generateRandomHigh() {
+        return (rand.nextInt(highNumValues[value]) + highMinimum[value]) * multiplier[value];
+    }
+
     public int toWideButtonId() {
         return mWideButtonImageId[value];
     }
@@ -45,5 +59,9 @@ public enum Goods {
 
     public int toStringId() {
         return mStringId[value];
+    }
+
+    static final Goods generateRandomGoods() {
+        return values()[rand.nextInt(NUM_GOODS_TYPES)];
     }
 }

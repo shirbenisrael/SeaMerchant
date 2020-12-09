@@ -222,10 +222,10 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     private @NonNull String generateNewDayEventString() {
-        @StringRes int id = R.string.PRICE_UP;
-        State state = State.EGYPT;
-        Goods goods = Goods.COPPER;
-        int newPrice = 4000;
+        @StringRes int id = mLogic.mIsSpecialPriceHigh ? R.string.PRICE_UP : R.string.PRICE_DOWN;
+        State state = mLogic.mSpecialPriceState;
+        Goods goods = mLogic.mSpecialPriceGoods;
+        int newPrice = mLogic.mPriceTable.getPrice(state, goods);
         String goodsString = getString(goods.toStringId());
         String stateString = getString(state.toStringId());
         String eventString = mActivity.getString(id, goodsString, stateString, newPrice);
@@ -236,8 +236,7 @@ public class FrontEnd extends FrontEndGeneric {
         ((TextView)findViewById(R.id.day_message_with_event)).setText(mLogic.mCurrentDay.toStringId());
         ((TextView)findViewById(R.id.special_event_message)).setText(generateNewDayEventString());
 
-        @DrawableRes int backgroundId = R.drawable.price_up;
+        @DrawableRes int backgroundId = mLogic.mIsSpecialPriceHigh ? R.drawable.price_up : R.drawable.price_down;
         findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(backgroundId);
     }
-
 }

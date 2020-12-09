@@ -22,4 +22,8 @@ public class PriceTable {
     public int getPrice(State state, Goods goods) {
         return prices[state.getValue()][goods.getValue()];
     }
+
+    public void setPrice(State state, Goods goods, int price) {
+        prices[state.getValue()][goods.getValue()] = price;
+    }
 }

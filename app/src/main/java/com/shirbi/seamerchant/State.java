@@ -1,5 +1,7 @@
 package com.shirbi.seamerchant;
 
+import java.util.Random;
+
 public enum State {
     EGYPT(0),
     ISRAEL(1),
@@ -8,6 +10,7 @@ public enum State {
     GREECE(4);
 
     public static final int NUM_STATES = 5;
+    static private Random rand = new Random();
 
     private static final int[] mStrings = {
             R.string.EGYPT, R.string.ISRAEL, R.string.TURKEY, R.string.CYPRUS, R.string.GREECE};
@@ -64,5 +67,9 @@ public enum State {
 
     public float toMiddlePointY(State otherState) {
         return middleLocationY[value][otherState.value];
+    }
+
+    static final State generateRandomState() {
+        return values()[rand.nextInt(NUM_STATES)];
     }
 }
