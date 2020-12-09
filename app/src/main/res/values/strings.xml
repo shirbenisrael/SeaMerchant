@@ -88,4 +88,5 @@
     <string name="MARKET_STATE">Market state in the middle east</string>
     <string name="PRICE_UP">The %1$s\'s price in %2$s raised to %3$d$!</string>
     <string name="PRICE_DOWN">The %1$s\'s price in %2$s fall to %3$d$!</string>
+    <string name="FISH_BOAT">A fish boat collide with your ship. The damage is %1$d$!</string>
 </resources>

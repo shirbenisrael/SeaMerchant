@@ -221,7 +221,7 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
-    private @NonNull String generateNewDayEventString() {
+    private @NonNull String generateNewDaySpecialPriceString() {
         @StringRes int id = mLogic.mIsSpecialPriceHigh ? R.string.PRICE_UP : R.string.PRICE_DOWN;
         State state = mLogic.mSpecialPriceState;
         Goods goods = mLogic.mSpecialPriceGoods;
@@ -233,10 +233,24 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     public void showNewEvent() {
+        @DrawableRes int backgroundId;
+        String message;
         ((TextView)findViewById(R.id.day_message_with_event)).setText(mLogic.mCurrentDay.toStringId());
-        ((TextView)findViewById(R.id.special_event_message)).setText(generateNewDayEventString());
+        switch (mLogic.mNewDayEvent) {
+            case FISH_BOAT_COLLISION:
+                backgroundId = R.drawable.fish_boat;
+                message = mActivity.getString(R.string.FISH_BOAT, mLogic.mFishBoatCollisionDamage);
+                break;
 
-        @DrawableRes int backgroundId = mLogic.mIsSpecialPriceHigh ? R.drawable.price_up : R.drawable.price_down;
+            case SPECIAL_PRICE:
+                backgroundId = mLogic.mIsSpecialPriceHigh ? R.drawable.price_up : R.drawable.price_down;
+                message = generateNewDaySpecialPriceString();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + mLogic.mNewDayEvent);
+        }
+
+        ((TextView)findViewById(R.id.special_event_message)).setText(message);
         findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(backgroundId);
     }
 }

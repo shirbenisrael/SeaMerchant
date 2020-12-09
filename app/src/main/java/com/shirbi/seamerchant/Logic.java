@@ -36,8 +36,16 @@ public class Logic {
     public State mSpecialPriceState;
     public Goods mSpecialPriceGoods;
     public boolean mIsSpecialPriceHigh;
+    public int mFishBoatCollisionDamage;
 
     public int mInventory[];
+
+    public enum NewDayEvent {
+        SPECIAL_PRICE,
+        FISH_BOAT_COLLISION,
+    };
+
+    public NewDayEvent mNewDayEvent;
 
     public void startNewGame() {
 
@@ -116,7 +124,22 @@ public class Logic {
         mWeatherState = State.values()[mRand.nextInt(State.NUM_STATES)];
     }
 
+    private void generateFishBoatCollision() {
+        int maxDamage = Math.min(calculateTotalValue(), mCapacity * mCapacity) / 5;
+        mFishBoatCollisionDamage = mRand.nextInt(maxDamage);
+        mDamage += mFishBoatCollisionDamage;
+        mNewDayEvent = NewDayEvent.FISH_BOAT_COLLISION;
+    }
+
     public void generateNewDayEvent() {
+        int random = mRand.nextInt(6);
+        if (random == 0) {
+            generateFishBoatCollision();
+            return;
+        }
+
+        mNewDayEvent = NewDayEvent.SPECIAL_PRICE;
+
         mIsSpecialPriceHigh = mRand.nextInt(2) == 0;
         mSpecialPriceGoods = Goods.generateRandomGoods();
         mSpecialPriceState = State.GREECE;
@@ -128,5 +151,13 @@ public class Logic {
                 mSpecialPriceGoods.generateRandomLow();
 
         mPriceTable.setPrice(mSpecialPriceState, mSpecialPriceGoods, specialPrice);
+    }
+
+    private int calculateTotalValue() {
+        int totalValue = mCash + mBankDeposit;
+        for (Goods goods : Goods.values()) {
+            totalValue += mInventory[goods.getValue()] * mPriceTable.getPrice(mCurrentState, goods);
+        }
+        return totalValue;
     }
 }
