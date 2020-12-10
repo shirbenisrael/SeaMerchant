@@ -90,4 +90,7 @@
     <string name="PRICE_DOWN">The %1$s\'s price in %2$s fall to %3$d$!</string>
     <string name="FISH_BOAT">A fish boat collide with your ship. The damage is %1$d$!</string>
     <string name="FIRE">A fire breaks out in warehouses and destroys %1$d tonne of %2$s!</string>
+
+    <string name="BIGGER_SHIP_FOR_CASH_OFFER">You can increase the ship capacity by %1$d tonne for %2$d$.</string>
+    <string name="BIGGER_SHIP_FOR_GOODS_OFFER">You can increase the ship capacity by %1$d tonne for %2$d tonne of %3$s.</string>
 </resources>

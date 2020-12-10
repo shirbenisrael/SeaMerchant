@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
@@ -221,6 +222,20 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
+    private  @NonNull  String generateNewDayBiggerShipOffer() {
+        String offerString;
+        if (mLogic.mIsBiggerShipForCash) {
+            offerString = mActivity.getString(R.string.BIGGER_SHIP_FOR_CASH_OFFER,
+                    mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice);
+        } else {
+            String goodsString = getString(mLogic.mBiggerShipPriceGoodType.toStringId());
+            offerString = mActivity.getString(R.string.BIGGER_SHIP_FOR_GOODS_OFFER,
+                    mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice, goodsString);
+        }
+
+        return offerString;
+    }
+
     private @NonNull String generateNewDaySpecialPriceString() {
         @StringRes int id = mLogic.mIsSpecialPriceHigh ? R.string.PRICE_UP : R.string.PRICE_DOWN;
         State state = mLogic.mSpecialPriceState;
@@ -235,19 +250,35 @@ public class FrontEnd extends FrontEndGeneric {
     public void showNewEvent() {
         @DrawableRes int backgroundId;
         String message;
+        @IdRes int idToShow;
+        @IdRes int idToHide;
         ((TextView)findViewById(R.id.day_message_with_event)).setText(mLogic.mCurrentDay.toStringId());
         switch (mLogic.mNewDayEvent) {
+            case BIGGER_SHIP_OFFER:
+                idToShow = R.id.agree_or_cancel_layout;
+                idToHide = R.id.approve_event;
+                backgroundId = R.drawable.bigger_ship;
+                message = generateNewDayBiggerShipOffer();
+                break;
+
             case FIRE:
+                idToShow = R.id.approve_event;
+                idToHide = R.id.agree_or_cancel_layout;
                 backgroundId = R.drawable.fire;
                 String goodsString = getString(mLogic.mGoodsToBurn.toStringId());
                 message = mActivity.getString(R.string.FIRE, mLogic.mGoodsUnitsToBurn, goodsString);
                 break;
+
             case FISH_BOAT_COLLISION:
+                idToShow = R.id.approve_event;
+                idToHide = R.id.agree_or_cancel_layout;
                 backgroundId = R.drawable.fish_boat;
                 message = mActivity.getString(R.string.FISH_BOAT, mLogic.mFishBoatCollisionDamage);
                 break;
 
             case SPECIAL_PRICE:
+                idToShow = R.id.approve_event;
+                idToHide = R.id.agree_or_cancel_layout;
                 backgroundId = mLogic.mIsSpecialPriceHigh ? R.drawable.price_up : R.drawable.price_down;
                 message = generateNewDaySpecialPriceString();
                 break;
@@ -257,5 +288,7 @@ public class FrontEnd extends FrontEndGeneric {
 
         ((TextView)findViewById(R.id.special_event_message)).setText(message);
         findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(backgroundId);
+        findViewById(idToShow).setVisibility(View.VISIBLE);
+        findViewById(idToHide).setVisibility(View.GONE);
     }
 }

@@ -40,12 +40,19 @@ public class Logic {
     public int mGoodsUnitsToBurn = 0;
     public Goods mGoodsToBurn;
 
+    // For NewDayEvent.BIGGER_SHIP
+    public boolean mIsBiggerShipForCash;
+    public int mBiggerShipPrice;
+    public Goods mBiggerShipPriceGoodType;
+    public int mBiggerShipCapacity;
+
     public int mInventory[];
 
     public enum NewDayEvent {
         SPECIAL_PRICE,
         FISH_BOAT_COLLISION,
         FIRE,
+        BIGGER_SHIP_OFFER,
     };
 
     public NewDayEvent mNewDayEvent;
@@ -154,8 +161,43 @@ public class Logic {
         }
     }
 
+    public boolean generateBiggerShipDeal() {
+        if (calculateTotalValue() - mBankDeposit == 0) {
+            return false;
+        }
+        mBiggerShipPrice = mCash;
+        mIsBiggerShipForCash = true;
+        for (Goods goods : Goods.values()) {
+            if (mPriceTable.getPrice(mCurrentState, goods) * mInventory[goods.getValue()] > mBiggerShipPrice) {
+                mBiggerShipPrice = mPriceTable.getPrice(mCurrentState, goods) * mInventory[goods.getValue()];
+                mBiggerShipPriceGoodType = goods;
+                mIsBiggerShipForCash = false;
+            }
+        }
+        if (!mIsBiggerShipForCash) {
+            mBiggerShipPrice /= mPriceTable.getPrice(mCurrentState, mBiggerShipPriceGoodType);
+        }
+
+        mBiggerShipPrice = mRand.nextInt(mBiggerShipPrice) + 1;
+
+        int maxCapacityForCopper = calculateTotalValue() / mPriceTable.getPrice(mCurrentState, Goods.COPPER);
+        mBiggerShipCapacity = ((mRand.nextInt(maxCapacityForCopper + 1) + mRand.nextInt(100) + 26) / 25) * 25;
+        mNewDayEvent = NewDayEvent.BIGGER_SHIP_OFFER;
+        return true;
+    }
+
+    public void acceptBiggerShipDeal() {
+        mCapacity += mBiggerShipCapacity;
+        if (mIsBiggerShipForCash) {
+            mCash -= mBiggerShipPrice;
+        } else {
+            mInventory[mBiggerShipPriceGoodType.getValue()] -= mBiggerShipPrice;
+        }
+    }
+
     public void generateNewDayEvent() {
         int random = mRand.nextInt(6);
+
         if (random == 0) {
             generateFishBoatCollision();
             return;
@@ -163,6 +205,12 @@ public class Logic {
 
         if (random == 1) {
             if (generateFire()) {
+                return;
+            }
+        }
+
+        if (random == 2) {
+            if (generateBiggerShipDeal()) {
                 return;
             }
         }

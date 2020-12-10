@@ -145,6 +145,12 @@ public class MainActivity extends Activity {
         mFrontEnd.showState();
     }
 
+    public void onAcceptOffer(View view) {
+        mLogic.acceptBiggerShipDeal();
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+        mFrontEnd.showState();
+    }
+
     public void onGuardShipClick(View view) {
         mFrontEndSail.guardShipClick(view);
     }
