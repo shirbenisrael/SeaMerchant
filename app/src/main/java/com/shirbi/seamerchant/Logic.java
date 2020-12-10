@@ -37,12 +37,15 @@ public class Logic {
     public Goods mSpecialPriceGoods;
     public boolean mIsSpecialPriceHigh;
     public int mFishBoatCollisionDamage;
+    public int mGoodsUnitsToBurn = 0;
+    public Goods mGoodsToBurn;
 
     public int mInventory[];
 
     public enum NewDayEvent {
         SPECIAL_PRICE,
         FISH_BOAT_COLLISION,
+        FIRE,
     };
 
     public NewDayEvent mNewDayEvent;
@@ -131,11 +134,37 @@ public class Logic {
         mNewDayEvent = NewDayEvent.FISH_BOAT_COLLISION;
     }
 
+    // Return true if fire burn goods or false if nothing can be burned.
+    private boolean generateFire() {
+        mGoodsUnitsToBurn = 0;
+        for (Goods goods : Goods.values()) {
+            if (mInventory[goods.getValue()] > mGoodsUnitsToBurn) {
+                mGoodsUnitsToBurn = mInventory[goods.getValue()];
+                mGoodsToBurn = goods;
+            }
+        }
+
+        if (mGoodsUnitsToBurn > 0) {
+            mGoodsUnitsToBurn = mRand.nextInt(mGoodsUnitsToBurn / 2) + 1;
+            mNewDayEvent = NewDayEvent.FIRE;
+            mInventory[mGoodsToBurn.getValue()] -= mGoodsUnitsToBurn;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void generateNewDayEvent() {
         int random = mRand.nextInt(6);
         if (random == 0) {
             generateFishBoatCollision();
             return;
+        }
+
+        if (random == 1) {
+            if (generateFire()) {
+                return;
+            }
         }
 
         mNewDayEvent = NewDayEvent.SPECIAL_PRICE;

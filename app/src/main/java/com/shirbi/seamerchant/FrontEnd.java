@@ -237,6 +237,11 @@ public class FrontEnd extends FrontEndGeneric {
         String message;
         ((TextView)findViewById(R.id.day_message_with_event)).setText(mLogic.mCurrentDay.toStringId());
         switch (mLogic.mNewDayEvent) {
+            case FIRE:
+                backgroundId = R.drawable.fire;
+                String goodsString = getString(mLogic.mGoodsToBurn.toStringId());
+                message = mActivity.getString(R.string.FIRE, mLogic.mGoodsUnitsToBurn, goodsString);
+                break;
             case FISH_BOAT_COLLISION:
                 backgroundId = R.drawable.fish_boat;
                 message = mActivity.getString(R.string.FISH_BOAT, mLogic.mFishBoatCollisionDamage);
