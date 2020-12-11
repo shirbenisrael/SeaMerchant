@@ -206,6 +206,7 @@ public class Sail {
         if (mRand.nextInt(6) >= mSelectedNumGuardShips) {
             mPiratesDamage = 1 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
             mLogic.mDamage += mPiratesDamage;
+            mSailEndedPeacefully = false;
         }
     }
 
