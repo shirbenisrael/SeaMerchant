@@ -222,6 +222,19 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
+    private  @NonNull  String generateNewDayMerchantOffer() {
+        String offerString;
+        String goodsString = getString(mLogic.mMerchantGoods.toStringId());
+        if (mLogic.mIsMerchantBuy) {
+            offerString = mActivity.getString(R.string.MERCHANT_BUY, goodsString, mLogic.mMerchantPrice);
+        } else {
+            offerString = mActivity.getString(R.string.MERCHANT_SELL, goodsString,
+                    mLogic.mMerchantUnits, mLogic.mMerchantPrice);
+        }
+
+        return offerString;
+    }
+
     private  @NonNull  String generateNewDayBiggerShipOffer() {
         String offerString;
         if (mLogic.mIsBiggerShipForCash) {
@@ -254,6 +267,12 @@ public class FrontEnd extends FrontEndGeneric {
         @IdRes int idToHide;
         ((TextView)findViewById(R.id.day_message_with_event)).setText(mLogic.mCurrentDay.toStringId());
         switch (mLogic.mNewDayEvent) {
+            case MERCHANT:
+                idToShow = R.id.agree_or_cancel_layout;
+                idToHide = R.id.approve_event;
+                backgroundId = R.drawable.merchant;
+                message = generateNewDayMerchantOffer();
+                break;
             case BIGGER_SHIP_OFFER:
                 idToShow = R.id.agree_or_cancel_layout;
                 idToHide = R.id.approve_event;

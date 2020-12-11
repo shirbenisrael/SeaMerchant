@@ -10,6 +10,7 @@ public class Logic {
     private static final int START_CAPACITY = 100;
     private static final int EVENING_TIME = 16;
     private static final int NIGHT_TIME = 21;
+    private static final int MIN_VALUE_FOR_MERCHANT = 4500;
 
     private int mSailDurations[][] = {
             {0, 3, 6, 3, 0}, // From Egypt
@@ -46,6 +47,12 @@ public class Logic {
     public Goods mBiggerShipPriceGoodType;
     public int mBiggerShipCapacity;
 
+    // For NewDayEvent.MERCHANT
+    public boolean mIsMerchantBuy;
+    public int mMerchantPrice;
+    public Goods mMerchantGoods;
+    public int mMerchantUnits;
+
     public int mInventory[];
 
     public enum NewDayEvent {
@@ -53,6 +60,7 @@ public class Logic {
         FISH_BOAT_COLLISION,
         FIRE,
         BIGGER_SHIP_OFFER,
+        MERCHANT,
     };
 
     public NewDayEvent mNewDayEvent;
@@ -141,15 +149,24 @@ public class Logic {
         mNewDayEvent = NewDayEvent.FISH_BOAT_COLLISION;
     }
 
-    // Return true if fire burn goods or false if nothing can be burned.
-    private boolean generateFire() {
-        mGoodsUnitsToBurn = 0;
+    private Goods findGoodsWithMostUnits() {
+        Goods foundGoods = Goods.COPPER;
+        int maxUnits = 0;
+
         for (Goods goods : Goods.values()) {
-            if (mInventory[goods.getValue()] > mGoodsUnitsToBurn) {
-                mGoodsUnitsToBurn = mInventory[goods.getValue()];
-                mGoodsToBurn = goods;
+            if (mInventory[goods.getValue()] > maxUnits) {
+                maxUnits = mInventory[goods.getValue()];
+                foundGoods = goods;
             }
         }
+
+        return foundGoods;
+    }
+
+    // Return true if fire burn goods or false if nothing can be burned.
+    private boolean generateFire() { ;
+        mGoodsToBurn = findGoodsWithMostUnits();
+        mGoodsUnitsToBurn = mInventory[mGoodsToBurn.getValue()];
 
         if (mGoodsUnitsToBurn > 0) {
             mGoodsUnitsToBurn = mRand.nextInt(mGoodsUnitsToBurn / 2) + 1;
@@ -186,13 +203,58 @@ public class Logic {
         return true;
     }
 
-    public void acceptBiggerShipDeal() {
+    public void acceptOffer() {
+        switch (mNewDayEvent) {
+            case MERCHANT:
+                acceptMerchantDeal();
+                break;
+            case BIGGER_SHIP_OFFER:
+                acceptBiggerShipDeal();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + mNewDayEvent);
+        }
+    }
+
+    private void acceptMerchantDeal() {
+        if (mIsMerchantBuy) {
+            mCash += mMerchantPrice * mMerchantUnits;
+            mInventory[mMerchantGoods.getValue()] -= mMerchantUnits;
+        } else {
+            mCash -= mMerchantPrice * mMerchantUnits;
+            mInventory[mMerchantGoods.getValue()] += mMerchantUnits;
+        }
+    }
+
+    private void acceptBiggerShipDeal() {
         mCapacity += mBiggerShipCapacity;
         if (mIsBiggerShipForCash) {
             mCash -= mBiggerShipPrice;
         } else {
             mInventory[mBiggerShipPriceGoodType.getValue()] -= mBiggerShipPrice;
         }
+    }
+
+    public boolean generateMerchantDeal() {
+        int availableValue = calculateTotalValue() - mBankDeposit;
+        if (availableValue < MIN_VALUE_FOR_MERCHANT) {
+            return false;
+        }
+
+        mIsMerchantBuy = (availableValue > mCash);
+        if (mIsMerchantBuy) {
+            mMerchantGoods = findGoodsWithMostUnits();
+            mMerchantPrice = mMerchantGoods.generateRandomMerchant();
+            mMerchantUnits = mInventory[mMerchantGoods.getValue()];
+        } else {
+            mMerchantGoods = Goods.generateRandomType();
+            mMerchantPrice = mMerchantGoods.generateRandomMerchant();
+            mMerchantUnits = mRand.nextInt(mCash / mMerchantPrice) + 1;
+        }
+
+        mNewDayEvent = NewDayEvent.MERCHANT;
+
+        return true;
     }
 
     public void generateNewDayEvent() {
@@ -211,6 +273,12 @@ public class Logic {
 
         if (random == 2) {
             if (generateBiggerShipDeal()) {
+                return;
+            }
+        }
+
+        if (random == 3) {
+            if (generateMerchantDeal()) {
                 return;
             }
         }

@@ -93,4 +93,7 @@
 
     <string name="BIGGER_SHIP_FOR_CASH_OFFER">You can increase the ship capacity by %1$d tonne for %2$d$.</string>
     <string name="BIGGER_SHIP_FOR_GOODS_OFFER">You can increase the ship capacity by %1$d tonne for %2$d tonne of %3$s.</string>
+
+    <string name="MERCHANT_BUY">A merchant needs urgently %1$s. He is willing to pay %2$d$ for tonne for all your inventory. Will you sell?</string>
+    <string name="MERCHANT_SELL">A merchant needs urgently to get rid of his %1$s. He is willing to sell %2$d tonne for %3$d$ per tonne. Will you buy?</string>
 </resources>

@@ -146,7 +146,7 @@ public class MainActivity extends Activity {
     }
 
     public void onAcceptOffer(View view) {
-        mLogic.acceptBiggerShipDeal();
+        mLogic.acceptOffer();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
     }

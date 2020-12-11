@@ -20,6 +20,9 @@ public enum Goods {
     static private int[] highMinimum = {15, 14, 36};
     static private int[] highNumValues = {3, 3, 10};
 
+    static private int[] merchantMinimum = {4, 5, 20};
+    static private int[] merchantNumValues = {12, 12, 21};
+
     private static final int[] mWideButtonImageId = {
             R.drawable.wide_wheat_button, R.drawable.wide_olives_button, R.drawable.wide_copper_button};
 
@@ -47,6 +50,14 @@ public enum Goods {
 
     public int generateRandomHigh() {
         return (rand.nextInt(highNumValues[value]) + highMinimum[value]) * multiplier[value];
+    }
+
+    public int generateRandomMerchant() {
+        return (rand.nextInt(merchantNumValues[value]) + merchantMinimum[value]) * multiplier[value];
+    }
+
+    static public Goods generateRandomType() {
+        return values()[rand.nextInt(Goods.NUM_GOODS_TYPES)];
     }
 
     public int toWideButtonId() {
