@@ -191,6 +191,7 @@ public class MainActivity extends Activity {
     public void onSendOfferToPirates(View view) {
         if (mFrontEndNegotiation.sendOfferToPirates()) {
             mFrontEnd.showWindow(Window.PIRATE_ACCEPT_OFFER_WINDOW);
+            mLogic.mSail.negotiationSucceeds();
         } else {
             mFrontEndPirates.showPiratesRefuseOffer();
             mFrontEnd.showWindow(Window.PIRATES_WINDOW);

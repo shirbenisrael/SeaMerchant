@@ -319,4 +319,24 @@ public class Logic {
     public void removeGoodsFromInventory(Goods goods, int units) {
         mInventory[goods.getValue()] -= units;
     }
+
+    public boolean sendOfferToPirates(int goodsOffer[], int cashOffer) {
+        int offerValue = cashOffer;
+        for (Goods goods : Goods.values()) {
+            offerValue += goodsOffer[goods.getValue()] * mPriceTable.getPrice(mCurrentState, goods);
+        }
+
+        int desired = mRand.nextInt((calculateTotalValue() - mBankDeposit) / 2);
+
+        if (desired > offerValue) {
+            return false;
+        }
+
+        for (Goods goods : Goods.values()) {
+            removeGoodsFromInventory(goods, goodsOffer[goods.getValue()]);
+        }
+        mCash -= cashOffer;
+
+        return true;
+    }
 }

@@ -84,6 +84,6 @@ public class FrontEndNegotiation extends FrontEndGeneric {
         SeekBar seekBar = findViewById(R.id.negotiate_cash_seek_bar);
         int cashToOffer = seekBar.getProgress();
 
-        return mLogic.mSail.sendOfferToPirates(goodToOffer, cashToOffer);
+        return mLogic.sendOfferToPirates(goodToOffer, cashToOffer);
     }
 }

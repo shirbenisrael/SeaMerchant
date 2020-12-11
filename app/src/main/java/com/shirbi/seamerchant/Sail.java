@@ -214,25 +214,9 @@ public class Sail {
         return tryToDoSomething(getPercentsToEscapeFromPirates());
     }
 
-    public boolean sendOfferToPirates(int goodsOffer[], int cashOffer) {
-        int offerValue = cashOffer;
-        for (Goods goods : Goods.values()) {
-            offerValue += goodsOffer[goods.getValue()] * mLogic.mPriceTable.getPrice(mSource, goods);
-        }
-
-        int desired = mRand.nextInt(mValueOnShip / 3);
-
-        if (desired > offerValue) {
-            return false;
-        }
-
-        for (Goods goods : Goods.values()) {
-            mLogic.mInventory[goods.getValue()] -= goodsOffer[goods.getValue()];
-        }
-        mLogic.mCash -= cashOffer;
+    public void negotiationSucceeds() {
         calculateShipValue();
         mSailEndedPeacefully = false;
-        return true;
     }
 
     public boolean isWinPiratesSucceeds() {
