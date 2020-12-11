@@ -320,7 +320,7 @@ public class Logic {
         mInventory[goods.getValue()] -= units;
     }
 
-    public boolean sendOfferToPirates(int goodsOffer[], int cashOffer) {
+    public boolean sendOffer(int goodsOffer[], int cashOffer) {
         int offerValue = cashOffer;
         for (Goods goods : Goods.values()) {
             offerValue += goodsOffer[goods.getValue()] * mPriceTable.getPrice(mCurrentState, goods);

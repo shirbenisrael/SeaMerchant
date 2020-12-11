@@ -180,16 +180,16 @@ public class MainActivity extends Activity {
     }
 
     public void onNegotiateClick(View view) {
-        mFrontEnd.showWindow(Window.PIRATE_NEGOTIATE_WINDOW);
-        mFrontEndNegotiation.showNegotiatePirates();
+        mFrontEnd.showWindow(Window.NEGOTIATE_WINDOW);
+        mFrontEndNegotiation.showNegotiatation();
     }
 
-    public void onCancelOfferToPirates(View view) {
+    public void onCancelOffer(View view) {
         mFrontEnd.showWindow(Window.PIRATES_WINDOW);
     }
 
     public void onSendOfferToPirates(View view) {
-        if (mFrontEndNegotiation.sendOfferToPirates()) {
+        if (mFrontEndNegotiation.sendOffer()) {
             mFrontEnd.showWindow(Window.PIRATE_ACCEPT_OFFER_WINDOW);
             mLogic.mSail.negotiationSucceeds();
         } else {

@@ -11,7 +11,7 @@ public class FrontEndNegotiation extends FrontEndGeneric {
     }
 
     private void updateGoodsOffer(Goods goods) {
-        LinearLayout inventoryLayout = findViewById(R.id.inventory_for_pirates);
+        LinearLayout inventoryLayout = findViewById(R.id.inventory_to_offer);
         String goodString = getString(goods.toStringId());
         SeekBar seekBar = (SeekBar)inventoryLayout.getChildAt(goods.getValue() * 2 + 1);
 
@@ -30,8 +30,8 @@ public class FrontEndNegotiation extends FrontEndGeneric {
         textView.setText(cashToGive);
     }
 
-    public void showNegotiatePirates() {
-        LinearLayout inventoryLayout = findViewById(R.id.inventory_for_pirates);
+    public void showNegotiatation() {
+        LinearLayout inventoryLayout = findViewById(R.id.inventory_to_offer);
         for (Goods goods : Goods.values()) {
             SeekBar seekBar = (SeekBar)inventoryLayout.getChildAt(goods.getValue() * 2 + 1);
             int maxUnits = mLogic.mInventory[goods.getValue()];
@@ -73,8 +73,8 @@ public class FrontEndNegotiation extends FrontEndGeneric {
         });
     }
 
-    public boolean sendOfferToPirates() {
-        LinearLayout inventoryLayout = findViewById(R.id.inventory_for_pirates);
+    public boolean sendOffer() {
+        LinearLayout inventoryLayout = findViewById(R.id.inventory_to_offer);
         int[] goodToOffer = new int[Goods.NUM_GOODS_TYPES];
         for (Goods goods : Goods.values()) {
             SeekBar seekBar = (SeekBar)inventoryLayout.getChildAt(goods.getValue() * 2 + 1);
@@ -84,6 +84,6 @@ public class FrontEndNegotiation extends FrontEndGeneric {
         SeekBar seekBar = findViewById(R.id.negotiate_cash_seek_bar);
         int cashToOffer = seekBar.getProgress();
 
-        return mLogic.sendOfferToPirates(goodToOffer, cashToOffer);
+        return mLogic.sendOffer(goodToOffer, cashToOffer);
     }
 }
