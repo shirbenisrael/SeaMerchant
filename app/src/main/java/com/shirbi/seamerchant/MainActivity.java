@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
     FrontEndPirates mFrontEndPirates;
     FrontEndAbandonedShip mFrontEndAbandonedShip;
     FrontEndBadWeatherInSail mFrontEndBadWeatherInSail;
+    FrontEndNegotiation mFrontEndNegotiation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class MainActivity extends Activity {
         mFrontEndPirates = new FrontEndPirates(this);
         mFrontEndAbandonedShip = new FrontEndAbandonedShip(this);
         mFrontEndBadWeatherInSail = new FrontEndBadWeatherInSail(this);
+        mFrontEndNegotiation = new FrontEndNegotiation(this);
 
         mLogic.startNewGame();
         mFrontEnd.showState();
@@ -179,7 +181,7 @@ public class MainActivity extends Activity {
 
     public void onNegotiateClick(View view) {
         mFrontEnd.showWindow(Window.PIRATE_NEGOTIATE_WINDOW);
-        mFrontEndPirates.showNegotiatePirates();
+        mFrontEndNegotiation.showNegotiatePirates();
     }
 
     public void onCancelOfferToPirates(View view) {
@@ -187,7 +189,7 @@ public class MainActivity extends Activity {
     }
 
     public void onSendOfferToPirates(View view) {
-        if (mFrontEndPirates.sendOfferToPirates()) {
+        if (mFrontEndNegotiation.sendOfferToPirates()) {
             mFrontEnd.showWindow(Window.PIRATE_ACCEPT_OFFER_WINDOW);
         } else {
             mFrontEndPirates.showPiratesRefuseOffer();
