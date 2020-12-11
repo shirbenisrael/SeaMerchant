@@ -61,6 +61,7 @@ public class Logic {
         FIRE,
         BIGGER_SHIP_OFFER,
         MERCHANT,
+        STRIKE,
     };
 
     public NewDayEvent mNewDayEvent;
@@ -266,6 +267,11 @@ public class Logic {
         }
 
         if (random == 1) {
+            if (mCurrentDay.getValue() < WeekDay.FRIDAY.getValue() && (
+                    calculateTotalValue() - mBankDeposit > 0) ) {
+                mNewDayEvent = NewDayEvent.STRIKE;
+                return;
+            }
             if (generateFire()) {
                 return;
             }

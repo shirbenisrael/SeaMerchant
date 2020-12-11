@@ -132,8 +132,12 @@ public class MainActivity extends Activity {
     public void onExitWeatherWindow(View view) {
         if (mLogic.mCurrentDay != WeekDay.SUNDAY) {
             mLogic.generateNewDayEvent();
-            mFrontEnd.showWindow(Window.SIMPLE_NEW_DAY_EVENT_WINDOW);
-            mFrontEnd.showNewEvent();
+            if (mLogic.mNewDayEvent == Logic.NewDayEvent.STRIKE) {
+                mFrontEnd.showWindow(Window.STRIKE_WINDOW);
+            } else {
+                mFrontEnd.showWindow(Window.SIMPLE_NEW_DAY_EVENT_WINDOW);
+                mFrontEnd.showNewEvent();
+            }
         } else {
             mFrontEnd.showWindow(Window.MAIN_WINDOW);
             mFrontEnd.showState();

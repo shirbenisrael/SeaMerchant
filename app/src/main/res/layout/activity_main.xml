@@ -80,4 +80,9 @@
         android:id="@+id/bad_weather_in_sail_layout"
         layout="@layout/bad_weather_in_sail_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/strike_layout"
+        layout="@layout/strike_layout"
+        android:visibility="gone" />
 </LinearLayout>
