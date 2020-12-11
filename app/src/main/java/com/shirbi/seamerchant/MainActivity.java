@@ -108,7 +108,6 @@ public class MainActivity extends Activity {
 
     public void onSailClick(View view) {
         // TODO: start sail in logic - change time, reduce cash of guards...
-
         mFrontEndSail.startSail();
     }
 
@@ -146,9 +145,27 @@ public class MainActivity extends Activity {
         }
     }
 
+    public void onNewCrewClick(View view) {
+        mFrontEnd.showWindow(Window.SIMPLE_NEW_DAY_EVENT_WINDOW);
+        mFrontEnd.showNewCrewNextDay();
+        mLogic.findNewCrew();
+    }
+
     public void onExitSimpleNewDayEventWindow(View view) {
-        mFrontEnd.showWindow(Window.MAIN_WINDOW);
-        mFrontEnd.showState();
+        if (mLogic.mNewDayEvent == Logic.NewDayEvent.STRIKE) {
+            if (mLogic.mLoseDayByStrike > 0) {
+                mLogic.mCurrentDay = mLogic.mCurrentDay.add(mLogic.mLoseDayByStrike);
+                mLogic.mLoseDayByStrike = 0;
+                mFrontEnd.showWindow(Window.WEATHER_WINDOW);
+                mFrontEnd.showNewWeather();
+            } else {
+                mFrontEnd.showWindow(Window.MAIN_WINDOW);
+                mFrontEnd.showState();
+            }
+        } else {
+            mFrontEnd.showWindow(Window.MAIN_WINDOW);
+            mFrontEnd.showState();
+        }
     }
 
     public void onAcceptOffer(View view) {
@@ -181,20 +198,34 @@ public class MainActivity extends Activity {
 
     public void onNegotiateClick(View view) {
         mFrontEnd.showWindow(Window.NEGOTIATE_WINDOW);
-        mFrontEndNegotiation.showNegotiatation();
+        mFrontEndNegotiation.showNegotiation();
     }
 
     public void onCancelOffer(View view) {
-        mFrontEnd.showWindow(Window.PIRATES_WINDOW);
+        if (mLogic.mNegotiationType == Logic.NegotiationType.PIRATES) {
+            mFrontEnd.showWindow(Window.PIRATES_WINDOW);
+        } else {
+            mFrontEnd.showWindow(Window.STRIKE_WINDOW);
+        }
     }
 
     public void onSendOfferToPirates(View view) {
         if (mFrontEndNegotiation.sendOffer()) {
-            mFrontEnd.showWindow(Window.PIRATE_ACCEPT_OFFER_WINDOW);
-            mLogic.mSail.negotiationSucceeds();
+            if (mLogic.mNegotiationType == Logic.NegotiationType.PIRATES) {
+                mFrontEnd.showWindow(Window.PIRATE_ACCEPT_OFFER_WINDOW);
+                mLogic.mSail.negotiationSucceeds();
+            } else {
+                mFrontEnd.showWindow(Window.SIMPLE_NEW_DAY_EVENT_WINDOW);
+                mFrontEnd.showCrewNegotiationSucceed();
+            }
         } else {
-            mFrontEndPirates.showPiratesRefuseOffer();
-            mFrontEnd.showWindow(Window.PIRATES_WINDOW);
+            if (mLogic.mNegotiationType == Logic.NegotiationType.PIRATES) {
+                mFrontEndPirates.showPiratesRefuseOffer();
+                mFrontEnd.showWindow(Window.PIRATES_WINDOW);
+            } else {
+                mFrontEnd.showWindow(Window.SIMPLE_NEW_DAY_EVENT_WINDOW);
+                mFrontEnd.showCrewNegotiationFail();
+            }
         }
     }
 
@@ -214,6 +245,7 @@ public class MainActivity extends Activity {
     }
 
     public void showPirates() {
+        mLogic.mNegotiationType = Logic.NegotiationType.PIRATES;
         mFrontEnd.showWindow(Window.PIRATES_WINDOW);
         mFrontEndPirates.showChances();
     }

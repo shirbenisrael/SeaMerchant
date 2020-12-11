@@ -20,7 +20,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="20dp"
-        android:text="@string/OFFER_ACCEPTED" />
+        android:text="@string/PIRATES_OFFER_ACCEPTED" />
 
     <TextView
         android:layout_width="match_parent"

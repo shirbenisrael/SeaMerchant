@@ -67,7 +67,7 @@
     <string name="OFFER_TO_PIRATES">What will you offer to the pirates?</string>
     <string name="GOODS_TO_OFFSET">%1$s: %2$d out of %3$d tonne</string>
     <string name="CASH_TO_OFFER">Cash: %1$d out of %2$d$</string>
-    <string name="OFFER_ACCEPTED">The pirates accepted your offer.</string>
+    <string name="PIRATES_OFFER_ACCEPTED">The pirates accepted your offer.</string>
 
     <string name="ABANDONED_SHIP">Abandoned Ship!</string>
     <string name="ABANDONED_SHIP_INVENTORY">You have found an abandoned ship with %1$d tonne of %2$s on it.</string>
@@ -100,4 +100,9 @@
     <string name="STRIKE_TITLE">The ship crew strikes!\n Will you negotiate with them?</string>
     <string name="STRIKE_OPTIONS">If negotiation fails it would take two days to find new crew. You can look for a new crew now and lose one day job. </string>
     <string name="NEW_CREW">New crew</string>
+    <string name="OFFER_TO_CREW">What will you offer to the crew?</string>
+    <string name="CREW_OFFER_ACCEPTED">The crew accepted your offer.</string>
+    <string name="CREW_REFUSE_OFFER">The crew refuses to your offer!</string>
+    <string name="LOSE_2_DAYS">You lose two days finding new crew.</string>
+    <string name="NEXT_DAY_NEW_CREW">In the next day you are working with new crew.</string>
 </resources>

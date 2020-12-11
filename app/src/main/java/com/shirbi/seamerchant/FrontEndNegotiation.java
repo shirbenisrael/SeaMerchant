@@ -30,7 +30,13 @@ public class FrontEndNegotiation extends FrontEndGeneric {
         textView.setText(cashToGive);
     }
 
-    public void showNegotiatation() {
+    public void showNegotiation() {
+        findViewById(R.id.negotiate_layout).setBackgroundResource(mLogic.mNegotiationType == Logic.NegotiationType.PIRATES ?
+                R.drawable.pirate : R.drawable.strike);
+
+        ((TextView)findViewById(R.id.offer_question)).setText(mLogic.mNegotiationType == Logic.NegotiationType.PIRATES ?
+                R.string.OFFER_TO_PIRATES : R.string.OFFER_TO_CREW);
+
         LinearLayout inventoryLayout = findViewById(R.id.inventory_to_offer);
         for (Goods goods : Goods.values()) {
             SeekBar seekBar = (SeekBar)inventoryLayout.getChildAt(goods.getValue() * 2 + 1);

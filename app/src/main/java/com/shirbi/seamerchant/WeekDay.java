@@ -28,5 +28,7 @@ public enum WeekDay {
         return mStrings[value];
     }
 
-
+    public WeekDay add(int days) {
+        return WeekDay.values()[value + days];
+    }
 }

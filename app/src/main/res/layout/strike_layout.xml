@@ -44,7 +44,7 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="@string/NEGOTIATE"
-            android:onClick="onExitSimpleNewDayEventWindow" />
+            android:onClick="onNegotiateClick" />
 
         <include layout="@layout/empty_horizontal_text" />
 
@@ -55,7 +55,7 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="@string/NEW_CREW"
-            android:onClick="onExitSimpleNewDayEventWindow" />
+            android:onClick="onNewCrewClick" />
 
         <include layout="@layout/empty_horizontal_text" />
 

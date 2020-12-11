@@ -310,4 +310,24 @@ public class FrontEnd extends FrontEndGeneric {
         findViewById(idToShow).setVisibility(View.VISIBLE);
         findViewById(idToHide).setVisibility(View.GONE);
     }
+
+    private void showCrewNegotiationResult(@StringRes int part1, @StringRes int part2 ) {
+        findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.strike);
+        findViewById(R.id.approve_event).setVisibility(View.VISIBLE);
+        findViewById(R.id.agree_or_cancel_layout).setVisibility(View.GONE);
+        ((TextView)findViewById(R.id.day_message_with_event)).setText(part1);
+        ((TextView)findViewById(R.id.special_event_message)).setText(part2);
+    }
+
+    public void showCrewNegotiationFail() {
+        showCrewNegotiationResult(R.string.CREW_REFUSE_OFFER, R.string.LOSE_2_DAYS);
+    }
+
+    public void showCrewNegotiationSucceed() {
+        showCrewNegotiationResult(mLogic.mCurrentDay.toStringId(), R.string.CREW_OFFER_ACCEPTED);
+    }
+
+    public void showNewCrewNextDay() {
+        showCrewNegotiationResult(mLogic.mCurrentDay.toStringId(), R.string.NEXT_DAY_NEW_CREW);
+    }
 }

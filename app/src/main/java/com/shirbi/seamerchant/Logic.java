@@ -53,6 +53,9 @@ public class Logic {
     public Goods mMerchantGoods;
     public int mMerchantUnits;
 
+    public NegotiationType mNegotiationType;
+    public int mLoseDayByStrike;
+
     public int mInventory[];
 
     public enum NewDayEvent {
@@ -63,6 +66,11 @@ public class Logic {
         MERCHANT,
         STRIKE,
     };
+
+    public enum NegotiationType {
+        PIRATES,
+        CREW,
+    }
 
     public NewDayEvent mNewDayEvent;
 
@@ -135,7 +143,7 @@ public class Logic {
     }
 
     public void startNewDay() {
-
+        mLoseDayByStrike = 0;
         mPriceTable.generateRandomPrices();
         mCurrentHour = START_HOUR;
         mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
@@ -261,6 +269,12 @@ public class Logic {
     public void generateNewDayEvent() {
         int random = mRand.nextInt(6);
 
+        if (random < 7) {
+            mNewDayEvent = NewDayEvent.STRIKE;
+            mNegotiationType = NegotiationType.CREW;
+            return;
+        }
+
         if (random == 0) {
             generateFishBoatCollision();
             return;
@@ -270,6 +284,7 @@ public class Logic {
             if (mCurrentDay.getValue() < WeekDay.FRIDAY.getValue() && (
                     calculateTotalValue() - mBankDeposit > 0) ) {
                 mNewDayEvent = NewDayEvent.STRIKE;
+                mNegotiationType = NegotiationType.CREW;
                 return;
             }
             if (generateFire()) {
@@ -326,9 +341,14 @@ public class Logic {
             offerValue += goodsOffer[goods.getValue()] * mPriceTable.getPrice(mCurrentState, goods);
         }
 
-        int desired = mRand.nextInt((calculateTotalValue() - mBankDeposit) / 2);
+        int divider = (mNegotiationType == NegotiationType.PIRATES) ? 2 : 3;
+
+        int desired = mRand.nextInt((calculateTotalValue() - mBankDeposit) / divider);
 
         if (desired > offerValue) {
+            if (mNegotiationType == NegotiationType.CREW) {
+                mLoseDayByStrike = 2;
+            }
             return false;
         }
 
@@ -338,5 +358,9 @@ public class Logic {
         mCash -= cashOffer;
 
         return true;
+    }
+
+    public void findNewCrew() {
+        mLoseDayByStrike = 1;
     }
 }
