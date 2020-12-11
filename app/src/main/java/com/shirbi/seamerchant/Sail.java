@@ -158,7 +158,7 @@ public class Sail {
         mAbandonedShipGoods = Goods.values()[mRand.nextInt(Goods.NUM_GOODS_TYPES)];
         mAbandonedShipGoodsUnits = mRand.nextInt(mLogic.mBankDeposit + mValueOnShip) /
                 mLogic.mPriceTable.getPrice(mSource, mAbandonedShipGoods) + 1;
-        mLogic.mInventory[mAbandonedShipGoods.getValue()] += mAbandonedShipGoodsUnits;
+        mLogic.addGoodsToInventory(mAbandonedShipGoods, mAbandonedShipGoodsUnits);
     }
 
     public boolean isPirateAppear() {
@@ -187,7 +187,7 @@ public class Sail {
                     }
                 }
                 mPiratesStolen = 1 + mRand.nextInt(1 + mLogic.mInventory[mPiratesStolenGoods.getValue()] / 2);
-                mLogic.mInventory[mPiratesStolenGoods.getValue()] -= mPiratesStolen;
+                mLogic.removeGoodsFromInventory(mPiratesStolenGoods, mPiratesStolen);
             }
 
             return;

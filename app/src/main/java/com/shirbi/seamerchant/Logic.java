@@ -171,7 +171,7 @@ public class Logic {
         if (mGoodsUnitsToBurn > 0) {
             mGoodsUnitsToBurn = mRand.nextInt(mGoodsUnitsToBurn / 2) + 1;
             mNewDayEvent = NewDayEvent.FIRE;
-            mInventory[mGoodsToBurn.getValue()] -= mGoodsUnitsToBurn;
+            removeGoodsFromInventory(mGoodsToBurn, mGoodsUnitsToBurn);
             return true;
         } else {
             return false;
@@ -219,10 +219,10 @@ public class Logic {
     private void acceptMerchantDeal() {
         if (mIsMerchantBuy) {
             mCash += mMerchantPrice * mMerchantUnits;
-            mInventory[mMerchantGoods.getValue()] -= mMerchantUnits;
+            removeGoodsFromInventory(mMerchantGoods, mMerchantUnits);
         } else {
             mCash -= mMerchantPrice * mMerchantUnits;
-            mInventory[mMerchantGoods.getValue()] += mMerchantUnits;
+            addGoodsToInventory(mMerchantGoods, mMerchantUnits);
         }
     }
 
@@ -231,7 +231,7 @@ public class Logic {
         if (mIsBiggerShipForCash) {
             mCash -= mBiggerShipPrice;
         } else {
-            mInventory[mBiggerShipPriceGoodType.getValue()] -= mBiggerShipPrice;
+            removeGoodsFromInventory(mBiggerShipPriceGoodType, mBiggerShipPrice);
         }
     }
 
@@ -304,5 +304,13 @@ public class Logic {
             totalValue += mInventory[goods.getValue()] * mPriceTable.getPrice(mCurrentState, goods);
         }
         return totalValue;
+    }
+
+    public void addGoodsToInventory(Goods goods, int units) {
+        mInventory[goods.getValue()] += units;
+    }
+
+    public void removeGoodsFromInventory(Goods goods, int units) {
+        mInventory[goods.getValue()] -= units;
     }
 }
