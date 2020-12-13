@@ -322,4 +322,20 @@ public class MainActivity extends Activity {
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
+
+    public void onFixButtonClick(View view) {
+        mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
+    }
+
+    public void onFixAllClick(View view) {
+
+    }
+
+    public void onFixCancelClick(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+    }
+
+    public void onFixDoneClick(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+    }
 }

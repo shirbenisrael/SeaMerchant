@@ -204,6 +204,7 @@
                 android:background="@drawable/wide_ship_button"
                 android:gravity="right|center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:onClick="onFixButtonClick"
                 android:text="ספינה תקינה" />
 
             <TextView
