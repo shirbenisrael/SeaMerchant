@@ -32,6 +32,7 @@
 
     <string name="FIXED_SHIP">Fixed ship</string>
     <string name="DAMAGED_SHIP">Damage: %1$d\$</string>
+    <string name="FIXING_STRING">Fix: %1$d\$</string>
 
     <string name="GOOD_SEA_STRING">The sea looks good today</string>
     <string name="STORM_STRING">Storm develops near %1$s today</string>

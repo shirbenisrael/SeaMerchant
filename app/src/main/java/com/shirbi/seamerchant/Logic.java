@@ -33,6 +33,7 @@ public class Logic {
     public int mCapacity;
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
+    FixShipDeal mFixShipDeal;
     Sail mSail;
     public State mSpecialPriceState;
     public Goods mSpecialPriceGoods;
@@ -110,6 +111,16 @@ public class Logic {
     public void applyBankDeal() {
         mCash = mBankDeal.mCash;
         mBankDeposit = mBankDeal.mDeposit;
+        mCurrentHour++;
+    }
+
+    public void initFixShipDeal() {
+        mFixShipDeal = new FixShipDeal(this);
+    }
+
+    public void applyShipFixDeal() {
+        mCash -= mFixShipDeal.mCurrentFix;
+        mDamage -= mFixShipDeal.mCurrentFix;
         mCurrentHour++;
     }
 

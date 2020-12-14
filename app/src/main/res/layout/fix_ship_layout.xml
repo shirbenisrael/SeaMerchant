@@ -92,7 +92,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center"
-            android:onClick="onFixAllClick"
+            android:onClick="fixAsPossible"
             android:text="תקן ככל האפשר" />
 
         <include layout="@layout/empty_horizontal_text" />

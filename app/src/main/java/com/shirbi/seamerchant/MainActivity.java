@@ -14,6 +14,7 @@ public class MainActivity extends Activity {
     FrontEndAbandonedShip mFrontEndAbandonedShip;
     FrontEndBadWeatherInSail mFrontEndBadWeatherInSail;
     FrontEndNegotiation mFrontEndNegotiation;
+    FrontEndFixShip mFrontEndFixShip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainActivity extends Activity {
         mFrontEndAbandonedShip = new FrontEndAbandonedShip(this);
         mFrontEndBadWeatherInSail = new FrontEndBadWeatherInSail(this);
         mFrontEndNegotiation = new FrontEndNegotiation(this);
+        mFrontEndFixShip = new FrontEndFixShip(this);
 
         mLogic.startNewGame();
         mFrontEnd.showState();
@@ -324,11 +326,13 @@ public class MainActivity extends Activity {
     }
 
     public void onFixButtonClick(View view) {
+        mLogic.initFixShipDeal();
+        mFrontEndFixShip.onFixShipClick();
         mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
     }
 
-    public void onFixAllClick(View view) {
-
+    public void fixAsPossible(View view) {
+        mFrontEndFixShip.fixAsPossible();
     }
 
     public void onFixCancelClick(View view) {
@@ -336,6 +340,8 @@ public class MainActivity extends Activity {
     }
 
     public void onFixDoneClick(View view) {
+        mLogic.applyShipFixDeal();
+        mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
 }
