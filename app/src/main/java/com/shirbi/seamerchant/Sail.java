@@ -156,7 +156,7 @@ public class Sail {
 
     public void createAbandonedShip() {
         mAbandonedShipGoods = Goods.values()[mRand.nextInt(Goods.NUM_GOODS_TYPES)];
-        mAbandonedShipGoodsUnits = mRand.nextInt(mLogic.mBankDeposit + mValueOnShip) /
+        mAbandonedShipGoodsUnits = mRand.nextInt(mLogic.mBankDeposit + mValueOnShip + 1) /
                 mLogic.mPriceTable.getPrice(mSource, mAbandonedShipGoods) + 1;
         mLogic.addGoodsToInventory(mAbandonedShipGoods, mAbandonedShipGoodsUnits);
     }
