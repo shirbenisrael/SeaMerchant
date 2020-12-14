@@ -35,7 +35,7 @@ public class FrontEndBank extends FrontEndGeneric {
         String cash = mActivity.getString(R.string.CASH_STRING, mLogic.mBankDeal.mCash);
         ((TextView)findViewById(R.id.bank_cash_units)).setText(cash);
 
-        SeekBar seekBar = (SeekBar)findViewById(R.id.market_seek_bar);
+        SeekBar seekBar = (SeekBar)findViewById(R.id.bank_seek_bar);
         seekBar.setProgress(mLogic.mBankDeal.mDeposit);
     }
 }
