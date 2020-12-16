@@ -28,6 +28,7 @@ public class Sail {
     static final int PERCENT_OF_WRONG_NAVIGATION_ON_WIND = 33;
     static final int PERCENT_OF_STORM_APPEAR = 33;
     static final int PERCENT_OF_ABANDONED_SHIP_APPEAR = 11;
+    static final int PERCENT_OF_SHOAL_APPEAR = 33;
 
     public enum BattleResult {
         WIN_AND_CAPTURE,
@@ -49,6 +50,8 @@ public class Sail {
 
     public Goods mAbandonedShipGoods;
     public int mAbandonedShipGoodsUnits;
+
+    public int mShoalDamage;
 
     private void calculateShipValue() {
         mValueOnShip = mLogic.mCash;
@@ -105,6 +108,14 @@ public class Sail {
         return tryToDoSomething(PERCENT_OF_ABANDONED_SHIP_APPEAR);
     }
 
+    public boolean isShoalInSail() {
+        if (mLogic.mCurrentHour >= Logic.EVENING_TIME) {
+            return tryToDoSomething(PERCENT_OF_SHOAL_APPEAR);
+        }
+
+        return false;
+    }
+
     public boolean isBadWeatherInSail() {
         if ((mSource == mLogic.mWeatherState) || (mDestination == mLogic.mWeatherState)) {
             if (mLogic.mWeather == Weather.WIND) {
@@ -159,6 +170,12 @@ public class Sail {
         mAbandonedShipGoodsUnits = mRand.nextInt(mLogic.mBankDeposit + mValueOnShip + 1) /
                 mLogic.mPriceTable.getPrice(mSource, mAbandonedShipGoods) + 1;
         mLogic.addGoodsToInventory(mAbandonedShipGoods, mAbandonedShipGoodsUnits);
+    }
+
+    public void createShoal() {
+        mSailEndedPeacefully = false;
+        mShoalDamage = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+        mLogic.mDamage += mShoalDamage;
     }
 
     public boolean isPirateAppear() {

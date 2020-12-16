@@ -90,4 +90,9 @@
         android:id="@+id/fix_ship_layout"
         layout="@layout/fix_ship_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/shoal_layout"
+        layout="@layout/shoal_layout"
+        android:visibility="gone" />
 </LinearLayout>

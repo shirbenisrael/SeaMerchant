@@ -123,7 +123,10 @@ public class FrontEndSail extends FrontEndGeneric {
             mProgress += 2;
 
             if ((mProgress == 50) && mRealSail) {
-                if (mLogic.mSail.isBadWeatherInSail()) {
+                if (mLogic.mSail.isShoalInSail()) {
+                    pauseSail();
+                    mActivity.showShoal();
+                } else if (mLogic.mSail.isBadWeatherInSail()) {
                     pauseSail();
                     mActivity.showBadWeatherInSail();
                 } else if (mLogic.mSail.isAbandonedShipAppear()) {

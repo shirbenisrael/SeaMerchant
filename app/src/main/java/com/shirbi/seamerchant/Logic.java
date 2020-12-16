@@ -8,7 +8,7 @@ public class Logic {
     private static final Weather START_WEATHER = Weather.GOOD_SAILING;
     private static final State START_STATE = State.ISRAEL;
     private static final int START_CAPACITY = 100;
-    private static final int EVENING_TIME = 16;
+    public static final int EVENING_TIME = 17;
     private static final int NIGHT_TIME = 21;
     private static final int MIN_VALUE_FOR_MERCHANT = 4500;
 

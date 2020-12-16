@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
     FrontEndBadWeatherInSail mFrontEndBadWeatherInSail;
     FrontEndNegotiation mFrontEndNegotiation;
     FrontEndFixShip mFrontEndFixShip;
+    FrontEndShoal mFrontEndShoal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class MainActivity extends Activity {
         mFrontEndBadWeatherInSail = new FrontEndBadWeatherInSail(this);
         mFrontEndNegotiation = new FrontEndNegotiation(this);
         mFrontEndFixShip = new FrontEndFixShip(this);
+        mFrontEndShoal = new FrontEndShoal(this);
 
         mLogic.startNewGame();
         mFrontEnd.showState();
@@ -258,7 +260,13 @@ public class MainActivity extends Activity {
         mFrontEndAbandonedShip.showAbandonedShip();
     }
 
-    public void onExitAbandonedShopWindow(View view) {
+    public void showShoal() {
+        mLogic.mSail.createShoal();
+        mFrontEnd.showWindow(Window.SHOAL_WINDOW);
+        mFrontEndShoal.showShoal();
+    }
+
+    public void onExitSimpleSeaEvent(View view) {
         mFrontEnd.showWindow(Window.SAIL_WINDOW);
         mFrontEndSail.continueSail();
     }

@@ -73,6 +73,9 @@
     <string name="ABANDONED_SHIP">Abandoned Ship!</string>
     <string name="ABANDONED_SHIP_INVENTORY">You have found an abandoned ship with %1$d tonne of %2$s on it.</string>
 
+    <string name="SHOAL">Shoal!</string>
+    <string name="SHOAL_DAMAGE">Your ship runs aground!\n the damage is %1$d$.</string>
+
     <string name="NAVIGATION_ERROR_TITLE">Strong winds confuse the navigators!</string>
     <string name="NAVIGATION_ERROR_RESULT">The ship reaches %1$s instead of %2$s!</string>
 
