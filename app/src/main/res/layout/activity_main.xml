@@ -95,4 +95,9 @@
         android:id="@+id/shoal_layout"
         layout="@layout/shoal_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/sink_layout"
+        layout="@layout/sink_layout"
+        android:visibility="gone" />
 </LinearLayout>

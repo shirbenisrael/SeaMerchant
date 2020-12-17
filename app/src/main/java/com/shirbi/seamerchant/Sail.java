@@ -53,6 +53,9 @@ public class Sail {
 
     public int mShoalDamage;
 
+    public Goods mSinkGood;
+    public int mSinkGoodsUnitsLost;
+
     private void calculateShipValue() {
         mValueOnShip = mLogic.mCash;
         mTotalLoad = 0;
@@ -116,6 +119,14 @@ public class Sail {
         return false;
     }
 
+    public boolean isSinkInSail() {
+        int load = mLogic.calculateLoad();
+        if (load <= mLogic.mCapacity) {
+            return false;
+        }
+        return (mRand.nextInt(load) >= mLogic.mCapacity);
+    }
+
     public boolean isBadWeatherInSail() {
         if ((mSource == mLogic.mWeatherState) || (mDestination == mLogic.mWeatherState)) {
             if (mLogic.mWeather == Weather.WIND) {
@@ -176,6 +187,13 @@ public class Sail {
         mSailEndedPeacefully = false;
         mShoalDamage = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
         mLogic.mDamage += mShoalDamage;
+    }
+
+    public void createSink() {
+        mSailEndedPeacefully = false;
+        mSinkGood = mLogic.findGoodsWithMostUnits();
+        mSinkGoodsUnitsLost = 1 + mRand.nextInt(mLogic.mInventory[mSinkGood.getValue()]);
+        mLogic.removeGoodsFromInventory(mSinkGood, mSinkGoodsUnitsLost);
     }
 
     public boolean isPirateAppear() {

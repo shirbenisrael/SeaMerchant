@@ -169,7 +169,7 @@ public class Logic {
         mNewDayEvent = NewDayEvent.FISH_BOAT_COLLISION;
     }
 
-    private Goods findGoodsWithMostUnits() {
+    protected Goods findGoodsWithMostUnits() {
         Goods foundGoods = Goods.COPPER;
         int maxUnits = 0;
 
@@ -336,6 +336,14 @@ public class Logic {
             totalValue += mInventory[goods.getValue()] * mPriceTable.getPrice(mCurrentState, goods);
         }
         return totalValue;
+    }
+
+    public int calculateLoad() {
+        int load = 0;
+        for (Goods goods : Goods.values()) {
+            load += mInventory[goods.getValue()];
+        }
+        return  load;
     }
 
     public void addGoodsToInventory(Goods goods, int units) {
