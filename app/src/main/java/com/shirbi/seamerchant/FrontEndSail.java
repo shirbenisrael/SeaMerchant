@@ -278,6 +278,25 @@ public class FrontEndSail extends FrontEndGeneric {
         startTimer();
     }
 
+    public void showAlertWeatherMessage() {
+        String message;
+        switch (mLogic.mWeather) {
+            case WIND:
+                message = getString(R.string.DANGER_WIND_MESSAGE);
+                break;
+            case FOG:
+                message = getString(R.string.DANGER_FOG_SHORT_MESSAGE);
+                break;
+            case STORM:
+                message = getString(R.string.DANGER_STORM_MESSAGE);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + mLogic.mWeather);
+        }
+
+        showAlertDialogMessage(message, getString(R.string.DANGER_WEATHER_TITLE));
+    }
+
     public void showAlertDialogMessage(String message, String title) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
 

@@ -111,6 +111,25 @@ public class MainActivity extends Activity {
         mFrontEndSail.showAlertDialogMessage(getString(R.string.DANGER_PIRATES_MESSAGE), getString(R.string.PIRATES));
     }
 
+    public void onDangerOverloadClick(View view) {
+        mFrontEndSail.showAlertDialogMessage(getString(R.string.DANGER_OVERLOAD_MESSAGE),
+                getString(R.string.DANGER_OVERLOAD_TITLE));
+    }
+
+    public void onDangerNightClick(View view) {
+        mFrontEndSail.showAlertDialogMessage(getString(R.string.DANGER_NIGHT_SAIL_SHORT_MESSAGE),
+                getString(R.string.DANGER_NIGHT_SAIL_TITLE));
+    }
+
+    public void onDangerBrokenShipClick(View view) {
+        mFrontEndSail.showAlertDialogMessage(getString(R.string.DANGER_BROKEN_SHIP_MESSAGE),
+                getString(R.string.DANGER_BROKEN_SHIP_TITLE));
+    }
+
+    public void onDangerWeatherClick(View view) {
+        mFrontEndSail.showAlertWeatherMessage();
+    }
+
     public void onSailCancelClick(View view) {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }

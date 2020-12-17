@@ -103,6 +103,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/drown"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:onClick="onDangerOverloadClick"
                 android:gravity="center_horizontal" />
 
             <Button
@@ -112,6 +113,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/night_sail"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:onClick="onDangerNightClick"
                 android:gravity="center_horizontal" />
 
             <Button
@@ -121,6 +123,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/storm_weather"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:onClick="onDangerWeatherClick"
                 android:gravity="center_horizontal" />
 
             <Button
@@ -130,6 +133,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/broken_ship"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:onClick="onDangerBrokenShipClick"
                 android:gravity="center_horizontal" />
 
         </LinearLayout>

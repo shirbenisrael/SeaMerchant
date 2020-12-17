@@ -121,7 +121,9 @@
     <string name="DANGER_BROKEN_SHIP_MESSAGE">Sailing on a broken ship can aggravate the damage.</string>
     <string name="DANGER_OVERLOAD_MESSAGE">The ship is overloaded beyond its capacity and may sink.</string>
     <string name="DANGER_NIGHT_SAIL_MESSAGE">The ship could run aground that would cause damage of up to %1$d$.</string>
+    <string name="DANGER_NIGHT_SAIL_SHORT_MESSAGE">The ship could run aground.</string>
     <string name="DANGER_FOG_MESSAGE">The fog in %1$s could prevent the mooring in the port.</string>
+    <string name="DANGER_FOG_SHORT_MESSAGE">The fog could prevent the mooring in the port.</string>
     <string name="DANGER_STORM_MESSAGE">The storm could damage the ship and the goods on board.</string>
     <string name="DANGER_WIND_MESSAGE">Strong winds can make navigation difficult.</string>
     <string name="DANGER_PIRATES_MESSAGE">The sea is infested with bandits. It is recommended to rent guard ships.</string>
