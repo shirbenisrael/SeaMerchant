@@ -280,12 +280,6 @@ public class Logic {
     public void generateNewDayEvent() {
         int random = mRand.nextInt(6);
 
-        if (random < 7) {
-            mNewDayEvent = NewDayEvent.STRIKE;
-            mNegotiationType = NegotiationType.CREW;
-            return;
-        }
-
         if (random == 0) {
             generateFishBoatCollision();
             return;
