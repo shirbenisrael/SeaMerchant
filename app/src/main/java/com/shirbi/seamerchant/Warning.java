@@ -8,7 +8,7 @@ public enum Warning {
     NIGHT_SAIL(2),
     WEATHER(3);
 
-    public static final int NUM_WARNING = 3;
+    public static final int NUM_WARNING = 4;
 
     private final int value;
     Warning(int value){
