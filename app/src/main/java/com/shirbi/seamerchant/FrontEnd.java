@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -330,4 +331,60 @@ public class FrontEnd extends FrontEndGeneric {
     public void showNewCrewNextDay() {
         showCrewNegotiationResult(mLogic.mCurrentDay.toStringId(), R.string.NEXT_DAY_NEW_CREW);
     }
+
+    public void showSailWarning() {
+        if (mLogic.mSail.isWarningRelevant()) {
+            showWindow(Window.DANGER_WINDOW);
+
+            @DrawableRes int backgroundId;
+            @ColorInt int color;
+            String message;
+            switch (mLogic.mSail.mWarning) {
+                case DAMAGED_SHIP:
+                    backgroundId = R.drawable.broken_ship;
+                    message = getString(R.string.DANGER_BROKEN_SHIP_MESSAGE);
+                    color = mActivity.getColor(R.color.yellow);
+                    break;
+                case OVERLOAD:
+                    backgroundId = R.drawable.overload;
+                    message = getString(R.string.DANGER_OVERLOAD_MESSAGE);
+                    color = mActivity.getColor(R.color.black);
+                    break;
+                case NIGHT_SAIL:
+                    backgroundId = R.drawable.night_sail;
+                    message = mActivity.getString(R.string.DANGER_NIGHT_SAIL_MESSAGE,
+                            mLogic.mSail.calculateMaxShoalDamage());
+                    color = mActivity.getColor(R.color.yellow);
+                    break;
+                case WEATHER:
+                    backgroundId = mLogic.mWeather.toBackground();
+                    switch (mLogic.mWeather) {
+                        case FOG:
+                            message = mActivity.getString(R.string.DANGER_FOG_MESSAGE, mLogic.mWeatherState);
+                            break;
+                        case STORM:
+                            message = getString(R.string.DANGER_STORM_MESSAGE);
+                            break;
+                        case WIND:
+                            message = getString(R.string.DANGER_WIND_MESSAGE);
+                            break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + mLogic.mWeather);
+                    }
+                    color = mActivity.getColor(R.color.black);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + mLogic.mSail.mWarning);
+            }
+            findViewById(R.id.danger_layout).setBackgroundResource(backgroundId);
+            ((TextView)findViewById(R.id.danger_title)).setText(mLogic.mSail.mWarning.toTitleStringId());
+            ((TextView)findViewById(R.id.danger_message)).setText(message);
+            ((TextView)findViewById(R.id.danger_title)).setTextColor(color);
+            ((TextView)findViewById(R.id.danger_message)).setTextColor(color);
+        } else {
+            mActivity.onApproveDanger(null);
+        }
+    }
+
+
 }

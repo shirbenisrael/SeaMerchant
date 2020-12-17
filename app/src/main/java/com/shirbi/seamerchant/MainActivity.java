@@ -104,8 +104,7 @@ public class MainActivity extends Activity {
         }
 
         mLogic.initSail(destination);
-        mFrontEndSail.initSailRoute();
-        mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        mFrontEnd.showSailWarning();
     }
 
     public void onSailCancelClick(View view) {
@@ -367,5 +366,19 @@ public class MainActivity extends Activity {
         mLogic.applyShipFixDeal();
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
+    }
+
+    public void onCancelBecauseOfDanger(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+    }
+
+    public void onApproveDanger(View view) {
+        mLogic.mSail.setNextWarning();
+        if (mLogic.mSail.mWarning == null) {
+            mFrontEndSail.initSailRoute();
+            mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        } else {
+            mFrontEnd.showSailWarning();
+        }
     }
 }

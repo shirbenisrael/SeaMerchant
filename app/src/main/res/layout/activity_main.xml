@@ -100,4 +100,9 @@
         android:id="@+id/sink_layout"
         layout="@layout/sink_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/danger_layout"
+        layout="@layout/danger_layout"
+        android:visibility="gone" />
 </LinearLayout>

@@ -20,6 +20,8 @@ public class Sail {
     int mGuardShipCostPercent;
     Weather mSailWeather;
     boolean mSailEndedPeacefully;
+    public Warning mWarning;
+
     static final int DEFAULT_GUARD_COST_PERCENT = 2;
     static final int MAX_GUARD_SHIPS = 5;
     static final int MIN_GUARD_SHIP_COST = 50;
@@ -100,6 +102,8 @@ public class Sail {
         selectNumGuardShips(DEFAULT_NUM_GUARDS);
 
         mSailEndedPeacefully = true;
+
+        mWarning = Warning.first();
     }
 
     public void selectNumGuardShips(int numGuards) {
@@ -181,6 +185,10 @@ public class Sail {
         mAbandonedShipGoodsUnits = mRand.nextInt(mLogic.mBankDeposit + mValueOnShip + 1) /
                 mLogic.mPriceTable.getPrice(mSource, mAbandonedShipGoods) + 1;
         mLogic.addGoodsToInventory(mAbandonedShipGoods, mAbandonedShipGoodsUnits);
+    }
+
+    public int calculateMaxShoalDamage() {
+        return mLogic.mCapacity * mLogic.mCapacity;
     }
 
     public void createShoal() {
@@ -278,5 +286,32 @@ public class Sail {
         int result = mRand.nextInt(100);
 
         return result < percentsToSucceed;
+    }
+
+    public boolean isWarningRelevant() {
+        switch (mWarning) {
+            case DAMAGED_SHIP:
+                return mLogic.mDamage > 0;
+            case OVERLOAD:
+                return mLogic.calculateLoad() > mLogic.mCapacity;
+            case NIGHT_SAIL:
+                return (mLogic.getDayPart() != DayPart.SUN_SHINES);
+            case WEATHER:
+                if (mLogic.mWeather != Weather.GOOD_SAILING) {
+                    if ((mLogic.mWeather == Weather.FOG) && (mLogic.mWeatherState == mDestination)) {
+                        return true;
+                    }
+                    if ((mLogic.mWeather != Weather.FOG) &&
+                        (mLogic.mWeatherState == mDestination) || mLogic.mWeatherState == mSource) {
+                        return true;
+                    }
+                }
+                return  false;
+        }
+        return false;
+    }
+
+    public void setNextWarning() {
+        mWarning = mWarning.next();
     }
 }

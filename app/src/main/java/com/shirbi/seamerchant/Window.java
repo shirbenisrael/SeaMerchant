@@ -19,7 +19,8 @@ public enum Window {
     STRIKE_WINDOW(15),
     FIX_SHIP_WINDOW(16),
     SHOAL_WINDOW(17),
-    SINK_WINDOW(18);
+    SINK_WINDOW(18),
+    DANGER_WINDOW(19);
 
     private static final int[] mLayoutId = {
             R.id.main_window_layout,
@@ -40,7 +41,8 @@ public enum Window {
             R.id.strike_layout,
             R.id.fix_ship_layout,
             R.id.shoal_layout,
-            R.id.sink_layout};
+            R.id.sink_layout,
+            R.id.danger_layout};
 
     private final int value;
     Window(int value){
