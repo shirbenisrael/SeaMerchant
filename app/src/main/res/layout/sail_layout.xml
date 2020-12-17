@@ -93,6 +93,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/pirates_icon"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:onClick="onDangerPiratesClick"
                 android:gravity="center_horizontal" />
 
             <Button

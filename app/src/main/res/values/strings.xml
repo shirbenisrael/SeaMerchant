@@ -124,4 +124,7 @@
     <string name="DANGER_FOG_MESSAGE">The fog in %1$s could prevent the mooring in the port.</string>
     <string name="DANGER_STORM_MESSAGE">The storm could damage the ship and the goods on board.</string>
     <string name="DANGER_WIND_MESSAGE">Strong winds can make navigation difficult.</string>
+    <string name="DANGER_PIRATES_MESSAGE">The sea is infested with bandits. It is recommended to rent guard ships.</string>
+
+    <string name="CONFIRM">Confirm</string>
     </resources>

@@ -107,6 +107,10 @@ public class MainActivity extends Activity {
         mFrontEnd.showSailWarning();
     }
 
+    public void onDangerPiratesClick(View view) {
+        mFrontEndSail.showAlertDialogMessage(getString(R.string.DANGER_PIRATES_MESSAGE), getString(R.string.PIRATES));
+    }
+
     public void onSailCancelClick(View view) {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
