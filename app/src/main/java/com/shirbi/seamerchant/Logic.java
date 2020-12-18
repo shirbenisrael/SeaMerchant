@@ -10,14 +10,15 @@ public class Logic {
     private static final int START_CAPACITY = 100;
     public static final int EVENING_TIME = 17;
     private static final int NIGHT_TIME = 21;
+    private static final int SLEEP_TIME = 24;
     private static final int MIN_VALUE_FOR_MERCHANT = 4500;
 
     private int mSailDurations[][] = {
-            {0, 3, 6, 3, 0}, // From Egypt
-            {3, 0, 3, 3, 0}, // From Israel
-            {6, 3, 0, 3, 0}, // From Turkey
-            {3, 3, 3, 0, 6}, // From Cyprus
-            {0, 0, 0, 6, 0}  // From Greece
+            { 0,  3,  6,  3, -1}, // From Egypt
+            { 3,  0,  3,  3, -1}, // From Israel
+            { 6,  3,  0,  3, -1}, // From Turkey
+            { 3,  3,  3,  0,  6}, // From Cyprus
+            {-1, -1, -1,  6,  0}  // From Greece
     };
 
     private Random mRand = new Random();
@@ -135,6 +136,10 @@ public class Logic {
 
     public int getSailDuration(State to) {
         return getSailDuration(mCurrentState, to);
+    }
+
+    public boolean canReachToDestinationBeforeSleepTime(State to) {
+        return getSailDuration(to) + mCurrentHour < SLEEP_TIME;
     }
 
     public int getSailDuration(State from, State to) {
@@ -375,5 +380,9 @@ public class Logic {
 
     public void findNewCrew() {
         mLoseDayByStrike = 1;
+    }
+
+    public boolean isDamagePreventSail() {
+        return mDamage > mCapacity * mCapacity;
     }
 }

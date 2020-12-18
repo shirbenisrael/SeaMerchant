@@ -1,7 +1,5 @@
 package com.shirbi.seamerchant;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Point;
 import android.view.View;
 import android.widget.Button;
@@ -297,28 +295,4 @@ public class FrontEndSail extends FrontEndGeneric {
         showAlertDialogMessage(message, getString(R.string.DANGER_WEATHER_TITLE));
     }
 
-    public void showAlertDialogMessage(String message, String title) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        builder.setIcon(R.drawable.boat_right);
-
-        AlertDialog dialog = builder.create();
-        //dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
-
-        dialog.getWindow().getAttributes();
-        TextView textView = dialog.findViewById(android.R.id.message);
-        textView.setTextSize(mActivity.getResources().getDimension(R.dimen.info_message_size) /
-                mActivity.getResources().getDisplayMetrics().density);
-
-        Button btn1 = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        btn1.setTextSize(mActivity.getResources().getDimension(R.dimen.info_message_confirm_button_size) /
-                mActivity.getResources().getDisplayMetrics().density);
-    }
 }

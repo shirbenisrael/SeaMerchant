@@ -103,6 +103,30 @@ public class MainActivity extends Activity {
             return;
         }
 
+        if (mLogic.getSailDuration(destination) == -1) {
+            mFrontEnd.showAlertDialogMessage(getString(R.string.GREECE_IS_TOO_FAR),
+                    getString(R.string.CANNOT_SAIL_TITLE));
+            return;
+        }
+
+        if (mLogic.getDayPart() == DayPart.NIGHT) {
+            mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_SAIL_AT_NIGHT),
+                    getString(R.string.CANNOT_SAIL_TITLE));
+            return;
+        }
+
+        if (mLogic.isDamagePreventSail()) {
+            mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_SAIL_WITH_HEAVY_DAMAGE),
+                    getString(R.string.CANNOT_SAIL_TITLE));
+            return;
+        }
+
+        if (!mLogic.canReachToDestinationBeforeSleepTime(destination)) {
+            mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_REACH_BEFORE_SLEEP_TIME),
+                    getString(R.string.CANNOT_SAIL_TITLE));
+            return;
+        }
+
         mLogic.initSail(destination);
         mFrontEnd.showSailWarning();
     }
