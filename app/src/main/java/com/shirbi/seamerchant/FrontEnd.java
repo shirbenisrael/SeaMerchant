@@ -16,9 +16,13 @@ import androidx.annotation.StringRes;
 
 public class FrontEnd extends FrontEndGeneric {
     private Point mFlagSize;
+    FrontEndTimer mFrontEndMarketBlinkTimer;
+    FrontEndTimer mFrontEndSailBlinkTimer;
 
     public FrontEnd(MainActivity activity) {
         super(activity);
+        mFrontEndMarketBlinkTimer = new FrontEndTimer(this);
+        mFrontEndSailBlinkTimer = new FrontEndTimer(this);
 
         LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
         for (Goods goods: Goods.values()) {
@@ -406,6 +410,7 @@ public class FrontEnd extends FrontEndGeneric {
 
             String message = mActivity.getString(R.string.TUTORIAL_SELL, stateString, goodsString, price, units);
             showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
+            blinkMarket();
             return;
         }
 
@@ -421,6 +426,7 @@ public class FrontEnd extends FrontEndGeneric {
 
             String message = mActivity.getString(R.string.TUTORIAL_BUY, stateString, goodsString, price, otherStateString, otherPrice);
             showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
+            blinkMarket();
             return;
         }
 
@@ -441,9 +447,45 @@ public class FrontEnd extends FrontEndGeneric {
                 String message = mActivity.getString(R.string.TUTORIAL_SAIL_WITH_GOODS, goodsString, otherStateString, otherPrice);
                 showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
             }
+            blinkSail();
             return;
         }
 
         showAlertDialogMessage(getString(R.string.TUTORIAL_SLEEP), getString(R.string.TUTORIAL_TITLE));
+    }
+
+    private void blinkInventory(boolean isRed) {
+        LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
+        int colorId = isRed ? R.color.red : R.color.black;
+        @ColorInt int color = mActivity.getColor(colorId);
+
+        for (Goods goods: Goods.values()) {
+            Button goodsButton = (Button)goodsLayout.getChildAt(goods.getValue());
+            goodsButton.setTextColor(color);
+        }
+
+        @DrawableRes int backGroundId = isRed ? R.drawable.market_help_red : R.drawable.market_help;
+        findViewById(R.id.market_help).setBackgroundResource(backGroundId);
+    }
+
+    private void blinkFlags(boolean isRed) {
+        @DrawableRes int backGroundId = isRed ? R.drawable.sail_help_red : R.drawable.sail_help;
+        findViewById(R.id.sail_help).setBackgroundResource(backGroundId);
+    }
+
+    public void timerBlinked(FrontEndTimer timer, int countDown) {
+        if (timer == mFrontEndMarketBlinkTimer) {
+            blinkInventory(countDown % 2 != 0);
+        } else if (timer == mFrontEndSailBlinkTimer) {
+            blinkFlags(countDown % 2 != 0);
+        }
+    }
+
+    public void blinkMarket() {
+        mFrontEndMarketBlinkTimer.startTimer(500, 20);
+    }
+
+    public void blinkSail() {
+        mFrontEndSailBlinkTimer.startTimer(500, 20);
     }
 }

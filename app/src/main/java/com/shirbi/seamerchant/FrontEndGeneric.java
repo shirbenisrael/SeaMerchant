@@ -73,4 +73,8 @@ public class FrontEndGeneric {
         btn1.setTextSize(mActivity.getResources().getDimension(R.dimen.info_message_confirm_button_size) /
                 mActivity.getResources().getDisplayMetrics().density);
     }
+
+    public void timerBlinked(FrontEndTimer timer, int countDown) {
+        throw new IllegalStateException("Unexpected timer blink");
+    }
 }

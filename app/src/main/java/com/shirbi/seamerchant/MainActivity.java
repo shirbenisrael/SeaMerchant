@@ -98,6 +98,11 @@ public class MainActivity extends Activity {
         mLogic.applyMarketDeal();
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
+        if (mLogic.calculateLoad() > 0) {
+            mFrontEnd.blinkSail();
+        } else {
+            mFrontEnd.blinkMarket();
+        }
     }
 
     public void onDealCancelClick(View view) {
@@ -177,6 +182,7 @@ public class MainActivity extends Activity {
     public void onSailEndClick(View view) {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
+        mFrontEnd.blinkMarket();
     }
 
     public void onSleepClick(View view) {
