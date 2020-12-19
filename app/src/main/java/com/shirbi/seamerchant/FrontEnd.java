@@ -320,7 +320,6 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     private void showCrewNegotiationResult(@StringRes int part1, @StringRes int part2 ) {
-        findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.strike);
         findViewById(R.id.approve_event).setVisibility(View.VISIBLE);
         findViewById(R.id.agree_or_cancel_layout).setVisibility(View.GONE);
         ((TextView)findViewById(R.id.day_message_with_event)).setText(part1);
@@ -328,10 +327,12 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     public void showCrewNegotiationFail() {
+        findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.booing);
         showCrewNegotiationResult(R.string.CREW_REFUSE_OFFER, R.string.LOSE_2_DAYS);
     }
 
     public void showCrewNegotiationSucceed() {
+        findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.accept_offer);
         showCrewNegotiationResult(mLogic.mCurrentDay.toStringId(), R.string.CREW_OFFER_ACCEPTED);
     }
 
