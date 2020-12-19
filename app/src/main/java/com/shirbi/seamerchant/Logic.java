@@ -12,6 +12,7 @@ public class Logic {
     public static final int NIGHT_TIME = 21;
     public static final int SLEEP_TIME = 24;
     private static final int MIN_VALUE_FOR_MERCHANT = 4500;
+    public static final int BANK_NIGHTLY_INTEREST = 10;
 
     private int mSailDurations[][] = {
             { 0,  3,  6,  3, -1}, // From Egypt
@@ -166,6 +167,7 @@ public class Logic {
         mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
         mWeather = Weather.values()[mRand.nextInt(Weather.NUM_WEATHER_TYPES)];
         mWeatherState = State.values()[mRand.nextInt(State.NUM_STATES)];
+        mBankDeposit = mBankDeposit * (100 + BANK_NIGHTLY_INTEREST) / 100;
     }
 
     private void generateFishBoatCollision() {
@@ -399,4 +401,7 @@ public class Logic {
         }
     }
 
+    public int getBankNightlyInterest() {
+        return BANK_NIGHTLY_INTEREST;
+    }
 }

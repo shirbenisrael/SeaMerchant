@@ -26,6 +26,9 @@ public class FrontEndBank extends FrontEndGeneric {
         SeekBar seekBar = (SeekBar)findViewById(R.id.bank_seek_bar);
         seekBar.setMax(mLogic.mBankDeal.mMaxDeposit);
         showDealState();
+
+        String tipString = mActivity.getString(R.string.BANK_TIP, mLogic.getBankNightlyInterest());
+        ((TextView)findViewById(R.id.bank_interest)).setText(tipString);
     }
 
     public void showDealState() {
