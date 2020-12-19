@@ -194,6 +194,7 @@ public class MainActivity extends Activity {
         if (mLogic.mCurrentDay != WeekDay.SUNDAY) {
             mLogic.generateNewDayEvent();
             if (mLogic.mNewDayEvent == Logic.NewDayEvent.STRIKE) {
+                playSound(R.raw.protest);
                 mFrontEnd.showWindow(Window.STRIKE_WINDOW);
             } else {
                 mFrontEnd.showWindow(Window.SIMPLE_NEW_DAY_EVENT_WINDOW);
@@ -259,6 +260,7 @@ public class MainActivity extends Activity {
     }
 
     public void onNegotiateClick(View view) {
+        playSound(R.raw.negotiate);
         mFrontEnd.showWindow(Window.NEGOTIATE_WINDOW);
         mFrontEndNegotiation.showNegotiation();
     }
@@ -273,6 +275,7 @@ public class MainActivity extends Activity {
 
     public void onSendOfferToPirates(View view) {
         if (mFrontEndNegotiation.sendOffer()) {
+            playSound(R.raw.agreement);
             if (mLogic.mNegotiationType == Logic.NegotiationType.PIRATES) {
                 mFrontEnd.showWindow(Window.PIRATE_ACCEPT_OFFER_WINDOW);
                 mLogic.mSail.negotiationSucceeds();
@@ -281,6 +284,7 @@ public class MainActivity extends Activity {
                 mFrontEnd.showCrewNegotiationSucceed();
             }
         } else {
+            playSound(R.raw.booing);
             if (mLogic.mNegotiationType == Logic.NegotiationType.PIRATES) {
                 mFrontEndPirates.showPiratesRefuseOffer();
                 mFrontEnd.showWindow(Window.PIRATES_WINDOW);
