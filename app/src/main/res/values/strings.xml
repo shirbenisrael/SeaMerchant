@@ -129,6 +129,7 @@
     <string name="DANGER_PIRATES_MESSAGE">The sea is infested with bandits. It is recommended to rent guard ships.</string>
 
     <string name="CONFIRM">Confirm</string>
+    <string name="TUTORIAL">Tutorial</string>
 
     <string name="CANNOT_SAIL_TITLE">Cannot sail</string>
     <string name="GREECE_IS_TOO_FAR">You can sail to and from Greece from Cyprus only</string>
