@@ -230,6 +230,14 @@ public class MainActivity extends Activity {
     }
 
     public void onAcceptOffer(View view) {
+        switch (mLogic.mNewDayEvent) {
+            case MERCHANT:
+                playSound(R.raw.deal_done);
+                break;
+            case BIGGER_SHIP_OFFER:
+                playSound(R.raw.fix);
+                break;
+        }
         mLogic.acceptOffer();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
