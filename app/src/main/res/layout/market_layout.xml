@@ -10,13 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:text="כמה נחושת ברצונך להחזיק" />
+        android:gravity="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="4"
         android:orientation="horizontal">
 
         <ImageView
@@ -49,16 +48,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="נחושת: 0 טון" />
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/market_cash"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="מזומן: 5000 שקלים" />
+            android:gravity="center" />
 
     </LinearLayout>
 
@@ -73,8 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="שווי כולל: 2900 שח" />
+            android:gravity="center" />
 
         <include layout="@layout/empty_horizontal_text" />
 
@@ -90,7 +86,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:onClick="onMarketMinusTenClick"
             android:text="-10" />
 
@@ -98,7 +94,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:onClick="onMarketMinusOneClick"
             android:text="-1" />
 
@@ -106,7 +102,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:onClick="onMarketPlusOneClick"
             android:text="+1" />
 
@@ -114,7 +110,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:onClick="onMarketPlusTenClick"
             android:text="+10" />
 
@@ -136,16 +132,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:onClick="onMarketFillCapacityClick"
-            android:text="השלמה לקיבולת מלאה" />
+            android:text="@string/FILL_CAPACITY" />
 
         <Button
             android:id="@+id/market_percentage_with_guards"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:onClick="onMarketPercentageForGuardsClick"
             android:text="90%" />
 
@@ -161,26 +157,27 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:onClick="onMarketSellAllClick"
-            android:text="מכור הכל" />
+            android:text="@string/SELL_ALL" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:onClick="onMarketBuyAllClick"
-            android:text="קנה כמה שאפשר" />
+            android:text="@string/BUY_ALL" />
 
     </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/market_operation_time"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:text="פעולה זאת לא תיקח לך זמן נוסף" />
+        android:gravity="center"
+        android:text="@string/OPERATION_NO_TIME" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -213,5 +210,11 @@
         <include layout="@layout/empty_horizontal_text" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center" />
 
 </LinearLayout>
