@@ -61,5 +61,9 @@ public class FrontEndMarket extends FrontEndGeneric {
 
         findViewById(R.id.main_window_layout).setVisibility(View.GONE);
         findViewById(R.id.market_layout).setVisibility(View.VISIBLE);
+
+        String operationTimeString = mLogic.isMarketOperationTakesTime() ?
+                getString(R.string.OPERATION_ONE_HOUR) : getString(R.string.OPERATION_NO_TIME);
+        ((TextView)findViewById(R.id.market_operation_time)).setText(operationTimeString);
     }
 }
