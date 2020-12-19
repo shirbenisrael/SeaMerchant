@@ -31,6 +31,7 @@ public class Sail {
     static final int PERCENT_OF_STORM_APPEAR = 33;
     static final int PERCENT_OF_ABANDONED_SHIP_APPEAR = 11;
     static final int PERCENT_OF_SHOAL_APPEAR = 33;
+    static final int PERCENT_OF_PIRATES_APPEAR = 33;
 
     public enum BattleResult {
         WIN_AND_CAPTURE,
@@ -205,7 +206,7 @@ public class Sail {
     }
 
     public boolean isPirateAppear() {
-        return true;
+        return tryToDoSomething(PERCENT_OF_PIRATES_APPEAR);
     }
 
     public void calculateBattleResult() {
