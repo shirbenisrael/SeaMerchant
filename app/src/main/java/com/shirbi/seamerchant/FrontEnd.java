@@ -266,6 +266,7 @@ public class FrontEnd extends FrontEndGeneric {
         String message;
         @IdRes int idToShow;
         @IdRes int idToHide;
+        int soundId = 0;
         ((TextView)findViewById(R.id.day_message_with_event)).setText(mLogic.mCurrentDay.toStringId());
         switch (mLogic.mNewDayEvent) {
             case MERCHANT:
@@ -273,12 +274,14 @@ public class FrontEnd extends FrontEndGeneric {
                 idToHide = R.id.approve_event;
                 backgroundId = R.drawable.merchant;
                 message = generateNewDayMerchantOffer();
+                soundId = R.raw.special_offer;
                 break;
             case BIGGER_SHIP_OFFER:
                 idToShow = R.id.agree_or_cancel_layout;
                 idToHide = R.id.approve_event;
                 backgroundId = R.drawable.bigger_ship;
                 message = generateNewDayBiggerShipOffer();
+                soundId = R.raw.special_offer;
                 break;
 
             case FIRE:
@@ -287,6 +290,7 @@ public class FrontEnd extends FrontEndGeneric {
                 backgroundId = R.drawable.fire;
                 String goodsString = getString(mLogic.mGoodsToBurn.toStringId());
                 message = mActivity.getString(R.string.FIRE, mLogic.mGoodsUnitsToBurn, goodsString);
+                soundId = R.raw.fire;
                 break;
 
             case FISH_BOAT_COLLISION:
@@ -294,6 +298,7 @@ public class FrontEnd extends FrontEndGeneric {
                 idToHide = R.id.agree_or_cancel_layout;
                 backgroundId = R.drawable.fish_boat;
                 message = mActivity.getString(R.string.FISH_BOAT, mLogic.mFishBoatCollisionDamage);
+                soundId = R.raw.fish_boat;
                 break;
 
             case SPECIAL_PRICE:
@@ -301,6 +306,7 @@ public class FrontEnd extends FrontEndGeneric {
                 idToHide = R.id.agree_or_cancel_layout;
                 backgroundId = mLogic.mIsSpecialPriceHigh ? R.drawable.price_up : R.drawable.price_down;
                 message = generateNewDaySpecialPriceString();
+                soundId = mLogic.mIsSpecialPriceHigh ? R.raw.up : R.raw.down;
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + mLogic.mNewDayEvent);
@@ -310,6 +316,7 @@ public class FrontEnd extends FrontEndGeneric {
         findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(backgroundId);
         findViewById(idToShow).setVisibility(View.VISIBLE);
         findViewById(idToHide).setVisibility(View.GONE);
+        mActivity.playSound(soundId);
     }
 
     private void showCrewNegotiationResult(@StringRes int part1, @StringRes int part2 ) {

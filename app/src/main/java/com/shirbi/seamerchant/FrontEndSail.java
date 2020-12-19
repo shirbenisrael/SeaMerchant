@@ -185,6 +185,8 @@ public class FrontEndSail extends FrontEndGeneric {
         String endMessage = mActivity.getString(stringId, stateString);
         TextView textView = findViewById(R.id.sail_end_message);
         textView.setText(endMessage);
+        int soundId = mLogic.mSail.mSailEndedPeacefully ? R.raw.finish_sail_good : R.raw.finish_sail_bad;
+        mActivity.playSound(soundId);
     }
 
     private void showDangers() {

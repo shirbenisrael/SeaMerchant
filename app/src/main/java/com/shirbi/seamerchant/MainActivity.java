@@ -1,8 +1,12 @@
 package com.shirbi.seamerchant;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainActivity extends Activity {
     Logic mLogic;
@@ -17,6 +21,8 @@ public class MainActivity extends Activity {
     FrontEndFixShip mFrontEndFixShip;
     FrontEndShoal mFrontEndShoal;
     FrontEndSink mFrontEndSink;
+
+    boolean mIsSoundEnable = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +94,7 @@ public class MainActivity extends Activity {
     }
 
     public void onDealDoneClick(View view) {
+        playSound(R.raw.deal_done);
         mLogic.applyMarketDeal();
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
@@ -159,7 +166,7 @@ public class MainActivity extends Activity {
     }
 
     public void onSailClick(View view) {
-        // TODO: start sail in logic - change time, reduce cash of guards...
+        playSound(R.raw.sail);
         mFrontEndSail.startSail();
     }
 
@@ -177,6 +184,7 @@ public class MainActivity extends Activity {
     }
 
     public void onApproveSleep(View view) {
+        playSound(R.raw.new_day);
         mLogic.startNewDay();
         mFrontEnd.showWindow(Window.WEATHER_WINDOW);
         mFrontEnd.showNewWeather();
@@ -231,6 +239,7 @@ public class MainActivity extends Activity {
     }
 
     public void onAttackClick(View view) {
+        playSound(R.raw.battle);
         mLogic.mSail.calculateBattleResult();
         if (mLogic.mSail.mBattleResult == Sail.BattleResult.LOSE) {
             mFrontEndPirates.showLoseToPiratesMessage();
@@ -242,6 +251,7 @@ public class MainActivity extends Activity {
 
     public void onEscapeClick(View view) {
         if (mLogic.mSail.isEscapePiratesSucceeds()) {
+            playSound(R.raw.escape);
             mFrontEnd.showWindow(Window.ESCAPE_WINDOW);
         } else {
             mFrontEndPirates.showFailEscapeMessage();
@@ -297,12 +307,14 @@ public class MainActivity extends Activity {
     }
 
     public void showPirates() {
+        playSound(R.raw.pirates);
         mLogic.mNegotiationType = Logic.NegotiationType.PIRATES;
         mFrontEnd.showWindow(Window.PIRATES_WINDOW);
         mFrontEndPirates.showChances();
     }
 
     public void showAbandonedShip() {
+        playSound(R.raw.abandoned_ship);
         mLogic.mSail.createAbandonedShip();
         mFrontEnd.showWindow(Window.ABANDONED_SHIP_WINDOW);
         mFrontEndAbandonedShip.showAbandonedShip();
@@ -320,6 +332,7 @@ public class MainActivity extends Activity {
     }
 
     public void showSink() {
+        playSound(R.raw.sink);
         mLogic.mSail.createSink();
         mFrontEnd.showWindow(Window.SINK_WINDOW);
         mFrontEndSink.showSink();
@@ -390,6 +403,7 @@ public class MainActivity extends Activity {
     }
 
     public void onBankDealDoneClick(View view) {
+        playSound(R.raw.deal_done);
         mLogic.applyBankDeal();
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
@@ -410,6 +424,7 @@ public class MainActivity extends Activity {
     }
 
     public void onFixDoneClick(View view) {
+        playSound(R.raw.fix);
         mLogic.applyShipFixDeal();
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
@@ -427,5 +442,31 @@ public class MainActivity extends Activity {
         } else {
             mFrontEnd.showSailWarning();
         }
+    }
+
+    // Set of all media players which are currently working. Used to prevent garbage collector from
+    // clean them and stop the sounds.
+    private final Set<MediaPlayer> mMediaPlayers = new HashSet<MediaPlayer>();
+
+    public void playSound(int soundId) {
+        if (!mIsSoundEnable) {
+            return;
+        }
+
+        if (soundId == 0) {
+            return;
+        }
+
+        MediaPlayer mediaPlayer;
+        mediaPlayer = MediaPlayer.create(this, soundId);
+        mMediaPlayers.add(mediaPlayer);
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+                mMediaPlayers.remove(mp);
+            }
+        });
+        mediaPlayer.start();
     }
 }

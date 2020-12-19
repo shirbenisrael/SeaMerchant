@@ -17,6 +17,7 @@ public class FrontEndBadWeatherInSail extends FrontEndGeneric {
         String newDestination;
         @DrawableRes int backGroundId;
         @StringRes int titleId;
+        int soundId = 0;
 
         switch (mLogic.mWeather) {
             case GOOD_SAILING:
@@ -29,6 +30,7 @@ public class FrontEndBadWeatherInSail extends FrontEndGeneric {
                 newDestination = getString(sail.mDestination.toStringId());
                 String newSource = getString(sail.mSource.toStringId());
                 result = mActivity.getString(R.string.NAVIGATION_ERROR_RESULT, newDestination, newSource);
+                soundId = R.raw.wind;
                 break;
 
             case STORM:
@@ -43,6 +45,7 @@ public class FrontEndBadWeatherInSail extends FrontEndGeneric {
                     findViewById(R.id.bad_weather_in_sail_layout).setBackgroundResource(R.drawable.storm_with_damage);
                     result = mActivity.getString(R.string.STORM_HURT_SHIP, sail.mStormLostUnits);
                 }
+                soundId = R.raw.storm;
                 break;
 
             case FOG:
@@ -52,6 +55,7 @@ public class FrontEndBadWeatherInSail extends FrontEndGeneric {
 
                 newDestination = getString(sail.mDestination.toStringId());
                 result = mActivity.getString(R.string.FOG_RESULT, newDestination);
+                soundId = R.raw.wind;
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + mLogic.mWeather);
@@ -60,5 +64,6 @@ public class FrontEndBadWeatherInSail extends FrontEndGeneric {
         findViewById(R.id.bad_weather_in_sail_layout).setBackgroundResource(backGroundId);
         ((TextView) findViewById(R.id.bad_weather_title)).setText(titleId);
         ((TextView) findViewById(R.id.bad_weather_result)).setText(result);
+        mActivity.playSound(soundId);
     }
 }
