@@ -337,6 +337,7 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     public void showNewCrewNextDay() {
+        findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.strike);
         showCrewNegotiationResult(mLogic.mCurrentDay.toStringId(), R.string.NEXT_DAY_NEW_CREW);
     }
 
