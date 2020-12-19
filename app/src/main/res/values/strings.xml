@@ -136,4 +136,13 @@
     <string name="CANNOT_SAIL_AT_NIGHT">It is too late to set sail</string>
     <string name="CANNOT_SAIL_WITH_HEAVY_DAMAGE">The damage to the ship is too heavy and prevents sailing</string>
     <string name="CANNOT_REACH_BEFORE_SLEEP_TIME">The voyage is too long and will not be enough to arrive before midnight.</string>
+
+    <string name="TUTORIAL_TITLE">Tutorial</string>
+    <string name="TUTORIAL_SELL">You are in %1$s and the %2$s price here is %3$d$ and you have %4$d tonne.
+    Press on the %2$s button to sell the goods.</string>
+    <string name="TUTORIAL_BUY">You are in %1$s and the %2$s price here is %3$d$ for tonne and in %4$s
+        the price is %5$d$. Press on the %2$s button to buy the goods.</string>
+    <string name="TUTORIAL_SAIL_EMPTY">You are in %1$s all prices here are high. Press on other state flag to sail to there.</string>
+    <string name="TUTORIAL_SAIL_WITH_GOODS">You can sell your %1$s in %2$s with high price of %3$d$ for tonne. Press on %2$s flag to ship there</string>
+    <string name="TUTORIAL_SLEEP">It is getting late. Maybe it is time to sleep until tomorrow.</string>
     </resources>

@@ -395,5 +395,55 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
+    public void showTutorial() {
+        if (mLogic.mTutorial.isSuggestToSell()) {
+            Goods goods = mLogic.mTutorial.mGoodsToDeal;
+            State state = mLogic.mCurrentState;
+            String goodsString = getString(goods.toStringId());
+            String stateString = getString(state.toStringId());
+            int price = mLogic.mPriceTable.getPrice(state, goods);
+            int units = mLogic.getInventory(goods);
 
+            String message = mActivity.getString(R.string.TUTORIAL_SELL, stateString, goodsString, price, units);
+            showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
+            return;
+        }
+
+        if (mLogic.mTutorial.isSuggestToBuy()) {
+            Goods goods = mLogic.mTutorial.mGoodsToDeal;
+            State state = mLogic.mCurrentState;
+            State otherState = mLogic.mTutorial.mStateToSail;
+            String goodsString = getString(goods.toStringId());
+            String stateString = getString(state.toStringId());
+            String otherStateString = getString(otherState.toStringId());
+            int price = mLogic.mPriceTable.getPrice(state, goods);
+            int otherPrice = mLogic.mPriceTable.getPrice(otherState, goods);
+
+            String message = mActivity.getString(R.string.TUTORIAL_BUY, stateString, goodsString, price, otherStateString, otherPrice);
+            showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
+            return;
+        }
+
+        if (mLogic.mTutorial.isSuggestToSail()) {
+            if (mLogic.mTutorial.mStateToSail == null) {
+                State state = mLogic.mCurrentState;
+                String stateString = getString(state.toStringId());
+
+                String message = mActivity.getString(R.string.TUTORIAL_SAIL_EMPTY, stateString);
+                showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
+            } else {
+                Goods goods = mLogic.mTutorial.mGoodsToDeal;
+                State otherState = mLogic.mTutorial.mStateToSail;
+                String goodsString = getString(goods.toStringId());
+                String otherStateString = getString(otherState.toStringId());
+                int otherPrice = mLogic.mPriceTable.getPrice(otherState, goods);
+
+                String message = mActivity.getString(R.string.TUTORIAL_SAIL_WITH_GOODS, goodsString, otherStateString, otherPrice);
+                showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
+            }
+            return;
+        }
+
+        showAlertDialogMessage(getString(R.string.TUTORIAL_SLEEP), getString(R.string.TUTORIAL_TITLE));
+    }
 }

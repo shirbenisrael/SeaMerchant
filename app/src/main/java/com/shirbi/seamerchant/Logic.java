@@ -9,8 +9,8 @@ public class Logic {
     private static final State START_STATE = State.ISRAEL;
     private static final int START_CAPACITY = 100;
     public static final int EVENING_TIME = 17;
-    private static final int NIGHT_TIME = 21;
-    private static final int SLEEP_TIME = 24;
+    public static final int NIGHT_TIME = 21;
+    public static final int SLEEP_TIME = 24;
     private static final int MIN_VALUE_FOR_MERCHANT = 4500;
 
     private int mSailDurations[][] = {
@@ -36,6 +36,7 @@ public class Logic {
     BankDeal mBankDeal;
     FixShipDeal mFixShipDeal;
     Sail mSail;
+    public Tutorial mTutorial = new Tutorial(this);
     public State mSpecialPriceState;
     public Goods mSpecialPriceGoods;
     public boolean mIsSpecialPriceHigh;
@@ -345,6 +346,10 @@ public class Logic {
         return  load;
     }
 
+    public int getInventory(Goods goods) {
+        return mInventory[goods.getValue()];
+    }
+
     public void addGoodsToInventory(Goods goods, int units) {
         mInventory[goods.getValue()] += units;
     }
@@ -385,4 +390,13 @@ public class Logic {
     public boolean isDamagePreventSail() {
         return mDamage > mCapacity * mCapacity;
     }
+
+    public boolean canGoToMarket() {
+        if (mCurrentHour >= SLEEP_TIME) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }

@@ -288,6 +288,7 @@
                 android:background="@drawable/empty_button"
                 android:text="@string/TUTORIAL"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:onClick="onTutorialClick"
                 android:textColor="#000000" />
 
             <TextView

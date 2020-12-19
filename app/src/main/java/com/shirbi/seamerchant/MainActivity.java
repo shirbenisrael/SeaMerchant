@@ -485,4 +485,8 @@ public class MainActivity extends Activity {
         });
         mediaPlayer.start();
     }
+
+    public void onTutorialClick(View view) {
+        mFrontEnd.showTutorial();
+    }
 }
