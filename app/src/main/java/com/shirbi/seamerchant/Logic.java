@@ -44,6 +44,7 @@ public class Logic {
     public int mFishBoatCollisionDamage;
     public int mGoodsUnitsToBurn = 0;
     public Goods mGoodsToBurn;
+    public boolean mIsBankOperationTakesTime;
 
     // For NewDayEvent.BIGGER_SHIP
     public boolean mIsBiggerShipForCash;
@@ -94,6 +95,7 @@ public class Logic {
         for (int i = 0 ; i < mInventory.length ; i++) {
             mInventory[i] = 0;
         }
+        mIsBankOperationTakesTime = true;
     }
 
     public void initMarketDeal(Goods goods) {
@@ -114,7 +116,10 @@ public class Logic {
     public void applyBankDeal() {
         mCash = mBankDeal.mCash;
         mBankDeposit = mBankDeal.mDeposit;
-        mCurrentHour++;
+        if (mIsBankOperationTakesTime) {
+            mCurrentHour++;
+            mIsBankOperationTakesTime = false;
+        }
     }
 
     public void initFixShipDeal() {
@@ -134,6 +139,7 @@ public class Logic {
     public void finishSail() {
         mCurrentState = mSail.mDestination;
         mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
+        mIsBankOperationTakesTime = true;
     }
 
     public int getSailDuration(State to) {
@@ -168,6 +174,7 @@ public class Logic {
         mWeather = Weather.values()[mRand.nextInt(Weather.NUM_WEATHER_TYPES)];
         mWeatherState = State.values()[mRand.nextInt(State.NUM_STATES)];
         mBankDeposit = mBankDeposit * (100 + BANK_NIGHTLY_INTEREST) / 100;
+        mIsBankOperationTakesTime = true;
     }
 
     private void generateFishBoatCollision() {
@@ -403,5 +410,9 @@ public class Logic {
 
     public int getBankNightlyInterest() {
         return BANK_NIGHTLY_INTEREST;
+    }
+
+    public boolean isBankOperationTakesTime() {
+        return mIsBankOperationTakesTime;
     }
 }

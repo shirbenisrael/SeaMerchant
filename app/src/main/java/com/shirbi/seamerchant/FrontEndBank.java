@@ -29,6 +29,10 @@ public class FrontEndBank extends FrontEndGeneric {
 
         String tipString = mActivity.getString(R.string.BANK_TIP, mLogic.getBankNightlyInterest());
         ((TextView)findViewById(R.id.bank_interest)).setText(tipString);
+
+        String operationTimeString = mLogic.isBankOperationTakesTime() ?
+                getString(R.string.OPERATION_ONE_HOUR) : getString(R.string.OPERATION_NO_TIME);
+        ((TextView)findViewById(R.id.bank_operation_time)).setText(operationTimeString);
     }
 
     public void showDealState() {
