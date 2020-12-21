@@ -104,6 +104,11 @@ public class FrontEnd extends FrontEndGeneric {
                 mActivity.getString(R.string.DAMAGED_SHIP, mLogic.mDamage);
         button.setText(damageString);
 
+        button = findViewById(R.id.wide_sleep_button);
+        @DrawableRes int sleepButtonResource = (mLogic.mCurrentDay.isLastDay())
+                ? R.drawable.wide_end_game_button : R.drawable.wide_sleep_button;
+        button.setBackgroundResource(sleepButtonResource);
+
         textView = findViewById(R.id.wide_cash_button);
         textView.setText(mActivity.getString(R.string.MONEY_STRING, mLogic.mCash));
 
