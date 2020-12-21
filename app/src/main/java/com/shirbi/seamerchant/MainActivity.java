@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
     FrontEndFixShip mFrontEndFixShip;
     FrontEndShoal mFrontEndShoal;
     FrontEndSink mFrontEndSink;
+    FrontEndHighScore mFrontEndHighScore;
 
     boolean mIsSoundEnable = true;
 
@@ -41,6 +42,7 @@ public class MainActivity extends Activity {
         mFrontEndFixShip = new FrontEndFixShip(this);
         mFrontEndShoal = new FrontEndShoal(this);
         mFrontEndSink = new FrontEndSink(this);
+        mFrontEndHighScore = new FrontEndHighScore(this);
 
         mLogic.startNewGame();
         mFrontEnd.showState();
@@ -194,8 +196,21 @@ public class MainActivity extends Activity {
     }
 
     public void onApproveSleep(View view) {
+        if (!mLogic.mCurrentDay.isLastDay()) {
+            playSound(R.raw.new_day);
+            mLogic.startNewDay();
+            mFrontEnd.showWindow(Window.WEATHER_WINDOW);
+            mFrontEnd.showNewWeather();
+        } else {
+            playSound(R.raw.game_end);
+            mFrontEndHighScore.showHighScore();
+            mFrontEnd.showWindow(Window.HIGH_SCORE_WINDOW);
+        }
+    }
+
+    public void onExistHighScore(View view) {
         playSound(R.raw.new_day);
-        mLogic.startNewDay();
+        mLogic.startNewGame();
         mFrontEnd.showWindow(Window.WEATHER_WINDOW);
         mFrontEnd.showNewWeather();
     }

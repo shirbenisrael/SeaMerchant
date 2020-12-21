@@ -158,4 +158,7 @@
     <string name="OPERATION_NO_TIME">This operation won\'t take more time.</string>
     <string name="OPERATION_ONE_HOUR">This operation will take one hour.</string>
 
+    <string name="GAME_RESULT">In the trading week you earned %1$d$.</string>
+
+
     </resources>

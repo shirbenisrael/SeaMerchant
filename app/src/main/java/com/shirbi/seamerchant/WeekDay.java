@@ -31,4 +31,6 @@ public enum WeekDay {
     public WeekDay add(int days) {
         return WeekDay.values()[value + days];
     }
+
+    public boolean isLastDay() { return this == SATURDAY; }
 }
