@@ -18,11 +18,13 @@ public class FrontEnd extends FrontEndGeneric {
     private Point mFlagSize;
     FrontEndTimer mFrontEndMarketBlinkTimer;
     FrontEndTimer mFrontEndSailBlinkTimer;
+    FrontEndTimer mFrontEndSleepBlinkTimer;
 
     public FrontEnd(MainActivity activity) {
         super(activity);
         mFrontEndMarketBlinkTimer = new FrontEndTimer(this);
         mFrontEndSailBlinkTimer = new FrontEndTimer(this);
+        mFrontEndSleepBlinkTimer = new FrontEndTimer(this);
 
         LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
         for (Goods goods: Goods.values()) {
@@ -456,6 +458,7 @@ public class FrontEnd extends FrontEndGeneric {
             return;
         }
 
+        blinkSleep();
         showAlertDialogMessage(getString(R.string.TUTORIAL_SLEEP), getString(R.string.TUTORIAL_TITLE));
     }
 
@@ -478,11 +481,24 @@ public class FrontEnd extends FrontEndGeneric {
         findViewById(R.id.sail_help).setBackgroundResource(backGroundId);
     }
 
+    private void blinkSleepButton(boolean isRed) {
+        @DrawableRes int backGroundId;
+        if (mLogic.mCurrentDay.isLastDay()) {
+            backGroundId = isRed ? R.drawable.wide_end_game_button_red : R.drawable.wide_end_game_button;
+        } else {
+            backGroundId = isRed ? R.drawable.wide_sleep_button_red : R.drawable.wide_sleep_button;
+        }
+
+        findViewById(R.id.wide_sleep_button).setBackgroundResource(backGroundId);
+    }
+
     public void timerBlinked(FrontEndTimer timer, int countDown) {
         if (timer == mFrontEndMarketBlinkTimer) {
             blinkInventory(countDown % 2 != 0);
         } else if (timer == mFrontEndSailBlinkTimer) {
             blinkFlags(countDown % 2 != 0);
+        } else if (timer == mFrontEndSleepBlinkTimer) {
+            blinkSleepButton(countDown % 2 != 0);
         }
     }
 
@@ -492,6 +508,10 @@ public class FrontEnd extends FrontEndGeneric {
 
     public void blinkSail() {
         mFrontEndSailBlinkTimer.startTimer(500, 20);
+    }
+
+    public void blinkSleep() {
+        mFrontEndSleepBlinkTimer.startTimer(500, 20);
     }
 
     public void showSleepQuestion() {
