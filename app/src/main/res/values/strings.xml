@@ -159,6 +159,7 @@
     <string name="OPERATION_ONE_HOUR">This operation will take one hour.</string>
 
     <string name="GAME_RESULT">In the trading week you earned %1$d$.</string>
-
+    <string name="SLEEP_QUESTION">Sleep until tomorrow?</string>
+    <string name="END_GAME_QUESTION">End the trading week?</string>
 
     </resources>

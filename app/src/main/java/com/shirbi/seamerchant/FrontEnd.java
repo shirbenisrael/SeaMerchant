@@ -488,4 +488,9 @@ public class FrontEnd extends FrontEndGeneric {
     public void blinkSail() {
         mFrontEndSailBlinkTimer.startTimer(500, 20);
     }
+
+    public void showSleepQuestion() {
+        ((TextView)findViewById(R.id.sleep_message)).setText(mLogic.mCurrentDay.isLastDay() ?
+                R.string.END_GAME_QUESTION:R.string.SLEEP_QUESTION);
+    }
 }

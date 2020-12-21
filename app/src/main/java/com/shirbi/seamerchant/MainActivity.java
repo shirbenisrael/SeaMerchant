@@ -188,6 +188,7 @@ public class MainActivity extends Activity {
     }
 
     public void onSleepClick(View view) {
+        mFrontEnd.showSleepQuestion();
         mFrontEnd.showWindow(Window.SLEEP_WINDOW);
     }
 
