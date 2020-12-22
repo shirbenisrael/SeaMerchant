@@ -519,7 +519,65 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        mFrontEnd.showExitDialog();
-    }
+        Window window = mFrontEnd.getCurrentVisibleWindow();
 
+        switch (window)  {
+            case MAIN_WINDOW:
+                mFrontEnd.showExitDialog();
+                break;
+            case MARKET_WINDOW:
+                onDealCancelClick(null);
+                break;
+            case BANK_WINDOW:
+                onBankDealCancelClick(null);
+                break;
+            case DANGER_WINDOW:
+            case SAIL_WINDOW:
+                onSailCancelClick(null);
+                break;
+            case SAIL_END_WINDOW:
+                onSailEndClick(null);
+                break;
+            case SLEEP_WINDOW:
+                onCancelSleep(null);
+                break;
+            case BAD_WEATHER_IN_SAIL_WINDOW:
+                onExistBadWeatherClick(null);
+                break;
+            case SINK_WINDOW:
+                onSinkProgress(null);
+                break;
+            case SHOAL_WINDOW:
+            case ABANDONED_SHIP_WINDOW:
+                onExitSimpleSeaEvent(null);
+                break;
+            case ESCAPE_WINDOW:
+                onEscapeDoneClick(null);
+                break;
+            case WEATHER_WINDOW:
+                onExitWeatherWindow(null);
+                break;
+            case FIX_SHIP_WINDOW:
+                onFixCancelClick(null);
+                break;
+            case PIRATE_ACCEPT_OFFER_WINDOW:
+                onOfferAcceptedClick(null);
+                break;
+            case HIGH_SCORE_WINDOW:
+                onExistHighScore(null);
+                break;
+            case PIRATES_ATTACK_WINDOW:
+                onBattleWinDoneClick(null);
+                break;
+            case SIMPLE_NEW_DAY_EVENT_WINDOW:
+                onExitSimpleNewDayEventWindow(null);
+                break;
+            case NEGOTIATE_WINDOW:
+                onCancelOffer(null);
+                break;
+            case STRIKE_WINDOW:
+            case PIRATES_WINDOW:
+                break;
+        }
+    }
 }

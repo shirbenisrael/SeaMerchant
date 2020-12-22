@@ -160,6 +160,17 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
+
+    public @NonNull Window getCurrentVisibleWindow() {
+        for (Window window : Window.values()) {
+            if (findViewById(window.toLayoutId()).getVisibility() == View.VISIBLE) {
+                return window;
+            }
+        }
+
+        throw new IllegalStateException("No window is visible");
+    }
+
     private @NonNull String generateWeatherString() {
         Weather weather = mLogic.mWeather;
         String weatherString;
