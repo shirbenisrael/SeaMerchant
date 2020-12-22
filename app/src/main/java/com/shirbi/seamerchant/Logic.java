@@ -416,6 +416,13 @@ public class Logic {
         }
     }
 
+    public boolean isShipBroken() {
+        return (mDamage > 0);
+    }
+    public boolean canFixShip() {
+        return (isShipBroken() && (mCurrentHour < SLEEP_TIME));
+    }
+
     public int getBankNightlyInterest() {
         return BANK_NIGHTLY_INTEREST;
     }

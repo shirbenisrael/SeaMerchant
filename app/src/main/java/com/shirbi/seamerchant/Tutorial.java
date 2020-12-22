@@ -69,6 +69,10 @@ public class Tutorial {
         return true;
     }
 
+    public boolean isSuggestToFixShip() {
+        return mLogic.canFixShip();
+    }
+
     public boolean isSuggestToBuy() {
         if (!mLogic.canGoToMarket()) {
             return false;

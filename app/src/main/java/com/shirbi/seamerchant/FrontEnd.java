@@ -21,12 +21,14 @@ public class FrontEnd extends FrontEndGeneric {
     FrontEndTimer mFrontEndMarketBlinkTimer;
     FrontEndTimer mFrontEndSailBlinkTimer;
     FrontEndTimer mFrontEndSleepBlinkTimer;
+    FrontEndTimer mFrontEndFixShipBlinkTimer;
 
     public FrontEnd(MainActivity activity) {
         super(activity);
         mFrontEndMarketBlinkTimer = new FrontEndTimer(this);
         mFrontEndSailBlinkTimer = new FrontEndTimer(this);
         mFrontEndSleepBlinkTimer = new FrontEndTimer(this);
+        mFrontEndFixShipBlinkTimer = new FrontEndTimer(this);
 
         LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
         for (Goods goods: Goods.values()) {
@@ -409,6 +411,12 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     public void showTutorial() {
+        if (mLogic.mTutorial.isSuggestToFixShip()) {
+            showAlertDialogMessage(getString(R.string.TUTORIAL_FIX_SHIP), getString(R.string.TUTORIAL_TITLE));
+            blinkFixShip();
+            return;
+        }
+
         if (mLogic.mTutorial.isSuggestToSell()) {
             Goods goods = mLogic.mTutorial.mGoodsToDeal;
             State state = mLogic.mCurrentState;
@@ -494,6 +502,16 @@ public class FrontEnd extends FrontEndGeneric {
         findViewById(R.id.wide_sleep_button).setBackgroundResource(backGroundId);
     }
 
+    private void blinkFixShipButton(boolean isRed) {
+        @DrawableRes int backGroundId;
+        if (mLogic.isShipBroken()) {
+            backGroundId = isRed ? R.drawable.wide_fix_button_red : R.drawable.wide_fix_button;
+        } else {
+            backGroundId = R.drawable.wide_ship_button;
+        }
+        findViewById(R.id.wide_fix_button).setBackgroundResource(backGroundId);
+    }
+
     public void timerBlinked(FrontEndTimer timer, int countDown) {
         if (timer == mFrontEndMarketBlinkTimer) {
             blinkInventory(countDown % 2 != 0);
@@ -501,6 +519,8 @@ public class FrontEnd extends FrontEndGeneric {
             blinkFlags(countDown % 2 != 0);
         } else if (timer == mFrontEndSleepBlinkTimer) {
             blinkSleepButton(countDown % 2 != 0);
+        } else if (timer == mFrontEndFixShipBlinkTimer) {
+            blinkFixShipButton(countDown % 2 != 0);
         }
     }
 
