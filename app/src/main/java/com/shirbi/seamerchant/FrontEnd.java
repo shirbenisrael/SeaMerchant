@@ -1,5 +1,7 @@
 package com.shirbi.seamerchant;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Point;
 import android.view.View;
 import android.widget.Button;
@@ -514,8 +516,28 @@ public class FrontEnd extends FrontEndGeneric {
         mFrontEndSleepBlinkTimer.startTimer(500, 20);
     }
 
+    public void blinkFixShip() { mFrontEndFixShipBlinkTimer.startTimer(500,20);}
+
     public void showSleepQuestion() {
         ((TextView)findViewById(R.id.sleep_message)).setText(mLogic.mCurrentDay.isLastDay() ?
                 R.string.END_GAME_QUESTION:R.string.SLEEP_QUESTION);
+    }
+
+    void showExitDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+
+        builder.setTitle(getString(R.string.EXIT_GAME_TITLE));
+        builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.exit();
+            }
+        });
+        builder.setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing
+            }
+        });
+        builder.setIcon(R.drawable.exit_icon);
+        builder.show();
     }
 }

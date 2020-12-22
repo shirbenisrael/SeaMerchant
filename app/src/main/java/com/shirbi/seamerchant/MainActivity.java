@@ -511,4 +511,15 @@ public class MainActivity extends Activity {
     public void onTutorialClick(View view) {
         mFrontEnd.showTutorial();
     }
+
+    void exit() {
+        // TODO: Store state?
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        mFrontEnd.showExitDialog();
+    }
+
 }

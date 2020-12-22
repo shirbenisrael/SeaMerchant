@@ -131,6 +131,7 @@
     <string name="DANGER_WIND_MESSAGE">Strong winds can make navigation difficult.</string>
     <string name="DANGER_PIRATES_MESSAGE">The sea is infested with bandits. It is recommended to rent guard ships.</string>
 
+    <string name="CANCEL">Cancel</string>
     <string name="CONFIRM">Confirm</string>
     <string name="TUTORIAL">Tutorial</string>
 
@@ -162,4 +163,5 @@
     <string name="SLEEP_QUESTION">Sleep until tomorrow?</string>
     <string name="END_GAME_QUESTION">End the trading week?</string>
 
+    <string name="EXIT_GAME_TITLE">Exit game?</string>
     </resources>
