@@ -42,7 +42,7 @@
     <string name="FOG_STRING">Fog at %1$s today</string>
     <string name="WIND_STRING">Wind near %1$s today</string>
 
-    <string name="ONE_GUARD_COST">One guard ship cost %1$d (%2$d%%)</string>
+    <string name="ONE_GUARD_COST">One guard ship cost %1$d (%2$.2f%%)</string>
     <string name="TOTAL_GUARD_COST">Total cost %1$d, Cash %2$d</string>
     <string name="SAIL_DESTINATION">Sail destination: %1$s</string>
     <string name="SAIL_LANDING_HOUR">Landing hour %1$d:00</string>

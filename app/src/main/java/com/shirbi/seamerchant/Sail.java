@@ -17,12 +17,16 @@ public class Sail {
     int mMaxGuardShips;
     int mSelectedNumGuardShips;
     int mTotalGuardShipsCost;
-    int mGuardShipCostPercent;
+    float mGuardShipCostPercent;
     Weather mSailWeather;
     boolean mSailEndedPeacefully;
     public Warning mWarning;
 
-    static final int DEFAULT_GUARD_COST_PERCENT = 2;
+    static final float DEFAULT_GUARD_COST_PERCENT = 2f;
+    static final float NIGHT_SAIL_GUARD_COST_PERCENT_MULTIPLY = 1.25f;
+    static final float STORM_GUARD_COST_PERCENT_MULTIPLY = 2f;
+    static final float FOG_GUARD_COST_PERCENT_MULTIPLY = 1.5f;
+    static final float WIND_GUARD_COST_PERCENT_MULTIPLY = 1.5f;
     static final int MAX_GUARD_SHIPS = 5;
     static final int MIN_GUARD_SHIP_COST = 50;
     static final int DEFAULT_NUM_GUARDS = 0;
@@ -74,9 +78,6 @@ public class Sail {
         mSource = logic.mCurrentState;
         mLandingHour = logic.mCurrentHour + logic.getSailDuration(mDestination);
         calculateShipValue();
-        mGuardShipCostPercent = DEFAULT_GUARD_COST_PERCENT;
-        mGuardShipCost = Math.max(MIN_GUARD_SHIP_COST, (mGuardShipCostPercent * mValueOnShip / 100));
-        mMaxGuardShips = Math.min(MAX_GUARD_SHIPS, logic.mCash / mGuardShipCost);
 
         mNightSail = (logic.getDayPart() != DayPart.SUN_SHINES);
 
@@ -96,6 +97,28 @@ public class Sail {
             default:
                 break;
         }
+
+        mGuardShipCostPercent = DEFAULT_GUARD_COST_PERCENT;
+        if (mNightSail) {
+            mGuardShipCostPercent *= NIGHT_SAIL_GUARD_COST_PERCENT_MULTIPLY;
+        }
+
+        switch (mSailWeather) {
+            case STORM:
+                mGuardShipCostPercent *= STORM_GUARD_COST_PERCENT_MULTIPLY;
+                break;
+            case WIND:
+                mGuardShipCostPercent *= WIND_GUARD_COST_PERCENT_MULTIPLY;
+                break;
+            case FOG:
+                mGuardShipCostPercent *= FOG_GUARD_COST_PERCENT_MULTIPLY;
+                break;
+            default:
+                break;
+        }
+
+        mGuardShipCost = (int)Math.max(MIN_GUARD_SHIP_COST, (mGuardShipCostPercent * mValueOnShip / 100));
+        mMaxGuardShips = Math.min(MAX_GUARD_SHIPS, logic.mCash / mGuardShipCost);
 
         mBrokenShip = (logic.mDamage != 0);
         mTooLoaded = (mTotalLoad > logic.mCapacity);
