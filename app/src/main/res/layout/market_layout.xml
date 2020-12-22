@@ -88,6 +88,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onMarketMinusTenClick"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="-10" />
 
         <Button
@@ -96,6 +98,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onMarketMinusOneClick"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="-1" />
 
         <Button
@@ -104,6 +108,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onMarketPlusOneClick"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="+1" />
 
         <Button
@@ -112,6 +118,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onMarketPlusTenClick"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="+10" />
 
     </LinearLayout>
@@ -134,6 +142,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onMarketFillCapacityClick"
+            android:background="@drawable/wide_empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="@string/FILL_CAPACITY" />
 
         <Button
@@ -143,6 +153,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onMarketPercentageForGuardsClick"
+            android:background="@drawable/wide_empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="90%" />
 
     </LinearLayout>
@@ -159,6 +171,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onMarketSellAllClick"
+            android:background="@drawable/wide_empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="@string/SELL_ALL" />
 
         <Button
@@ -167,6 +181,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onMarketBuyAllClick"
+            android:background="@drawable/wide_empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="@string/BUY_ALL" />
 
     </LinearLayout>
