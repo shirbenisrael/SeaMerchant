@@ -19,6 +19,10 @@ public enum Weather {
     int[] mBackGrounds = {
             R.drawable.good_sea_weather, R.drawable.storm_weather, R.drawable.fog_weather, R.drawable.wind_weather};
 
+    private static final @DrawableRes
+    int[] mSmallIcon = {
+            R.drawable.good_sea_weather, R.drawable.storm_weather, R.drawable.fog_weather, R.drawable.wind_icon};
+
     private final int value;
     Weather(int value){
         this.value = value;
@@ -34,5 +38,9 @@ public enum Weather {
 
     public @DrawableRes int toBackground() {
         return mBackGrounds[value];
+    }
+
+    public @DrawableRes int toSmallIcon() {
+        return mSmallIcon[value];
     }
 }

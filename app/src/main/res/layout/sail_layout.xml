@@ -111,7 +111,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/night_sail"
+                android:background="@drawable/rock_icon"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:onClick="onDangerNightClick"
                 android:gravity="center_horizontal" />

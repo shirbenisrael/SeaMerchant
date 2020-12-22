@@ -206,7 +206,7 @@ public class FrontEnd extends FrontEndGeneric {
             ImageView flagWeather = (ImageView)flagButtonWrapper.getChildAt(2);
             if (state == mLogic.mWeatherState && mLogic.mWeather != Weather.GOOD_SAILING) {
                 flagWeather.setVisibility(View.VISIBLE);
-                flagWeather.setImageResource(mLogic.mWeather.toBackground());
+                flagWeather.setImageResource(mLogic.mWeather.toSmallIcon());
             } else {
                 flagWeather.setVisibility(View.GONE);
             }

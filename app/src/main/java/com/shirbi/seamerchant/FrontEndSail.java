@@ -196,7 +196,7 @@ public class FrontEndSail extends FrontEndGeneric {
 
         findViewById(R.id.danger_weather).setVisibility(sail.mSailWeather != Weather.GOOD_SAILING ?
                 View.VISIBLE : View.INVISIBLE);
-        findViewById(R.id.danger_weather).setBackgroundResource(sail.mSailWeather.toBackground());
+        findViewById(R.id.danger_weather).setBackgroundResource(sail.mSailWeather.toSmallIcon());
 
         findViewById(R.id.danger_broken_ship).setVisibility(sail.mBrokenShip ? View.VISIBLE : View.INVISIBLE);
 
