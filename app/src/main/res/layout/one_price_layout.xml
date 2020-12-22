@@ -5,4 +5,5 @@
     android:layout_weight="1"
     android:gravity="center_horizontal"
     android:text="35"
+    android:onClick="onPriceClick"
     android:textColor="#000000" />

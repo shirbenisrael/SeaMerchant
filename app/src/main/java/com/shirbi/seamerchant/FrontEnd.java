@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Point;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -570,5 +571,24 @@ public class FrontEnd extends FrontEndGeneric {
         });
         builder.setIcon(R.drawable.exit_icon);
         builder.show();
+    }
+
+    public void priceClick(View priceView) {
+        ViewGroup priceViewParent = (ViewGroup) priceView.getParent();
+        int indexOfChild = priceViewParent.indexOfChild(priceView);
+        Goods goods = Goods.values()[indexOfChild - 1]; // zero for flag
+
+        ViewGroup priceViewGrandParent = (ViewGroup) priceViewParent.getParent();
+        int indexOfParent = priceViewGrandParent.indexOfChild(priceViewParent);
+        State destinationState = State.values()[indexOfParent];
+
+        int destinationPrice = mLogic.mPriceTable.getPrice(destinationState, goods);
+        int sourcePrice = mLogic.mPriceTable.getPrice(mLogic.mCurrentState, goods);
+        int maxUnits = mLogic.calculateTotalValue() / sourcePrice;
+        int profit = (destinationPrice - sourcePrice) * maxUnits;
+
+        String calculatorString =
+                "(" + destinationPrice + "-" + sourcePrice + ")X" + maxUnits + "=" + profit;
+        ((TextView)findViewById(R.id.calculator)).setText(calculatorString);
     }
 }

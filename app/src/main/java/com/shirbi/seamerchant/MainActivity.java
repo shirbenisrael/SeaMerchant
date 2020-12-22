@@ -580,4 +580,8 @@ public class MainActivity extends Activity {
                 break;
         }
     }
+
+    public void onPriceClick(View view) {
+        mFrontEnd.priceClick(view);
+    }
 }
