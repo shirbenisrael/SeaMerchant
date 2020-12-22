@@ -209,11 +209,15 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void onExistHighScore(View view) {
+    private void startNewGame() {
         playSound(R.raw.new_day);
         mLogic.startNewGame();
         mFrontEnd.showWindow(Window.WEATHER_WINDOW);
         mFrontEnd.showNewWeather();
+    }
+
+    public void onExistHighScore(View view) {
+        startNewGame();
     }
 
     public void onExitWeatherWindow(View view) {
@@ -517,6 +521,10 @@ public class MainActivity extends Activity {
         super.onBackPressed();
     }
 
+    public void onExitClick(View view) {
+        mFrontEnd.showExitDialog();
+    }
+
     @Override
     public void onBackPressed() {
         Window window = mFrontEnd.getCurrentVisibleWindow();
@@ -575,6 +583,9 @@ public class MainActivity extends Activity {
             case NEGOTIATE_WINDOW:
                 onCancelOffer(null);
                 break;
+            case MENU_WINDOW:
+                onExitMenu(null);
+                break;
             case STRIKE_WINDOW:
             case PIRATES_WINDOW:
                 break;
@@ -585,7 +596,15 @@ public class MainActivity extends Activity {
         mFrontEnd.priceClick(view);
     }
 
-    public void onMenuClick(View view) {
+    public void onExitMenu(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+    }
 
+    public void onMenuClick(View view) {
+        mFrontEnd.showWindow(Window.MENU_WINDOW);
+    }
+
+    public void onStartNewGameClick(View view) {
+        startNewGame();
     }
 }

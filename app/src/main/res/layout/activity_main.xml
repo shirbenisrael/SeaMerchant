@@ -110,4 +110,9 @@
         android:id="@+id/high_score_layout"
         layout="@layout/high_score_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/menu_layout"
+        layout="@layout/menu_layout"
+        android:visibility="gone" />
 </LinearLayout>
