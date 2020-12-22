@@ -584,4 +584,8 @@ public class MainActivity extends Activity {
     public void onPriceClick(View view) {
         mFrontEnd.priceClick(view);
     }
+
+    public void onMenuClick(View view) {
+
+    }
 }
