@@ -347,7 +347,7 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     public void showCrewNegotiationSucceed() {
-        findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.accept_offer);
+        findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.crew_accept_offer);
         showCrewNegotiationResult(mLogic.mCurrentDay.toStringId(), R.string.CREW_OFFER_ACCEPTED);
     }
 
