@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
     FrontEndShoal mFrontEndShoal;
     FrontEndSink mFrontEndSink;
     FrontEndHighScore mFrontEndHighScore;
+    FrontEndMedal mFrontEndMedal;
 
     boolean mIsSoundEnable = true;
 
@@ -45,6 +46,7 @@ public class MainActivity extends Activity {
         mFrontEndShoal = new FrontEndShoal(this);
         mFrontEndSink = new FrontEndSink(this);
         mFrontEndHighScore = new FrontEndHighScore(this);
+        mFrontEndMedal = new FrontEndMedal(this);
 
         restoreState();
         mFrontEnd.showState();
@@ -588,6 +590,9 @@ public class MainActivity extends Activity {
             case MENU_WINDOW:
                 onExitMenu(null);
                 break;
+            case MEDAL_WINDOW:
+                onExitMedalClick(null);
+                break;
             case STRIKE_WINDOW:
             case PIRATES_WINDOW:
                 break;
@@ -596,6 +601,14 @@ public class MainActivity extends Activity {
 
     public void onPriceClick(View view) {
         mFrontEnd.priceClick(view);
+    }
+
+    public void onMedalClick(View view) {
+        mFrontEnd.showWindow(Window.MEDAL_WINDOW);
+    }
+
+    public void onExitMedalClick(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
 
     public void onExitMenu(View view) {

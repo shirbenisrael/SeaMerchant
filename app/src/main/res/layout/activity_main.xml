@@ -115,4 +115,9 @@
         android:id="@+id/menu_layout"
         layout="@layout/menu_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/medal_layout"
+        layout="@layout/medal_layout"
+        android:visibility="gone" />
 </LinearLayout>

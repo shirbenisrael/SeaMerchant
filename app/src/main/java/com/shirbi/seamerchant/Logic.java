@@ -48,7 +48,7 @@ public class Logic {
     public int mCapacity;
     public boolean mIsBankOperationTakesTime;
     public boolean mIsMarketOperationTakesTime;
-
+    private boolean mIsMedalAchieved[] = new boolean[Medal.NUM_MEDAL_TYPES];
 
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
@@ -477,9 +477,25 @@ public class Logic {
             }
         }
         editor.putString(getString(R.string.mPriceTable), str.toString());
+
+        str = new StringBuilder();
+        for (Medal medal : Medal.values()) {
+            str.append(mIsMedalAchieved[medal.getValue()]).append(",");
+        }
+        editor.putString(getString(R.string.mIsMedalAchieved), str.toString());
     }
 
     public void restoreState( SharedPreferences sharedPref) {
+        String savedString = sharedPref.getString(getString(R.string.mIsMedalAchieved), "");
+        StringTokenizer st = new StringTokenizer(savedString, ",");
+        for (Medal medal : Medal.values()) {
+            if (st.hasMoreTokens()){
+                mIsMedalAchieved[medal.getValue()] = Boolean.parseBoolean(st.nextToken());
+            } else {
+                mIsMedalAchieved[medal.getValue()] = false;
+            }
+        }
+
         mCurrentHour = sharedPref.getInt(getString(R.string.mCurrentHour), 0);
         if (mCurrentHour == 0) {
             startNewGame();
@@ -499,8 +515,8 @@ public class Logic {
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
 
-        String savedString = sharedPref.getString(getString(R.string.mInventory), "");
-        StringTokenizer st = new StringTokenizer(savedString, ",");
+        savedString = sharedPref.getString(getString(R.string.mInventory), "");
+        st = new StringTokenizer(savedString, ",");
         for (Goods goods : Goods.values()) {
             if (st.hasMoreTokens()){
                 mInventory[goods.getValue()] = Integer.parseInt(st.nextToken());

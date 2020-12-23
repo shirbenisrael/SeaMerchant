@@ -22,7 +22,8 @@ public enum Window {
     SINK_WINDOW(18),
     DANGER_WINDOW(19),
     HIGH_SCORE_WINDOW(20),
-    MENU_WINDOW(21);
+    MENU_WINDOW(21),
+    MEDAL_WINDOW(22);
 
     private static final int[] mLayoutId = {
             R.id.main_window_layout,
@@ -46,7 +47,8 @@ public enum Window {
             R.id.sink_layout,
             R.id.danger_layout,
             R.id.high_score_layout,
-            R.id.menu_layout};
+            R.id.menu_layout,
+            R.id.medal_layout};
 
     private final int value;
     Window(int value){
