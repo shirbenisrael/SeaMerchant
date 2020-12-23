@@ -1,10 +1,15 @@
 package com.shirbi.seamerchant;
 
+import android.content.SharedPreferences;
+
+import androidx.annotation.StringRes;
+
 import java.util.Random;
+import java.util.StringTokenizer;
 
 public class Logic {
     private static final int START_GAME_CASH = 5000;
-    private static final int START_HOUR = 6;
+    public static final int START_HOUR = 6;
     private static final Weather START_WEATHER = Weather.GOOD_SAILING;
     private static final State START_STATE = State.ISRAEL;
     private static final int START_CAPACITY = 100;
@@ -13,6 +18,11 @@ public class Logic {
     public static final int SLEEP_TIME = 24;
     private static final int MIN_VALUE_FOR_MERCHANT = 4500;
     public static final int BANK_NIGHTLY_INTEREST = 10;
+
+    private MainActivity mActivity;
+    public Logic(MainActivity activity) {
+        mActivity = activity;
+    }
 
     private int mSailDurations[][] = {
             { 0,  3,  6,  3, -1}, // From Egypt
@@ -23,7 +33,10 @@ public class Logic {
     };
 
     private Random mRand = new Random();
+
+    // Variable need to store
     public PriceTable mPriceTable = new PriceTable();
+    public int mInventory[] = new int[Goods.NUM_GOODS_TYPES];
     public int mCash;
     public int mBankDeposit;
     public WeekDay mCurrentDay;
@@ -33,6 +46,10 @@ public class Logic {
     public Weather mWeather;
     public int mDamage;
     public int mCapacity;
+    public boolean mIsBankOperationTakesTime;
+    public boolean mIsMarketOperationTakesTime;
+
+
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
     FixShipDeal mFixShipDeal;
@@ -44,8 +61,6 @@ public class Logic {
     public int mFishBoatCollisionDamage;
     public int mGoodsUnitsToBurn = 0;
     public Goods mGoodsToBurn;
-    public boolean mIsBankOperationTakesTime;
-    public boolean mIsMarketOperationTakesTime;
 
     // For NewDayEvent.BIGGER_SHIP
     public boolean mIsBiggerShipForCash;
@@ -61,8 +76,6 @@ public class Logic {
 
     public NegotiationType mNegotiationType;
     public int mLoseDayByStrike;
-
-    public int mInventory[];
 
     public enum NewDayEvent {
         SPECIAL_PRICE,
@@ -81,7 +94,6 @@ public class Logic {
     public NewDayEvent mNewDayEvent;
 
     public void startNewGame() {
-
         mPriceTable.generateRandomPrices();
         mCash = START_GAME_CASH;
         mBankDeposit = 0;
@@ -92,7 +104,6 @@ public class Logic {
         mWeather = START_WEATHER;
         mDamage = 0;
         mCapacity = START_CAPACITY;
-        mInventory = new int[Goods.NUM_GOODS_TYPES];
         for (int i = 0 ; i < mInventory.length ; i++) {
             mInventory[i] = 0;
         }
@@ -435,4 +446,73 @@ public class Logic {
         return mIsMarketOperationTakesTime;
     }
 
+    protected final String getString(@StringRes int resId) {
+        return mActivity.getString(resId);
+    }
+
+    public void storeState( SharedPreferences.Editor editor) {
+        editor.putInt(getString(R.string.mCash), mCash);
+        editor.putInt(getString(R.string.mBankDeposit), mBankDeposit);
+        editor.putInt(getString(R.string.mCurrentDay), mCurrentDay.getValue());
+        editor.putInt(getString(R.string.mCurrentHour), mCurrentHour);
+        editor.putInt(getString(R.string.mCurrentState), mCurrentState.getValue());
+        editor.putInt(getString(R.string.mWeatherState), mWeatherState.getValue());
+        editor.putInt(getString(R.string.mWeather), mWeather.getValue());
+        editor.putInt(getString(R.string.mDamage), mDamage);
+        editor.putInt(getString(R.string.mCapacity), mCapacity);
+
+        editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
+        editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
+
+        StringBuilder str = new StringBuilder();
+        for (Goods goods : Goods.values()) {
+            str.append(mInventory[goods.getValue()]).append(",");
+        }
+        editor.putString(getString(R.string.mInventory), str.toString());
+
+        str = new StringBuilder();
+        for (State state : State.values()) {
+            for (Goods goods : Goods.values()) {
+                str.append(mPriceTable.getPrice(state, goods)).append(",");
+            }
+        }
+        editor.putString(getString(R.string.mPriceTable), str.toString());
+    }
+
+    public void restoreState( SharedPreferences sharedPref) {
+        mCurrentHour = sharedPref.getInt(getString(R.string.mCurrentHour), 0);
+        if (mCurrentHour == 0) {
+            startNewGame();
+            return;
+        }
+
+        mCash = sharedPref.getInt(getString(R.string.mCash), START_GAME_CASH);
+        mBankDeposit = sharedPref.getInt(getString(R.string.mBankDeposit), 0);
+        mCurrentDay = WeekDay.values()[sharedPref.getInt(getString(R.string.mCurrentDay), 0)];
+        mCurrentState = State.values()[sharedPref.getInt(getString(R.string.mCurrentState), State.ISRAEL.getValue())];
+        mWeatherState = State.values()[sharedPref.getInt(getString(R.string.mWeatherState), State.ISRAEL.getValue())];
+        mWeather = Weather.values()[sharedPref.getInt(getString(R.string.mWeather), Weather.GOOD_SAILING.getValue())];
+        mWeather = Weather.values()[sharedPref.getInt(getString(R.string.mWeather), Weather.GOOD_SAILING.getValue())];
+        mDamage = sharedPref.getInt(getString(R.string.mDamage), 0);
+        mCapacity = sharedPref.getInt(getString(R.string.mCapacity), START_CAPACITY);
+
+        mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
+        mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
+
+        String savedString = sharedPref.getString(getString(R.string.mInventory), "");
+        StringTokenizer st = new StringTokenizer(savedString, ",");
+        for (Goods goods : Goods.values()) {
+            if (st.hasMoreTokens()){
+                mInventory[goods.getValue()] = Integer.parseInt(st.nextToken());
+            }
+        }
+
+        savedString = sharedPref.getString(getString(R.string.mPriceTable), "");
+        st = new StringTokenizer(savedString, ",");
+        for (State state : State.values()) {
+            for (Goods goods : Goods.values()) {
+                mPriceTable.setPrice(state, goods, Integer.parseInt(st.nextToken()));
+            }
+        }
+    }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mCash" translatable="false">mCash</string>
+    <string name="mBankDeposit" translatable="false">mBankDeposit</string>
+    <string name="mCurrentDay" translatable="false">mCurrentDay</string>
+    <string name="mCurrentHour" translatable="false">mCurrentHour</string>
+    <string name="mCurrentState" translatable="false">mCurrentState</string>
+    <string name="mWeatherState" translatable="false">mWeatherState</string>
+    <string name="mWeather" translatable="false">mWeather</string>
+    <string name="mDamage" translatable="false">mDamage</string>
+    <string name="mCapacity" translatable="false">mCapacity</string>
+    <string name="mInventory" translatable="false">mInventory</string>
+    <string name="mPriceTable" translatable="false">mPriceTable</string>
+    <string name="mIsBankOperationTakesTime" translatable="false">mIsBankOperationTakesTime</string>
+    <string name="mIsMarketOperationTakesTime" translatable="false">mIsMarketOperationTakesTime</string>
+</resources>

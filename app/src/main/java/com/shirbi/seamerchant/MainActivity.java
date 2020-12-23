@@ -1,6 +1,8 @@
 package com.shirbi.seamerchant;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +32,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mLogic = new Logic();
+        mLogic = new Logic(this);
         mFrontEnd = new FrontEnd(this);
         mFrontEndMarket = new FrontEndMarket(this);
         mFrontEndBank = new FrontEndBank(this);
@@ -44,7 +46,7 @@ public class MainActivity extends Activity {
         mFrontEndSink = new FrontEndSink(this);
         mFrontEndHighScore = new FrontEndHighScore(this);
 
-        mLogic.startNewGame();
+        restoreState();
         mFrontEnd.showState();
     }
 
@@ -606,5 +608,24 @@ public class MainActivity extends Activity {
 
     public void onStartNewGameClick(View view) {
         startNewGame();
+    }
+
+    private void storeState() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        mLogic.storeState(editor);
+        editor.apply();
+    }
+
+    private void restoreState() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        mLogic.restoreState(sharedPref);
+    }
+
+    @Override
+    protected void onDestroy() {
+        storeState();
+        super.onDestroy();
     }
 }
