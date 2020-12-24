@@ -22,7 +22,7 @@ public enum Medal {
     TITANIC(18), // damage of 200,000 from shoal,
     ALL_GOODS(19), // pass all goods type and profit in one sail.
     BDS_TURKEY(20), // profit of 1,000,000 without enter turkey.
-    GOOD_DAY(21), // x2 value in one day.
+    GOOD_DAY_1(21), // x2 value in one day.
     GOOD_DAY_2(22), // x5 value in one day.
     GOOD_DAY_3(23), // x8 value in one day.
     GREECE_VISITOR(24), // visit greece all days and earn 1,000,000
@@ -41,5 +41,73 @@ public enum Medal {
 
     public int getValue() {
         return value;
+    }
+
+    public int getTitle() {
+        switch (this) {
+            case TREASURE_1:
+                return R.string.TREASURE_1_TITLE;
+            case TREASURE_2:
+                return R.string.TREASURE_2_TITLE;
+            case TREASURE_3:
+                return R.string.TREASURE_3_TITLE;
+            case TREASURE_4:
+                return R.string.TREASURE_4_TITLE;
+            case TREASURE_5:
+                return R.string.TREASURE_5_TITLE;
+            case IRON_BANK:
+                return R.string.IRON_BANK_TITLE;
+            case CAPACITY_1:
+                return R.string.CAPACITY_1_TITLE;
+            case CAPACITY_2:
+                return R.string.CAPACITY_2_TITLE;
+            case CAPACITY_3:
+                return R.string.CAPACITY_3_TITLE;
+            case AROUND_THE_WORLD:
+                return R.string.AROUND_THE_WORLD_TITLE;
+            case ESCAPE:
+                return R.string.ESCAPE_TITLE;
+            case CREW_NEGOTIATOR:
+                return R.string.CREW_NEGOTIATOR_TITLE;
+            case WIND:
+                return R.string.WIND_TITLE;
+            case YOUNG_FIGHTER:
+                return R.string.YOUNG_FIGHTER_TITLE;
+            case TIRED_FIGHTER:
+                return R.string.TIRED_FIGHTER_TITLE;
+            case ALWAYS_FIGHTER:
+                return R.string.ALWAYS_FIGHTER_TITLE;
+            case EGYPT_WHEAT:
+                return R.string.EGYPT_WHEAT_TITLE;
+            case DOUBLE_SAIL:
+                return R.string.DOUBLE_SAIL_TITLE;
+            case TITANIC:
+                return R.string.TITANIC_TITLE;
+            case ALL_GOODS:
+                return R.string.ALL_GOODS_TITLE;
+            case BDS_TURKEY:
+                return R.string.BDS_TURKEY_TITLE;
+            case GOOD_DAY_1:
+                return R.string.GOOD_DAY_1_TITLE;
+            case GOOD_DAY_2:
+                return R.string.GOOD_DAY_2_TITLE;
+            case GOOD_DAY_3:
+                return R.string.GOOD_DAY_3_TITLE;
+            case GREECE_VISITOR:
+                return R.string.GREECE_VISITOR_TITLE;
+            case FEDERAL_RESERVE:
+                return R.string.FEDERAL_RESERVE_TITLE;
+            case FAST_EXIT:
+                return R.string.FAST_EXIT_TITLE;
+            case DIET_MERCHANT:
+                return R.string.DIET_MERCHANT_TITLE;
+            case HERO_DIE:
+                return R.string.HERO_DIE_TITLE;
+            case GERMAN_TIME:
+                return R.string.GERMAN_TIME_TITLE;
+            case ECONOMICAL_SAIL:
+                return R.string.ECONOMICAL_SAIL_TITLE;
+        }
+        throw new IllegalStateException("Unexpected value: " + this);
     }
 }

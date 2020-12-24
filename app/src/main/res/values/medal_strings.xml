@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="TREASURE_1_TITLE">Young Sailor</string>
+    <string name="TREASURE_2_TITLE">Master Sailor</string>
+    <string name="TREASURE_3_TITLE">Tycoon</string>
+    <string name="TREASURE_4_TITLE">Oligarch</string>
+    <string name="TREASURE_5_TITLE">Saudi Sheikh</string>
+    <string name="IRON_BANK_TITLE">Iron Bank</string>
+    <string name="CAPACITY_1_TITLE">Vice Admiral</string>
+    <string name="CAPACITY_2_TITLE">First Admiral</string>
+    <string name="CAPACITY_3_TITLE">Navy Admiral</string>
+    <string name="AROUND_THE_WORLD_TITLE">Around the World in One Day</string>
+    <string name="ESCAPE_TITLE">Captain Phillips</string>
+    <string name="CREW_NEGOTIATOR_TITLE">Chairman of the Workers\' Committee</string>
+    <string name="WIND_TITLE">Just because of the wind</string>
+    <string name="YOUNG_FIGHTER_TITLE">Young Fighter</string>
+    <string name="TIRED_FIGHTER_TITLE">Tired Fighter</string>
+    <string name="ALWAYS_FIGHTER_TITLE">Captain Hook</string>
+    <string name="EGYPT_WHEAT_TITLE">Joseph the Viceroy</string>
+    <string name="DOUBLE_SAIL_TITLE">Double Sail</string>
+    <string name="TITANIC_TITLE">Titanic</string>
+    <string name="ALL_GOODS_TITLE">Diverse Trading</string>
+    <string name="BDS_TURKEY_TITLE">Boycott of Turkey</string>
+    <string name="GOOD_DAY_1_TITLE">Good Day</string>
+    <string name="GOOD_DAY_2_TITLE">Very Good Day</string>
+    <string name="GOOD_DAY_3_TITLE">Very Very Good Day</string>
+    <string name="GREECE_VISITOR_TITLE">Poseidon</string>
+    <string name="FEDERAL_RESERVE_TITLE">Federal Reserve</string>
+    <string name="FAST_EXIT_TITLE">Fast Exit</string>
+    <string name="DIET_MERCHANT_TITLE">Diet Merchant</string>
+    <string name="HERO_DIE_TITLE">Death of heroes</string>
+    <string name="GERMAN_TIME_TITLE">Certified Yekke</string>
+    <string name="ECONOMICAL_SAIL_TITLE">Economical Sailor</string>
+</resources>

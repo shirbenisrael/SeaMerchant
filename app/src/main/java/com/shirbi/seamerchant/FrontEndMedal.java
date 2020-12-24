@@ -33,9 +33,8 @@ public class FrontEndMedal extends FrontEndGeneric {
             }
 
             Button medalText = (Button)((LinearLayout)scroll.getChildAt(medal.getValue())).getChildAt(1);
-            medalText.setText(medal.toString());
+            medalText.setText(getString(medal.getTitle()));
             medalText.setLayoutParams(new LinearLayout.LayoutParams(5 * windowSize.x / 6, windowSize.x / 6));
         }
     }
-
 }
