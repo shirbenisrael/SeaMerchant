@@ -531,4 +531,40 @@ public class Logic {
             }
         }
     }
+
+    public boolean hasMedal(Medal medal) {
+        return mIsMedalAchieved[medal.getValue()];
+    }
+
+    public Medal acquireNewMedal() {
+        Medal medal = whichMedalShouldAcquire();
+        if (medal != null) {
+            mIsMedalAchieved[medal.getValue()] = true;
+        }
+        return medal;
+    }
+
+    private Medal whichMedalShouldAcquire() {
+        if ((!hasMedal(Medal.TREASURE_1)) && (mCash >= 10000)) {
+            return Medal.TREASURE_1;
+        }
+
+        if ((!hasMedal(Medal.TREASURE_2)) && (mCash >= 100000)) {
+            return Medal.TREASURE_2;
+        }
+
+        if ((!hasMedal(Medal.TREASURE_3)) && (mCash >= 1000000)) {
+            return Medal.TREASURE_3;
+        }
+
+        if ((!hasMedal(Medal.TREASURE_4)) && (mCash >= 2000000)) {
+            return Medal.TREASURE_4;
+        }
+
+        if ((!hasMedal(Medal.TREASURE_5)) && (mCash >= 10000000)) {
+            return Medal.TREASURE_5;
+        }
+
+        return null;
+    }
 }

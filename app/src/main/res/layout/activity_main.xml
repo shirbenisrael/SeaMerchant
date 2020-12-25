@@ -120,4 +120,9 @@
         android:id="@+id/medal_layout"
         layout="@layout/medal_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/new_medal_layout"
+        layout="@layout/new_medal_layout"
+        android:visibility="gone" />
 </LinearLayout>

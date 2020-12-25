@@ -34,6 +34,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mLogic = new Logic(this);
+        restoreState();
+
         mFrontEnd = new FrontEnd(this);
         mFrontEndMarket = new FrontEndMarket(this);
         mFrontEndBank = new FrontEndBank(this);
@@ -48,7 +50,6 @@ public class MainActivity extends Activity {
         mFrontEndHighScore = new FrontEndHighScore(this);
         mFrontEndMedal = new FrontEndMedal(this);
 
-        restoreState();
         mFrontEnd.showState();
     }
 
@@ -103,6 +104,11 @@ public class MainActivity extends Activity {
         playSound(R.raw.deal_done);
         mLogic.applyMarketDeal();
         mFrontEnd.showState();
+
+        if (checkForNewMedal()) {
+            return;
+        }
+
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         if (mLogic.calculateLoad() > 0) {
             mFrontEnd.blinkSail();
@@ -188,6 +194,11 @@ public class MainActivity extends Activity {
     public void onSailEndClick(View view) {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
+
+        if (checkForNewMedal()) {
+            return;
+        }
+
         mFrontEnd.blinkMarket();
     }
 
@@ -261,6 +272,10 @@ public class MainActivity extends Activity {
             mFrontEnd.showWindow(Window.MAIN_WINDOW);
             mFrontEnd.showState();
         }
+
+        if (checkForNewMedal()) {
+            return;
+        }
     }
 
     public void onAcceptOffer(View view) {
@@ -275,6 +290,10 @@ public class MainActivity extends Activity {
         mLogic.acceptOffer();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
+
+        if (checkForNewMedal()) {
+            return;
+        }
     }
 
     public void onGuardShipClick(View view) {
@@ -453,6 +472,10 @@ public class MainActivity extends Activity {
         mLogic.applyBankDeal();
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
+
+        if (checkForNewMedal()) {
+            return;
+        }
     }
 
     public void onFixButtonClick(View view) {
@@ -644,5 +667,21 @@ public class MainActivity extends Activity {
 
     public void onOneMedalClick(View view) {
         mFrontEndMedal.showMedalCondition(view);
+    }
+
+    private boolean checkForNewMedal() {
+        Medal medal = mLogic.acquireNewMedal();
+        if (medal != null) {
+            playSound(R.raw.agreement);
+            mFrontEnd.showWindow(Window.NEW_MEDAL_WINDOW);
+            mFrontEndMedal.showNewMedal(medal);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void onExitNewMedal(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
 }
