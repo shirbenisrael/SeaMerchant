@@ -326,7 +326,7 @@ public class Sail {
                         return true;
                     }
                     if ((mLogic.mWeather != Weather.FOG) &&
-                        (mLogic.mWeatherState == mDestination) || mLogic.mWeatherState == mSource) {
+                        ((mLogic.mWeatherState == mDestination) || (mLogic.mWeatherState == mSource))) {
                         return true;
                     }
                 }
