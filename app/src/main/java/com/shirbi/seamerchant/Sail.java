@@ -278,7 +278,13 @@ public class Sail {
     }
 
     public boolean isEscapePiratesSucceeds() {
-        return tryToDoSomething(getPercentsToEscapeFromPirates());
+        boolean result = tryToDoSomething(getPercentsToEscapeFromPirates());
+
+        if (result) {
+            mLogic.mEscapeCountInOneDay++;
+        }
+
+        return result;
     }
 
     public void negotiationSucceeds() {

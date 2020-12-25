@@ -49,8 +49,8 @@ public class Logic {
     public boolean mIsBankOperationTakesTime;
     public boolean mIsMarketOperationTakesTime;
     private boolean mIsMedalAchieved[] = new boolean[Medal.NUM_MEDAL_TYPES];
-
     private boolean mStatesVisitedToday[] = new boolean[State.values().length];
+    public int mEscapeCountInOneDay;
 
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
@@ -115,6 +115,8 @@ public class Logic {
         for (State state : State.values()) {
             mStatesVisitedToday[state.getValue()] = (state == START_STATE);
         }
+
+        mEscapeCountInOneDay = 0;
     }
 
     public void initMarketDeal(Goods goods) {
@@ -205,6 +207,8 @@ public class Logic {
         for (State state : State.values()) {
             mStatesVisitedToday[state.getValue()] = (state == mCurrentState);
         }
+
+        mEscapeCountInOneDay = 0;
     }
 
     private void generateFishBoatCollision() {
@@ -471,6 +475,7 @@ public class Logic {
         editor.putInt(getString(R.string.mWeather), mWeather.getValue());
         editor.putInt(getString(R.string.mDamage), mDamage);
         editor.putInt(getString(R.string.mCapacity), mCapacity);
+        editor.putInt(getString(R.string.mEscapeCountInOneDay), mEscapeCountInOneDay);
 
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
@@ -528,6 +533,7 @@ public class Logic {
         mWeather = Weather.values()[sharedPref.getInt(getString(R.string.mWeather), Weather.GOOD_SAILING.getValue())];
         mDamage = sharedPref.getInt(getString(R.string.mDamage), 0);
         mCapacity = sharedPref.getInt(getString(R.string.mCapacity), START_CAPACITY);
+        mEscapeCountInOneDay = sharedPref.getInt(getString(R.string.mEscapeCountInOneDay), 0);
 
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
@@ -619,6 +625,10 @@ public class Logic {
             if (count == mStatesVisitedToday.length) {
                 return Medal.AROUND_THE_WORLD;
             }
+        }
+
+        if (!hasMedal(Medal.ESCAPE) && mEscapeCountInOneDay >= 3) {
+            return Medal.ESCAPE;
         }
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
