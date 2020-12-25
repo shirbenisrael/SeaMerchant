@@ -565,6 +565,26 @@ public class Logic {
             return Medal.TREASURE_5;
         }
 
+        if ((!hasMedal(Medal.IRON_BANK)) && (mCurrentHour == START_HOUR) && (mBankDeposit >= 55000)) {
+            return Medal.IRON_BANK;
+        }
+
+        if ((!hasMedal(Medal.CAPACITY_1)) && (mCapacity >= 200)) {
+            return Medal.CAPACITY_1;
+        }
+
+        if ((!hasMedal(Medal.CAPACITY_2)) && (mCapacity >= 500)) {
+            return Medal.CAPACITY_2;
+        }
+
+        if ((!hasMedal(Medal.CAPACITY_3)) && (mCapacity >= 1000)) {
+            return Medal.CAPACITY_3;
+        }
+
+        if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
+            return Medal.FAST_EXIT;
+        }
+
         return null;
     }
 }
