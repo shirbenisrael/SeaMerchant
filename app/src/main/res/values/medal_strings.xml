@@ -31,4 +31,36 @@
     <string name="HERO_DIE_TITLE">Death of heroes</string>
     <string name="GERMAN_TIME_TITLE">Certified Yekke</string>
     <string name="ECONOMICAL_SAIL_TITLE">Economical Sailor</string>
+
+    <string name="TREASURE_1_CONDITION">Get 10,000$ in cash</string>
+    <string name="TREASURE_2_CONDITION">Get 100,000$ in cash</string>
+    <string name="TREASURE_3_CONDITION">Get 1,000,000$ in cash</string>
+    <string name="TREASURE_4_CONDITION">Get 2,000,000$ in cash</string>
+    <string name="TREASURE_5_CONDITION">Get 10,000,000$ in cash</string>
+    <string name="IRON_BANK_CONDITION">Get 5,000$ interest on night deposit in the Bank</string>
+    <string name="CAPACITY_1_CONDITION">Get capacity of 200 tonne</string>
+    <string name="CAPACITY_2_CONDITION">Get capacity of 500 tonne</string>
+    <string name="CAPACITY_3_CONDITION">Get capacity of 1,000 tonne</string>
+    <string name="AROUND_THE_WORLD_CONDITION">Visit all ports in one day</string>
+    <string name="ESCAPE_CONDITION">Escape from pirates 3 times in one day</string>
+    <string name="CREW_NEGOTIATOR_CONDITION">Reach a compromise with the crew 2 times in the game</string>
+    <string name="WIND_CONDITION">Fail in navigation 3 times in one day</string>
+    <string name="YOUNG_FIGHTER_CONDITION">First win of battle against the pirates</string>
+    <string name="TIRED_FIGHTER_CONDITION">Win the pirates 3 times in one day</string>
+    <string name="ALWAYS_FIGHTER_CONDITION">Win the pirates 10 times, and never escape, lose or compromise</string>
+    <string name="EGYPT_WHEAT_CONDITION">Store 10,000 tonne of wheat at night at Egypt and double its value at the next morning</string>
+    <string name="DOUBLE_SAIL_CONDITION">Double your assets value in one sail</string>
+    <string name="TITANIC_CONDITION">Absorbed $200,000 worth of damage from a sandbank</string>
+    <string name="ALL_GOODS_CONDITION">n one voyage transfer all types of goods at a profit</string>
+    <string name="BDS_TURKEY_CONDITION">Earned 1 million $ without entering Turkey</string>
+    <string name="GOOD_DAY_1_CONDITION">Double the value of your assets in one day</string>
+    <string name="GOOD_DAY_2_CONDITION">Double the value of your assets 5 times in one day</string>
+    <string name="GOOD_DAY_3_CONDITION">Double the value of your assets 8 times in one day</string>
+    <string name="GREECE_VISITOR_CONDITION">Visit Greece every day and earn a million dollars</string>
+    <string name="FEDERAL_RESERVE_CONDITION">On each of the six nights, deposit at least 90% of your property in the bank and earn a million dollars by the end of the game</string>
+    <string name="FAST_EXIT_CONDITION">Earned 1 million $ by the end of Tuesday</string>
+    <string name="DIET_MERCHANT_CONDITION">Earned $ 1 million without trading olives</string>
+    <string name="HERO_DIE_CONDITION">Suffered 2 million $ in damage in the battle in which you defeated the Pirates</string>
+    <string name="GERMAN_TIME_CONDITION">Finished all trading days at exactly midnight and earned a million dollars</string>
+    <string name="ECONOMICAL_SAIL_CONDITION">Earn 2 million % without sailing where most of your property is in cash</string>
 </resources>

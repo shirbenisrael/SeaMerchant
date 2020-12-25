@@ -18,5 +18,6 @@
         android:layout_weight="5"
         android:background="@drawable/wide_empty_button"
         android:gravity="center"
+        android:onClick="onOneMedalClick"
         android:foreground="?attr/selectableItemBackgroundBorderless" />
 </LinearLayout>

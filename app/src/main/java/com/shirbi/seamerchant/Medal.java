@@ -110,4 +110,72 @@ public enum Medal {
         }
         throw new IllegalStateException("Unexpected value: " + this);
     }
+
+    public int getCondition() {
+        switch (this) {
+            case TREASURE_1:
+                return R.string.TREASURE_1_CONDITION;
+            case TREASURE_2:
+                return R.string.TREASURE_2_CONDITION;
+            case TREASURE_3:
+                return R.string.TREASURE_3_CONDITION;
+            case TREASURE_4:
+                return R.string.TREASURE_4_CONDITION;
+            case TREASURE_5:
+                return R.string.TREASURE_5_CONDITION;
+            case IRON_BANK:
+                return R.string.IRON_BANK_CONDITION;
+            case CAPACITY_1:
+                return R.string.CAPACITY_1_CONDITION;
+            case CAPACITY_2:
+                return R.string.CAPACITY_2_CONDITION;
+            case CAPACITY_3:
+                return R.string.CAPACITY_3_CONDITION;
+            case AROUND_THE_WORLD:
+                return R.string.AROUND_THE_WORLD_CONDITION;
+            case ESCAPE:
+                return R.string.ESCAPE_CONDITION;
+            case CREW_NEGOTIATOR:
+                return R.string.CREW_NEGOTIATOR_CONDITION;
+            case WIND:
+                return R.string.WIND_CONDITION;
+            case YOUNG_FIGHTER:
+                return R.string.YOUNG_FIGHTER_CONDITION;
+            case TIRED_FIGHTER:
+                return R.string.TIRED_FIGHTER_CONDITION;
+            case ALWAYS_FIGHTER:
+                return R.string.ALWAYS_FIGHTER_CONDITION;
+            case EGYPT_WHEAT:
+                return R.string.EGYPT_WHEAT_CONDITION;
+            case DOUBLE_SAIL:
+                return R.string.DOUBLE_SAIL_CONDITION;
+            case TITANIC:
+                return R.string.TITANIC_CONDITION;
+            case ALL_GOODS:
+                return R.string.ALL_GOODS_CONDITION;
+            case BDS_TURKEY:
+                return R.string.BDS_TURKEY_CONDITION;
+            case GOOD_DAY_1:
+                return R.string.GOOD_DAY_1_CONDITION;
+            case GOOD_DAY_2:
+                return R.string.GOOD_DAY_2_CONDITION;
+            case GOOD_DAY_3:
+                return R.string.GOOD_DAY_3_CONDITION;
+            case GREECE_VISITOR:
+                return R.string.GREECE_VISITOR_CONDITION;
+            case FEDERAL_RESERVE:
+                return R.string.FEDERAL_RESERVE_CONDITION;
+            case FAST_EXIT:
+                return R.string.FAST_EXIT_CONDITION;
+            case DIET_MERCHANT:
+                return R.string.DIET_MERCHANT_CONDITION;
+            case HERO_DIE:
+                return R.string.HERO_DIE_CONDITION;
+            case GERMAN_TIME:
+                return R.string.GERMAN_TIME_CONDITION;
+            case ECONOMICAL_SAIL:
+                return R.string.ECONOMICAL_SAIL_CONDITION;
+        }
+        throw new IllegalStateException("Unexpected value: " + this);
+    }
 }

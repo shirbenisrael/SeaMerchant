@@ -641,4 +641,8 @@ public class MainActivity extends Activity {
         storeState();
         super.onDestroy();
     }
+
+    public void onOneMedalClick(View view) {
+        mFrontEndMedal.showMedalCondition(view);
+    }
 }

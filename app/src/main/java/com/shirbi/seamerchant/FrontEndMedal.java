@@ -2,6 +2,7 @@ package com.shirbi.seamerchant;
 
 import android.graphics.Point;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -36,5 +37,13 @@ public class FrontEndMedal extends FrontEndGeneric {
             medalText.setText(getString(medal.getTitle()));
             medalText.setLayoutParams(new LinearLayout.LayoutParams(5 * windowSize.x / 6, windowSize.x / 6));
         }
+    }
+
+    public void showMedalCondition(View medalButton) {
+        LinearLayout scroll = findViewById(R.id.medal_scroll_view);
+        int medalIndex = scroll.indexOfChild((View)medalButton.getParent());
+        Medal medal = Medal.values()[medalIndex];
+
+        showAlertDialogMessage(getString(medal.getCondition()), getString(medal.getTitle()), R.drawable.medal);
     }
 }

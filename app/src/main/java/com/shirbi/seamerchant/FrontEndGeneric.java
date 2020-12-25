@@ -50,6 +50,10 @@ public class FrontEndGeneric {
     }
 
     public void showAlertDialogMessage(String message, String title) {
+        showAlertDialogMessage(message, title, R.drawable.boat_right);
+    }
+
+    public void showAlertDialogMessage(String message, String title, int icon) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
 
         builder.setTitle(title);
@@ -58,7 +62,7 @@ public class FrontEndGeneric {
             public void onClick(DialogInterface dialog, int which) {
             }
         });
-        builder.setIcon(R.drawable.boat_right);
+        builder.setIcon(icon);
 
         AlertDialog dialog = builder.create();
         //dialog.setCanceledOnTouchOutside(false);
