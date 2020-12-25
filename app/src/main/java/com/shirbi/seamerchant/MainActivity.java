@@ -682,6 +682,10 @@ public class MainActivity extends Activity {
     }
 
     public void onExitNewMedal(View view) {
-        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+        if (checkForNewMedal()) {
+            return;
+        } else {
+            mFrontEnd.showWindow(Window.MAIN_WINDOW);
+        }
     }
 }
