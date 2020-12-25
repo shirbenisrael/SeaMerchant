@@ -14,5 +14,7 @@
     <string name="mIsBankOperationTakesTime" translatable="false">mIsBankOperationTakesTime</string>
     <string name="mIsMarketOperationTakesTime" translatable="false">mIsMarketOperationTakesTime</string>
     <string name="mIsMedalAchieved" translatable="false">mIsMedalAchieved</string>
+    <string name="mStatesVisitedToday" translatable="false">mStatesVisitedToday</string>
+
 
 </resources>

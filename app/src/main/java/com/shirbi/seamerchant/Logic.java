@@ -50,6 +50,8 @@ public class Logic {
     public boolean mIsMarketOperationTakesTime;
     private boolean mIsMedalAchieved[] = new boolean[Medal.NUM_MEDAL_TYPES];
 
+    private boolean mStatesVisitedToday[] = new boolean[State.values().length];
+
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
     FixShipDeal mFixShipDeal;
@@ -109,6 +111,10 @@ public class Logic {
         }
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
+
+        for (State state : State.values()) {
+            mStatesVisitedToday[state.getValue()] = (state == START_STATE);
+        }
     }
 
     public void initMarketDeal(Goods goods) {
@@ -158,6 +164,7 @@ public class Logic {
         mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
+        mStatesVisitedToday[mCurrentState.getValue()] = true;
     }
 
     public int getSailDuration(State to) {
@@ -194,6 +201,10 @@ public class Logic {
         mBankDeposit = mBankDeposit * (100 + BANK_NIGHTLY_INTEREST) / 100;
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
+
+        for (State state : State.values()) {
+            mStatesVisitedToday[state.getValue()] = (state == mCurrentState);
+        }
     }
 
     private void generateFishBoatCollision() {
@@ -483,6 +494,12 @@ public class Logic {
             str.append(mIsMedalAchieved[medal.getValue()]).append(",");
         }
         editor.putString(getString(R.string.mIsMedalAchieved), str.toString());
+
+        str = new StringBuilder();
+        for (boolean bool : mStatesVisitedToday) {
+            str.append(bool).append(",");
+        }
+        editor.putString(getString(R.string.mStatesVisitedToday), str.toString());
     }
 
     public void restoreState( SharedPreferences sharedPref) {
@@ -528,6 +545,16 @@ public class Logic {
         for (State state : State.values()) {
             for (Goods goods : Goods.values()) {
                 mPriceTable.setPrice(state, goods, Integer.parseInt(st.nextToken()));
+            }
+        }
+
+        savedString = sharedPref.getString(getString(R.string.mStatesVisitedToday), "");
+        st = new StringTokenizer(savedString, ",");
+        for (int i = 0 ; i < mStatesVisitedToday.length; i ++) {
+            if (st.hasMoreTokens()){
+                mStatesVisitedToday[i] = Boolean.parseBoolean(st.nextToken());
+            } else {
+                mStatesVisitedToday[i] = false;
             }
         }
     }
@@ -579,6 +606,19 @@ public class Logic {
 
         if ((!hasMedal(Medal.CAPACITY_3)) && (mCapacity >= 1000)) {
             return Medal.CAPACITY_3;
+        }
+
+        if (!hasMedal(Medal.AROUND_THE_WORLD)) {
+            int count = 0;
+            for (boolean stateVisited : mStatesVisitedToday) {
+                if (!stateVisited) {
+                    break;
+                }
+                count++;
+            }
+            if (count == mStatesVisitedToday.length) {
+                return Medal.AROUND_THE_WORLD;
+            }
         }
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
