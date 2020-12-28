@@ -158,7 +158,11 @@ public class Sail {
     public boolean isBadWeatherInSail() {
         if ((mSource == mLogic.mWeatherState) || (mDestination == mLogic.mWeatherState)) {
             if (mLogic.mWeather == Weather.WIND) {
-                return tryToDoSomething(PERCENT_OF_WRONG_NAVIGATION_ON_WIND);
+                boolean wrongNavigation = tryToDoSomething(PERCENT_OF_WRONG_NAVIGATION_ON_WIND);
+                if (wrongNavigation) {
+                    mLogic.mWrongNavigationCountInOneDay++;
+                }
+                return wrongNavigation;
             } else if (mLogic.mWeather == Weather.STORM) {
                 return tryToDoSomething(PERCENT_OF_STORM_APPEAR);
             }

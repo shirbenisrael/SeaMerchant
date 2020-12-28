@@ -17,6 +17,7 @@
     <string name="mStatesVisitedToday" translatable="false">mStatesVisitedToday</string>
     <string name="mEscapeCountInOneDay" translatable="false">mEscapeCountInOneDay</string>
     <string name="mCompromiseWithCrewCount" translatable="false">mCompromiseWithCrewCount</string>
+    <string name="mWrongNavigationCountInOneDay" translatable="false">mWrongNavigationCountInOneDay</string>
 
 
 </resources>
