@@ -51,6 +51,7 @@ public class Logic {
     private boolean mIsMedalAchieved[] = new boolean[Medal.NUM_MEDAL_TYPES];
     private boolean mStatesVisitedToday[] = new boolean[State.values().length];
     public int mEscapeCountInOneDay;
+    public int mCompromiseWithCrewCount;
 
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
@@ -117,6 +118,7 @@ public class Logic {
         }
 
         mEscapeCountInOneDay = 0;
+        mCompromiseWithCrewCount = 0;
     }
 
     public void initMarketDeal(Goods goods) {
@@ -423,6 +425,10 @@ public class Logic {
         }
         mCash -= cashOffer;
 
+        if (mNegotiationType == NegotiationType.CREW) {
+            mCompromiseWithCrewCount++;
+        }
+
         return true;
     }
 
@@ -476,6 +482,7 @@ public class Logic {
         editor.putInt(getString(R.string.mDamage), mDamage);
         editor.putInt(getString(R.string.mCapacity), mCapacity);
         editor.putInt(getString(R.string.mEscapeCountInOneDay), mEscapeCountInOneDay);
+        editor.putInt(getString(R.string.mCompromiseWithCrewCount), mCompromiseWithCrewCount);
 
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
@@ -534,6 +541,7 @@ public class Logic {
         mDamage = sharedPref.getInt(getString(R.string.mDamage), 0);
         mCapacity = sharedPref.getInt(getString(R.string.mCapacity), START_CAPACITY);
         mEscapeCountInOneDay = sharedPref.getInt(getString(R.string.mEscapeCountInOneDay), 0);
+        mCompromiseWithCrewCount = sharedPref.getInt(getString(R.string.mCompromiseWithCrewCount), 0);
 
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
@@ -629,6 +637,10 @@ public class Logic {
 
         if (!hasMedal(Medal.ESCAPE) && mEscapeCountInOneDay >= 3) {
             return Medal.ESCAPE;
+        }
+
+        if (!hasMedal(Medal.CREW_NEGOTIATOR) && mCompromiseWithCrewCount >= 2) {
+            return Medal.CREW_NEGOTIATOR;
         }
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {

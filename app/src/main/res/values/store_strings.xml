@@ -16,6 +16,7 @@
     <string name="mIsMedalAchieved" translatable="false">mIsMedalAchieved</string>
     <string name="mStatesVisitedToday" translatable="false">mStatesVisitedToday</string>
     <string name="mEscapeCountInOneDay" translatable="false">mEscapeCountInOneDay</string>
+    <string name="mCompromiseWithCrewCount" translatable="false">mCompromiseWithCrewCount</string>
 
 
 </resources>
