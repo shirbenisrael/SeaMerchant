@@ -244,6 +244,7 @@ public class Sail {
             mBattleResult = BattleResult.LOSE;
             mPiratesDamage = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
             mLogic.mDamage += mPiratesDamage;
+            mLogic.disableWinPiratesCount();
 
             if (mTotalLoad == 0) {
                 mIsPirateStoleGoods = false;
@@ -265,6 +266,7 @@ public class Sail {
         }
 
         mLogic.mWinPiratesCountInOneDay++;
+        mLogic.mWinPiratesCount++;
 
         if (isWinCapturePirates()) {
             mBattleResult = BattleResult.WIN_AND_CAPTURE;
@@ -288,6 +290,7 @@ public class Sail {
 
         if (result) {
             mLogic.mEscapeCountInOneDay++;
+            mLogic.disableWinPiratesCount();
         }
 
         return result;

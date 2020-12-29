@@ -54,6 +54,7 @@ public class Logic {
     public int mCompromiseWithCrewCount;
     public int mWrongNavigationCountInOneDay;
     public int mWinPiratesCountInOneDay;
+    public int mWinPiratesCount;
 
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
@@ -123,6 +124,7 @@ public class Logic {
         mCompromiseWithCrewCount = 0;
         mWrongNavigationCountInOneDay = 0;
         mWinPiratesCountInOneDay = 0;
+        mWinPiratesCount = 0;
     }
 
     public void initMarketDeal(Goods goods) {
@@ -433,6 +435,8 @@ public class Logic {
 
         if (mNegotiationType == NegotiationType.CREW) {
             mCompromiseWithCrewCount++;
+        } else {
+            disableWinPiratesCount();
         }
 
         return true;
@@ -491,7 +495,7 @@ public class Logic {
         editor.putInt(getString(R.string.mCompromiseWithCrewCount), mCompromiseWithCrewCount);
         editor.putInt(getString(R.string.mWrongNavigationCountInOneDay), mWrongNavigationCountInOneDay);
         editor.putInt(getString(R.string.mWinPiratesCountInOneDay), mWinPiratesCountInOneDay);
-
+        editor.putInt(getString(R.string.mWinPiratesCount), mWinPiratesCount);
 
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
@@ -553,6 +557,7 @@ public class Logic {
         mCompromiseWithCrewCount = sharedPref.getInt(getString(R.string.mCompromiseWithCrewCount), 0);
         mWrongNavigationCountInOneDay = sharedPref.getInt(getString(R.string.mWrongNavigationCountInOneDay), 0);
         mWinPiratesCountInOneDay = sharedPref.getInt(getString(R.string.mWinPiratesCountInOneDay), 0);
+        mWinPiratesCount = sharedPref.getInt(getString(R.string.mWinPiratesCount), -10000);
 
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
@@ -666,10 +671,18 @@ public class Logic {
             return Medal.TIRED_FIGHTER;
         }
 
+        if (!hasMedal(Medal.ALWAYS_FIGHTER) && mWinPiratesCount >= 10) {
+            return Medal.ALWAYS_FIGHTER;
+        }
+
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
             return Medal.FAST_EXIT;
         }
 
         return null;
+    }
+
+    public void disableWinPiratesCount() {
+        mWinPiratesCount = -10000;
     }
 }
