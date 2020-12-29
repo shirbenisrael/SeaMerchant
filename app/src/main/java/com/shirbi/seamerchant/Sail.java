@@ -264,6 +264,8 @@ public class Sail {
             return;
         }
 
+        mLogic.mWinPiratesCountInOneDay++;
+
         if (isWinCapturePirates()) {
             mBattleResult = BattleResult.WIN_AND_CAPTURE;
             mPiratesCapacity = mRand.nextInt(mLogic.mCapacity / 25) * 25 + 25;

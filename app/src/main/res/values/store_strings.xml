@@ -18,6 +18,6 @@
     <string name="mEscapeCountInOneDay" translatable="false">mEscapeCountInOneDay</string>
     <string name="mCompromiseWithCrewCount" translatable="false">mCompromiseWithCrewCount</string>
     <string name="mWrongNavigationCountInOneDay" translatable="false">mWrongNavigationCountInOneDay</string>
-
+    <string name="mWinPiratesCountInOneDay" translatable="false">mWinPiratesCountInOneDay</string>
 
 </resources>
