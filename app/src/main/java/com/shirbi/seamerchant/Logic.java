@@ -69,6 +69,7 @@ public class Logic {
     public Goods mGoodsToBurn;
     public int mValueBeforeSail;
     public int mValueAfterSail;
+    public boolean mEgyptWheatMedal = false;
 
     // For NewDayEvent.BIGGER_SHIP
     public boolean mIsBiggerShipForCash;
@@ -209,6 +210,7 @@ public class Logic {
     }
 
     public void startNewDay() {
+        int wheatPriceInEgyptBeforeNight = mPriceTable.getPrice(State.EGYPT, Goods.WHEAT);
         mLoseDayByStrike = 0;
         mPriceTable.generateRandomPrices();
         mCurrentHour = START_HOUR;
@@ -221,6 +223,15 @@ public class Logic {
 
         for (State state : State.values()) {
             mStatesVisitedToday[state.getValue()] = (state == mCurrentState);
+        }
+
+        if (mCurrentState == State.EGYPT) {
+            int wheatPriceInEgyptAtMorning = mPriceTable.getPrice(State.EGYPT, Goods.WHEAT);
+            if (wheatPriceInEgyptAtMorning >= 2 * wheatPriceInEgyptBeforeNight) {
+                if (getInventory(Goods.WHEAT) >= 10000) {
+                    mEgyptWheatMedal = true;
+                }
+            }
         }
 
         mEscapeCountInOneDay = 0;
@@ -683,6 +694,10 @@ public class Logic {
 
         if (!hasMedal(Medal.ALWAYS_FIGHTER) && mWinPiratesCount >= 10) {
             return Medal.ALWAYS_FIGHTER;
+        }
+
+        if (!hasMedal(Medal.EGYPT_WHEAT) && mEgyptWheatMedal) {
+            return Medal.EGYPT_WHEAT;
         }
 
         if (!hasMedal(Medal.DOUBLE_SAIL) && (mValueAfterSail >= 2 * mValueBeforeSail) && (mValueAfterSail > 0)) {
