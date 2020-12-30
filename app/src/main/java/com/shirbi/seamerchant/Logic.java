@@ -67,6 +67,8 @@ public class Logic {
     public int mFishBoatCollisionDamage;
     public int mGoodsUnitsToBurn = 0;
     public Goods mGoodsToBurn;
+    public int mValueBeforeSail;
+    public int mValueAfterSail;
 
     // For NewDayEvent.BIGGER_SHIP
     public boolean mIsBiggerShipForCash;
@@ -125,6 +127,8 @@ public class Logic {
         mWrongNavigationCountInOneDay = 0;
         mWinPiratesCountInOneDay = 0;
         mWinPiratesCount = 0;
+        mValueBeforeSail = 0;
+        mValueAfterSail = 0;
     }
 
     public void initMarketDeal(Goods goods) {
@@ -167,6 +171,8 @@ public class Logic {
 
     public void initSail(State destination) {
         mSail = new Sail(this, destination);
+        mValueBeforeSail = calculateTotalValue();
+        mValueAfterSail = mValueBeforeSail;
     }
 
     public void finishSail() {
@@ -175,6 +181,7 @@ public class Logic {
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
         mStatesVisitedToday[mCurrentState.getValue()] = true;
+        mValueAfterSail = calculateTotalValue();
     }
 
     public int getSailDuration(State to) {
@@ -587,6 +594,9 @@ public class Logic {
                 mStatesVisitedToday[i] = false;
             }
         }
+
+        mValueBeforeSail = 0;
+        mValueAfterSail = 0;
     }
 
     public boolean hasMedal(Medal medal) {
@@ -673,6 +683,10 @@ public class Logic {
 
         if (!hasMedal(Medal.ALWAYS_FIGHTER) && mWinPiratesCount >= 10) {
             return Medal.ALWAYS_FIGHTER;
+        }
+
+        if (!hasMedal(Medal.DOUBLE_SAIL) && (mValueAfterSail >= 2 * mValueBeforeSail) && (mValueAfterSail > 0)) {
+            return Medal.DOUBLE_SAIL;
         }
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
