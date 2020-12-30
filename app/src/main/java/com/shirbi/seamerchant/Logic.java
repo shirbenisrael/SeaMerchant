@@ -70,6 +70,7 @@ public class Logic {
     public int mValueBeforeSail;
     public int mValueAfterSail;
     public boolean mEgyptWheatMedal = false;
+    public boolean mTitanicMedal = false;
 
     // For NewDayEvent.BIGGER_SHIP
     public boolean mIsBiggerShipForCash;
@@ -702,6 +703,10 @@ public class Logic {
 
         if (!hasMedal(Medal.DOUBLE_SAIL) && (mValueAfterSail >= 2 * mValueBeforeSail) && (mValueAfterSail > 0)) {
             return Medal.DOUBLE_SAIL;
+        }
+
+        if (!hasMedal(Medal.TITANIC) && mTitanicMedal) {
+            return Medal.TITANIC;
         }
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {

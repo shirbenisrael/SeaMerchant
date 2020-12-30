@@ -223,6 +223,9 @@ public class Sail {
         mSailEndedPeacefully = false;
         mShoalDamage = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
         mLogic.mDamage += mShoalDamage;
+        if (mShoalDamage >= 200000) {
+            mLogic.mTitanicMedal = true;
+        }
     }
 
     public void createSink() {
