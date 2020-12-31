@@ -56,6 +56,7 @@ public class Logic {
     public int mWinPiratesCountInOneDay;
     public int mWinPiratesCount;
     public boolean mBdsTurkey;
+    public int mValueAtStartOfDay = 0;
 
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
@@ -134,6 +135,7 @@ public class Logic {
         mValueBeforeSail = 0;
         mValueAfterSail = 0;
         mBdsTurkey = true;
+        mValueAtStartOfDay = calculateTotalValue();
     }
 
     public void initMarketDeal(Goods goods) {
@@ -256,6 +258,7 @@ public class Logic {
         mEscapeCountInOneDay = 0;
         mWrongNavigationCountInOneDay = 0;
         mWinPiratesCountInOneDay = 0;
+        mValueAtStartOfDay = calculateTotalValue();
     }
 
     private void generateFishBoatCollision() {
@@ -533,6 +536,7 @@ public class Logic {
         editor.putInt(getString(R.string.mWrongNavigationCountInOneDay), mWrongNavigationCountInOneDay);
         editor.putInt(getString(R.string.mWinPiratesCountInOneDay), mWinPiratesCountInOneDay);
         editor.putInt(getString(R.string.mWinPiratesCount), mWinPiratesCount);
+        editor.putInt(getString(R.string.mValueAtStartOfDay), mValueAtStartOfDay);
         editor.putBoolean(getString(R.string.mBdsTurkey), mBdsTurkey);
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
@@ -595,6 +599,7 @@ public class Logic {
         mWrongNavigationCountInOneDay = sharedPref.getInt(getString(R.string.mWrongNavigationCountInOneDay), 0);
         mWinPiratesCountInOneDay = sharedPref.getInt(getString(R.string.mWinPiratesCountInOneDay), 0);
         mWinPiratesCount = sharedPref.getInt(getString(R.string.mWinPiratesCount), -10000);
+        mValueAtStartOfDay = sharedPref.getInt(getString(R.string.mValueAtStartOfDay), -10000);
         mBdsTurkey = sharedPref.getBoolean(getString(R.string.mBdsTurkey), false);
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
@@ -733,6 +738,18 @@ public class Logic {
 
         if (!hasMedal(Medal.BDS_TURKEY) && mBdsTurkey && mCash >= 1000000) {
             return Medal.BDS_TURKEY;
+        }
+
+        if (!hasMedal(Medal.GOOD_DAY_1) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 2 <=  calculateTotalValue())) {
+            return Medal.GOOD_DAY_1;
+        }
+
+        if (!hasMedal(Medal.GOOD_DAY_2) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 5 <=  calculateTotalValue())) {
+            return Medal.GOOD_DAY_2;
+        }
+
+        if (!hasMedal(Medal.GOOD_DAY_3) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 8 <=  calculateTotalValue())) {
+            return Medal.GOOD_DAY_3;
         }
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
