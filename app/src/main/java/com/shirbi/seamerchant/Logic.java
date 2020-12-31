@@ -71,6 +71,7 @@ public class Logic {
     public int mValueAfterSail;
     public boolean mEgyptWheatMedal = false;
     public boolean mTitanicMedal = false;
+    public boolean mAllGoodMedal = false;
 
     // For NewDayEvent.BIGGER_SHIP
     public boolean mIsBiggerShipForCash;
@@ -178,6 +179,17 @@ public class Logic {
     }
 
     public void finishSail() {
+        mAllGoodMedal = true;
+        for (Goods goods : Goods.values()) {
+            if (getInventory(goods) == 0) {
+                mAllGoodMedal = false;
+                break;
+            }
+            if (mPriceTable.getPrice(mCurrentState, goods) >= mPriceTable.getPrice(mSail.mDestination, goods)) {
+                mAllGoodMedal = false;
+                break;
+            }
+        }
         mCurrentState = mSail.mDestination;
         mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
         mIsBankOperationTakesTime = true;
@@ -707,6 +719,10 @@ public class Logic {
 
         if (!hasMedal(Medal.TITANIC) && mTitanicMedal) {
             return Medal.TITANIC;
+        }
+
+        if (!hasMedal(Medal.ALL_GOODS) && mAllGoodMedal) {
+            return Medal.ALL_GOODS;
         }
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
