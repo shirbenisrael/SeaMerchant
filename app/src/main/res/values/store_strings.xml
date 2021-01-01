@@ -21,6 +21,7 @@
     <string name="mWinPiratesCountInOneDay" translatable="false">mWinPiratesCountInOneDay</string>
     <string name="mWinPiratesCount" translatable="false">mWinPiratesCounts</string>
     <string name="mBdsTurkey" translatable="false">mBdsTurkey</string>
+    <string name="mBdsOlives" translatable="false">mBdsOlives</string>
     <string name="mValueAtStartOfDay" translatable="false">mValueAtStartOfDay</string>
     <string name="mGreeceVisitCount" translatable="false">mGreeceVisitCount</string>
     <string name="mAlwaysDeposit" translatable="false">mAlwaysDeposit</string>

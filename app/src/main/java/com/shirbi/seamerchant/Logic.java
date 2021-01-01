@@ -57,6 +57,7 @@ public class Logic {
     public int mWinPiratesCountInOneDay;
     public int mWinPiratesCount;
     public boolean mBdsTurkey;
+    public boolean mBdsOlives;
     public boolean mAlwaysDeposit;
     public int mValueAtStartOfDay = 0;
 
@@ -137,6 +138,7 @@ public class Logic {
         mValueBeforeSail = 0;
         mValueAfterSail = 0;
         mBdsTurkey = true;
+        mBdsOlives = true;
         mAlwaysDeposit = true;
         mValueAtStartOfDay = calculateTotalValue();
         mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
@@ -147,6 +149,9 @@ public class Logic {
     }
 
     public void applyMarketDeal() {
+        if (mMarketDeal.mGoods == Goods.OLIVES) {
+            mBdsOlives = false;
+        }
         mCash = mMarketDeal.mCash;
         mInventory[mMarketDeal.mGoods.getValue()] = mMarketDeal.mGoodsUnits;
         mMarketDeal = null;
@@ -154,7 +159,6 @@ public class Logic {
             mIsMarketOperationTakesTime = false;
             mCurrentHour++;
         }
-
     }
 
     public void initBankDeal() {
@@ -556,6 +560,7 @@ public class Logic {
         editor.putInt(getString(R.string.mValueAtStartOfDay), mValueAtStartOfDay);
         editor.putInt(getString(R.string.mGreeceVisitCount), mGreeceVisitCount);
         editor.putBoolean(getString(R.string.mBdsTurkey), mBdsTurkey);
+        editor.putBoolean(getString(R.string.mBdsOlives), mBdsOlives);
         editor.putBoolean(getString(R.string.mAlwaysDeposit), mAlwaysDeposit);
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
@@ -621,6 +626,7 @@ public class Logic {
         mValueAtStartOfDay = sharedPref.getInt(getString(R.string.mValueAtStartOfDay), -10000);
         mGreeceVisitCount = sharedPref.getInt(getString(R.string.mGreeceVisitCount), 0);
         mBdsTurkey = sharedPref.getBoolean(getString(R.string.mBdsTurkey), false);
+        mBdsOlives = sharedPref.getBoolean(getString(R.string.mBdsOlives), false);
         mAlwaysDeposit = sharedPref.getBoolean(getString(R.string.mAlwaysDeposit), false);
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
@@ -784,6 +790,10 @@ public class Logic {
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
             return Medal.FAST_EXIT;
+        }
+
+        if (!hasMedal(Medal.DIET_MERCHANT) && mBdsOlives && mCash >= 1000000) {
+            return Medal.DIET_MERCHANT;
         }
 
         return null;
