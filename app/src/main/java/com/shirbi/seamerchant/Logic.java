@@ -60,6 +60,7 @@ public class Logic {
     public boolean mBdsOlives;
     public boolean mAlwaysDeposit;
     public int mValueAtStartOfDay = 0;
+    public boolean mHeroDieMedal = false;
 
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
@@ -140,6 +141,7 @@ public class Logic {
         mBdsTurkey = true;
         mBdsOlives = true;
         mAlwaysDeposit = true;
+        mHeroDieMedal = false;
         mValueAtStartOfDay = calculateTotalValue();
         mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
     }
@@ -794,6 +796,10 @@ public class Logic {
 
         if (!hasMedal(Medal.DIET_MERCHANT) && mBdsOlives && mCash >= 1000000) {
             return Medal.DIET_MERCHANT;
+        }
+
+        if (!hasMedal(Medal.HERO_DIE) && mHeroDieMedal) {
+            return Medal.HERO_DIE;
         }
 
         return null;

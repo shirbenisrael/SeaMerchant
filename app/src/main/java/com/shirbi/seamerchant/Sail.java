@@ -285,6 +285,10 @@ public class Sail {
             mPiratesDamage = 1 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
             mLogic.mDamage += mPiratesDamage;
             mSailEndedPeacefully = false;
+
+            if (mPiratesDamage >= 2000000) {
+                mLogic.mHeroDieMedal = true;
+            }
         }
     }
 
