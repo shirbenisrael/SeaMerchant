@@ -58,6 +58,7 @@ public class Logic {
     public int mWinPiratesCount;
     public boolean mBdsTurkey;
     public boolean mBdsOlives;
+    public boolean mAlwaysSleepAtMidnight;
     public boolean mAlwaysDeposit;
     public int mValueAtStartOfDay = 0;
     public boolean mHeroDieMedal = false;
@@ -142,6 +143,7 @@ public class Logic {
         mBdsOlives = true;
         mAlwaysDeposit = true;
         mHeroDieMedal = false;
+        mAlwaysSleepAtMidnight = true;
         mValueAtStartOfDay = calculateTotalValue();
         mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
     }
@@ -249,6 +251,9 @@ public class Logic {
         int wheatPriceInEgyptBeforeNight = mPriceTable.getPrice(State.EGYPT, Goods.WHEAT);
         mLoseDayByStrike = 0;
         mPriceTable.generateRandomPrices();
+        if (mCurrentHour != SLEEP_TIME) {
+            mAlwaysSleepAtMidnight = false;
+        }
         mCurrentHour = START_HOUR;
         mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
         mWeather = Weather.values()[mRand.nextInt(Weather.NUM_WEATHER_TYPES)];
@@ -564,6 +569,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mBdsTurkey), mBdsTurkey);
         editor.putBoolean(getString(R.string.mBdsOlives), mBdsOlives);
         editor.putBoolean(getString(R.string.mAlwaysDeposit), mAlwaysDeposit);
+        editor.putBoolean(getString(R.string.mAlwaysSleepAtMidnight), mAlwaysSleepAtMidnight);
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
 
@@ -629,6 +635,7 @@ public class Logic {
         mGreeceVisitCount = sharedPref.getInt(getString(R.string.mGreeceVisitCount), 0);
         mBdsTurkey = sharedPref.getBoolean(getString(R.string.mBdsTurkey), false);
         mBdsOlives = sharedPref.getBoolean(getString(R.string.mBdsOlives), false);
+        mAlwaysSleepAtMidnight = sharedPref.getBoolean(getString(R.string.mAlwaysSleepAtMidnight), false);
         mAlwaysDeposit = sharedPref.getBoolean(getString(R.string.mAlwaysDeposit), false);
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
@@ -800,6 +807,11 @@ public class Logic {
 
         if (!hasMedal(Medal.HERO_DIE) && mHeroDieMedal) {
             return Medal.HERO_DIE;
+        }
+
+        if (!hasMedal(Medal.GERMAN_TIME) && mAlwaysSleepAtMidnight && (calculateTotalValue() >= 1000000) &&
+                mCurrentDay.isLastDay() && mCurrentHour == SLEEP_TIME) {
+            return Medal.GERMAN_TIME;
         }
 
         return null;
