@@ -480,9 +480,14 @@ public class MainActivity extends Activity {
     }
 
     public void onFixButtonClick(View view) {
-        mLogic.initFixShipDeal();
-        mFrontEndFixShip.onFixShipClick();
-        mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
+        if (mLogic.isShipBroken()) {
+            mLogic.initFixShipDeal();
+            mFrontEndFixShip.onFixShipClick();
+            mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
+        } else {
+            mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_FIX_FIXED_SHIP),
+                    getString(R.string.CANNOT_FIX_TITLE));
+        }
     }
 
     public void fixAsPossible(View view) {
