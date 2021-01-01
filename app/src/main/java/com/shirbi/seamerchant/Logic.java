@@ -60,6 +60,7 @@ public class Logic {
     public boolean mBdsOlives;
     public boolean mAlwaysSleepAtMidnight;
     public boolean mAlwaysDeposit;
+    public boolean mEconomicalSail;
     public int mValueAtStartOfDay = 0;
     public boolean mHeroDieMedal = false;
 
@@ -144,6 +145,7 @@ public class Logic {
         mAlwaysDeposit = true;
         mHeroDieMedal = false;
         mAlwaysSleepAtMidnight = true;
+        mEconomicalSail = true;
         mValueAtStartOfDay = calculateTotalValue();
         mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
     }
@@ -570,6 +572,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mBdsOlives), mBdsOlives);
         editor.putBoolean(getString(R.string.mAlwaysDeposit), mAlwaysDeposit);
         editor.putBoolean(getString(R.string.mAlwaysSleepAtMidnight), mAlwaysSleepAtMidnight);
+        editor.putBoolean(getString(R.string.mEconomicalSail), mEconomicalSail);
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
 
@@ -637,6 +640,7 @@ public class Logic {
         mBdsOlives = sharedPref.getBoolean(getString(R.string.mBdsOlives), false);
         mAlwaysSleepAtMidnight = sharedPref.getBoolean(getString(R.string.mAlwaysSleepAtMidnight), false);
         mAlwaysDeposit = sharedPref.getBoolean(getString(R.string.mAlwaysDeposit), false);
+        mEconomicalSail = sharedPref.getBoolean(getString(R.string.mEconomicalSail), false);
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
 
@@ -814,10 +818,20 @@ public class Logic {
             return Medal.GERMAN_TIME;
         }
 
+        if (!hasMedal(Medal.ECONOMICAL_SAIL) && mEconomicalSail && calculateTotalValue() >= 2000000) {
+            return Medal.ECONOMICAL_SAIL;
+        }
+
         return null;
     }
 
     public void disableWinPiratesCount() {
         mWinPiratesCount = -10000;
+    }
+
+    public void startSail() {
+        if (calculateTotalValue() / 2 < mCash) {
+            mEconomicalSail = false;
+        }
     }
 }

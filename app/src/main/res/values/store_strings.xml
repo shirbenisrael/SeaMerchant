@@ -26,5 +26,5 @@
     <string name="mGreeceVisitCount" translatable="false">mGreeceVisitCount</string>
     <string name="mAlwaysDeposit" translatable="false">mAlwaysDeposit</string>
     <string name="mAlwaysSleepAtMidnight" translatable="false">mAlwaysSleepAtMidnight</string>
-
+    <string name="mEconomicalSail" translatable="false">mEconomicalSail</string>
 </resources>

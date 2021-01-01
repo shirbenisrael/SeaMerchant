@@ -188,6 +188,7 @@ public class MainActivity extends Activity {
 
     public void onSailClick(View view) {
         playSound(R.raw.sail);
+        mLogic.startSail();
         mFrontEndSail.startSail();
     }
 
