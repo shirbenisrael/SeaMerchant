@@ -833,5 +833,7 @@ public class Logic {
         if (calculateTotalValue() / 2 < mCash) {
             mEconomicalSail = false;
         }
+
+        mCash -= mSail.mGuardShipCost * mSail.mSelectedNumGuardShips;
     }
 }
