@@ -23,6 +23,6 @@
     <string name="mBdsTurkey" translatable="false">mBdsTurkey</string>
     <string name="mValueAtStartOfDay" translatable="false">mValueAtStartOfDay</string>
     <string name="mGreeceVisitCount" translatable="false">mGreeceVisitCount</string>
-
+    <string name="mAlwaysDeposit" translatable="false">mAlwaysDeposit</string>
 
 </resources>

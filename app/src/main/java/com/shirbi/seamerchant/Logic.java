@@ -57,6 +57,7 @@ public class Logic {
     public int mWinPiratesCountInOneDay;
     public int mWinPiratesCount;
     public boolean mBdsTurkey;
+    public boolean mAlwaysDeposit;
     public int mValueAtStartOfDay = 0;
 
     MarketDeal mMarketDeal;
@@ -136,6 +137,7 @@ public class Logic {
         mValueBeforeSail = 0;
         mValueAfterSail = 0;
         mBdsTurkey = true;
+        mAlwaysDeposit = true;
         mValueAtStartOfDay = calculateTotalValue();
         mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
     }
@@ -245,6 +247,11 @@ public class Logic {
         mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
         mWeather = Weather.values()[mRand.nextInt(Weather.NUM_WEATHER_TYPES)];
         mWeatherState = State.values()[mRand.nextInt(State.NUM_STATES)];
+
+        if (mBankDeposit < 0.9 * calculateTotalValue()) {
+            mAlwaysDeposit = false;
+        }
+
         mBankDeposit = mBankDeposit * (100 + BANK_NIGHTLY_INTEREST) / 100;
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
@@ -549,6 +556,7 @@ public class Logic {
         editor.putInt(getString(R.string.mValueAtStartOfDay), mValueAtStartOfDay);
         editor.putInt(getString(R.string.mGreeceVisitCount), mGreeceVisitCount);
         editor.putBoolean(getString(R.string.mBdsTurkey), mBdsTurkey);
+        editor.putBoolean(getString(R.string.mAlwaysDeposit), mAlwaysDeposit);
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
 
@@ -613,6 +621,7 @@ public class Logic {
         mValueAtStartOfDay = sharedPref.getInt(getString(R.string.mValueAtStartOfDay), -10000);
         mGreeceVisitCount = sharedPref.getInt(getString(R.string.mGreeceVisitCount), 0);
         mBdsTurkey = sharedPref.getBoolean(getString(R.string.mBdsTurkey), false);
+        mAlwaysDeposit = sharedPref.getBoolean(getString(R.string.mAlwaysDeposit), false);
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
 
@@ -766,6 +775,11 @@ public class Logic {
 
         if (!hasMedal(Medal.GREECE_VISITOR) && (mGreeceVisitCount == 7) && (calculateTotalValue() >= 1000000)) {
             return Medal.GREECE_VISITOR;
+        }
+
+        if (!hasMedal(Medal.FEDERAL_RESERVE) && (mCurrentDay.isLastDay()) &&
+                (mAlwaysDeposit) && (calculateTotalValue() >= 1000000)) {
+            return Medal.FEDERAL_RESERVE;
         }
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
