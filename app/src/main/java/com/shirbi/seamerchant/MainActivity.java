@@ -481,6 +481,12 @@ public class MainActivity extends Activity {
 
     public void onFixButtonClick(View view) {
         if (mLogic.isShipBroken()) {
+            if (!mLogic.isEnoughTimeForFixShip()) {
+                mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_FIX_AT_NIGHT),
+                        getString(R.string.CANNOT_FIX_TITLE));
+                return;
+            }
+
             mLogic.initFixShipDeal();
             mFrontEndFixShip.onFixShipClick();
             mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);

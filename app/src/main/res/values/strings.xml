@@ -144,6 +144,7 @@
 
     <string name="CANNOT_FIX_TITLE">Cannot fix</string>
     <string name="CANNOT_FIX_FIXED_SHIP">The ship is already fixed</string>
+    <string name="CANNOT_FIX_AT_NIGHT">It is too late to fix now.</string>
 
     <string name="TUTORIAL_TITLE">Tutorial</string>
     <string name="TUTORIAL_SELL">You are in %1$s and the %2$s price here is %3$d$ and you have %4$d tonne.
