@@ -158,8 +158,8 @@
 
     <string name="BANK_QUESTION">How much to hold in cash?</string>
     <string name="BANK_TIP">Tip: A nightly deposit gives an interest rate of %1$d%%.</string>
-    <string name="BANK_DEPOSIT_ALL">Deposit all.</string>
-    <string name="BANK_DRAW_ALL">Draw all.</string>
+    <string name="BANK_DEPOSIT_ALL">Deposit all</string>
+    <string name="BANK_DRAW_ALL">Draw all</string>
     <string name="BANK_CASH_FOR_GUARDS">Cash for Guards</string>
 
     <string name="OPERATION_NO_TIME">This operation won\'t take more time.</string>
