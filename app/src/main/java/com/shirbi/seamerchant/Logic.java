@@ -50,6 +50,7 @@ public class Logic {
     public boolean mIsMarketOperationTakesTime;
     private boolean mIsMedalAchieved[] = new boolean[Medal.NUM_MEDAL_TYPES];
     private boolean mStatesVisitedToday[] = new boolean[State.values().length];
+    private int mGreeceVisitCount;
     public int mEscapeCountInOneDay;
     public int mCompromiseWithCrewCount;
     public int mWrongNavigationCountInOneDay;
@@ -136,6 +137,7 @@ public class Logic {
         mValueAfterSail = 0;
         mBdsTurkey = true;
         mValueAtStartOfDay = calculateTotalValue();
+        mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
     }
 
     public void initMarketDeal(Goods goods) {
@@ -198,6 +200,11 @@ public class Logic {
         mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
+        if (mCurrentState == State.GREECE) {
+            if (!mStatesVisitedToday[mCurrentState.getValue()]) {
+                mGreeceVisitCount++;
+            }
+        }
         mStatesVisitedToday[mCurrentState.getValue()] = true;
         mValueAfterSail = calculateTotalValue();
 
@@ -244,6 +251,9 @@ public class Logic {
 
         for (State state : State.values()) {
             mStatesVisitedToday[state.getValue()] = (state == mCurrentState);
+        }
+        if (mCurrentState == State.GREECE) {
+            mGreeceVisitCount++;
         }
 
         if (mCurrentState == State.EGYPT) {
@@ -537,6 +547,7 @@ public class Logic {
         editor.putInt(getString(R.string.mWinPiratesCountInOneDay), mWinPiratesCountInOneDay);
         editor.putInt(getString(R.string.mWinPiratesCount), mWinPiratesCount);
         editor.putInt(getString(R.string.mValueAtStartOfDay), mValueAtStartOfDay);
+        editor.putInt(getString(R.string.mGreeceVisitCount), mGreeceVisitCount);
         editor.putBoolean(getString(R.string.mBdsTurkey), mBdsTurkey);
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
@@ -600,6 +611,7 @@ public class Logic {
         mWinPiratesCountInOneDay = sharedPref.getInt(getString(R.string.mWinPiratesCountInOneDay), 0);
         mWinPiratesCount = sharedPref.getInt(getString(R.string.mWinPiratesCount), -10000);
         mValueAtStartOfDay = sharedPref.getInt(getString(R.string.mValueAtStartOfDay), -10000);
+        mGreeceVisitCount = sharedPref.getInt(getString(R.string.mGreeceVisitCount), 0);
         mBdsTurkey = sharedPref.getBoolean(getString(R.string.mBdsTurkey), false);
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
@@ -750,6 +762,10 @@ public class Logic {
 
         if (!hasMedal(Medal.GOOD_DAY_3) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 8 <=  calculateTotalValue())) {
             return Medal.GOOD_DAY_3;
+        }
+
+        if (!hasMedal(Medal.GREECE_VISITOR) && (mGreeceVisitCount == 7) && (calculateTotalValue() >= 1000000)) {
+            return Medal.GREECE_VISITOR;
         }
 
         if ((!hasMedal(Medal.FAST_EXIT)) && (mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue() && mCash >= 1000000)) {
