@@ -37,6 +37,10 @@ public class FrontEndFixShip  extends FrontEndGeneric {
         SeekBar seekBar = (SeekBar)findViewById(R.id.fix_seek_bar);
         seekBar.setMax(mLogic.mFixShipDeal.mMaxFix);
         showDealState();
+
+        String operationTimeString = mLogic.isFixOperationTakesTime() ?
+                getString(R.string.OPERATION_ONE_HOUR) : getString(R.string.OPERATION_NO_TIME);
+        ((TextView)findViewById(R.id.fix_operation_time)).setText(operationTimeString);
     }
 
     public void fixAsPossible() {

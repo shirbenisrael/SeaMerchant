@@ -48,6 +48,7 @@ public class Logic {
     public int mCapacity;
     public boolean mIsBankOperationTakesTime;
     public boolean mIsMarketOperationTakesTime;
+    public boolean mIsFixOperationTakesTime;
     private boolean mIsMedalAchieved[] = new boolean[Medal.NUM_MEDAL_TYPES];
     private boolean mStatesVisitedToday[] = new boolean[State.values().length];
     private int mGreeceVisitCount;
@@ -128,6 +129,7 @@ public class Logic {
         }
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
+        mIsFixOperationTakesTime = true;
 
         for (State state : State.values()) {
             mStatesVisitedToday[state.getValue()] = (state == START_STATE);
@@ -187,7 +189,11 @@ public class Logic {
     public void applyShipFixDeal() {
         mCash -= mFixShipDeal.mCurrentFix;
         mDamage -= mFixShipDeal.mCurrentFix;
-        mCurrentHour++;
+
+        if (mIsFixOperationTakesTime) {
+            mIsFixOperationTakesTime = false;
+            mCurrentHour++;
+        }
     }
 
     public void initSail(State destination) {
@@ -212,6 +218,7 @@ public class Logic {
         mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
+        mIsFixOperationTakesTime = true;
         if (mCurrentState == State.GREECE) {
             if (!mStatesVisitedToday[mCurrentState.getValue()]) {
                 mGreeceVisitCount++;
@@ -268,6 +275,7 @@ public class Logic {
         mBankDeposit = mBankDeposit * (100 + BANK_NIGHTLY_INTEREST) / 100;
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
+        mIsFixOperationTakesTime = true;
 
         for (State state : State.values()) {
             mStatesVisitedToday[state.getValue()] = (state == mCurrentState);
@@ -547,6 +555,10 @@ public class Logic {
         return mIsMarketOperationTakesTime;
     }
 
+    public boolean isFixOperationTakesTime() {
+        return mIsFixOperationTakesTime;
+    }
+
     protected final String getString(@StringRes int resId) {
         return mActivity.getString(resId);
     }
@@ -575,6 +587,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mEconomicalSail), mEconomicalSail);
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
+        editor.putBoolean(getString(R.string.mIsFixOperationTakesTime), mIsFixOperationTakesTime);
 
         StringBuilder str = new StringBuilder();
         for (Goods goods : Goods.values()) {
@@ -643,6 +656,7 @@ public class Logic {
         mEconomicalSail = sharedPref.getBoolean(getString(R.string.mEconomicalSail), false);
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
+        mIsFixOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsFixOperationTakesTime), true);
 
         savedString = sharedPref.getString(getString(R.string.mInventory), "");
         st = new StringTokenizer(savedString, ",");
