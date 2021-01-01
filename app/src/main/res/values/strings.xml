@@ -33,6 +33,9 @@
     <string name="CASH_STRING">Cash: %1$d\$</string>
     <string name="LOCK_STRING">Lock: %1$d\$</string>
 
+    <string name="FIXED_SHIP_QUESTION">How much to invest in repairing the ship?</string>
+    <string name="FIXED_AS_POSSIBLE">Fix as possible</string>
+    <string name="FIXED_SHIP_TIP">Tip: A broken ship falls apart on the voyage</string>
     <string name="FIXED_SHIP">Fixed ship</string>
     <string name="DAMAGED_SHIP">Damage: %1$d\$</string>
     <string name="FIXING_STRING">Fix: %1$d\$</string>
