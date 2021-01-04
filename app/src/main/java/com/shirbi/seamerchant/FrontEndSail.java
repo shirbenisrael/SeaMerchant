@@ -63,6 +63,14 @@ public class FrontEndSail extends FrontEndGeneric {
         }
     }
 
+    private void updateGreeceSailDuration() {
+        putSquareObjectOnMap(findViewById(R.id.sail_duration_for_greece),
+                0.27f,
+                0.32f,
+                0.045f);
+        findViewById(R.id.sail_duration_for_greece).setVisibility(View.VISIBLE);
+    }
+
     public void initSailRoute() {
         findViewById(R.id.sail_or_cancel_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.sail_map).setBackgroundResource(R.drawable.map_with_details);
@@ -70,6 +78,9 @@ public class FrontEndSail extends FrontEndGeneric {
 
         calculateMapSize();
         putBoatOnHarbor();
+        if (mLogic.hasMedal(Medal.GREECE_VISITOR)) {
+            updateGreeceSailDuration();
+        }
         showGuardShips();
         showDangers();
         showTotalGuardShipsPrice();

@@ -9,10 +9,12 @@ import java.util.StringTokenizer;
 
 public class Logic {
     private static final int START_GAME_CASH = 5000;
+    private static final int START_GAME_CASH_WITH_MEDAL = 10000;
     public static final int START_HOUR = 6;
     private static final Weather START_WEATHER = Weather.GOOD_SAILING;
     private static final State START_STATE = State.ISRAEL;
     private static final int START_CAPACITY = 100;
+    private static final int START_CAPACITY_WITH_MEDAL = 200;
     public static final int EVENING_TIME = 17;
     public static final int NIGHT_TIME = 21;
     public static final int SLEEP_TIME = 24;
@@ -32,10 +34,15 @@ public class Logic {
             {-1, -1, -1,  6,  0}  // From Greece
     };
 
+    private void updateGreeceSailDuration() {
+        mSailDurations[State.GREECE.getValue()][State.CYPRUS.getValue()] = 5;
+        mSailDurations[State.CYPRUS.getValue()][State.GREECE.getValue()] = 5;
+    }
+
     private Random mRand = new Random();
 
     // Variable need to store
-    public PriceTable mPriceTable = new PriceTable();
+    public PriceTable mPriceTable = new PriceTable(this);
     public int mInventory[] = new int[Goods.NUM_GOODS_TYPES];
     public int mCash;
     public int mBankDeposit;
@@ -115,7 +122,7 @@ public class Logic {
 
     public void startNewGame() {
         mPriceTable.generateRandomPrices();
-        mCash = START_GAME_CASH;
+        mCash = hasMedal(Medal.TREASURE_5) ? START_GAME_CASH_WITH_MEDAL : START_GAME_CASH;
         mBankDeposit = 0;
         mCurrentDay = WeekDay.SUNDAY;
         mCurrentHour = START_HOUR;
@@ -123,7 +130,7 @@ public class Logic {
         mWeatherState = START_STATE;
         mWeather = START_WEATHER;
         mDamage = 0;
-        mCapacity = START_CAPACITY;
+        mCapacity = hasMedal(Medal.CAPACITY_3) ? START_CAPACITY_WITH_MEDAL : START_CAPACITY;
         for (int i = 0 ; i < mInventory.length ; i++) {
             mInventory[i] = 0;
         }
@@ -150,6 +157,10 @@ public class Logic {
         mEconomicalSail = true;
         mValueAtStartOfDay = calculateTotalValue();
         mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
+
+        if (hasMedal(Medal.GREECE_VISITOR)) {
+            updateGreeceSailDuration();
+        }
     }
 
     public void initMarketDeal(Goods goods) {
@@ -425,11 +436,13 @@ public class Logic {
         if (random == 1) {
             if (mCurrentDay.getValue() < WeekDay.FRIDAY.getValue() && (
                     calculateTotalValue() - mBankDeposit > 0) ) {
-                mNewDayEvent = NewDayEvent.STRIKE;
-                mNegotiationType = NegotiationType.CREW;
-                return;
-            }
-            if (generateFire()) {
+                boolean skipStrike = (hasMedal(Medal.CREW_NEGOTIATOR)) && mRand.nextBoolean();
+                if (!skipStrike) {
+                    mNewDayEvent = NewDayEvent.STRIKE;
+                    mNegotiationType = NegotiationType.CREW;
+                    return;
+                }
+            } else if (generateFire()) {
                 return;
             }
         }
@@ -699,6 +712,10 @@ public class Logic {
 
         mValueBeforeSail = 0;
         mValueAfterSail = 0;
+
+        if (hasMedal(Medal.GREECE_VISITOR)) {
+            updateGreeceSailDuration();
+        }
     }
 
     public boolean hasMedal(Medal medal) {
@@ -820,6 +837,7 @@ public class Logic {
         }
 
         if (!hasMedal(Medal.GREECE_VISITOR) && (mGreeceVisitCount == 7) && (calculateTotalValue() >= 1000000)) {
+            updateGreeceSailDuration();
             return Medal.GREECE_VISITOR;
         }
 

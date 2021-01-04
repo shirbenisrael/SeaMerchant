@@ -5,8 +5,10 @@ import java.util.Random;
 public class PriceTable {
     public int[][] prices = new int[State.NUM_STATES][Goods.NUM_GOODS_TYPES];
     static private Random mRand = new Random();
+    Logic mLogic;
 
-    public PriceTable() {
+    public PriceTable(Logic logic) {
+        mLogic = logic;
         for (int[] state_prices : prices) {
             for (Goods goods: Goods.values()) {
                 state_prices[goods.getValue()] = 0;
@@ -22,6 +24,12 @@ public class PriceTable {
         }
 
         setSpecialPricesOnState(State.GREECE);
+        if (mLogic.hasMedal(Medal.EGYPT_WHEAT)) {
+            setSpecialPricesOnState(State.EGYPT);
+        }
+        if (mLogic.hasMedal(Medal.BDS_TURKEY)) {
+            setSpecialPricesOnState(State.TURKEY);
+        }
     }
 
     public void setSpecialPricesOnState(State state) {

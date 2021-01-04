@@ -133,6 +133,9 @@ public class Sail {
     public void selectNumGuardShips(int numGuards) {
         mSelectedNumGuardShips = numGuards;
         mTotalGuardShipsCost = mSelectedNumGuardShips * mGuardShipCost;
+        if ((mLogic.hasMedal(Medal.ALWAYS_FIGHTER)) && (mSelectedNumGuardShips > 0)) {
+            mTotalGuardShipsCost -= mGuardShipCost;
+        }
     }
 
     public boolean isAbandonedShipAppear() {
@@ -219,9 +222,17 @@ public class Sail {
         return mLogic.mCapacity * mLogic.mCapacity;
     }
 
+    private int generateShoalDamage() {
+        return 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+    }
+
     public void createShoal() {
         mSailEndedPeacefully = false;
-        mShoalDamage = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+        mShoalDamage = generateShoalDamage();
+        if (mLogic.hasMedal(Medal.TITANIC)) {
+            mShoalDamage = Math.min(mShoalDamage, generateShoalDamage());
+        }
+
         mLogic.mDamage += mShoalDamage;
         if (mShoalDamage >= 200000) {
             mLogic.mTitanicMedal = true;
@@ -236,7 +247,13 @@ public class Sail {
     }
 
     public boolean isPirateAppear() {
-        return tryToDoSomething(PERCENT_OF_PIRATES_APPEAR);
+        int chances = PERCENT_OF_PIRATES_APPEAR;
+        if (mDestination == State.GREECE || mSource == State.GREECE) {
+            if (mLogic.hasMedal(Medal.TIRED_FIGHTER)) {
+                chances *= 2;
+            }
+        }
+        return tryToDoSomething(chances);
     }
 
     public void calculateBattleResult() {
