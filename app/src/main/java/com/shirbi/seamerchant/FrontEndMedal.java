@@ -32,6 +32,8 @@ public class FrontEndMedal extends FrontEndGeneric {
             medalText.setText(getString(medal.getTitle()));
             medalText.setLayoutParams(new LinearLayout.LayoutParams(5 * windowSize.x / 6, windowSize.x / 6));
 
+            int colorId = ((medal.getBonus() == 0) ? R.color.black : R.color.red);
+            medalText.setTextColor(mActivity.getColor(colorId));
             setMedalIcon(medal);
         }
     }
@@ -41,7 +43,17 @@ public class FrontEndMedal extends FrontEndGeneric {
         int medalIndex = scroll.indexOfChild((View)medalButton.getParent());
         Medal medal = Medal.values()[medalIndex];
 
-        showAlertDialogMessage(getString(medal.getCondition()), getString(medal.getTitle()), R.drawable.medal);
+        int medalBonusId = medal.getBonus();
+        String condition = getString(medal.getCondition());
+        String message;
+
+        if (medalBonusId == 0) {
+            message = condition;
+        } else {
+            String bonus = getString(medalBonusId);
+            message = mActivity.getString(R.string.MEDAL_WITH_BONUS, condition, bonus);
+        }
+        showAlertDialogMessage(message, getString(medal.getTitle()), R.drawable.medal);
     }
 
     public void showNewMedal(Medal medal) {

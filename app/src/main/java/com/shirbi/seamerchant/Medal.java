@@ -178,4 +178,37 @@ public enum Medal {
         }
         throw new IllegalStateException("Unexpected value: " + this);
     }
+
+    public int getBonus() {
+        switch (this) {
+            case TREASURE_5:
+                return R.string.TREASURE_5_BONUS;
+            case CAPACITY_3:
+                return R.string.CAPACITY_3_BONUS;
+            case CREW_NEGOTIATOR:
+                return R.string.CREW_NEGOTIATOR_BONUS;
+            case TIRED_FIGHTER:
+                return R.string.TIRED_FIGHTER_BONUS;
+            case ALWAYS_FIGHTER:
+                return R.string.ALWAYS_FIGHTER_BONUS;
+            case EGYPT_WHEAT:
+                return R.string.EGYPT_WHEAT_BONUS;
+            case TITANIC:
+                return R.string.TITANIC_BONUS;
+            case BDS_TURKEY:
+                return R.string.BDS_TURKEY_BONUS;
+            case GREECE_VISITOR:
+                return R.string.GREECE_VISITOR_BONUS;
+            case FEDERAL_RESERVE:
+                return R.string.FEDERAL_RESERVE_BONUS;
+            case HERO_DIE:
+                return R.string.HERO_DIE_BONUS;
+            case GERMAN_TIME:
+                return R.string.GERMAN_TIME_BONUS;
+            case ECONOMICAL_SAIL:
+                return R.string.ECONOMICAL_SAIL_BONUS;
+            default:
+                return 0;
+        }
+    }
 }
