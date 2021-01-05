@@ -20,6 +20,7 @@ public class Logic {
     public static final int SLEEP_TIME = 24;
     private static final int MIN_VALUE_FOR_MERCHANT = 4500;
     public static final int BANK_NIGHTLY_INTEREST = 10;
+    public static final int BANK_NIGHTLY_INTEREST_WITH_MEDAL = 15;
 
     private MainActivity mActivity;
     public Logic(MainActivity activity) {
@@ -227,7 +228,9 @@ public class Logic {
         }
         mCurrentState = mSail.mDestination;
         mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
-        mIsBankOperationTakesTime = true;
+        if (!hasMedal(Medal.ECONOMICAL_SAIL)) {
+            mIsBankOperationTakesTime = true;
+        }
         mIsMarketOperationTakesTime = true;
         mIsFixOperationTakesTime = true;
         if (mCurrentState == State.GREECE) {
@@ -255,8 +258,12 @@ public class Logic {
         return mSailDurations[from.getValue()][to.getValue()];
     }
 
+    public int getEveningTime() {
+        return EVENING_TIME + (hasMedal(Medal.GERMAN_TIME) ? 1 : 0);
+    }
+
     public DayPart getDayPart() {
-        if (mCurrentHour < EVENING_TIME) {
+        if (mCurrentHour < getEveningTime()) {
             return DayPart.SUN_SHINES;
         }
 
@@ -283,7 +290,7 @@ public class Logic {
             mAlwaysDeposit = false;
         }
 
-        mBankDeposit = mBankDeposit * (100 + BANK_NIGHTLY_INTEREST) / 100;
+        mBankDeposit = mBankDeposit * (100 + getBankNightlyInterest()) / 100;
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
         mIsFixOperationTakesTime = true;
@@ -570,7 +577,7 @@ public class Logic {
     }
 
     public int getBankNightlyInterest() {
-        return BANK_NIGHTLY_INTEREST;
+        return hasMedal(Medal.FEDERAL_RESERVE) ? BANK_NIGHTLY_INTEREST_WITH_MEDAL : BANK_NIGHTLY_INTEREST;
     }
 
     public boolean isBankOperationTakesTime() {

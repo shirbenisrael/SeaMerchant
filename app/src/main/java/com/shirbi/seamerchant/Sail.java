@@ -143,7 +143,7 @@ public class Sail {
     }
 
     public boolean isShoalInSail() {
-        if (mLogic.mCurrentHour >= Logic.EVENING_TIME) {
+        if (mLogic.mCurrentHour >= mLogic.getEveningTime()) {
             return tryToDoSomething(PERCENT_OF_SHOAL_APPEAR);
         }
 
@@ -299,7 +299,10 @@ public class Sail {
         }
 
         if (mRand.nextInt(6) >= mSelectedNumGuardShips) {
-            mPiratesDamage = 1 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
+            mPiratesDamage = generateWinPirateDamage();
+            if (mLogic.hasMedal(Medal.HERO_DIE)) {
+                mPiratesDamage = Math.min(mPiratesDamage, generateWinPirateDamage());
+            }
             mLogic.mDamage += mPiratesDamage;
             mSailEndedPeacefully = false;
 
@@ -307,6 +310,10 @@ public class Sail {
                 mLogic.mHeroDieMedal = true;
             }
         }
+    }
+
+    private int generateWinPirateDamage() {
+        return 1 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
     }
 
     public boolean isEscapePiratesSucceeds() {
