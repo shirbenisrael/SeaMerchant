@@ -63,6 +63,12 @@ public class FrontEndMedal extends FrontEndGeneric {
         TextView condition = findViewById(R.id.medal_condition);
         condition.setText(getString(medal.getCondition()));
 
+        TextView bonus = findViewById(R.id.medal_bonus);
+        int  bonusStringId = medal.getBonus();
+        String bonusString = (bonusStringId == 0) ? "" :
+                mActivity.getString(R.string.ONLY_BONUS, getString(bonusStringId));
+        bonus.setText(bonusString);
+
         setMedalIcon(medal);
     }
 

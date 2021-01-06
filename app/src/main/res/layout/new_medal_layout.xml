@@ -32,11 +32,13 @@
             android:textSize="20dp" />
 
         <TextView
+            android:id="@+id/medal_bonus"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6"
-            android:gravity="center_horizontal"
-            android:text="" />
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
 
         <Button
             android:layout_width="wrap_content"

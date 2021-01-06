@@ -175,4 +175,5 @@
     <string name="EXIT_GAME_TITLE">Exit game?</string>
 
     <string name="MEDAL_WITH_BONUS">%1$s. Bonus: %2$s</string>
+    <string name="ONLY_BONUS">Bonus: %1$s</string>
     </resources>
