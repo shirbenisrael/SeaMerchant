@@ -225,7 +225,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void startNewGame() {
+    public void startNewGame() {
         playSound(R.raw.new_day);
         mLogic.startNewGame();
         mFrontEnd.showWindow(Window.WEATHER_WINDOW);
@@ -655,7 +655,7 @@ public class MainActivity extends Activity {
     }
 
     public void onStartNewGameClick(View view) {
-        startNewGame();
+        mFrontEnd.showNewGameDialog();
     }
 
     private void storeState() {

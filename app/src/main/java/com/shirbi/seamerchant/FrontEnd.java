@@ -555,6 +555,24 @@ public class FrontEnd extends FrontEndGeneric {
                 R.string.END_GAME_QUESTION:R.string.SLEEP_QUESTION);
     }
 
+    void showNewGameDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+
+        builder.setTitle(getString(R.string.START_GAME_TITLE));
+        builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.startNewGame();
+            }
+        });
+        builder.setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing
+            }
+        });
+        builder.setIcon(R.drawable.boat_right);
+        builder.show();
+    }
+
     void showExitDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
 
