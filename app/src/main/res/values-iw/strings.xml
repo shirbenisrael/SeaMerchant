@@ -1,0 +1,179 @@
+<resources>
+    <string name="app_name">סוחר הים</string>
+
+    <string name="SUNDAY">יום ראשון</string>
+    <string name="MONDAY">יום שני</string>
+    <string name="TUESDAY">יום שלישי</string>
+    <string name="WEDNESDAY">יום רביעי</string>
+    <string name="THURSDAY">יום חמישי</string>
+    <string name="FRIDAY">יום שישי</string>
+    <string name="SATURDAY">יום שבת</string>
+
+    <string name="EGYPT">מצרים</string>
+    <string name="ISRAEL">ישראל</string>
+    <string name="TURKEY">תורכיה</string>
+    <string name="GREECE">יוון</string>
+
+    <string name="WHEAT">חיטה</string>
+    <string name="COPPER">נחושת</string>
+
+    <string name="TONNE">טון</string>
+    <string name="CASH">מזומן</string>
+    <string name="CASH_UNITS">ש\"ח</string>
+    <string name="TOTAL_VALUE">שווי כולל</string>
+
+    <string name="MONEY_STRING">%1$d\$</string>
+    <string name="HOLD_QUESTION">כמה %1$s להחזיק?</string>
+    <string name="SELL_ALL">מכור הכל</string>
+    <string name="FILL_CAPACITY">קיבולת מלאה</string>
+
+    <string name="CASH_STRING">מזומן: %1$d ש\"ח</string>
+
+    <string name="FIXED_SHIP_QUESTION">כמה להשקיע בתיקון הספינה?</string>
+    <string name="FIXED_AS_POSSIBLE">תקן ככל האפשר</string>
+    <string name="FIXED_SHIP">ספינה תקינה</string>
+    <string name="DAMAGED_SHIP">נזק: %1$d ש\"ח</string>
+    <string name="FIXING_STRING">תיקון: %1$d ש\"ח</string>
+
+    <string name="GOOD_SEA_STRING">תנאי השייט היום טובים</string>
+    <string name="STORM_STRING">סערה מתפתחת היום ליד %1$s</string>
+    <string name="FOG_STRING">יש היום ערפל בנמל %1$s</string>
+    <string name="WIND_STRING">רוחות חזקות נושבות היום ליד %1$s</string>
+
+    <string name="ONE_GUARD_COST">מחיר ספינת משמר: %1$d ש\"ח  (%2$.2f%%)</string>
+    <string name="TOTAL_GUARD_COST">מחיר כולל: %1$d, מזומן: %2$d</string>
+    <string name="SAIL_DESTINATION">יעד ההפלגה: %1$s</string>
+    <string name="SAIL_LANDING_HOUR">שעת הגעה:%1$d:00</string>
+    <string name="DANGERS">סכנות:</string>
+
+    <string name="PIRATES">פיראטים!</string>
+    <string name="PIRATES_FAST">ספינת הפיראטים המהירה השיגה אותך!</string>
+    <string name="PIRATES_MUST_ATTACK">אין ברירה אלא לתקוף אותם!</string>
+    <string name="PIRATES_REFUSE_OFFER">הפיראטים מסרבים להצעתך!</string>
+    <string name="WIN_THE_BATTLE">ניצחת בקרב!</string>
+    <string name="WIN_TREASURE">מצאת על ספינת הפיראטים אוצר בשווי %1$d ש\"ח</string>
+    <string name="WIN_WITH_DAMAGE">לרוע המזל, במהלך הקרב נגרם לספינתך נזק בשווי %1$d ש\"ח</string>
+    <string name="LOSE_BATTLE_AND_CASH">הפיראטים ניצחו בקרב ושדדו %1$d ש\"ח</string>
+    <string name="LOSE_BATTLE_AND_GOODS">הפיראטים ניצחו בקרב ושדדו %1$d טון %2$s!</string>
+    <string name="LOSE_BATTLE_DAMAGE">בנוסף, הפיראטים גרמו לספינה לנזק בשווי %1$d ש\"ח.</string>
+    <string name="WHAT_TO_DO_WITH_PIRATES">מה ברצונך לעשות?</string>
+    <string name="NO_GUARD_SHIPS">אין לך ספינות משמר?</string>
+    <string name="NUM_GUARDS_AGAINST_PIRATES">יש לך %1$d ספינות משמר.</string>
+    <string name="PIRATES_CHANCES_WIN_ESCAPE">הסיכוי לניצחון הוא %1$d%% והסיכוי לבריחה הוא %2$d%%.</string>
+    <string name="PIRATES_TIP">טיפ: ניצחון ילווה בפרס. הפסד יהיה כואב</string>
+    <string name="ATTACK">להתקיף</string>
+    <string name="ESCAPE">לברוח</string>
+    <string name="ESCAPE_DONE">הצלחת לברוח מהם.</string>
+    <string name="NEGOTIATE">משא ומתן</string>
+    <string name="OFFER_TO_PIRATES">מה תציע לפיראטים?</string>
+    <string name="GOODS_TO_OFFSET">"%1$s: %2$d מתוך %3$d טון "</string>
+    <string name="CASH_TO_OFFER">מזומן: %1$d מתוך %2$d ש\"ח</string>
+    <string name="PIRATES_OFFER_ACCEPTED">הפירטאים מקבלים את הצעתך.</string>
+
+    <string name="ABANDONED_SHIP">ספינה נטושה!</string>
+    <string name="ABANDONED_SHIP_INVENTORY">מצאת ספינה נטושה ועליה %1$d טון של %2$s</string>
+
+    <string name="SHOAL">שרטון!</string>
+    <string name="SHOAL_DAMAGE">ספינתך עלתה על שרטון! נגרם לה נזק בשווי %1$d ש"ח.</string>
+
+    <string name="SINK_DUE_TO_OVERLOAD">הספינה שוקעת בגלל עודף המטען!</string>
+    <string name="SINK_DAMAGE">המלחים משליכים לים %1$d טון של %2$s כדי להצילה.</string>
+
+    <string name="NAVIGATION_ERROR_TITLE">רוחות חזקות מבלבלות את הנווטים!</string>
+    <string name="NAVIGATION_ERROR_RESULT">הספינה מגיעה ל%1$s במקום ל%2$s!</string>
+
+    <string name="STORM_TITLE">הספינה נלכדה בסערה!</string>
+    <string name="STORM_WASH_GOODS">הגלים הגבוהים שוטפים מהספינה %1$d טון של %2$s.</string>
+    <string name="STORM_HURT_SHIP">הגלים הגבוהים פוגעים בספינה וגורמים לנזק בשווי %1$d ש\"ח.</string>
+
+    <string name="FOG_TITLE">ערפל כבד מכסה את הנמל!</string>
+    <string name="FOG_RESULT">הספינה לא יכולה לעגון ונאלצת לחזור ל%1$s.</string>
+
+    <string name="SAIL_ENDED_PEACEFULLY">הגעת ל%1$s בשלום!!</string>
+    <string name="SAIL_ENDED_BAD">הספינה שרדה את המסע אל %1$s.</string>
+
+    <string name="MARKET_STATE">מצב השווקים במזרח התיכון</string>
+    <string name="PRICE_UP">מחיר ה%1$s ב%2$s עלה ל-%3$d ש\"ח לטון!</string>
+    <string name="PRICE_DOWN">מחיר ה%1$s ב%2$s ירד ל-%3$d ש\"ח לטון!</string>
+    <string name="FISH_BOAT">סירת דייג התנגשה בספינתך וגרמה לנזק בשווי %1$d ש\"ח!</string>
+    <string name="FIRE">שריפה פורצת במחסנים ומכלה %1$d טון של %2$s!</string>
+
+    <string name="BIGGER_SHIP_FOR_CASH_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d ש\"ח.</string>
+    <string name="BIGGER_SHIP_FOR_GOODS_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d טון %3$s.</string>
+
+    <string name="MERCHANT_BUY">סוחר זקוק בדחיפות ל%1$s. הוא מוכן לשלם %2$d ש\"ח לטון בעבור כל ה%1$s שלך. האם תמכור לו?</string>
+    <string name="MERCHANT_SELL">סוחר חייב להיפטר במיידי מכל ה%1$s שלו. הוא רוצה למכור לך %2$d טון במחיר של %3$d ש\"ח לטון. האם תקנה?</string>
+
+    <string name="STRIKE_TITLE">צוות הספינה שובת! האם תדון איתם על פשרה?</string>
+    <string name="STRIKE_OPTIONS">אם המשא ומתן ייכשל יקח לך שני ימים למצוא צוות חדש. תוכל לחפש צוות חדש כבר עכשיו ולהפסיד יום עבודה אחד.</string>
+    <string name="NEW_CREW">צוות חדש</string>
+    <string name="OFFER_TO_CREW">מה תציע לצוות הספינה?</string>
+    <string name="CREW_OFFER_ACCEPTED">הצוות מקבל את הצעתך.</string>
+    <string name="CREW_REFUSE_OFFER">הצוות מסרב להצעתך!</string>
+    <string name="LOSE_2_DAYS">אתה מאבד יומיים בחיפוש אחר צוות חדש.</string>
+    <string name="NEXT_DAY_NEW_CREW">ביום הבא אתה עובד עם צוות חדש.</string>
+
+    <string name="DANGER_BROKEN_SHIP_TITLE">סכנה: ספינה שבורה.</string>
+    <string name="DANGER_OVERLOAD_TITLE">סכנה: מטען יתר.</string>
+    <string name="DANGER_NIGHT_SAIL_TITLE">סכנה: הפלגת לילה.</string>
+    <string name="DANGER_WEATHER_TITLE">סכנה: מזג אויר גרוע.</string>
+
+    <string name="DANGER_BROKEN_SHIP_MESSAGE">הפלגה בספינה שבורה עשויה להחמיר את הנזק.</string>
+    <string name="DANGER_OVERLOAD_MESSAGE">הספינה טעונה מעל הקיבולת שלה ועלולה לשקוע.</string>
+    <string name="DANGER_NIGHT_SAIL_MESSAGE">הספינה עלולה לעלות על שרטון שעשוי לגרום נזק בשווי עד %1$d ש\"ח.</string>
+    <string name="DANGER_NIGHT_SAIL_SHORT_MESSAGE">הספינה עלולה לעלות על שרטון.</string>
+    <string name="DANGER_FOG_MESSAGE">הערפל ב%1$s עלול למנוע עגינה בנמל.</string>
+    <string name="DANGER_FOG_SHORT_MESSAGE">הערפל עלול למנוע עגינה בנמל.</string>
+    <string name="DANGER_STORM_MESSAGE">הסערה עלולה לפגוע בספינה ובסחורה שעליה</string>
+    <string name="DANGER_WIND_MESSAGE">רוחות חזקות עלולות להקשות בניווט</string>
+    <string name="DANGER_PIRATES_MESSAGE">הים שורץ שודדים. מומלץ לשכור ספינות משמר.</string>
+
+    <string name="CANCEL">ביטול</string>
+    <string name="CONFIRM">אישור</string>
+    <string name="TUTORIAL">מורה דרך</string>
+    <string name="MENU">תפריט</string>
+
+    <string name="CANNOT_SAIL_TITLE">לא ניתן להפליג</string>
+    <string name="GREECE_IS_TOO_FAR">ניתן להפליג אל יוון וממנה רק מקפריסין</string>
+    <string name="CANNOT_SAIL_AT_NIGHT">מאוחר מדי לצאת להפלגה</string>
+    <string name="CANNOT_SAIL_WITH_HEAVY_DAMAGE">הנזק אשר נגרם לספינה כבד מדי ומונע הפלגה</string>
+    <string name="CANNOT_REACH_BEFORE_SLEEP_TIME">המסע ארוך מדי ולא יסתיים לפני חצות</string>
+
+    <string name="CANNOT_FIX_TITLE">לא ניתן לתקן</string>
+    <string name="CANNOT_FIX_FIXED_SHIP">הספינה כבר תקינה</string>
+    <string name="CANNOT_FIX_AT_NIGHT">מאוחר מדי לתקן כעת.</string>
+
+    <string name="TUTORIAL_TITLE">מורה דרך</string>
+    <string name="TUTORIAL_SELL">אתה ב%1$s ומחיר ה%2$s כאן הוא %3$d ש\"ח ויש לך %4$d טון. לחץ על כפתור ה%2$s כדי למכור את הסחורה.</string>
+    <string name="TUTORIAL_BUY">אתה נמצא ב%1$s ומחיר ה%2$s כאן הוא %3$d ש\"ח לטון וב%4$s המחיר הוא %5$d ש\"ח לטון. לחץ על כפתור ה%2$s כדי לרכוש את הסחורה.</string>
+    <string name="TUTORIAL_SAIL_EMPTY">אתה נמצא ב%1$s וכל המחירים כאן גבוהים. לחץ על דגל של מדינה אחרת כדי להפליג לשם.</string>
+    <string name="TUTORIAL_SAIL_WITH_GOODS">תוכל למכור את ה%1$s שלך ב%2$s במחיר גבוה של %3$d ש\"ח לטון. לחץ על דגל %2$s כדי להפליג לשם.</string>
+    <string name="TUTORIAL_SLEEP">נהיה מאוחר. הגיע הזמן ללכת לישון עד למחרת.</string>
+    <string name="TUTORIAL_FIX_SHIP">הספינה שבורה. בוא נתקן אותה לפני שהנזק יחמיר.</string>
+
+    <string name="BANK_QUESTION">כמה כסף להחזיק במזומן?</string>
+    <string name="BANK_TIP">טיפ: הפקדה לילית נותנת ריבית של %1$d%%.</string>
+    <string name="BANK_DEPOSIT_ALL">הפקד הכל</string>
+    <string name="BANK_DRAW_ALL">משוך הכל</string>
+    <string name="BANK_CASH_FOR_GUARDS">מזומן לספינות משמר</string>
+
+    <string name="OPERATION_NO_TIME">הפעולה לא תיקח זמן נוסף.</string>
+    <string name="OPERATION_ONE_HOUR">הפעולה תיקח שעה אחת.</string>
+
+    <string name="GAME_RESULT">בשבוע המסחר הרווחת %1$d ש\"ח</string>
+    <string name="SLEEP_QUESTION">לנוח עד למחרת?</string>
+    <string name="END_GAME_QUESTION">לסיים את שבוע המסחר?</string>
+
+    <string name="EXIT_GAME_TITLE">יציאה מהמשחק?</string>
+    <string name="START_GAME_TITLE">התחלת משחק חדש?</string>
+
+    <string name="MEDAL_WITH_BONUS">%1$s. בונוס: %2$s</string>
+    <string name="ONLY_BONUS">בונוס: %1$s</string>
+    <string name="ALL_GOODS_CONDITION">בהפלגה אחת העבר את כל סוגי הסחורות ברווח</string>
+    <string name="CYPRUS">קפריסין</string>
+    <string name="OLIVES">זיתים</string>
+    <string name="LOCK_STRING">כספת: %1$d ש\"ח</string>
+    <string name="FIXED_SHIP_TIP">טיפ: ספינה שבורה מתפרקת לחלקים בהפלגה</string>
+    <string name="WIN_CAPACITY">לכדת את ספינת הפיראטים וקיבולת הספינה שלך גדלה ב %1$d טון</string>
+    <string name="BUY_ALL">קנה מקסימום</string>
+</resources>
