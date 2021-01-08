@@ -80,6 +80,7 @@ public class FrontEndPirates extends FrontEndGeneric {
 
         String damage = mActivity.getString(R.string.LOSE_BATTLE_DAMAGE, sail.mPiratesDamage);
         ((TextView)findViewById(R.id.battle_damage)).setText(damage);
+        findViewById(R.id.battle_damage).setVisibility(View.VISIBLE);
 
         findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.battle);
     }
