@@ -157,7 +157,7 @@
     <string name="TUTORIAL_SAIL_EMPTY">You are in %1$s all prices here are high. Press on other state flag to sail to there.</string>
     <string name="TUTORIAL_SAIL_WITH_GOODS">You can sell your %1$s in %2$s with high price of %3$d$ for tonne. Press on %2$s flag to ship there</string>
     <string name="TUTORIAL_SLEEP">It is getting late. Maybe it is time to sleep until tomorrow.</string>
-    <string name="TUTORIAL_FIX_SHIP">The ship is broken Lets fix it before the damage increases.</string>
+    <string name="TUTORIAL_FIX_SHIP">The ship is broken. Lets fix it before the damage increases.</string>
 
     <string name="BANK_QUESTION">How much to hold in cash?</string>
     <string name="BANK_TIP">Tip: A nightly deposit gives an interest rate of %1$d%%.</string>
