@@ -180,6 +180,7 @@ public class FrontEndSail extends FrontEndGeneric {
         findViewById(R.id.sail_or_cancel_layout).setVisibility(View.INVISIBLE);
         findViewById(R.id.sail_map).setBackgroundResource(R.drawable.map_clean);
         findViewById(R.id.destination).setVisibility(View.INVISIBLE);
+        findViewById(R.id.sail_duration_for_greece).setVisibility(View.INVISIBLE);
 
         mProgress = 0;
         mImageToAnimate = R.id.boat_on_map;
