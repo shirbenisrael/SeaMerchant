@@ -131,7 +131,8 @@ public class FrontEndSail extends FrontEndGeneric {
                     locationY,
                     0.05f);
 
-            mProgress += 2;
+            // slow down long sail
+            mProgress += (mLogic.getSailDuration(mLogic.mSail.mDestination) > 3) ? 1 : 2;
 
             if ((mProgress == 50) && mRealSail) {
                 if (mLogic.mSail.isSinkInSail()) {
