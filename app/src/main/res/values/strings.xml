@@ -179,4 +179,12 @@
 
     <string name="MEDAL_WITH_BONUS">%1$s. Bonus: %2$s</string>
     <string name="ONLY_BONUS">Bonus: %1$s</string>
+
+    <string name="ABOUT_TITLE">Sea Merchant \n Shir Ben Israel</string>
+    <string name="ABOUT_VERSION">Version 2.00</string>
+    <string name="ABOUT_DESIGN">Designing and Programming: \n Shir Ben Israel</string>
+    <string name="ABOUT_INSPIRATION">Inspired by Soher Hayam of MATACH</string>
+    <string name="ABOUT_SOUNDS">Sounds: http://www.freesfx.co.uk</string>
+    <string name="ABOUT_BACKGROUND">Background photo: Vicotor Skarluchin</string>
+    <string name="ABOUT_DRAWING">Drawing: Bar Eshkol</string>
     </resources>

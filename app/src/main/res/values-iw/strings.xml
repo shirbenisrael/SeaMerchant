@@ -178,4 +178,12 @@
     <string name="BUY_ALL">קנה מקסימום</string>
     <string name="YOUR_HIGHEST_SCORE">השיא שלך הוא %1$d ש\"ח</string>
     <string name="YOUR_CURRENT_SCORE">ערך סחורתך הוא %1$d ש\"ח</string>
+
+    <string name="ABOUT_TITLE">סוחר הים - שיר בן ישראל</string>
+    <string name="ABOUT_VERSION">גרסה 2.00</string>
+    <string name="ABOUT_DESIGN">עיצוב ותכנות: שיר בן ישראל</string>
+    <string name="ABOUT_INSPIRATION">בהשראת סוחר הים של מט\"ח</string>
+    <string name="ABOUT_SOUNDS">קולות: http://www.freesfx.co.uk</string>
+    <string name="ABOUT_BACKGROUND">צילום רקע: ויקטור סקרלוחין</string>
+    <string name="ABOUT_DRAWING">ציורים: בר אשכול</string>
 </resources>

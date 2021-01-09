@@ -74,7 +74,8 @@
             android:gravity="center_horizontal"
             android:scaleType="fitXY"
             android:background="@drawable/about_icon"
-            android:foreground="?attr/selectableItemBackgroundBorderless"/>
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:onClick="onAboutClick"/>
 
         <Button
             android:layout_width="0dp"

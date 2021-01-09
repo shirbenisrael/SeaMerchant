@@ -757,10 +757,17 @@ public class MainActivity extends Activity {
             case MEDAL_WINDOW:
                 onExitMedalClick(null);
                 break;
+            case ABOUT_WINDOW:
+                onExitAboutWindow(null);
+                break;
             case STRIKE_WINDOW:
             case PIRATES_WINDOW:
                 break;
         }
+    }
+
+    public void onExitAboutWindow(View view) {
+        mFrontEnd.showWindow(Window.MENU_WINDOW);
     }
 
     public void onPriceClick(View view) {
@@ -828,5 +835,9 @@ public class MainActivity extends Activity {
         } else {
             mFrontEnd.showWindow(Window.MAIN_WINDOW);
         }
+    }
+
+    public void onAboutClick(View view) {
+        mFrontEnd.showWindow(Window.ABOUT_WINDOW);
     }
 }
