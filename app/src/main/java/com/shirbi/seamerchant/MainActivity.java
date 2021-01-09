@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
     FrontEndHighScore mFrontEndHighScore;
     FrontEndMedal mFrontEndMedal;
 
+    boolean mIsGameEnded = false;
     boolean mIsSoundEnable = true;
 
     @Override
@@ -219,8 +220,9 @@ public class MainActivity extends Activity {
             mFrontEnd.showWindow(Window.WEATHER_WINDOW);
             mFrontEnd.showNewWeather();
         } else {
+            mIsGameEnded = true;
             playSound(R.raw.game_end);
-            mFrontEndHighScore.showHighScore();
+            mFrontEndHighScore.showHighScoreAtGameEnd();
             mFrontEnd.showWindow(Window.HIGH_SCORE_WINDOW);
         }
     }
@@ -232,8 +234,18 @@ public class MainActivity extends Activity {
         mFrontEnd.showNewWeather();
     }
 
+    public void onHighScoreClick(View view) {
+        mFrontEnd.showWindow(Window.HIGH_SCORE_WINDOW);
+        mFrontEndHighScore.showHighScoreWhilePlaying();
+    }
+
     public void onExistHighScore(View view) {
-        startNewGame();
+        if (mIsGameEnded) {
+            mIsGameEnded = false;
+            startNewGame();
+        } else {
+            mFrontEnd.showWindow(Window.MENU_WINDOW);
+        }
     }
 
     public void onExitWeatherWindow(View view) {

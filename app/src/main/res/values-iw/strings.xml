@@ -176,4 +176,6 @@
     <string name="FIXED_SHIP_TIP">טיפ: ספינה שבורה מתפרקת לחלקים בהפלגה</string>
     <string name="WIN_CAPACITY">לכדת את ספינת הפיראטים וקיבולת הספינה שלך גדלה ב %1$d טון</string>
     <string name="BUY_ALL">קנה מקסימום</string>
+    <string name="YOUR_HIGHEST_SCORE">השיא שלך הוא %1$d ש\"ח</string>
+    <string name="YOUR_CURRENT_SCORE">ערך סחורתך הוא %1$d ש\"ח</string>
 </resources>

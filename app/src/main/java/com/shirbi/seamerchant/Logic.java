@@ -72,6 +72,7 @@ public class Logic {
     public boolean mEconomicalSail;
     public int mValueAtStartOfDay = 0;
     public boolean mHeroDieMedal = false;
+    public int mHighScore = 0;
 
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
@@ -606,6 +607,7 @@ public class Logic {
         editor.putInt(getString(R.string.mWeather), mWeather.getValue());
         editor.putInt(getString(R.string.mDamage), mDamage);
         editor.putInt(getString(R.string.mCapacity), mCapacity);
+        editor.putInt(getString(R.string.mHighScore), mHighScore);
         editor.putInt(getString(R.string.mEscapeCountInOneDay), mEscapeCountInOneDay);
         editor.putInt(getString(R.string.mCompromiseWithCrewCount), mCompromiseWithCrewCount);
         editor.putInt(getString(R.string.mWrongNavigationCountInOneDay), mWrongNavigationCountInOneDay);
@@ -675,6 +677,7 @@ public class Logic {
         mWeather = Weather.values()[sharedPref.getInt(getString(R.string.mWeather), Weather.GOOD_SAILING.getValue())];
         mDamage = sharedPref.getInt(getString(R.string.mDamage), 0);
         mCapacity = sharedPref.getInt(getString(R.string.mCapacity), START_CAPACITY);
+        mHighScore = sharedPref.getInt(getString(R.string.mHighScore), 0);
         mEscapeCountInOneDay = sharedPref.getInt(getString(R.string.mEscapeCountInOneDay), 0);
         mCompromiseWithCrewCount = sharedPref.getInt(getString(R.string.mCompromiseWithCrewCount), 0);
         mWrongNavigationCountInOneDay = sharedPref.getInt(getString(R.string.mWrongNavigationCountInOneDay), 0);
@@ -887,5 +890,9 @@ public class Logic {
         }
 
         mCash -= mSail.mGuardShipCost * mSail.mSelectedNumGuardShips;
+    }
+
+    public void setNewHighScore(int highScore) {
+        mHighScore = Math.max(mHighScore, highScore);
     }
 }

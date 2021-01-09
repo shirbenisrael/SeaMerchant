@@ -28,6 +28,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:scaleType="fitXY"
+            android:onClick="onHighScoreClick"
             android:background="@drawable/high_score_icon"
             android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
