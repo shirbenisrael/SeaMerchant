@@ -132,6 +132,7 @@
     <string name="CONFIRM">אישור</string>
     <string name="TUTORIAL">מורה דרך</string>
     <string name="MENU">תפריט</string>
+    <string name="CALCULATOR">לחיצה על מחירים למחשבון</string>
 
     <string name="CANNOT_SAIL_TITLE">לא ניתן להפליג</string>
     <string name="GREECE_IS_TOO_FAR">ניתן להפליג אל יוון וממנה רק מקפריסין</string>

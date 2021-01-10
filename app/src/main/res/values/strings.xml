@@ -138,6 +138,7 @@
     <string name="CONFIRM">Confirm</string>
     <string name="TUTORIAL">Tutorial</string>
     <string name="MENU">Menu</string>
+    <string name="CALCULATOR">Press on the prices for calculator</string>
 
     <string name="CANNOT_SAIL_TITLE">Cannot sail</string>
     <string name="GREECE_IS_TOO_FAR">You can sail to and from Greece from Cyprus only</string>
