@@ -130,4 +130,9 @@
         android:id="@+id/about_layout"
         layout="@layout/about_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/open_screen_layout"
+        layout="@layout/open_screen_layout"
+        android:visibility="gone" />
 </LinearLayout>

@@ -186,4 +186,18 @@
     <string name="ABOUT_SOUNDS">קולות: http://www.freesfx.co.uk</string>
     <string name="ABOUT_BACKGROUND">צילום רקע: ויקטור סקרלוחין</string>
     <string name="ABOUT_DRAWING">ציורים: בר אשכול</string>
+
+    <string name="OPEN_SCREEN_1">סוחר הים!</string>
+    <string name="OPEN_SCREEN_2">שבוע המסחר החל!</string>
+    <string name="OPEN_SCREEN_3">אתה סוחר ים</string>
+    <string name="OPEN_SCREEN_4">המפליג בים התיכון.</string>
+    <string name="OPEN_SCREEN_5">בשבעת ימי המסחר</string>
+    <string name="OPEN_SCREEN_6">תוכל לסחור</string>
+    <string name="OPEN_SCREEN_7">בסחורות מקומיות.</string>
+    <string name="OPEN_SCREEN_8">מטרתך היא</string>
+    <string name="OPEN_SCREEN_9">לסיים שבוע זה</string>
+    <string name="OPEN_SCREEN_10">עם סכום כסף</string>
+    <string name="OPEN_SCREEN_11">גדולה ככל האפשר.</string>
+    <string name="OPEN_SCREEN_12">היזהר מסכנות בדרך!</string>
+    <string name="OPEN_SCREEN_13">בהצלחה!</string>
 </resources>

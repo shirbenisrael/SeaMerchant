@@ -187,4 +187,19 @@
     <string name="ABOUT_SOUNDS">Sounds: http://www.freesfx.co.uk</string>
     <string name="ABOUT_BACKGROUND">Background photo: Vicotor Skarluchin</string>
     <string name="ABOUT_DRAWING">Drawing: Bar Eshkol</string>
-    </resources>
+
+    <string name="OPEN_SCREEN_1">SEA MERCHANT!</string>
+    <string name="OPEN_SCREEN_2">The trading week begins!</string>
+    <string name="OPEN_SCREEN_3">You are a sea merchant</string>
+    <string name="OPEN_SCREEN_4">who sails in the Mediterranean.</string>
+    <string name="OPEN_SCREEN_5">In one week</string>
+    <string name="OPEN_SCREEN_6">you can trade</string>
+    <string name="OPEN_SCREEN_7">local goods.</string>
+    <string name="OPEN_SCREEN_8">Your goal is</string>
+    <string name="OPEN_SCREEN_9">to end this week</string>
+    <string name="OPEN_SCREEN_10">with amount of money</string>
+    <string name="OPEN_SCREEN_11">high as possible</string>
+    <string name="OPEN_SCREEN_12">Watch out for dangers!</string>
+    <string name="OPEN_SCREEN_13">Good luck!</string>
+
+</resources>

@@ -46,6 +46,7 @@ public class MainActivity extends Activity {
     FrontEndSink mFrontEndSink;
     FrontEndHighScore mFrontEndHighScore;
     FrontEndMedal mFrontEndMedal;
+    FrontEndOpenWindow mFrontEndOpenWindow;
 
     boolean mIsGameEnded = false;
     boolean mIsSoundEnable = true;
@@ -85,7 +86,15 @@ public class MainActivity extends Activity {
         mFrontEndSink = new FrontEndSink(this);
         mFrontEndHighScore = new FrontEndHighScore(this);
         mFrontEndMedal = new FrontEndMedal(this);
+        mFrontEndOpenWindow = new FrontEndOpenWindow(this);
 
+        mFrontEnd.showWindow(Window.OPEN_WINDOW);
+        mFrontEndOpenWindow.startAnimate();
+        playSound(R.raw.open_screen);
+    }
+
+    public void onExitOpenScreen(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
     }
 
