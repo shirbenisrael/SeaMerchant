@@ -602,7 +602,7 @@ public class FrontEnd extends FrontEndGeneric {
 
         int destinationPrice = mLogic.mPriceTable.getPrice(destinationState, goods);
         int sourcePrice = mLogic.mPriceTable.getPrice(mLogic.mCurrentState, goods);
-        int maxUnits = mLogic.calculateTotalValue() / sourcePrice;
+        int maxUnits = Math.min(mLogic.calculateTotalValue() / sourcePrice, mLogic.mCapacity);
         int profit = (destinationPrice - sourcePrice) * maxUnits;
 
         String calculatorString =
