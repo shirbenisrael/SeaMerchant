@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -14,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -22,8 +23,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="6 בבוקר"
+                android:gravity="center"
                 android:textColor="#000000" />
 
             <TextView
@@ -31,8 +31,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="יום ראשון "
+                android:gravity="center"
                 android:textColor="#000000" />
 
             <TextView
@@ -40,8 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="ישראל"
+                android:gravity="center"
                 android:textColor="#000000" />
         </LinearLayout>
 
@@ -50,15 +48,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="תנאי השייט היום טובים"
+            android:gravity="center"
             android:textColor="#000000" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:text="@string/MARKET_STATE"
             android:textColor="#000000" />
 
@@ -67,6 +64,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layoutDirection="rtl"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -106,31 +104,34 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="left"
+                    android:gravity="left|center"
                     android:onClick="onMarketClick"
                     android:scaleType="fitXY"
+                    android:paddingLeft="5dp"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="חיטה" />
+                    tools:ignore="RtlHardcoded,RtlSymmetry" />
 
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="left"
+                    android:gravity="left|center"
                     android:onClick="onMarketClick"
                     android:scaleType="fitXY"
+                    android:paddingLeft="5dp"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="זיתים" />
+                    tools:ignore="RtlHardcoded,RtlSymmetry" />
 
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="left"
+                    android:gravity="left|center"
                     android:onClick="onMarketClick"
                     android:scaleType="fitXY"
+                    android:paddingLeft="5dp"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="נחושת" />
+                    tools:ignore="RtlHardcoded,RtlSymmetry" />
 
             </LinearLayout>
         </LinearLayout>
@@ -147,6 +148,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layoutDirection="rtl"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <include layout="@layout/flag_button_layout" />
@@ -161,6 +163,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layoutDirection="rtl"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <include layout="@layout/flag_button_layout" />
@@ -175,6 +178,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layoutDirection="rtl"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <include layout="@layout/flag_button_layout" />
@@ -189,6 +193,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layoutDirection="rtl"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <include layout="@layout/flag_button_layout" />
@@ -203,6 +208,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layoutDirection="rtl"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <include layout="@layout/flag_button_layout" />
@@ -229,8 +235,9 @@
                 android:background="@drawable/wide_capacity_button"
                 android:gravity="left|center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:text="קיבולת 100"
-                android:textColor="#000000"/>
+                android:paddingLeft="5dp"
+                android:textColor="#000000"
+                tools:ignore="RtlHardcoded,RtlSymmetry" />
 
             <Button
                 android:id="@+id/wide_fix_button"
@@ -241,7 +248,8 @@
                 android:gravity="right|center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:onClick="onFixButtonClick"
-                android:text="ספינה תקינה" />
+                android:paddingRight="5dp"
+                tools:ignore="RtlHardcoded,RtlSymmetry" />
 
             <Button
                 android:id="@+id/wide_sleep_button"
@@ -281,7 +289,8 @@
                 android:gravity="left|center_vertical"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:onClick="onBankClick"
-                android:text="5000" />
+                android:paddingLeft="5dp"
+                tools:ignore="RtlHardcoded,RtlSymmetry" />
 
             <Button
                 android:id="@+id/wide_bank_button"
@@ -292,7 +301,8 @@
                 android:gravity="left|center_vertical"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:onClick="onBankClick"
-                android:text="1000" />
+                android:paddingLeft="5dp"
+                tools:ignore="RtlHardcoded,RtlSymmetry" />
 
         </LinearLayout>
 
