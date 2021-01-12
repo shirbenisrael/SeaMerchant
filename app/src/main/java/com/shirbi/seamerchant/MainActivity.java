@@ -860,4 +860,12 @@ public class MainActivity extends Activity {
     public void onExitHelpClick(View view) {
         mFrontEnd.showWindow(Window.MENU_WINDOW);
     }
+
+    public void onStatsClick(View view) {
+        mFrontEnd.showStats();
+    }
+
+    public void onGameRulesClick(View view) {
+        mFrontEnd.showGameRules();
+    }
 }

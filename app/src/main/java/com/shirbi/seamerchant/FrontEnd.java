@@ -161,6 +161,16 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
+    public void showGameRules() {
+        findViewById(R.id.statistics_text).setVisibility(View.GONE);
+        findViewById(R.id.game_rules).setVisibility(View.VISIBLE);
+    }
+
+    public void showStats() {
+        findViewById(R.id.statistics_text).setVisibility(View.VISIBLE);
+        findViewById(R.id.game_rules).setVisibility(View.GONE);
+    }
+
 
     public @NonNull Window getCurrentVisibleWindow() {
         for (Window window : Window.values()) {

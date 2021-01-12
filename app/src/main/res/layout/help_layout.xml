@@ -17,457 +17,510 @@
             android:layout_gravity="center_horizontal|top"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/game_rules"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_1" />
+                android:layout_gravity="center_horizontal|top"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_2" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_1"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_3" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_2"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_4" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_3"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_5" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_4"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_6" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_5"
+                    android:textSize="@dimen/help_title" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/main_screenshot"
-                android:gravity="center"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_6"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_7" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/main_screenshot" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_8" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_7"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/market_buttons_screenshot"
-                android:gravity="center"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_8"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_9" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/market_buttons_screenshot" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_10" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_9"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_11" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_10"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/flags_screenshot"
-                android:gravity="center"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_11"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_12" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/flags_screenshot" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_13" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_12"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bank_screenshot"
-                android:gravity="center"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_13"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_14" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bank_screenshot" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_15" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_14"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wide_sleep_button"
-                android:gravity="center"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_15"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_16" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/wide_sleep_button" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_17" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_16"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wide_fix_button"
-                android:gravity="center"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_17"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_18" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/wide_fix_button" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_19" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_18"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/sail_screenshot"
-                android:gravity="center"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_19"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_20" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/sail_screenshot" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_21" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_20"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_22" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_21"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_23" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_22"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_24" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_23"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_25" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_24"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_26" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_25"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_27" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_26"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_28" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_27"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_29" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_28"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_30" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_29"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_31" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_30"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_32" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_31"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_33" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_32"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_34" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_33"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_35" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_34"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_36" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_35"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_37" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_36"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_38" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_37"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_39" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_38"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_40" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_39"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_41" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_40"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_42" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_41"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_43" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_42"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_44" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_43"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_45" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_44"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_46" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_45"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_47" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_46"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_48" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_47"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_49" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_48"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_subtitle"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_50" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_49"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_51" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_50"
+                    android:textSize="@dimen/help_subtitle" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_52" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_51"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_53" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_52"
+                    android:textSize="@dimen/help_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/help_title"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_54" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_53"
+                    android:textSize="@dimen/help_paragraph" />
 
-            <TextView
-                android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_54"
+                    android:textSize="@dimen/help_title" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/HELP_STRING_55"
+                    android:textSize="@dimen/help_paragraph" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/statistics_text"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/help_paragraph"
-                android:gravity="center"
-                android:text="@string/HELP_STRING_55" />
+                android:layout_gravity="center_horizontal|top"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="כאן אמור להיות סטטיסטיקות"
+                    android:textSize="@dimen/help_paragraph" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/start_play_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/yes_button"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:gravity="center_horizontal"
-        android:onClick="onExitHelpClick" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/attack_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:onClick="onStatsClick"
+            android:text="סטטיסטיקה" />
+
+        <Button
+            android:id="@+id/escape_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:onClick="onGameRulesClick"
+            android:text="עזרה" />
+
+        <Button
+            android:id="@+id/negotiate_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:onClick="onExitHelpClick"
+            android:text="חזרה" />
+
+    </LinearLayout>
 
 </LinearLayout>
