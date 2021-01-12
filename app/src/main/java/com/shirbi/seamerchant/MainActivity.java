@@ -769,6 +769,9 @@ public class MainActivity extends Activity {
             case ABOUT_WINDOW:
                 onExitAboutWindow(null);
                 break;
+            case HELP_WINDOW:
+                onExitHelpClick(null);
+                break;
             case STRIKE_WINDOW:
             case PIRATES_WINDOW:
                 break;
@@ -848,5 +851,13 @@ public class MainActivity extends Activity {
 
     public void onAboutClick(View view) {
         mFrontEnd.showWindow(Window.ABOUT_WINDOW);
+    }
+
+    public void onHelpClick(View view) {
+        mFrontEnd.showWindow(Window.HELP_WINDOW);
+    }
+
+    public void onExitHelpClick(View view) {
+        mFrontEnd.showWindow(Window.MENU_WINDOW);
     }
 }

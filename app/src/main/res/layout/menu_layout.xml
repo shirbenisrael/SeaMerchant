@@ -47,7 +47,8 @@
             android:gravity="center_horizontal"
             android:scaleType="fitXY"
             android:background="@drawable/help_icon"
-            android:foreground="?attr/selectableItemBackgroundBorderless"/>
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:onClick="onHelpClick"/>
 
         <Button
             android:layout_width="0dp"

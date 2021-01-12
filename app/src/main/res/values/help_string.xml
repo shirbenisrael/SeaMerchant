@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="HELP_STRING_1">Android Sea Merchant</string>
+    <string name="HELP_STRING_2">Shir Ben Israel</string>
+    <string name="HELP_STRING_3">Version 2.0</string>
+    <string name="HELP_STRING_4">
+        The trading week begins! You are a sea merchant who sails in the Mediterranean. \n
+        In one week you can trade local goods. \n
+        Your goal is to end this week with amount of money hig as possible. \n
+        Watch out for dangers! \n
+        Good luck! \n
+    </string>
+
+    <string name="HELP_STRING_5">How to play?</string>
+    <string name="HELP_STRING_6">
+    When game starts you will see the option window. At the top of the screen you will see
+        the current day of the week, the current hour and the current state.
+        You will be able to go to the market to buy and sell goods, to sail to one
+        of the neighbour states, to visit the bank or to sleep until tomorrow.
+        If your ship is damaged, you will also be able to fix it.
+    </string>
+
+    <string name="HELP_STRING_7">
+        Pressing on each of the relevant buttons will open a window to perform the action you
+        have selected. Each of those action (except sleeping) will increase the game clock.
+        Sleeping until tomorrow will move you to 6:00 of next morning.
+        The game will be finished at the end of the seventh day.
+    </string>
+
+    <string name="HELP_STRING_8">Market</string>
+
+    <string name="HELP_STRING_9">
+        The numbers on the buttons represents your inventory.
+        Pressing on one of the goods button (Wheat, Olives and Copper) will open the
+        market window where you can buy and sell the goods you have selected.
+        The price for tonne appears in the center of the main window, where each state has
+        different prices for each goods.
+        You will be able to use only cash (and not what it the bank) to buy goods.
+        You will be able to buy goods until 23:00 at the night.
+    </string>
+
+    <string name="HELP_STRING_10">
+    \nAll buys and sells in one state takes one hour together.\n
+    </string>
+
+    <string name="HELP_STRING_11">Sailing</string>
+
+    <string name="HELP_STRING_12">
+        Pressing on one of the flags of the different states will leads you to the sailing window
+        to sail to the selected state. \n
+        The green numbers of the flags represents the sail durations to the possible destinations. \n
+        You will be able to sail into 5 ports in the game: \n
+        Egypt, Israel, Turkey, Cyprus and Greece. \n
+        Standard sailing takes 3 hours. \n
+        Sailing between Egypt and Turkey or Cyprus and Greece takes 6 hours. \n
+        Greece is accessible only from Cyprus. You can start sailing until 20:00 at evening and
+        if you want to sail to a long sail that takes 6 hours then you must start sail until 17:00. \n
+    </string>
+
+    <string name="HELP_STRING_13">Bank</string>
+
+    <string name="HELP_STRING_14">
+        You can deposit your money in the bank to protect it from robbers. Each bank visits on one
+        state to deposit or to draw money takes one hour together. \n
+        Night deposition (deposit and then go to sleep) gives 10% interest. \n
+        You can deposit money in the bank in one state and then draw it in another state. \n
+        You can visit bank until 23:00 at night. \n
+    </string>
+
+    <string name="HELP_STRING_15">Sleep until tomorrow</string>
+
+    <string name="HELP_STRING_16">
+        At the end of a trading day you need to go to sleep until the next trading day. \n
+        At the start of each day the prices of the goods will be fixed again. \n
+        The start of each trading day is at 6:00 and its end is at any time you want until 24:00. \n
+        Pressing on the sleeping button will progress the time to next day 6:00 in the morning \n.
+    </string>
+
+    <string name="HELP_STRING_17">Fix ship</string>
+
+    <string name="HELP_STRING_18">
+        If the ship is damaged, you can fix it in this window for a price. Each fix takes
+        one hour. \n
+        You can fix the ship until 23:00. \n
+    </string>
+
+    <string name="HELP_STRING_19">Sailing</string>
+
+    <string name="HELP_STRING_20">
+        In this window you can chose how many guard ships to rent to next sail and that start sailing.
+        You will be able to see the expected dangers and the price of the guard ships (which depends
+        on the value of your goods and cash and the expected dangers). \n
+    </string>
+
+    <string name="HELP_STRING_21">See events</string>
+
+    <string name="HELP_STRING_22">Shoal</string>
+
+    <string name="HELP_STRING_23">
+        If you start sailing at 17:00 or later, your ship may runs aground. \n
+        When this happen, the ship will be damaged. \n
+    </string>
+
+    <string name="HELP_STRING_24">Storm</string>
+
+    <string name="HELP_STRING_25">
+        If you sail in a storm, the high waves can wash goods out of your ship and even create damage
+        to the ship. \n
+        When a storm is developed, you will get a message about it the start of the trading day. \n
+    </string>
+
+    <string name="HELP_STRING_26">Winds</string>
+
+    <string name="HELP_STRING_27">
+        If you sail in high winds, they may cause your ship to deviate from its course and
+        return to where it came from. \n
+        On winds danger you will get a message on the start of the trading day. \n
+    </string>
+
+    <string name="HELP_STRING_28">Fog</string>
+
+    <string name="HELP_STRING_29">
+        If you try to ship into a state which its port is in a fog you may get
+        a message that you cannot get close into the beach and you will have to turn
+        back and sail to the place you came from. \n
+        You will get a message at the start of the trading day in case of a fog on one port. \n
+    </string>
+
+    <string name="HELP_STRING_30">Sinking</string>
+
+    <string name="HELP_STRING_31">
+        If you overload the ship with too much goods, over its capacity, you are taking a risk that
+        it would start sinking in the middle of the see. \n
+        If that happens, you will have to throw some of the goods into the see to save the ship. \n
+    </string>
+
+    <string name="HELP_STRING_32">Sail with broken ship</string>
+
+    <string name="HELP_STRING_33">
+        If the ship has a small damage and you decided to sail without fixing it first,
+        the sailing can increase the damage. When damage is more that square of ship capacity you
+        will not be able to ship until it is being fixed. \n
+    </string>
+
+    <string name="HELP_STRING_34">Pirates</string>
+
+    <string name="HELP_STRING_35">
+        Your ship may encounter pirates on every voyage. In that case you have 3 options: \n
+        You can negotiate the pirates and offer them some of your goods and cash, so  hopefully they will
+        not attack you. \n
+        The more you offer them, the less likely they are to attack you. \n
+        Escape: You can try to escape. As far as the ship
+        Yours is less loaded in relation to your capacity,
+        so the chances of you escaping will increase. \n
+
+        Attack: If you have guard ships, it may be worth to attack the bandits yourself.
+        The more guard ships you have the greater your chance of winning a battle.
+        You can rent the guard ships before you set sail.
+        The price of the ships depends on the value of the goods and cash on the ship and the
+        predicted weather damage. \n
+
+        If you defeat the bandits in battle, you may find treasure on their ship.
+        If not, you will take their ship captive, thus increasing the capacity of your ship. \n
+
+        During the battle your ship may be damaged. \n
+
+        If you lose a battle with the robbers, they will steal some of your property or cash,
+        and also cause great damage to the ship. \n
+    </string>
+
+    <string name="HELP_STRING_36">Abandoned ship</string>
+
+    <string name="HELP_STRING_37">
+        Your ship may encounter an abandoned ship halfway. In that case,
+        You can drag it to a safe shore and take the goods on it. \n
+    </string>
+
+    <string name="HELP_STRING_38">Start day events</string>
+
+    <string name="HELP_STRING_39">
+    At the beginning of each trading day (except the first),
+    after the weather announcement, one of the following will happen:
+    </string>
+
+    <string name="HELP_STRING_40">Increase / decrease in price</string>
+
+    <string name="HELP_STRING_41">
+    The price of one of the goods will increase or decrease drastically in one of the states\n
+    </string>
+
+    <string name="HELP_STRING_42">Fishing Boat</string>
+
+    <string name="HELP_STRING_43">
+    A fishing boat will collide with your ship and damage it. \n
+    </string>
+
+    <string name="HELP_STRING_44">Meeting with a trader</string>
+
+    <string name="HELP_STRING_45">
+    Another trader will want to sell or buy goods from you.
+        This deal will not take you time You can decide if you want to do it or give it up. \n
+    </string>
+
+    <string name="HELP_STRING_46">Increase ship capacity</string>
+
+    <string name="HELP_STRING_47">
+    In that case, you can increase the ship\'s capacity for a certain amount of cash or goods. \n
+    </string>
+
+    <string name="HELP_STRING_48">Fire</string>
+
+    <string name="HELP_STRING_49">
+    A fire breaks out in your warehouses and consumes some of the goods.
+        Because of this, keeping property on the ship overnight is a risk. \n
+    </string>
+
+    <string name="HELP_STRING_50">Strike</string>
+
+    <string name="HELP_STRING_51">
+        The ship\'s crew threatens to strike, and will agree to return to work only in exchange for
+        some of the cash and goods on the ship. \n
+        You can offer them a compromise: \n
+        If accepted, you can continue working as usual. \n
+        If it is rejected, it will lose two working days during negotiations
+        and the search for a new crew. \n
+        You can also fire the crew immediately and go look for a new team for
+        the price of one working day. \n
+    </string>
+
+    <string name="HELP_STRING_52">End trading week</string>
+
+    <string name="HELP_STRING_53">
+    After seven days, trading will end. Your score will be equal to the amount of cash you have,
+        in addition to the amount of money in the bank, in addition to the value of the goods on the ship,
+        in the country you are in, less the value of the damage caused to the ship. \n
+    </string>
+
+    <string name="HELP_STRING_54">Medals</string>
+
+    <string name="HELP_STRING_55">
+    During the game you can win medals for reaching certain goals.
+        For example, earn a certain amount of money, or defeat the pirates in battle.
+        Some of the medals will give you a bonus that will affect the next games. \n
+    </string>
+</resources>
+

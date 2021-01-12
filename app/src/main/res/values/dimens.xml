@@ -5,4 +5,8 @@
 
     <dimen name="info_message_size">20dp</dimen>
     <dimen name="info_message_confirm_button_size">20dp</dimen>
+
+    <dimen name="help_title">32sp</dimen>
+    <dimen name="help_subtitle">24sp</dimen>
+    <dimen name="help_paragraph">16sp</dimen>
 </resources>

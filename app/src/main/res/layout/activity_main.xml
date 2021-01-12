@@ -135,4 +135,9 @@
         android:id="@+id/open_screen_layout"
         layout="@layout/open_screen_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/help_layout"
+        layout="@layout/help_layout"
+        android:visibility="gone" />
 </LinearLayout>
