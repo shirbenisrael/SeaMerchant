@@ -242,5 +242,113 @@
         For example, earn a certain amount of money, or defeat the pirates in battle.
         Some of the medals will give you a bonus that will affect the next games. \n
     </string>
+
+    <string name="STATISTICS_INFO">On this page you will find information about the odds of all the events in the game. \n
+    \n
+    Prices \n
+Copper prices in Israel, Turkey, Cyprus and Egypt will usually be between 2500 and 3500 and in multiples of 100. \n
+Olives prices in Israel, Turkey, Cyprus and Egypt will generally be between 350 and 650 and in multiples of 50. \n
+Wheat prices in Israel, Turkey, Cyprus and Egypt will generally be between 35 and 70 and in multiples of 5. \n
+Goods prices in Greece will be according to the same formula, except that they will be multiplied by 1.5 or divided by 1.5 and will always be multiplied by 10. \n
+    \n
+Weather \n
+Every day, except the first, there is a 50% chance that dangerous weather will develop in one of the countries\n
+\n
+Special event at the beginning of the day \n
+The chance of the possibility to increase the ship is 1/6 if you have more than 5000 in cash or goods on the ship. If there is not enough money or goods the chance passes to the possibility of a special price of goods. \n
+The chance of meeting a merchant is 1/6 if you have more than 4500 in cash or goods on the ship. If there is not enough money or goods the chance goes to the option for a special price of goods. \n
+The chance of a fishing boat colliding is 1/6. \n
+The probability of a particularly high price of goods is 1/6. \n
+The probability of a particularly low price of goods is 1/6. \n
+The chance of a strike is 1/6 if you have goods on the ship or cash and it is not Friday yet. Otherwise the chance goes to fire if you have goods on the ship. Otherwise the chance goes to a special price. \n
+    \n
+Special price \n
+The highest possible price for copper is between 3600 and 4500 in multiples of 100. \n
+The highest possible price for olives is between 700 and 800 in multiples of 50. \n
+The highest possible price for wheat is between 75 and 90 in multiples of 5. \n
+The lowest possible price for copper is between 1500 and 1900 in multiples of 100. \n
+The lowest possible price for olives is between 200 and 300 in multiples of 50. \n
+The lowest possible price for wheat is between 20 and 30 in multiples of 5. \n
+The above prices are valid for Turkey, Israel, Cyprus and Egypt but not for Greece. \n
+\n
+Damage in collision with a fishing boat \n
+Damage can reach up to one-fifth of the smallest of: \n
+1. The capacity of your ship squared. \n
+2. The value of your ship (cash + bank + the value of the goods in the state where you are located. \n
+\n
+Increasing ship capacity \n
+The type of payment will be from the goods whose value (double quantity price) is the highest, or cash if the cash is worth more than the goods on the ship. \n
+The amount of the payment will be a random number between 1 and the maximum amount on the selected payment\n
+The magnification will be a sum of two random numbers: \n
+A random number between 1 and the maximum amount of copper you are able to purchase according to the value of the ship now. \n
+2. A random number between 25 and 124. \n
+The magnification will be multiplied by 25. \n
+\n
+Meeting with a trader\n
+If you have goods on the ship then you can sell it to him. If you have no goods you can buy goods from him. \n
+The trader\'s bid for copper will be between 2000 and 4000 in multiples of 100. \n
+The trader\'s bid for olives will be between 250 and 800 in multiples of 50. \n
+The trader\'s bid for wheat will be between 20 and 75 in multiples of 5. \n
+The trader will want to buy all the goods you have of a certain type. He will randomly select from the goods on the ship. \n
+The amount of goods the trader will offer you for sale is random between 1 and the amount your cash allows you to buy. \n
+\n
+Fire \n
+The fire will consume one type of goods - the one you have at most in the ship\'s warehouses. \n
+The quantity consumed will be random between 1 and half the quantity of the goods. \n
+\n
+Strike \n
+The ship\'s crew will agree to a compromise that will give them a random sum worth up to one third of the ship\'s property value and the cash in your possession. \n
+\n
+Sailing \n
+Each voyage can have one of the following events: \n
+\n
+Overload \n
+A random number will be selected between 0 and the amount of goods on the ship. If this number is greater than the allowable capacity the ship will begin to sink.
+You will have to throw a random number between 1 and the excess weight into the sea. The type of goods will be the one that weighs more. This process can be repeated several times, until the ship stops sinking. \n
+\n
+Damage increased \n
+If you sail when the ship is damaged and not repaired, you risk increasing the damage. The game will generate a random number between 0 and the capacity of the ship squared.
+If a third of this number is less than the damage already done to the ship, then it will cause further damage. The size of the additional damage will be a random number between 0 and the existing damage.
+In any case, such damage can only be caused if no drowning has occurred as a result of overload. \n
+\n
+Abandoned ship \n
+If there was no sinking or damage, then there is a 1/9 chance of finding an abandoned ship.
+On the abandoned ship you will find at random one of the goods, whose total value will be between 0 and the value of the goods on your ship. \n
+\n
+Winds\n
+If there was no sinking or damage, and there are winds in the state of source or at the destination of the voyage, then there is a 1/3 chance that the ship will make a mistake on its way, and return to the source state. \n
+\n
+Storm \n
+If there was no sinking or damage, and there is a storm in the country of origin or at the destination of the voyage, then there is a 1/3 chance that the ship will get caught in a storm. \n
+If there is goods on the ship, then the storm may (50%) wash out the type of goods that has the most on the ship. \n
+The amount of goods lost will be up to half the amount on the ship. \n
+If no goods are washed from the ship then it will cause damage at a random value from 100 to the capacity of the ship squared. \n
+\n
+Shoal\n
+If none of the above events have occurred, and the sailing time is 5pm or later, then there is a 1/3 chance of getting on the shore.
+The damage to the ship is between 100 and the capacity of the ship squared. \n
+\n
+Pirates \n
+There is a 1/3 chance of meeting pirates. \n
+The chance of escaping from the robbers is small the loaded the ship is. The game will generate a random number between 0 and the capacity. If this number is greater than the amount of goods on the ship, then you will be able to escape the bandits. \n
+The chance of defeating the bandits in battle with 0/1/2/3/4/5 guard ships is 1/51/76/88/94/97 percent respectively. \n
+In victory in battle there is a 50 percent chance of taking the pirate ship worth and a 50 percent chance of finding treasure on the ship. When the pirate ship is taken in value, the ship\'s capacity increases by a random number between 25 and the original capacity, in multiples of 25. \n
+When a treasure is found on the ship, its value will be a random number between 0 and 1/3 of the ship\'s value. \n
+There is a chance that depends on the number of guard ships, which will damage the ship, even though you won the battle. The more guard ships you have, the less likely you are.
+The value of the damage is random between 0 and 1/5 for the capacity of the ship squared. \n
+If you lose the battle, the robbers will steal from you one of the goods on the ship or the money on it. They can steal up to half the amount of goods or cash on the ship. In addition, the robbers will cause damage to the ship that is between 100 and the capacity of the ship squared. \n
+If you offer the robbers a compromise, an offer that will satisfy them will be a random number between 0 and half the ship\'s value, not including the money in the bank.
+\n\n
+Fog \n
+If there is fog in the destination of the voyage, then there is a 50 percent chance that you will be forced to return to the source state, regardless of everything that happened or did not happen on the way. \n
+\n
+Guard ships \n
+The price of each guard ship is 2% of the value of the ship, not including the money in the bank, but at least 50. You can rent up to 5 guard ships for each voyage. \n
+Any special weather at the cruise destination will increase the price of the guard ship by 50%. \n
+A storm at the destination of the voyage or in the source state will additionally double the price of the guard ship 2. \n
+Winds in the country of origin will increase the price of the guard ship by 50%. \n
+Sailing from 17:00 onwards will increase the price of the guard ship by another 25%. \n
+</string>
+
 </resources>
 

@@ -477,10 +477,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="כאן אמור להיות סטטיסטיקות"
+                    android:text="@string/STATISTICS_INFO"
                     android:textSize="@dimen/help_paragraph" />
-
             </LinearLayout>
 
         </LinearLayout>
@@ -499,7 +497,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:gravity="center"
             android:onClick="onStatsClick"
-            android:text="סטטיסטיקה" />
+            android:text="@string/GAME_STATS" />
 
         <Button
             android:id="@+id/escape_button"
@@ -509,7 +507,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:gravity="center"
             android:onClick="onGameRulesClick"
-            android:text="עזרה" />
+            android:text="@string/GAME_RULES" />
 
         <Button
             android:id="@+id/negotiate_button"
@@ -519,7 +517,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:gravity="center"
             android:onClick="onExitHelpClick"
-            android:text="חזרה" />
+            android:text="@string/BACK" />
 
     </LinearLayout>
 

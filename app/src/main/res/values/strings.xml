@@ -203,4 +203,8 @@
     <string name="OPEN_SCREEN_12">Watch out for dangers!</string>
     <string name="OPEN_SCREEN_13">Good luck!</string>
 
+    <string name="GAME_RULES">Game rules</string>
+    <string name="GAME_STATS">Game stats</string>
+    <string name="BACK">Back</string>
+
 </resources>
