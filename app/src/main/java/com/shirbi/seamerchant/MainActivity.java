@@ -99,6 +99,14 @@ public class MainActivity extends Activity {
     }
 
     public void onMarketClick(View view) {
+        if (!mLogic.canGoToMarket()) {
+            mFrontEnd.showAlertDialogMessage(getString(R.string.MARKET_CLOSED),
+                    getString(R.string.MARKET_FORBIDDEN));
+
+            mFrontEnd.blinkSleep();
+            return;
+        }
+
         Goods goods = mFrontEnd.viewToGoods(view);
         mLogic.initMarketDeal(goods);
 

@@ -562,11 +562,10 @@ public class Logic {
     }
 
     public boolean canGoToMarket() {
-        if (mCurrentHour >= SLEEP_TIME) {
-            return false;
-        } else {
+        if (!mIsMarketOperationTakesTime) {
             return true;
         }
+        return (mCurrentHour < SLEEP_TIME);
     }
 
     public boolean isShipBroken() {

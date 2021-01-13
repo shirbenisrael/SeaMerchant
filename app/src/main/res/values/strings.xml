@@ -98,6 +98,9 @@
     <string name="SAIL_ENDED_PEACEFULLY">You have reached %1$s peacefully!!</string>
     <string name="SAIL_ENDED_BAD">The ship has survived the sail to %1$s.</string>
 
+    <string name="MARKET_CLOSED">Too late, the market is already closed.</string>
+    <string name="MARKET_FORBIDDEN">Can\'t go to market.</string>
+
     <string name="MARKET_STATE">Market state in the middle east</string>
     <string name="PRICE_UP">The %1$s\'s price in %2$s raised to %3$d$!</string>
     <string name="PRICE_DOWN">The %1$s\'s price in %2$s fall to %3$d$!</string>

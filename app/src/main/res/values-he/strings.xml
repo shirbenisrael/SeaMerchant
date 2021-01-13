@@ -92,6 +92,9 @@
     <string name="SAIL_ENDED_PEACEFULLY">הגעת ל%1$s בשלום!!</string>
     <string name="SAIL_ENDED_BAD">הספינה שרדה את המסע אל %1$s.</string>
 
+    <string name="MARKET_CLOSED">מאוחר מדי, השוק סגור.</string>
+    <string name="MARKET_FORBIDDEN">לא ניתן ללכת לשוק</string>
+
     <string name="MARKET_STATE">מצב השווקים במזרח התיכון</string>
     <string name="PRICE_UP">מחיר ה%1$s ב%2$s עלה ל-%3$d ש\"ח לטון!</string>
     <string name="PRICE_DOWN">מחיר ה%1$s ב%2$s ירד ל-%3$d ש\"ח לטון!</string>
