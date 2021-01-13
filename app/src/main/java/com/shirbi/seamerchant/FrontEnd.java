@@ -406,7 +406,8 @@ public class FrontEnd extends FrontEndGeneric {
                     backgroundId = mLogic.mWeather.toBackground();
                     switch (mLogic.mWeather) {
                         case FOG:
-                            message = mActivity.getString(R.string.DANGER_FOG_MESSAGE, mLogic.mWeatherState);
+                            String state = getString(mLogic.mWeatherState.toStringId());
+                            message = mActivity.getString(R.string.DANGER_FOG_MESSAGE, state);
                             break;
                         case STORM:
                             message = getString(R.string.DANGER_STORM_MESSAGE);

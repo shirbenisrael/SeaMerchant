@@ -96,10 +96,10 @@
     <string name="MARKET_FORBIDDEN">לא ניתן ללכת לשוק</string>
 
     <string name="MARKET_STATE">מצב השווקים במזרח התיכון</string>
-    <string name="PRICE_UP">מחיר ה%1$s ב%2$s עלה ל-%3$d ש\"ח לטון!</string>
-    <string name="PRICE_DOWN">מחיר ה%1$s ב%2$s ירד ל-%3$d ש\"ח לטון!</string>
-    <string name="FISH_BOAT">סירת דייג התנגשה בספינתך וגרמה לנזק בשווי %1$d ש\"ח!</string>
-    <string name="FIRE">שריפה פורצת במחסנים ומכלה %1$d טון של %2$s!</string>
+    <string name="PRICE_UP">מחיר ה%1$s ב%2$s עלה\nל-%3$d ש\"ח לטון!</string>
+    <string name="PRICE_DOWN">מחיר ה%1$s ב%2$s ירד\nל-%3$d ש\"ח לטון!</string>
+    <string name="FISH_BOAT">סירת דייג התנגשה בספינתך וגרמה\n לנזק בשווי %1$d ש\"ח!</string>
+    <string name="FIRE">שריפה פורצת במחסנים\n ומכלה %1$d טון של %2$s!</string>
 
     <string name="BIGGER_SHIP_FOR_CASH_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d ש\"ח.</string>
     <string name="BIGGER_SHIP_FOR_GOODS_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d טון %3$s.</string>
@@ -107,7 +107,7 @@
     <string name="MERCHANT_BUY">סוחר זקוק בדחיפות ל%1$s. הוא מוכן לשלם %2$d ש\"ח לטון בעבור כל ה%1$s שלך. האם תמכור לו?</string>
     <string name="MERCHANT_SELL">סוחר חייב להיפטר במיידי מכל ה%1$s שלו. הוא רוצה למכור לך %2$d טון במחיר של %3$d ש\"ח לטון. האם תקנה?</string>
 
-    <string name="STRIKE_TITLE">צוות הספינה שובת! האם תדון איתם על פשרה?</string>
+    <string name="STRIKE_TITLE">צוות הספינה שובת!\nהאם תדון איתם על פשרה?</string>
     <string name="STRIKE_OPTIONS">אם המשא ומתן ייכשל יקח לך שני ימים למצוא צוות חדש. תוכל לחפש צוות חדש כבר עכשיו ולהפסיד יום עבודה אחד.</string>
     <string name="NEW_CREW">צוות חדש</string>
     <string name="OFFER_TO_CREW">מה תציע לצוות הספינה?</string>
@@ -180,7 +180,7 @@
     <string name="OLIVES">זיתים</string>
     <string name="LOCK_STRING">כספת: %1$d ש\"ח</string>
     <string name="FIXED_SHIP_TIP">טיפ: ספינה שבורה מתפרקת לחלקים בהפלגה</string>
-    <string name="WIN_CAPACITY">לכדת את ספינת הפיראטים וקיבולת הספינה שלך גדלה ב %1$d טון</string>
+    <string name="WIN_CAPACITY">לכדת את ספינת הפיראטים וקיבולת\nהספינה שלך גדלה ב %1$d טון</string>
     <string name="BUY_ALL">קנה מקסימום</string>
     <string name="YOUR_HIGHEST_SCORE">השיא שלך הוא %1$d ש\"ח</string>
     <string name="YOUR_CURRENT_SCORE">ערך סחורתך הוא %1$d ש\"ח</string>

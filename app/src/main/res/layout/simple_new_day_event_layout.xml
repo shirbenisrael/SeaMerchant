@@ -18,7 +18,7 @@
         android:id="@+id/special_event_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:gravity="center_horizontal"
         android:textSize="20dp" />
 
     <TextView
