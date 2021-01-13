@@ -12,8 +12,18 @@ public class BankDeal {
         mCash = logic.mCash;
 
         mMaxDeposit = mDeposit + mCash;
-        mPercentageOfValueForEnoughGuardShips = 90;         // TODO: Set this according relevant dangers.
-        mMaxDepositWithEnoughGuardShips = (mMaxDeposit * mPercentageOfValueForEnoughGuardShips / 100);
+
+        int inventoryValue = logic.calculateInventoryValue();
+        float guardsForInventoryPart = 0.1f;
+        float cashForGuardsForInventoryAndCash = inventoryValue / (1/guardsForInventoryPart - 1);
+
+        int minCashForGuards = Sail.MIN_GUARD_SHIP_COST * Sail.MAX_GUARD_SHIPS;
+        if (logic.hasMedal(Medal.ALWAYS_FIGHTER)) {
+            minCashForGuards -= Sail.MIN_GUARD_SHIP_COST;
+        }
+        cashForGuardsForInventoryAndCash = Math.max(cashForGuardsForInventoryAndCash, minCashForGuards);
+
+        mMaxDepositWithEnoughGuardShips = (int)(mMaxDeposit - cashForGuardsForInventoryAndCash);
     }
 
     public void setDeposit(int units) {

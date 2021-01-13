@@ -482,12 +482,16 @@ public class Logic {
         mPriceTable.setPrice(mSpecialPriceState, mSpecialPriceGoods, specialPrice);
     }
 
-    public int calculateTotalValue() {
-        int totalValue = mCash + mBankDeposit;
+    public int calculateInventoryValue() {
+        int totalValue = 0;
         for (Goods goods : Goods.values()) {
             totalValue += mInventory[goods.getValue()] * mPriceTable.getPrice(mCurrentState, goods);
         }
         return totalValue;
+    }
+
+    public int calculateTotalValue() {
+        return mCash + mBankDeposit + calculateInventoryValue();
     }
 
     public int calculateLoad() {
