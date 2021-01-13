@@ -33,6 +33,7 @@ public class Sail {
     static final int[] mChancesToWinPirates = {1, 51, 76, 88, 94, 97};
     static final int PERCENT_OF_WRONG_NAVIGATION_ON_WIND = 33;
     static final int PERCENT_OF_STORM_APPEAR = 33;
+    static final int PERCENT_OF_FOG_APPEAR = 50;
     static final int PERCENT_OF_ABANDONED_SHIP_APPEAR = 11;
     static final int PERCENT_OF_SHOAL_APPEAR = 33;
     static final int PERCENT_OF_PIRATES_APPEAR = 33;
@@ -175,8 +176,12 @@ public class Sail {
 
     public boolean isFogInSail() {
         if ((mDestination == mLogic.mWeatherState)) {
+            if (mLandingHour + mLogic.getSailDuration(mDestination) >= Logic.SLEEP_TIME) {
+                return false;
+            }
+
             if (mLogic.mWeather == Weather.FOG) {
-                return tryToDoSomething(100);
+                return tryToDoSomething(PERCENT_OF_FOG_APPEAR);
             }
         }
         return false;
