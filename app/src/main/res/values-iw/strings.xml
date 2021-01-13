@@ -157,6 +157,8 @@
     <string name="BANK_DEPOSIT_ALL">הפקד הכל</string>
     <string name="BANK_DRAW_ALL">משוך הכל</string>
     <string name="BANK_CASH_FOR_GUARDS">מזומן לספינות משמר</string>
+    <string name="BANK_CLOSED">מאוחר מדי, הבנק כבר סגור.</string>
+    <string name="BANK_FORBIDDEN">לא ניתן ללכת לבנק</string>
 
     <string name="OPERATION_NO_TIME">הפעולה לא תיקח זמן נוסף.</string>
     <string name="OPERATION_ONE_HOUR">הפעולה תיקח שעה אחת.</string>

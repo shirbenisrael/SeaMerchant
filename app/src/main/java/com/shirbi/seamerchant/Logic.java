@@ -553,6 +553,14 @@ public class Logic {
         return mDamage > mCapacity * mCapacity;
     }
 
+    public boolean canGoToBank() {
+        if (!mIsBankOperationTakesTime) {
+            return true;
+        }
+
+        return (mCurrentHour < SLEEP_TIME);
+    }
+
     public boolean canGoToMarket() {
         if (mCurrentHour >= SLEEP_TIME) {
             return false;

@@ -165,6 +165,8 @@
     <string name="BANK_DEPOSIT_ALL">Deposit all</string>
     <string name="BANK_DRAW_ALL">Draw all</string>
     <string name="BANK_CASH_FOR_GUARDS">Cash for Guards</string>
+    <string name="BANK_CLOSED">Too late, the bank is already closed.</string>
+    <string name="BANK_FORBIDDEN">Can\'t go to bank.</string>
 
     <string name="OPERATION_NO_TIME">This operation won\'t take more time.</string>
     <string name="OPERATION_ONE_HOUR">This operation will take one hour.</string>

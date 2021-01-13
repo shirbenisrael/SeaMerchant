@@ -562,6 +562,14 @@ public class MainActivity extends Activity {
     }
 
     public void onBankClick(View view) {
+        if (!mLogic.canGoToBank()) {
+            mFrontEnd.showAlertDialogMessage(getString(R.string.BANK_CLOSED),
+                    getString(R.string.BANK_FORBIDDEN));
+
+            mFrontEnd.blinkSleep();
+            return;
+        }
+
         mLogic.initBankDeal();
         mFrontEnd.showWindow(Window.BANK_WINDOW);
         mFrontEndBank.onBankClick();
