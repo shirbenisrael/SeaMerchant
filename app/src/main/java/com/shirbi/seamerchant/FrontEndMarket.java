@@ -1,7 +1,6 @@
 package com.shirbi.seamerchant;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -53,9 +52,6 @@ public class FrontEndMarket extends FrontEndGeneric {
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.market_seek_bar);
         seekBar.setMax(mLogic.mMarketDeal.mMaxUnitsToHold);
-
-        String string = String.valueOf(mLogic.mMarketDeal.mPercentageOfValueForEnoughGuardShips) +"%";
-        ((Button)findViewById(R.id.market_percentage_with_guards)).setText(string);
 
         showDealState();
 

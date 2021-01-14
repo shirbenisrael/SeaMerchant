@@ -22,9 +22,27 @@ public class MarketDeal {
             }
         }
 
+        float guardsForInventoryPart = 0.1f;
+
+        if (logic.mCurrentState == logic.mWeatherState) {
+            // if we know we are in bad weather, then we know guards will cost more.
+            guardsForInventoryPart *= Sail.getWeatherGuardCostMultiplyFromHere(logic.mWeather);
+        } else if(logic.mCurrentState == State.GREECE && logic.mWeatherState == State.CYPRUS) {
+            // if we know we are going to bad weather, then we know guards will cost more.
+            guardsForInventoryPart *= Sail.getWeatherGuardCostMultiplyToThere(logic.mWeather);
+        }
+
+        if (!logic.isStillDayTimeAfterMarketOperation()) {
+            guardsForInventoryPart *= Sail.NIGHT_SAIL_GUARD_COST_PERCENT_MULTIPLY;
+        }
+
+        int valueForGuardPrice = logic.calculateInventoryValue() + logic.mCash;
+        int guardPrice = (int)(valueForGuardPrice * guardsForInventoryPart);
+
+        int totalMoneyCanBeUsedForGuards = mCash + getGoodsValue();
+        mMaxUnitsWithEnoughGuardShips = Math.max(0, totalMoneyCanBeUsedForGuards - guardPrice) / mPrice;
+
         mMaxUnitsToHold = mGoodsUnits + mCash / mPrice;
-        mPercentageOfValueForEnoughGuardShips = 90;         // TODO: Set this according relevant dangers.
-        mMaxUnitsWithEnoughGuardShips = (mMaxUnitsToHold * mPercentageOfValueForEnoughGuardShips / 100);
     }
 
     public int getGoodsValue() {

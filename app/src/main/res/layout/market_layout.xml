@@ -155,7 +155,7 @@
             android:onClick="onMarketPercentageForGuardsClick"
             android:background="@drawable/wide_empty_button"
             android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:text="90%" />
+            android:text="@string/BANK_CASH_FOR_GUARDS" />
 
     </LinearLayout>
 

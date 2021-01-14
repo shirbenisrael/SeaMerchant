@@ -271,6 +271,14 @@ public class Logic {
         }
     }
 
+    public boolean isStillDayTimeAfterMarketOperation() {
+        if (!mIsMarketOperationTakesTime) {
+            return (mCurrentHour < getEveningTime());
+        } else {
+            return (mCurrentHour + 1 < getEveningTime());
+        }
+    }
+
     public DayPart getDayPart() {
         if (mCurrentHour < getEveningTime()) {
             return DayPart.SUN_SHINES;
