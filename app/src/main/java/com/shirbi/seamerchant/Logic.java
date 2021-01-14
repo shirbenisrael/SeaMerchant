@@ -263,6 +263,14 @@ public class Logic {
         return EVENING_TIME + (hasMedal(Medal.GERMAN_TIME) ? 1 : 0);
     }
 
+    public boolean isStillDayTimeAfterBankOperation() {
+        if (!mIsBankOperationTakesTime) {
+            return (mCurrentHour < getEveningTime());
+        } else {
+            return (mCurrentHour + 1 < getEveningTime());
+        }
+    }
+
     public DayPart getDayPart() {
         if (mCurrentHour < getEveningTime()) {
             return DayPart.SUN_SHINES;

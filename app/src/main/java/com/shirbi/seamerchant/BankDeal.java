@@ -24,6 +24,10 @@ public class BankDeal {
             guardsForInventoryPart *= Sail.getWeatherGuardCostMultiplyToThere(logic.mWeather);
         }
 
+        if (!logic.isStillDayTimeAfterBankOperation()) {
+            guardsForInventoryPart *= Sail.NIGHT_SAIL_GUARD_COST_PERCENT_MULTIPLY;
+        }
+
         float cashForGuardsForInventoryAndCash = inventoryValue / (1/guardsForInventoryPart - 1);
 
         int minCashForGuards = Sail.MIN_GUARD_SHIP_COST * Sail.MAX_GUARD_SHIPS;

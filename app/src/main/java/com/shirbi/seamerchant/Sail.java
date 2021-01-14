@@ -23,7 +23,7 @@ public class Sail {
     public Warning mWarning;
 
     static final float DEFAULT_GUARD_COST_PERCENT = 2f;
-    static final float NIGHT_SAIL_GUARD_COST_PERCENT_MULTIPLY = 1.25f;
+    public static final float NIGHT_SAIL_GUARD_COST_PERCENT_MULTIPLY = 1.25f;
     static final float STORM_GUARD_COST_PERCENT_MULTIPLY = 2f;
     static final float FOG_GUARD_COST_PERCENT_MULTIPLY = 1.5f;
     static final float WIND_GUARD_COST_PERCENT_MULTIPLY = 1.5f;
