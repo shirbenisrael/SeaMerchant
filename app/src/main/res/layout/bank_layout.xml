@@ -76,20 +76,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="onBankMinus10000Click"
+            android:onClick="onBankPlus10000Click"
             android:background="@drawable/empty_button"
             android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:text="-10000" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:onClick="onBankMinus1000Click"
-            android:background="@drawable/empty_button"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:text="-1000" />
+            android:text="+10000" />
 
         <Button
             android:layout_width="0dp"
@@ -106,10 +96,20 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="onBankPlus10000Click"
+            android:onClick="onBankMinus1000Click"
             android:background="@drawable/empty_button"
             android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:text="+10000" />
+            android:text="-1000" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onBankMinus10000Click"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="-10000" />
 
     </LinearLayout>
 
