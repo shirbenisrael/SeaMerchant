@@ -389,4 +389,33 @@ public class Sail {
     public void setNextWarning() {
         mWarning = mWarning.next();
     }
+
+    static float getWeatherGuardCostMultiplyFromHere(Weather weather) {
+        switch (weather) {
+            case GOOD_SAILING:
+            case FOG:
+                return 1.0f;
+            case STORM:
+                return STORM_GUARD_COST_PERCENT_MULTIPLY;
+            case WIND:
+                return WIND_GUARD_COST_PERCENT_MULTIPLY;
+        }
+
+        return 1.0f;
+    }
+
+    static float getWeatherGuardCostMultiplyToThere(Weather weather) {
+        switch (weather) {
+            case GOOD_SAILING:
+                return 1.0f;
+            case FOG:
+                return FOG_GUARD_COST_PERCENT_MULTIPLY;
+            case STORM:
+                return STORM_GUARD_COST_PERCENT_MULTIPLY;
+            case WIND:
+                return WIND_GUARD_COST_PERCENT_MULTIPLY;
+        }
+
+        return 1.0f;
+    }
 }

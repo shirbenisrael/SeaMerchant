@@ -15,6 +15,15 @@ public class BankDeal {
 
         int inventoryValue = logic.calculateInventoryValue();
         float guardsForInventoryPart = 0.1f;
+
+        if (logic.mCurrentState == logic.mWeatherState) {
+            // if we know we are in bad weather, then we know guards will cost more.
+            guardsForInventoryPart *= Sail.getWeatherGuardCostMultiplyFromHere(logic.mWeather);
+        } else if(logic.mCurrentState == State.GREECE && logic.mWeatherState == State.CYPRUS) {
+            // if we know we are going to bad weather, then we know guards will cost more.
+            guardsForInventoryPart *= Sail.getWeatherGuardCostMultiplyToThere(logic.mWeather);
+        }
+
         float cashForGuardsForInventoryAndCash = inventoryValue / (1/guardsForInventoryPart - 1);
 
         int minCashForGuards = Sail.MIN_GUARD_SHIP_COST * Sail.MAX_GUARD_SHIPS;
