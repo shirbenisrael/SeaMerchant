@@ -101,6 +101,7 @@ public class FrontEndSail extends FrontEndGeneric {
         startTimer();
 
         setDangersIconEnable(true);
+        setGuardsIconEnable(true);
     }
 
     Runnable mTimerTick = new Runnable() {
@@ -177,6 +178,14 @@ public class FrontEndSail extends FrontEndGeneric {
         mTimerTask.cancel();
     }
 
+    private void setGuardsIconEnable(boolean isEnable) {
+        LinearLayout guardsLayout = findViewById(R.id.guards_layout);
+        int count = guardsLayout.getChildCount();
+        for(int i = 0 ; i < count; i++) {
+            guardsLayout.getChildAt(i).setEnabled(isEnable);
+        }
+    }
+
     private void setDangersIconEnable(boolean isEnable) {
         LinearLayout layout = ((LinearLayout)findViewById(R.id.danger_icons_layout));
         int count = layout.getChildCount();
@@ -192,6 +201,7 @@ public class FrontEndSail extends FrontEndGeneric {
         findViewById(R.id.destination).setVisibility(View.INVISIBLE);
         findViewById(R.id.sail_duration_for_greece).setVisibility(View.INVISIBLE);
         setDangersIconEnable(false);
+        setGuardsIconEnable(false);
 
         mProgress = 0;
         mImageToAnimate = R.id.boat_on_map;
