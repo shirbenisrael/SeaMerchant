@@ -44,6 +44,7 @@
     <string name="TOTAL_GUARD_COST">מחיר כולל: %1$d, מזומן: %2$d</string>
     <string name="SAIL_DESTINATION">יעד ההפלגה: %1$s</string>
     <string name="SAIL_LANDING_HOUR">שעת הגעה:%1$d:00</string>
+    <string name="SAIL_CURRENT_TIME">הזמן הנוכחי: %1$d:%2$02d</string>
     <string name="DANGERS">סכנות:</string>
 
     <string name="PIRATES">פיראטים!</string>

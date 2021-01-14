@@ -110,6 +110,19 @@ public class FrontEndSail extends FrontEndGeneric {
             float endX, endY;
             float locationX, locationY;
             float actualProgress;
+            
+            if (mRealSail) {
+                float sailDuration = mLogic.getSailDuration(mLogic.mCurrentState, mLogic.mSail.mDestination);
+                float timePassed = mProgress * sailDuration / 100;
+
+                int timePassedHours =(int)timePassed;
+                int timePassedMinutes = (int)((timePassed - timePassedHours) * 60);
+
+                TextView landingHourTextView = findViewById(R.id.landing_hour);
+                String currentTime = mActivity.getString(R.string.SAIL_CURRENT_TIME,
+                        timePassedHours + mLogic.mCurrentHour,  timePassedMinutes);
+                landingHourTextView.setText(currentTime);
+            }
 
             if (mProgress < 50) {
                 startX = mLogic.mSail.mSource.toLocationX();
