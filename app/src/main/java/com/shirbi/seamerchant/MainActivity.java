@@ -164,11 +164,7 @@ public class MainActivity extends Activity {
         }
 
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
-        if (mLogic.calculateLoad() > 0) {
-            mFrontEnd.blinkSail();
-        } else {
-            mFrontEnd.blinkMarket();
-        }
+        mFrontEnd.blinkButtons();
     }
 
     public void onDealCancelClick(View view) {
@@ -255,6 +251,10 @@ public class MainActivity extends Activity {
         }
 
         mFrontEnd.blinkMarket();
+
+        if (mLogic.canFixShip()) {
+            mFrontEnd.blinkFixShip();
+        }
     }
 
     public void onSleepClick(View view) {

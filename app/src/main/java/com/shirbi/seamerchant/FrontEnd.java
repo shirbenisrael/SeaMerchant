@@ -561,6 +561,22 @@ public class FrontEnd extends FrontEndGeneric {
 
     public void blinkFixShip() { mFrontEndFixShipBlinkTimer.startTimer(500,20);}
 
+    public void blinkButtons() {
+        if (mLogic.calculateLoad() > 0) {
+            blinkSail();
+        } else {
+            blinkMarket();
+        }
+
+        if (mLogic.getDayPart() == DayPart.NIGHT) {
+            blinkSleep();
+        }
+
+        if (mLogic.canFixShip()) {
+            blinkFixShip();
+        }
+    }
+
     public void showSleepQuestion() {
         ((TextView)findViewById(R.id.sleep_message)).setText(mLogic.mCurrentDay.isLastDay() ?
                 R.string.END_GAME_QUESTION:R.string.SLEEP_QUESTION);
