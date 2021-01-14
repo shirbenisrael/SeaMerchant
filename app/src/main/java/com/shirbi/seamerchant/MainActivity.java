@@ -100,6 +100,7 @@ public class MainActivity extends Activity {
 
     public void onMarketClick(View view) {
         if (!mLogic.canGoToMarket()) {
+            playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.MARKET_CLOSED),
                     getString(R.string.MARKET_FORBIDDEN));
 
@@ -571,6 +572,7 @@ public class MainActivity extends Activity {
 
     public void onBankClick(View view) {
         if (!mLogic.canGoToBank()) {
+            playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.BANK_CLOSED),
                     getString(R.string.BANK_FORBIDDEN));
 
@@ -636,6 +638,7 @@ public class MainActivity extends Activity {
     public void onFixButtonClick(View view) {
         if (mLogic.isShipBroken()) {
             if (!mLogic.isEnoughTimeForFixShip()) {
+                playSound(R.raw.cannot);
                 mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_FIX_AT_NIGHT),
                         getString(R.string.CANNOT_FIX_TITLE));
                 return;
@@ -645,6 +648,7 @@ public class MainActivity extends Activity {
             mFrontEndFixShip.onFixShipClick();
             mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
         } else {
+            playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_FIX_FIXED_SHIP),
                     getString(R.string.CANNOT_FIX_TITLE));
         }
