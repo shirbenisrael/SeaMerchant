@@ -48,7 +48,7 @@
     <string name="YOUNG_FIGHTER_CONDITION">ניצחון ראשון על הפיראטים</string>
     <string name="TIRED_FIGHTER_CONDITION">נצח את הפיראטים 3 פעמים ביום אחד</string>
     <string name="ALWAYS_FIGHTER_CONDITION">נצח את הפיראטים 10 פעמים ולעולם אל תברח, תתפשר או תפסיד</string>
-    <string name="EGYPT_WHEAT_CONDITION">אחסן 10,000 טו חיטה במצרים בלילה והכפל את ערכם בבוקר שלמחרת</string>
+    <string name="EGYPT_WHEAT_CONDITION">אחסן 10,000 טון חיטה במצרים בלילה והכפל את ערכם בבוקר שלמחרת</string>
     <string name="DOUBLE_SAIL_CONDITION">הכפל את שווי נכסייך בהפלגה אחת</string>
     <string name="TITANIC_CONDITION">ספוג נזק של 200,000 ש\"ח משרטון</string>
     <string name="BDS_TURKEY_CONDITION">הרווח  מליון ש\"ח בלי להיכנס לתורכיה</string>
