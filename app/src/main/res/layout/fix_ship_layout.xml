@@ -12,6 +12,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="20dp"
+        android:textColor="@color/black"
         android:text="@string/FIXED_SHIP_QUESTION" />
 
     <LinearLayout
@@ -53,6 +54,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="end"
+            android:textColor="@color/black"
             android:text="cash: 50 dollar" />
 
         <TextView
@@ -61,6 +63,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="start"
+            android:textColor="@color/black"
             android:text="ship: 100 dollar" />
 
     </LinearLayout>
@@ -105,6 +108,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center_horizontal"
+        android:textColor="@color/black"
         android:text="פעולה זאת לא תיקח לך זמן נוסף" />
 
     <LinearLayout
@@ -144,6 +148,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center_horizontal"
+        android:textColor="@color/black"
         android:text="@string/FIXED_SHIP_TIP" />
 
 </LinearLayout>

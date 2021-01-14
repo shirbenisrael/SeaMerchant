@@ -66,6 +66,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="right|center_vertical"
+            android:textColor="@color/black"
             android:text="יעד ההפלגה: קפריסין" />
 
         <TextView
@@ -74,6 +75,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
+            android:textColor="@color/black"
             android:text="שעת הגעה: 13:00" />
     </LinearLayout>
 
@@ -88,6 +90,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
+            android:textColor="@color/black"
             android:text="@string/DANGERS" />
 
         <LinearLayout
@@ -155,6 +158,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
+        android:textColor="@color/black"
         android:text="מחיר ספינת משמר: 50 (2%)" />
 
     <LinearLayout
@@ -183,6 +187,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
+        android:textColor="@color/black"
         android:text="מחיר כולל: 100 מזומן: 1000" />
 
     <LinearLayout
