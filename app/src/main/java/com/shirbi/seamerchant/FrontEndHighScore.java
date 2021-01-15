@@ -36,17 +36,23 @@ public class FrontEndHighScore extends FrontEndGeneric {
         fillScores();
     }
 
-    private void fillScores() {
+    public void fillScores() {
         LinearLayout table = findViewById(R.id.scores_layout);
         for (int i = 0; i < mLogic.mScoreTable.length; i++) {
+            int color = (mLogic.mRank == mLogic.mScoreTable[i].rank) ? mActivity.getColor(R.color.transparent_red) :
+                    mActivity.getColor(R.color.transparent);
+
             TextView rank = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(0);
             rank.setText(String.valueOf( mLogic.mScoreTable[i].rank));
+            rank.setBackgroundColor(color);
 
             TextView name = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(1);
             name.setText(mLogic.mScoreTable[i].name);
+            name.setBackgroundColor(color);
 
             TextView score = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(2);
             score.setText(String.valueOf(mLogic.mScoreTable[i].score));
+            score.setBackgroundColor(color);
         }
     }
 }

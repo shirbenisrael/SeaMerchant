@@ -72,8 +72,8 @@ public class MainActivity extends Activity {
         if (account == null) {
             signIn();
         } else {
-            //getLeaderBoard();
-            //getTopScore();
+            getLeaderBoard();
+            getTopScore();
             getCenteredScore();
         }
 
@@ -345,20 +345,18 @@ public class MainActivity extends Activity {
                     @Override
                     public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
                                                   leaderboardScoresAnnotatedData) {
-
                         LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
                         Iterator<LeaderboardScore> it = scoreBuffer.iterator();
-                        String string = "";
+                        int i = 0;
                         while (((Iterator) it).hasNext()) {
                             LeaderboardScore temp = it.next();
-                            string = string + "player" +
-                                    temp.getScoreHolderDisplayName() + " id:" + temp.getRawScore() + " Rank: "
-                                    + temp.getRank();
+                            int score = (int)temp.getRawScore();
+                            int rank = (int)temp.getRank();
+                            String name = temp.getScoreHolderDisplayName();
+                            mLogic.setCenterScore(rank, name, score, i);
                         }
-                        mFrontEnd.showAlertDialogMessage(string,"CENTERED SCORE");
-
+                        mFrontEndHighScore.fillScores();
                     }
-
                 });
     }
 
@@ -375,17 +373,15 @@ public class MainActivity extends Activity {
 
                         LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
                         Iterator<LeaderboardScore> it = scoreBuffer.iterator();
-                        String string = "";
                         while (((Iterator) it).hasNext()) {
                             LeaderboardScore temp = it.next();
-                            string = string + "player" +
-                                    temp.getScoreHolderDisplayName() + " id:" + temp.getRawScore() + " Rank: "
-                                    + temp.getRank();
+                            int score = (int)temp.getRawScore();
+                            int rank = (int)temp.getRank();
+                            String name = temp.getScoreHolderDisplayName();
+                            mLogic.setTopScore(rank, name, score);
+                            mFrontEndHighScore.fillScores();
                         }
-                        mFrontEnd.showAlertDialogMessage(string,"TOP SCORE");
-
                     }
-
                 });
     }
 
@@ -400,9 +396,13 @@ public class MainActivity extends Activity {
                     public void onSuccess(AnnotatedData<LeaderboardScore> leaderboardScoreAnnotatedData) {
                         int score = 0;
                         if (leaderboardScoreAnnotatedData != null) {
-                            if (leaderboardScoreAnnotatedData.get() != null) {
-                                score = (int)leaderboardScoreAnnotatedData.get().getRawScore();
-                                mLogic.setNewHighScore(score);
+                            LeaderboardScore leaderBoardscore = leaderboardScoreAnnotatedData.get();
+                            if (leaderBoardscore != null) {
+                                score = (int)leaderBoardscore.getRawScore();
+                                int rank = (int)leaderBoardscore.getRank();
+                                String name = leaderBoardscore.getScoreHolderDisplayName();
+                                mLogic.setUserScore(rank, name, score);
+                                mFrontEndHighScore.fillScores();
                             } else {
                                 Toast.makeText(MainActivity.this, "no data at .get()", Toast.LENGTH_SHORT).show();
                                 mFrontEnd.showAlertDialogMessage("LeaderBoard: .get() is null","");

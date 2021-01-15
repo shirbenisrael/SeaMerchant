@@ -29,9 +29,9 @@ public class Logic {
 
         for (int i = 0; i < mScoreTable.length; i++) {
             mScoreTable[i] = new ScoreTable();
-            mScoreTable[i].rank = i;
+            mScoreTable[i].rank = i + 1;
             mScoreTable[i].name = "Shir";
-            mScoreTable[i].score = (i * i);
+            mScoreTable[i].score = 100 - (i * i);
         }
     }
 
@@ -81,6 +81,7 @@ public class Logic {
     public int mValueAtStartOfDay = 0;
     public boolean mHeroDieMedal = false;
     public int mHighScore = 0;
+    public int mRank = 1;
 
     public class ScoreTable {
         public int rank;
@@ -946,5 +947,43 @@ public class Logic {
 
     public void setNewHighScore(int highScore) {
         mHighScore = Math.max(mHighScore, highScore);
+    }
+
+    public void setUserScore(int rank, String name, int score) {
+        ScoreTable scoreTable;
+        if (rank < 6) {
+            scoreTable = mScoreTable[rank - 1];
+            scoreTable.name = name;
+            scoreTable.score = score;
+            scoreTable.rank = rank;
+        }
+
+        mRank = rank;
+    }
+
+    public void setTopScore(int rank, String name, int score) {
+        ScoreTable scoreTable = mScoreTable[rank - 1];
+        scoreTable.name = name;
+        scoreTable.score = score;
+        scoreTable.rank = rank;
+    }
+
+    public void setCenterScore(int rank, String name, int score, int index) {
+        ScoreTable scoreTable;
+        if (rank < 6) {
+            scoreTable = mScoreTable[rank - 1];
+        } else {
+            if (rank - index < 6) {
+                // got ranks 3,4,5,6,7 which should sit in cells 2,3,4,5,6
+                scoreTable = mScoreTable[rank - 1];
+            } else {
+                // got ranks 8,9,10,11,12 which should sit in cells 5,6,7,8,9
+                scoreTable = mScoreTable[5 + index];
+            }
+        }
+
+        scoreTable.name = name;
+        scoreTable.score = score;
+        scoreTable.rank = rank;
     }
 }
