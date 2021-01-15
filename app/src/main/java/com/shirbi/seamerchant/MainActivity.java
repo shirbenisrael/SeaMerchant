@@ -534,6 +534,7 @@ public class MainActivity extends Activity {
     }
 
     public void showShoal() {
+        playSound(R.raw.fish_boat);
         mLogic.mSail.createShoal();
         mFrontEnd.showWindow(Window.SHOAL_WINDOW);
         mFrontEndShoal.showShoal();
