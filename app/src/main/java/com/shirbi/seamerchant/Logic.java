@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.StringRes;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.StringTokenizer;
 
@@ -488,9 +489,18 @@ public class Logic {
         mIsSpecialPriceHigh = mRand.nextInt(2) == 0;
         mSpecialPriceGoods = Goods.generateRandomGoods();
         mSpecialPriceState = State.GREECE;
-        while (mSpecialPriceState == State.GREECE) {
-            mSpecialPriceState = State.generateRandomState();
+
+        ArrayList<State> stateList = new ArrayList<State>();
+        stateList.add(State.ISRAEL);
+        stateList.add(State.CYPRUS);
+        if (!hasMedal(Medal.EGYPT_WHEAT)) {
+            stateList.add(State.EGYPT);
         }
+        if (!hasMedal(Medal.BDS_TURKEY)) {
+            stateList.add(State.TURKEY);
+        }
+
+        mSpecialPriceState = stateList.get(mRand.nextInt(stateList.size()));
 
         int specialPrice = mIsSpecialPriceHigh ? mSpecialPriceGoods.generateRandomHigh() :
                 mSpecialPriceGoods.generateRandomLow();

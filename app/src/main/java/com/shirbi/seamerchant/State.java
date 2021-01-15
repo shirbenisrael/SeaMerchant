@@ -68,8 +68,4 @@ public enum State {
     public float toMiddlePointY(State otherState) {
         return middleLocationY[value][otherState.value];
     }
-
-    static final State generateRandomState() {
-        return values()[rand.nextInt(NUM_STATES)];
-    }
 }
