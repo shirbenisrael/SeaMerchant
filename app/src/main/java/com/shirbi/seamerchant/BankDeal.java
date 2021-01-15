@@ -35,8 +35,9 @@ public class BankDeal {
             minCashForGuards -= Sail.MIN_GUARD_SHIP_COST;
         }
         cashForGuardsForInventoryAndCash = Math.max(cashForGuardsForInventoryAndCash, minCashForGuards);
+        int CashForGuard = (int) Math.ceil(cashForGuardsForInventoryAndCash);
 
-        mMaxDepositWithEnoughGuardShips = (int)(mMaxDeposit - cashForGuardsForInventoryAndCash);
+        mMaxDepositWithEnoughGuardShips = (int)(mMaxDeposit - CashForGuard);
     }
 
     public void setDeposit(int units) {
