@@ -75,7 +75,7 @@
     <string name="ABANDONED_SHIP_INVENTORY">מצאת ספינה נטושה ועליה %1$d טון של %2$s</string>
 
     <string name="SHOAL">שרטון!</string>
-    <string name="SHOAL_DAMAGE">ספינתך עלתה על שרטון! נגרם לה נזק בשווי %1$d ש"ח.</string>
+    <string name="SHOAL_DAMAGE">עקב תנאי הראות הגרועים בלילה, ספינתך עלתה על שרטון! נגרם לה נזק בשווי %1$d ש"ח.</string>
 
     <string name="SINK_DUE_TO_OVERLOAD">הספינה שוקעת בגלל עודף המטען!</string>
     <string name="SINK_DAMAGE">המלחים משליכים לים %1$d טון של %2$s כדי להצילה.</string>

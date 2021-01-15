@@ -81,7 +81,7 @@
     <string name="ABANDONED_SHIP_INVENTORY">You have found an abandoned ship with %1$d tonne of %2$s on it.</string>
 
     <string name="SHOAL">Shoal!</string>
-    <string name="SHOAL_DAMAGE">Your ship runs aground!\n the damage is %1$d$.</string>
+    <string name="SHOAL_DAMAGE">Due to the poor visibility conditions at night, your ship runs aground!\n the damage is %1$d$.</string>
 
     <string name="SINK_DUE_TO_OVERLOAD">The ship sinks due to overload!</string>
     <string name="SINK_DAMAGE">The sailors throw %1$d tons of %2$s into the sea to save it.</string>
