@@ -914,6 +914,13 @@ public class MainActivity extends Activity {
             playSound(R.raw.agreement);
             mFrontEnd.showWindow(Window.NEW_MEDAL_WINDOW);
             mFrontEndMedal.showNewMedal(medal);
+
+            if (medal == Medal.GREECE_VISITOR) {
+                // This specific medal updates the greece sail duration on the main screen so we need to do
+                // it immediately when we get the medal.
+                mFrontEnd.showState();
+            }
+
             return true;
         } else {
             return false;
