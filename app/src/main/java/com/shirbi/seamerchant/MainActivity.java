@@ -21,12 +21,14 @@ import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.LeaderboardsClient;
 import com.google.android.gms.games.leaderboard.LeaderboardScore;
+import com.google.android.gms.games.leaderboard.LeaderboardScoreBuffer;
 import com.google.android.gms.games.leaderboard.LeaderboardVariant;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import static android.content.ContentValues.TAG;
@@ -70,7 +72,9 @@ public class MainActivity extends Activity {
         if (account == null) {
             signIn();
         } else {
-            getLeaderBoard();
+            //getLeaderBoard();
+            //getTopScore();
+            getCenteredScore();
         }
 
         mFrontEnd = new FrontEnd(this);
@@ -329,6 +333,60 @@ public class MainActivity extends Activity {
 
     private void updateUI(GoogleSignInAccount account) {
 
+    }
+
+    private void getCenteredScore() {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        LeaderboardsClient client = Games.getLeaderboardsClient(this, account);
+
+        client.loadPlayerCenteredScores(getString(R.string.leaderboard_highscore), LeaderboardVariant.TIME_SPAN_ALL_TIME,
+                LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
+                addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
+                    @Override
+                    public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
+                                                  leaderboardScoresAnnotatedData) {
+
+                        LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
+                        Iterator<LeaderboardScore> it = scoreBuffer.iterator();
+                        String string = "";
+                        while (((Iterator) it).hasNext()) {
+                            LeaderboardScore temp = it.next();
+                            string = string + "player" +
+                                    temp.getScoreHolderDisplayName() + " id:" + temp.getRawScore() + " Rank: "
+                                    + temp.getRank();
+                        }
+                        mFrontEnd.showAlertDialogMessage(string,"CENTERED SCORE");
+
+                    }
+
+                });
+    }
+
+    private void getTopScore() {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        LeaderboardsClient client = Games.getLeaderboardsClient(this, account);
+
+        client.loadTopScores(getString(R.string.leaderboard_highscore), LeaderboardVariant.TIME_SPAN_ALL_TIME,
+                LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
+                addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
+                    @Override
+                    public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
+                                                  leaderboardScoresAnnotatedData) {
+
+                        LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
+                        Iterator<LeaderboardScore> it = scoreBuffer.iterator();
+                        String string = "";
+                        while (((Iterator) it).hasNext()) {
+                            LeaderboardScore temp = it.next();
+                            string = string + "player" +
+                                    temp.getScoreHolderDisplayName() + " id:" + temp.getRawScore() + " Rank: "
+                                    + temp.getRank();
+                        }
+                        mFrontEnd.showAlertDialogMessage(string,"TOP SCORE");
+
+                    }
+
+                });
     }
 
     private void getLeaderBoard() {
