@@ -28,7 +28,7 @@ public class FrontEndHighScore extends FrontEndGeneric {
 
     private void createEmptyScoreTable() {
         LinearLayout table = findViewById(R.id.scores_layout);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < mLogic.mScoreTable.length; i++) {
             LayoutInflater inflater = (LayoutInflater)mActivity.getSystemService(mActivity.LAYOUT_INFLATER_SERVICE);
             inflater.inflate(R.layout.one_high_score_layout, table);
         }
@@ -38,15 +38,15 @@ public class FrontEndHighScore extends FrontEndGeneric {
 
     private void fillScores() {
         LinearLayout table = findViewById(R.id.scores_layout);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < mLogic.mScoreTable.length; i++) {
             TextView rank = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(0);
-            rank.setText(String.valueOf(i + 1));
+            rank.setText(String.valueOf( mLogic.mScoreTable[i].rank));
 
             TextView name = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(1);
-            name.setText("Shir");
+            name.setText(mLogic.mScoreTable[i].name);
 
             TextView score = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(2);
-            score.setText(String.valueOf(i * i));
+            score.setText(String.valueOf(mLogic.mScoreTable[i].score));
         }
     }
 }

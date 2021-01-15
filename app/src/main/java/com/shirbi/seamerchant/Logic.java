@@ -26,6 +26,13 @@ public class Logic {
     private MainActivity mActivity;
     public Logic(MainActivity activity) {
         mActivity = activity;
+
+        for (int i = 0; i < mScoreTable.length; i++) {
+            mScoreTable[i] = new ScoreTable();
+            mScoreTable[i].rank = i;
+            mScoreTable[i].name = "Shir";
+            mScoreTable[i].score = (i * i);
+        }
     }
 
     private int mSailDurations[][] = {
@@ -74,6 +81,14 @@ public class Logic {
     public int mValueAtStartOfDay = 0;
     public boolean mHeroDieMedal = false;
     public int mHighScore = 0;
+
+    public class ScoreTable {
+        public int rank;
+        public String name;
+        public int score;
+    };
+
+    public ScoreTable[] mScoreTable = new ScoreTable[10];
 
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
