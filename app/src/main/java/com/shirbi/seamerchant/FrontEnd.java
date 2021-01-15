@@ -563,7 +563,9 @@ public class FrontEnd extends FrontEndGeneric {
 
     public void blinkButtons() {
         if (mLogic.calculateLoad() > 0) {
-            blinkSail();
+            if (mLogic.getDayPart() != DayPart.NIGHT) {
+                blinkSail();
+            }
         } else {
             blinkMarket();
         }
