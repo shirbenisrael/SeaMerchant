@@ -48,10 +48,14 @@ public class BackEndGoogleApi {
         if (account == null) {
             signIn();
         } else {
-            getLeaderBoard();
-            getTopScore();
-            getCenteredScore();
+            getAllDataFromGoogle();
         }
+    }
+
+    private void getAllDataFromGoogle() {
+        getLeaderBoard();
+        getTopScore();
+        getCenteredScore();
     }
 
     public void submitScore() {
@@ -72,7 +76,7 @@ public class BackEndGoogleApi {
     public void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            getLeaderBoard();
+            getAllDataFromGoogle();
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
