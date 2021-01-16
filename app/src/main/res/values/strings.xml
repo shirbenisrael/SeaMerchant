@@ -215,4 +215,7 @@
 
     <string name="ENABLE_SOUND">Enable sound</string>
     <string name="CONNECT_TO_GOOGLE_GAME">Sign In to Google PLay</string>
+
+    <string name="SIGN_IN_QUESTION">Sign in to google games?</string>
+    <string name="SIGN_IN_BENIFITS">This will allow to store high scores and medals</string>
 </resources>

@@ -44,11 +44,14 @@ public class BackEndGoogleApi {
                 build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(mActivity, gso);
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
-        if (account == null) {
-            signIn();
-        } else {
-            getAllDataFromGoogle();
+
+        if (mActivity.mIsGoogleSignIn) {
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
+            if (account == null) {
+                signIn();
+            } else {
+                getAllDataFromGoogle();
+            }
         }
     }
 
@@ -68,7 +71,7 @@ public class BackEndGoogleApi {
         }
     }
 
-    private void signIn() {
+    public void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         mActivity.startActivityForResult(signInIntent, mActivity.RC_SIGN_IN);
     }
@@ -81,8 +84,7 @@ public class BackEndGoogleApi {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-
-            mActivity.mFrontEnd.showAlertDialogMessage("signInResult:failed code=" + e.getStatusCode(), "");
+            mActivity.mFrontEnd.showSignGoogleDialog();
         }
     }
 
@@ -156,10 +158,10 @@ public class BackEndGoogleApi {
                                 mLogic.setUserScore(rank, name, score);
                                 mActivity.mFrontEndHighScore.fillScores();
                             } else {
-                                mActivity.mFrontEnd.showAlertDialogMessage("LeaderBoard: .get() is null","");
+                                submitScore();
                             }
                         } else {
-                            mActivity.mFrontEnd.showAlertDialogMessage("no data","");
+                            submitScore();
                         }
                     }
                 })
@@ -167,8 +169,8 @@ public class BackEndGoogleApi {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         mActivity.mFrontEnd.showAlertDialogMessage("FAILURE " + e,"");
+                        mActivity.mFrontEnd.showSignGoogleDialog();
                     }
                 });
     }
-
 }

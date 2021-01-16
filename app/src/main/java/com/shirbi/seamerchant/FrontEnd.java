@@ -620,6 +620,25 @@ public class FrontEnd extends FrontEndGeneric {
         builder.show();
     }
 
+    void showSignGoogleDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+
+        builder.setTitle(getString(R.string.SIGN_IN_QUESTION));
+        builder.setMessage(getString(R.string.SIGN_IN_BENIFITS));
+        builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.mBackEndGoogleApi.signIn();
+            }
+        });
+        builder.setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.mIsGoogleSignIn = false;
+            }
+        });
+        builder.setIcon(R.drawable.boat_right);
+        builder.show();
+    }
+
     public void priceClick(View priceView) {
         ViewGroup priceViewParent = (ViewGroup) priceView.getParent();
         int indexOfChild = priceViewParent.indexOfChild(priceView);

@@ -214,4 +214,7 @@
 
     <string name="ENABLE_SOUND">השמע קולות</string>
     <string name="CONNECT_TO_GOOGLE_GAME">התחבר ל: Google PLay</string>
+
+    <string name="SIGN_IN_QUESTION">התחבר ל Google Games?</string>
+    <string name="SIGN_IN_BENIFITS">זה יאפשר לשמור שיאים ומדליות</string>
 </resources>

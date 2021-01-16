@@ -81,7 +81,7 @@ public class Logic {
     public int mValueAtStartOfDay = 0;
     public boolean mHeroDieMedal = false;
     public int mHighScore = 0;
-    public int mRank = 1;
+    public int mRank = -1;
 
     public class ScoreTable {
         public int rank;
@@ -677,6 +677,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsFixOperationTakesTime), mIsFixOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsSoundEnable), mActivity.mIsSoundEnable);
+        editor.putBoolean(getString(R.string.mIsGoogleSignIn), mActivity.mIsGoogleSignIn);
 
         StringBuilder str = new StringBuilder();
         for (Goods goods : Goods.values()) {
@@ -717,6 +718,7 @@ public class Logic {
         }
 
         mActivity.mIsSoundEnable = sharedPref.getBoolean(getString(R.string.mIsSoundEnable), true);
+        mActivity.mIsGoogleSignIn = sharedPref.getBoolean(getString(R.string.mIsGoogleSignIn), false);
 
         mCurrentHour = sharedPref.getInt(getString(R.string.mCurrentHour), 0);
         if (mCurrentHour == 0) {

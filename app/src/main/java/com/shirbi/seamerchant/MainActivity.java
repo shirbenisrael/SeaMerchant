@@ -35,7 +35,8 @@ public class MainActivity extends Activity {
     FrontEndOpenWindow mFrontEndOpenWindow;
 
     boolean mIsGameEnded = false;
-    boolean mIsSoundEnable = true;
+    boolean mIsSoundEnable = false;
+    boolean mIsGoogleSignIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +47,7 @@ public class MainActivity extends Activity {
         restoreState();
 
         mBackEndGoogleApi = new BackEndGoogleApi(this);
-
-
-
+        
         mFrontEnd = new FrontEnd(this);
         mFrontEndMarket = new FrontEndMarket(this);
         mFrontEndBank = new FrontEndBank(this);
@@ -286,6 +285,10 @@ public class MainActivity extends Activity {
     public void onHighScoreClick(View view) {
         mFrontEnd.showWindow(Window.HIGH_SCORE_WINDOW);
         mFrontEndHighScore.showHighScoreWhilePlaying();
+
+        if (!mIsGoogleSignIn) {
+            mFrontEnd.showSignGoogleDialog();
+        }
     }
 
     public void onExistHighScore(View view) {
@@ -595,6 +598,13 @@ public class MainActivity extends Activity {
             mFrontEnd.showWindow(Window.SAIL_WINDOW);
         } else {
             mFrontEnd.showSailWarning();
+        }
+    }
+
+    public void onGoogleSignInCheckBoxClick(View view) {
+        mIsGoogleSignIn = ((CheckBox)view).isChecked();
+        if (mIsGoogleSignIn) {
+            mFrontEnd.showSignGoogleDialog();
         }
     }
 

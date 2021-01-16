@@ -111,6 +111,7 @@
             android:id="@+id/connect_google_play_games"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onGoogleSignInCheckBoxClick"
             android:text="@string/CONNECT_TO_GOOGLE_GAME" />
     </LinearLayout>
 
