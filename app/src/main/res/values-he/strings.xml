@@ -212,4 +212,6 @@
     <string name="GAME_STATS">סטטיסטיקה</string>
     <string name="BACK">חזרה</string>
 
+    <string name="ENABLE_SOUND">השמע קולות</string>
+    <string name="CONNECT_TO_GOOGLE_GAME">התחבר ל: Google PLay</string>
 </resources>

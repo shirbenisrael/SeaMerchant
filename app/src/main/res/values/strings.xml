@@ -213,4 +213,6 @@
     <string name="GAME_STATS">Game stats</string>
     <string name="BACK">Back</string>
 
+    <string name="ENABLE_SOUND">Enable sound</string>
+    <string name="CONNECT_TO_GOOGLE_GAME">Sign In to Google PLay</string>
 </resources>
