@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -601,6 +602,10 @@ public class MainActivity extends Activity {
     // clean them and stop the sounds.
     private final Set<MediaPlayer> mMediaPlayers = new HashSet<MediaPlayer>();
 
+    public void onSoundCheckBoxClick(View view) {
+        mIsSoundEnable = ((CheckBox)view).isChecked();
+    }
+
     public void playSound(int soundId) {
         if (!mIsSoundEnable) {
             return;
@@ -751,6 +756,8 @@ public class MainActivity extends Activity {
     private void restoreState() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         mLogic.restoreState(sharedPref);
+
+        ((CheckBox)findViewById(R.id.enable_sound_check_box)).setChecked(mIsSoundEnable);
     }
 
     @Override

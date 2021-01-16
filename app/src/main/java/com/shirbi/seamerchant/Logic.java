@@ -676,6 +676,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsFixOperationTakesTime), mIsFixOperationTakesTime);
+        editor.putBoolean(getString(R.string.mIsSoundEnable), mActivity.mIsSoundEnable);
 
         StringBuilder str = new StringBuilder();
         for (Goods goods : Goods.values()) {
@@ -714,6 +715,8 @@ public class Logic {
                 mIsMedalAchieved[medal.getValue()] = false;
             }
         }
+
+        mActivity.mIsSoundEnable = sharedPref.getBoolean(getString(R.string.mIsSoundEnable), true);
 
         mCurrentHour = sharedPref.getInt(getString(R.string.mCurrentHour), 0);
         if (mCurrentHour == 0) {
