@@ -6,35 +6,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.games.AnnotatedData;
-import com.google.android.gms.games.Games;
-import com.google.android.gms.games.LeaderboardsClient;
-import com.google.android.gms.games.leaderboard.LeaderboardScore;
-import com.google.android.gms.games.leaderboard.LeaderboardScoreBuffer;
-import com.google.android.gms.games.leaderboard.LeaderboardVariant;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
-
-import static android.content.ContentValues.TAG;
 
 public class MainActivity extends Activity {
     Logic mLogic;
+    BackEndGoogleApi mBackEndGoogleApi;
     FrontEnd mFrontEnd;
     FrontEndMarket mFrontEndMarket;
     FrontEndBank mFrontEndBank;
@@ -53,8 +36,6 @@ public class MainActivity extends Activity {
     boolean mIsGameEnded = false;
     boolean mIsSoundEnable = true;
 
-    GoogleSignInClient mGoogleSignInClient;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,19 +44,9 @@ public class MainActivity extends Activity {
         mLogic = new Logic(this);
         restoreState();
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).
-                requestScopes(Games.SCOPE_GAMES).
-                requestScopes(Games.SCOPE_GAMES_LITE).
-                build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account == null) {
-            signIn();
-        } else {
-            getLeaderBoard();
-            getTopScore();
-            getCenteredScore();
-        }
+        mBackEndGoogleApi = new BackEndGoogleApi(this);
+
+
 
         mFrontEnd = new FrontEnd(this);
         mFrontEndMarket = new FrontEndMarket(this);
@@ -285,22 +256,11 @@ public class MainActivity extends Activity {
             int currentScore = mLogic.calculateTotalValue();
             mLogic.setNewHighScore(currentScore);
 
-            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-            if (account == null) {
-                signIn();
-            } else {
-                LeaderboardsClient client = Games.getLeaderboardsClient(this, account);
-                client.submitScore(getString(R.string.leaderboard_highscore), mLogic.mHighScore);
-            }
+            mBackEndGoogleApi.submitScore();
         }
     }
 
-    private static final int RC_SIGN_IN = 9001;
-
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
+    public static final int RC_SIGN_IN = 9001;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -311,113 +271,8 @@ public class MainActivity extends Activity {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
+            mBackEndGoogleApi.handleSignInResult(task);
         }
-    }
-
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-        try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            getLeaderBoard();
-            // Signed in successfully, show authenticated UI.
-            updateUI(account);
-        } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-
-            mFrontEnd.showAlertDialogMessage("signInResult:failed code=" + e.getStatusCode(), "");
-            updateUI(null);
-        }
-    }
-
-    private void updateUI(GoogleSignInAccount account) {
-
-    }
-
-    private void getCenteredScore() {
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        LeaderboardsClient client = Games.getLeaderboardsClient(this, account);
-
-        client.loadPlayerCenteredScores(getString(R.string.leaderboard_highscore), LeaderboardVariant.TIME_SPAN_ALL_TIME,
-                LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
-                addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
-                    @Override
-                    public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
-                                                  leaderboardScoresAnnotatedData) {
-                        LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
-                        Iterator<LeaderboardScore> it = scoreBuffer.iterator();
-                        int i = 0;
-                        while (((Iterator) it).hasNext()) {
-                            LeaderboardScore temp = it.next();
-                            int score = (int)temp.getRawScore();
-                            int rank = (int)temp.getRank();
-                            String name = temp.getScoreHolderDisplayName();
-                            mLogic.setCenterScore(rank, name, score, i);
-                        }
-                        mFrontEndHighScore.fillScores();
-                    }
-                });
-    }
-
-    private void getTopScore() {
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        LeaderboardsClient client = Games.getLeaderboardsClient(this, account);
-
-        client.loadTopScores(getString(R.string.leaderboard_highscore), LeaderboardVariant.TIME_SPAN_ALL_TIME,
-                LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
-                addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
-                    @Override
-                    public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
-                                                  leaderboardScoresAnnotatedData) {
-
-                        LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
-                        Iterator<LeaderboardScore> it = scoreBuffer.iterator();
-                        while (((Iterator) it).hasNext()) {
-                            LeaderboardScore temp = it.next();
-                            int score = (int)temp.getRawScore();
-                            int rank = (int)temp.getRank();
-                            String name = temp.getScoreHolderDisplayName();
-                            mLogic.setTopScore(rank, name, score);
-                            mFrontEndHighScore.fillScores();
-                        }
-                    }
-                });
-    }
-
-    private void getLeaderBoard() {
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        LeaderboardsClient client = Games.getLeaderboardsClient(this, account);
-
-        client.loadCurrentPlayerLeaderboardScore(getString(R.string.leaderboard_highscore),
-                LeaderboardVariant.TIME_SPAN_ALL_TIME, LeaderboardVariant.COLLECTION_PUBLIC)
-                .addOnSuccessListener(this, new OnSuccessListener<AnnotatedData<LeaderboardScore>>() {
-                    @Override
-                    public void onSuccess(AnnotatedData<LeaderboardScore> leaderboardScoreAnnotatedData) {
-                        int score = 0;
-                        if (leaderboardScoreAnnotatedData != null) {
-                            LeaderboardScore leaderBoardscore = leaderboardScoreAnnotatedData.get();
-                            if (leaderBoardscore != null) {
-                                score = (int)leaderBoardscore.getRawScore();
-                                int rank = (int)leaderBoardscore.getRank();
-                                String name = leaderBoardscore.getScoreHolderDisplayName();
-                                mLogic.setUserScore(rank, name, score);
-                                mFrontEndHighScore.fillScores();
-                            } else {
-                                Toast.makeText(MainActivity.this, "no data at .get()", Toast.LENGTH_SHORT).show();
-                                mFrontEnd.showAlertDialogMessage("LeaderBoard: .get() is null","");
-                            }
-                        } else {
-                            mFrontEnd.showAlertDialogMessage("no data","");
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        mFrontEnd.showAlertDialogMessage("FAILURE " + e,"");
-                    }
-                });
     }
 
     public void startNewGame() {
