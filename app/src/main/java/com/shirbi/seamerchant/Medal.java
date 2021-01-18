@@ -1,5 +1,7 @@
 package com.shirbi.seamerchant;
 
+import androidx.annotation.StringRes;
+
 public enum Medal {
     TREASURE_1(0), // 10,000
     TREASURE_2(1), // 100,000
@@ -210,5 +212,74 @@ public enum Medal {
             default:
                 return 0;
         }
+    }
+
+    public @StringRes
+    int getGoogleId() {
+        switch (this) {
+            case TREASURE_1:
+                return R.string.achievement_medal_0;
+            case TREASURE_2:
+                return R.string.achievement_medal_1;
+            case TREASURE_3:
+                return R.string.achievement_medal_2;
+            case TREASURE_4:
+                return R.string.achievement_medal_3;
+            case TREASURE_5:
+                return R.string.achievement_medal_4;
+            case IRON_BANK:
+                return R.string.achievement_medal_5;
+            case CAPACITY_1:
+                return R.string.achievement_medal_6;
+            case CAPACITY_2:
+                return R.string.achievement_medal_7;
+            case CAPACITY_3:
+                return R.string.achievement_medal_8;
+            case AROUND_THE_WORLD:
+                return R.string.achievement_medal_9;
+            case ESCAPE:
+                return R.string.achievement_medal_10;
+            case CREW_NEGOTIATOR:
+                return R.string.achievement_medal_11;
+            case WIND:
+                return R.string.achievement_medal_12;
+            case YOUNG_FIGHTER:
+                return R.string.achievement_medal_13;
+            case TIRED_FIGHTER:
+                return R.string.achievement_medal_14;
+            case ALWAYS_FIGHTER:
+                return R.string.achievement_medal_15;
+            case EGYPT_WHEAT:
+                return R.string.achievement_medal_16;
+            case DOUBLE_SAIL:
+                return R.string.achievement_medal_17;
+            case TITANIC:
+                return R.string.achievement_medal_18;
+            case ALL_GOODS:
+                return R.string.achievement_medal_19;
+            case BDS_TURKEY:
+                return R.string.achievement_medal_20;
+            case GOOD_DAY_1:
+                return R.string.achievement_medal_21;
+            case GOOD_DAY_2:
+                return R.string.achievement_medal_22;
+            case GOOD_DAY_3:
+                return R.string.achievement_medal_23;
+            case GREECE_VISITOR:
+                return R.string.achievement_medal_24;
+            case FEDERAL_RESERVE:
+                return R.string.achievement_medal_25;
+            case FAST_EXIT:
+                return R.string.achievement_medal_26;
+            case DIET_MERCHANT:
+                return R.string.achievement_medal_27;
+            case HERO_DIE:
+                return R.string.achievement_medal_28;
+            case GERMAN_TIME:
+                return R.string.achievement_medal_29;
+            case ECONOMICAL_SAIL:
+                return R.string.achievement_medal_30;
+        }
+        throw new IllegalStateException("Unexpected value: " + this);
     }
 }

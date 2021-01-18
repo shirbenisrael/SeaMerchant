@@ -798,6 +798,10 @@ public class Logic {
         return medal;
     }
 
+    public void restoreMedal(Medal medal) {
+        mIsMedalAchieved[medal.getValue()] = true;
+    }
+
     private Medal whichMedalShouldAcquire() {
         if ((!hasMedal(Medal.TREASURE_1)) && (mCash >= 10000)) {
             return Medal.TREASURE_1;

@@ -14,14 +14,18 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.LeaderboardsClient;
+import com.google.android.gms.games.achievement.Achievement;
+import com.google.android.gms.games.achievement.AchievementBuffer;
 import com.google.android.gms.games.leaderboard.LeaderboardScore;
 import com.google.android.gms.games.leaderboard.LeaderboardScoreBuffer;
 import com.google.android.gms.games.leaderboard.LeaderboardVariant;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.Iterator;
+import java.util.StringTokenizer;
 
 import static android.content.ContentValues.TAG;
 
@@ -59,6 +63,7 @@ public class BackEndGoogleApi {
         getLeaderBoard();
         getTopScore();
         getCenteredScore();
+        loadAchievements();
     }
 
     public void submitScore() {
@@ -172,5 +177,50 @@ public class BackEndGoogleApi {
                         mActivity.mFrontEnd.showSignGoogleDialog();
                     }
                 });
+    }
+
+    public void unlockMedal(Medal medal) {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
+        if (account != null) {
+            Games.getAchievementsClient(mActivity, account).unlock(getString(medal.getGoogleId()));
+        }
+    }
+
+    public void loadAchievements() {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
+        Games.getAchievementsClient(mActivity, account).load(true).addOnCompleteListener(new OnCompleteListener<AnnotatedData<AchievementBuffer>>() {
+            @Override
+            public void onComplete(@NonNull Task<AnnotatedData<AchievementBuffer>> task) {
+                AchievementBuffer buff = task.getResult().get();
+                Log.d("BUFF", "onComplete: ");
+                int bufSize = buff.getCount();
+                for (int i = 0; i < bufSize; i++) {
+                    Achievement ach = buff.get(i);
+                    String id = ach.getAchievementId();
+                    String name = ach.getName();
+                    boolean unlocked = ach.getState() == Achievement.STATE_UNLOCKED;
+
+                    StringTokenizer st = new StringTokenizer(name, " ");
+                    st.nextToken(); // skip the string Medal.
+                    String medalNumber = st.nextToken();
+
+                    Medal medal = Medal.values()[Integer.parseInt(medalNumber)];
+
+                    if(unlocked) {
+                        // This can happen when reinstall the app - restore the medal from google games.
+                        if (!mLogic.hasMedal(medal)) {
+                            mLogic.restoreMedal(medal);
+                        }
+                    } else {
+                        // This can happen if didn't have internet connection when achieved the medal.
+                        // send it now again to google.
+                        if (mLogic.hasMedal(medal)) {
+                            unlockMedal(medal);
+                        }
+                    }
+                }
+                buff.release();
+            }
+        });
     }
 }

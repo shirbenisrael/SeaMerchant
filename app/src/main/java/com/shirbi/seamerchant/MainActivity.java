@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
         restoreState();
 
         mBackEndGoogleApi = new BackEndGoogleApi(this);
-        
+
         mFrontEnd = new FrontEnd(this);
         mFrontEndMarket = new FrontEndMarket(this);
         mFrontEndBank = new FrontEndBank(this);
@@ -792,6 +792,8 @@ public class MainActivity extends Activity {
                 // it immediately when we get the medal.
                 mFrontEnd.showState();
             }
+
+            mBackEndGoogleApi.unlockMedal(medal);
 
             return true;
         } else {
