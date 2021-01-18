@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -633,6 +634,7 @@ public class FrontEnd extends FrontEndGeneric {
         builder.setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 mActivity.mIsGoogleSignIn = false;
+                ((CheckBox)findViewById(R.id.connect_google_play_games)).setChecked(false);
             }
         });
         builder.setIcon(R.drawable.boat_right);
