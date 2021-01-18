@@ -469,12 +469,14 @@ public class Logic {
     public void generateNewDayEvent() {
         int random = mRand.nextInt(6);
 
-        if (random == 0) {
+        // Easy start. No fish boat before achieve 100,000
+        if ((random == 0) && (hasMedal(Medal.TREASURE_2))) {
             generateFishBoatCollision();
             return;
         }
 
-        if (random == 1) {
+        // Easy start. No fire or strike before achieve 1,000,000
+        if ((random == 1) && (hasMedal(Medal.TREASURE_3))) {
             if (mCurrentDay.getValue() < WeekDay.FRIDAY.getValue() && (
                     calculateTotalValue() - mBankDeposit > 0) ) {
                 boolean skipStrike = (hasMedal(Medal.CREW_NEGOTIATOR)) && mRand.nextBoolean();

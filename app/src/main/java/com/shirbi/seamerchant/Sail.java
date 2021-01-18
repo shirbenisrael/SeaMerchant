@@ -200,7 +200,12 @@ public class Sail {
         } else if (mLogic.mWeather == Weather.STORM) {
             if (mTotalLoad == 0) {
                 mIsStormWashGoods = false; // damage to ship
-                mStormLostUnits = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity);
+                // Easy start - small damage from storm before achieve 100,000
+                if (mLogic.hasMedal(Medal.TREASURE_2)) {
+                    mStormLostUnits = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity);
+                } else {
+                    mStormLostUnits = 100 + mRand.nextInt(1000);
+                }
                 mLogic.mDamage += mStormLostUnits;
             } else {
                 mIsStormWashGoods = true;
@@ -228,7 +233,12 @@ public class Sail {
     }
 
     private int generateShoalDamage() {
-        return 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+        // Easy start - small damage from shoal before achieve 100,000
+        if (mLogic.hasMedal(Medal.TREASURE_2)) {
+            return 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+        } else {
+            return 100 + mRand.nextInt(1000);
+        }
     }
 
     public void createShoal() {
@@ -267,7 +277,13 @@ public class Sail {
         if (!isWinPiratesSucceeds()) {
             mSailEndedPeacefully = false;
             mBattleResult = BattleResult.LOSE;
-            mPiratesDamage = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+
+            // Easy start - small damage from pirates before achieve 100,000
+            if (mLogic.hasMedal(Medal.TREASURE_2)) {
+                mPiratesDamage = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+            } else {
+                mPiratesDamage = 100 + mRand.nextInt(1000);
+            }
             mLogic.mDamage += mPiratesDamage;
             mLogic.disableWinPiratesCount();
 
