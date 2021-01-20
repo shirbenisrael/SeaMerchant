@@ -25,6 +25,10 @@ public class FrontEnd extends FrontEndGeneric {
     FrontEndTimer mFrontEndSleepBlinkTimer;
     FrontEndTimer mFrontEndFixShipBlinkTimer;
 
+    FrontEndNumberAnimation mFrontEndNumberAnimationCash;
+    FrontEndNumberAnimation mFrontEndNumberAnimationBank;
+    FrontEndNumberAnimation mFrontEndNumberAnimationInventory[];
+
     public FrontEnd(MainActivity activity) {
         super(activity);
         mFrontEndMarketBlinkTimer = new FrontEndTimer(this);
@@ -32,10 +36,16 @@ public class FrontEnd extends FrontEndGeneric {
         mFrontEndSleepBlinkTimer = new FrontEndTimer(this);
         mFrontEndFixShipBlinkTimer = new FrontEndTimer(this);
 
+        mFrontEndNumberAnimationCash = new FrontEndNumberAnimation(mActivity, R.id.wide_cash_button, R.string.MONEY_STRING);
+        mFrontEndNumberAnimationBank = new FrontEndNumberAnimation(mActivity, R.id.wide_bank_button, R.string.MONEY_STRING);
+        mFrontEndNumberAnimationInventory = new FrontEndNumberAnimation[Goods.NUM_GOODS_TYPES];
+
         LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
         for (Goods goods: Goods.values()) {
             Button imageButton = (Button)goodsLayout.getChildAt(goods.getValue());
             imageButton.setBackgroundResource(goods.toWideButtonId());
+            mFrontEndNumberAnimationInventory[goods.getValue()] =
+                    new FrontEndNumberAnimation(mActivity, imageButton, 0);
         }
 
         calculateFlagSize();
@@ -57,11 +67,8 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     private void showInventory() {
-        LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
-
         for (Goods goods: Goods.values()) {
-            Button goodsButton = (Button)goodsLayout.getChildAt(goods.getValue());
-            goodsButton.setText(String.valueOf(mLogic.mInventory[goods.getValue()]));
+            mFrontEndNumberAnimationInventory[goods.getValue()].changeNumber(mLogic.mInventory[goods.getValue()]);
         }
     }
 
@@ -117,11 +124,8 @@ public class FrontEnd extends FrontEndGeneric {
                 ? R.drawable.wide_end_game_button : R.drawable.wide_sleep_button;
         button.setBackgroundResource(sleepButtonResource);
 
-        textView = findViewById(R.id.wide_cash_button);
-        textView.setText(mActivity.getString(R.string.MONEY_STRING, mLogic.mCash));
-
-        textView = findViewById(R.id.wide_bank_button);
-        textView.setText(mActivity.getString(R.string.MONEY_STRING, mLogic.mBankDeposit));
+        mFrontEndNumberAnimationCash.changeNumber(mLogic.mCash);
+        mFrontEndNumberAnimationBank.changeNumber(mLogic.mBankDeposit);
 
         findViewById(R.id.main_window_layout).setBackgroundResource(mLogic.getDayPart().toImageId());
 
