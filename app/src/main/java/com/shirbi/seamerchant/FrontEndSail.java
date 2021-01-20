@@ -317,7 +317,9 @@ public class FrontEndSail extends FrontEndGeneric {
                 mActivity.runOnUiThread(mTimerTick);
             }
         });
-        mTimer.schedule(mTimerTask,0, 100);
+
+        int period = mActivity.mIsFastAnimation ? 33 : 100;
+        mTimer.schedule(mTimerTask,0, period);
     }
 
     public void continueSail() {

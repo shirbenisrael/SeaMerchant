@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 
     boolean mIsGameEnded = false;
     boolean mIsSoundEnable = false;
+    boolean mIsFastAnimation = false;
     boolean mIsGoogleSignIn = false;
 
     @Override
@@ -616,6 +617,10 @@ public class MainActivity extends Activity {
         mIsSoundEnable = ((CheckBox)view).isChecked();
     }
 
+    public void onFastAnimationCheckBoxClick(View view) {
+        mIsFastAnimation = ((CheckBox)view).isChecked();
+    }
+
     public void playSound(int soundId) {
         if (!mIsSoundEnable) {
             return;
@@ -767,6 +772,7 @@ public class MainActivity extends Activity {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         mLogic.restoreState(sharedPref);
 
+        ((CheckBox)findViewById(R.id.fast_animation_checkbox)).setChecked(mIsFastAnimation);
         ((CheckBox)findViewById(R.id.enable_sound_check_box)).setChecked(mIsSoundEnable);
     }
 

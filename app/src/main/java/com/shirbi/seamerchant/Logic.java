@@ -678,6 +678,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsFixOperationTakesTime), mIsFixOperationTakesTime);
+        editor.putBoolean(getString(R.string.mIsFastAnimation), mActivity.mIsFastAnimation);
         editor.putBoolean(getString(R.string.mIsSoundEnable), mActivity.mIsSoundEnable);
         editor.putBoolean(getString(R.string.mIsGoogleSignIn), mActivity.mIsGoogleSignIn);
 
@@ -719,6 +720,7 @@ public class Logic {
             }
         }
 
+        mActivity.mIsFastAnimation = sharedPref.getBoolean(getString(R.string.mIsFastAnimation), false);
         mActivity.mIsSoundEnable = sharedPref.getBoolean(getString(R.string.mIsSoundEnable), true);
         mActivity.mIsGoogleSignIn = sharedPref.getBoolean(getString(R.string.mIsGoogleSignIn), false);
 
