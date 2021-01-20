@@ -774,6 +774,8 @@ public class MainActivity extends Activity {
 
         ((CheckBox)findViewById(R.id.fast_animation_checkbox)).setChecked(mIsFastAnimation);
         ((CheckBox)findViewById(R.id.enable_sound_check_box)).setChecked(mIsSoundEnable);
+        ((CheckBox)findViewById(R.id.connect_google_play_games)).setChecked(mIsGoogleSignIn);
+
     }
 
     @Override
