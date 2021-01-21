@@ -213,6 +213,9 @@
     <string name="GAME_STATS">Game stats</string>
     <string name="BACK">Back</string>
 
+    <string name="HEBREW" translatable="false">עברית</string>
+    <string name="ENGLISH" translatable="false">English</string>
+    <string name="LANGUAGE" translatable="false">Language</string>
     <string name="FAST_ANIMATION">Fast animation</string>
     <string name="ENABLE_SOUND">Enable sound</string>
     <string name="CONNECT_TO_GOOGLE_GAME">Sign In to Google PLay</string>

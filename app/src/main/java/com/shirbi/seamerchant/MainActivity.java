@@ -622,6 +622,10 @@ public class MainActivity extends Activity {
         mIsFastAnimation = ((CheckBox)view).isChecked();
     }
 
+    public void onLanguageButtonClick(View view) {
+        mFrontEnd.showLanguageDialog();
+    }
+
     public void playSound(int soundId) {
         if (!mIsSoundEnable) {
             return;

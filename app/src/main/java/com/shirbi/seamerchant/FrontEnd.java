@@ -1,7 +1,13 @@
 package com.shirbi.seamerchant;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +23,8 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+
+import java.util.Locale;
 
 public class FrontEnd extends FrontEndGeneric {
     private Point mFlagSize;
@@ -622,6 +630,46 @@ public class FrontEnd extends FrontEndGeneric {
             }
         });
         builder.setIcon(R.drawable.exit_icon);
+        builder.show();
+    }
+
+    private void setLocale(String languageCode) {
+        String currentLanguage = mActivity.getResources().getConfiguration().getLocales().get(0).getLanguage();
+        boolean isCurrentHebrew = (currentLanguage.equals("iw") || currentLanguage.equals("he"));
+        if (languageCode.equals("he") == isCurrentHebrew) {
+            return;
+        }
+
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+        Resources resources = mActivity.getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+
+        Intent mStartActivity = new Intent(mActivity, MainActivity.class);
+        int mPendingIntentId = 123456;
+        PendingIntent mPendingIntent = PendingIntent.getActivity(mActivity, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+        AlarmManager mgr = (AlarmManager)mActivity.getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+        mActivity.exit();
+    }
+
+    public void showLanguageDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+
+        builder.setTitle(getString(R.string.LANGUAGE));
+        builder.setPositiveButton(getString(R.string.ENGLISH), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                setLocale("en");
+            }
+        });
+        builder.setNegativeButton(getString(R.string.HEBREW), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                setLocale("he");
+            }
+        });
+        builder.setIcon(R.drawable.help_icon);
         builder.show();
     }
 
