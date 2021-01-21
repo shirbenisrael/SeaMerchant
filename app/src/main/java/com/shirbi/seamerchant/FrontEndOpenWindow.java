@@ -79,6 +79,10 @@ public class FrontEndOpenWindow extends FrontEndGeneric {
     }
 
     private void resetIteratorIfNeeded() {
+        if (mMessageNum >= mTextIds.length) {
+            return;
+        }
+
         if (mIterator == 100 || (mIterator == 50 && (mTextIds[mMessageNum] == 0))) {
             mIterator = 0;
             mMessageNum++;

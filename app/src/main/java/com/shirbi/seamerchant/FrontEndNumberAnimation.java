@@ -69,9 +69,15 @@ public class FrontEndNumberAnimation extends FrontEndGeneric {
             showText(number);
 
             if (mCurrentFrameNumber >= MAX_FRAMES) {
-                mTimer.cancel();
-                mTimer = null;
-                mTimerTask = null;
+                if (mTimer != null) {
+                    mTimer.cancel();
+                    mTimer = null;
+                }
+
+                if (mTimerTask != null) {
+                    mTimerTask.cancel();
+                    mTimerTask = null;
+                }
                 showText(mEndNumber);
             }
         }
