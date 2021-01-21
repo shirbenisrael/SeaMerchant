@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -628,6 +629,16 @@ public class MainActivity extends Activity {
 
         if (soundId == 0) {
             return;
+        }
+
+        AudioManager am = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+
+        switch (am.getRingerMode()) {
+            case AudioManager.RINGER_MODE_SILENT:
+            case AudioManager.RINGER_MODE_VIBRATE:
+                return;
+            case AudioManager.RINGER_MODE_NORMAL:
+                break;
         }
 
         MediaPlayer mediaPlayer;
