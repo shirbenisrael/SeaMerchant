@@ -100,7 +100,7 @@ public class BackEndGoogleApi {
 
         for (final Logic.ScoreType scoreType : Logic.ScoreType.values()) {
             client.loadPlayerCenteredScores(getString(scoreType.getGoogleId()), LeaderboardVariant.TIME_SPAN_ALL_TIME,
-                    LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
+                    LeaderboardVariant.COLLECTION_PUBLIC, 5, true).
                     addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
                         @Override
                         public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
@@ -129,7 +129,7 @@ public class BackEndGoogleApi {
 
         for (final Logic.ScoreType scoreType : Logic.ScoreType.values()) {
             client.loadTopScores(getString(scoreType.getGoogleId()), LeaderboardVariant.TIME_SPAN_ALL_TIME,
-                    LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
+                    LeaderboardVariant.COLLECTION_PUBLIC, 5, true).
                     addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
                         @Override
                         public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
