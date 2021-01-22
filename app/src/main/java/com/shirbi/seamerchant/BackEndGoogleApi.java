@@ -115,6 +115,8 @@ public class BackEndGoogleApi {
                                 String name = temp.getScoreHolderDisplayName();
                                 mLogic.setCenterScore(rank, name, score, i, scoreType);
                             }
+
+                            scoreBuffer.release();
                             mActivity.mFrontEndHighScore.fillScores();
                         }
                     });
@@ -143,6 +145,8 @@ public class BackEndGoogleApi {
                                 mLogic.setTopScore(rank, name, score, scoreType);
                                 mActivity.mFrontEndHighScore.fillScores();
                             }
+
+                            scoreBuffer.release();
                         }
                     });
         }
