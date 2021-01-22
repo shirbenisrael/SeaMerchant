@@ -32,4 +32,5 @@
     <string name="mAlwaysSleepAtMidnight" translatable="false">mAlwaysSleepAtMidnight</string>
     <string name="mEconomicalSail" translatable="false">mEconomicalSail</string>
     <string name="mHighScore" translatable="false">mHighScore</string>
+    <string name="mHighCapacity" translatable="false">mHighCapacity</string>
 </resources>

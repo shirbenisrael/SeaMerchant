@@ -27,11 +27,13 @@ public class Logic {
     public Logic(MainActivity activity) {
         mActivity = activity;
 
-        for (int i = 0; i < mScoreTable.length; i++) {
-            mScoreTable[i] = new ScoreTable();
-            mScoreTable[i].rank = i + 1;
-            mScoreTable[i].name = "Shir";
-            mScoreTable[i].score = 100 - (i * i);
+        for (int scoreType = 0; scoreType < Logic.ScoreType.SCORE_TYPES; scoreType++) {
+            for (int i = 0; i < mScoreTable[scoreType].length; i++) {
+                mScoreTable[scoreType][i] = new ScoreTable();
+                mScoreTable[scoreType][i].rank = i + 1;
+                mScoreTable[scoreType][i].name = "Shir";
+                mScoreTable[scoreType][i].score = 100 - (i * i);
+            }
         }
     }
 
@@ -81,15 +83,31 @@ public class Logic {
     public int mValueAtStartOfDay = 0;
     public boolean mHeroDieMedal = false;
     public int mHighScore = 0;
-    public int mRank = -1;
+    public int mHighCapacity = 0;
+    public int[] mRank = {-1, -1};
 
-    public class ScoreTable {
+    public static class ScoreTable {
         public int rank;
         public String name;
         public int score;
     };
 
-    public ScoreTable[] mScoreTable = new ScoreTable[10];
+    public enum ScoreType {
+        HIGH_SCORE_TABLE_INDEX(0),
+        HIGH_CAPACITY_TABLE_INDEX(1);
+        public static final int SCORE_TYPES = 2;
+        private final int value;
+        ScoreType(int value){
+            this.value = value;
+        }
+        public int getValue() {
+            return value;
+        }
+        private int[] googleId = {R.string.leaderboard_highscore, R.string.leaderboard_capacity};
+        public int getGoogleId() { return googleId[value]; }
+    }
+
+    public ScoreTable[][] mScoreTable = new ScoreTable[ScoreType.SCORE_TYPES][10];
 
     MarketDeal mMarketDeal;
     BankDeal mBankDeal;
@@ -663,6 +681,7 @@ public class Logic {
         editor.putInt(getString(R.string.mDamage), mDamage);
         editor.putInt(getString(R.string.mCapacity), mCapacity);
         editor.putInt(getString(R.string.mHighScore), mHighScore);
+        editor.putInt(getString(R.string.mHighCapacity), mHighCapacity);
         editor.putInt(getString(R.string.mEscapeCountInOneDay), mEscapeCountInOneDay);
         editor.putInt(getString(R.string.mCompromiseWithCrewCount), mCompromiseWithCrewCount);
         editor.putInt(getString(R.string.mWrongNavigationCountInOneDay), mWrongNavigationCountInOneDay);
@@ -740,6 +759,7 @@ public class Logic {
         mDamage = sharedPref.getInt(getString(R.string.mDamage), 0);
         mCapacity = sharedPref.getInt(getString(R.string.mCapacity), START_CAPACITY);
         mHighScore = sharedPref.getInt(getString(R.string.mHighScore), 0);
+        mHighCapacity = sharedPref.getInt(getString(R.string.mHighCapacity), 0);
         mEscapeCountInOneDay = sharedPref.getInt(getString(R.string.mEscapeCountInOneDay), 0);
         mCompromiseWithCrewCount = sharedPref.getInt(getString(R.string.mCompromiseWithCrewCount), 0);
         mWrongNavigationCountInOneDay = sharedPref.getInt(getString(R.string.mWrongNavigationCountInOneDay), 0);
@@ -962,41 +982,46 @@ public class Logic {
         mHighScore = Math.max(mHighScore, highScore);
     }
 
-    public void setUserScore(int rank, String name, int score) {
+    public void setNewHighCapacity(int highCapacity) {
+        mHighCapacity = Math.max(mHighCapacity, highCapacity);
+    }
+
+    public void setUserScore(int rank, String name, int score, ScoreType scoreType) {
         ScoreTable scoreTable;
         if (rank < 6) {
-            scoreTable = mScoreTable[rank - 1];
+            scoreTable = mScoreTable[scoreType.getValue()][rank - 1];
             scoreTable.name = name;
             scoreTable.score = score;
             scoreTable.rank = rank;
         }
 
-        mRank = rank;
+        mRank[scoreType.getValue()] = rank;
     }
 
-    public void setTopScore(int rank, String name, int score) {
-        ScoreTable scoreTable = mScoreTable[rank - 1];
+    public void setTopScore(int rank, String name, int score, ScoreType scoreType) {
+        ScoreTable scoreTable = mScoreTable[scoreType.getValue()][rank - 1];
         scoreTable.name = name;
         scoreTable.score = score;
         scoreTable.rank = rank;
     }
 
-    public void setCenterScore(int rank, String name, int score, int index) {
-        ScoreTable scoreTable;
+    public void setCenterScore(int rank, String name, int score, int index, ScoreType scoreType) {
+        ScoreTable oneScore;
+        ScoreTable[] scoreTable = mScoreTable[scoreType.getValue()];
         if (rank < 6) {
-            scoreTable = mScoreTable[rank - 1];
+            oneScore = scoreTable[rank - 1];
         } else {
             if (rank - index < 6) {
                 // got ranks 3,4,5,6,7 which should sit in cells 2,3,4,5,6
-                scoreTable = mScoreTable[rank - 1];
+                oneScore = scoreTable[rank - 1];
             } else {
                 // got ranks 8,9,10,11,12 which should sit in cells 5,6,7,8,9
-                scoreTable = mScoreTable[5 + index];
+                oneScore = scoreTable[5 + index];
             }
         }
 
-        scoreTable.name = name;
-        scoreTable.score = score;
-        scoreTable.rank = rank;
+        oneScore.name = name;
+        oneScore.score = score;
+        oneScore.rank = rank;
     }
 }

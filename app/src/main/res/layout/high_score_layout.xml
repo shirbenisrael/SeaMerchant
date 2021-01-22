@@ -10,7 +10,7 @@
         android:id="@+id/current_score"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center_horizontal"
         android:textSize="20dp"
         android:text="" />
@@ -19,7 +19,7 @@
         android:id="@+id/high_score"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center_horizontal"
         android:textSize="20dp"
         android:text="" />
@@ -29,24 +29,53 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="7">
+        android:layout_weight="6">
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@drawable/yes_button"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:gravity="center_horizontal"
-        android:onClick="onExistHighScore" />
+    <LinearLayout
+        android:id="@+id/capacity_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_weight="6">
+    </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:text="" />v
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/high_score_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:onClick="onScorePageClick"
+            android:text="@string/SCORE_BUTTON" />
+
+        <Button
+            android:id="@+id/high_capacity_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:onClick="onScorePageClick"
+            android:text="@string/CAPACITY_BUTTON" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:onClick="onExistHighScore"
+            android:text="@string/BACK" />
+
+    </LinearLayout>
 
 </LinearLayout>
 

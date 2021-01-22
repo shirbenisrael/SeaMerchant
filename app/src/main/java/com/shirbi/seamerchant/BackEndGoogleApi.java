@@ -73,6 +73,7 @@ public class BackEndGoogleApi {
         } else {
             LeaderboardsClient client = Games.getLeaderboardsClient(mActivity, account);
             client.submitScore(getString(R.string.leaderboard_highscore), mLogic.mHighScore);
+            client.submitScore(getString(R.string.leaderboard_capacity), mLogic.mHighCapacity);
         }
     }
 
@@ -97,86 +98,91 @@ public class BackEndGoogleApi {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
         LeaderboardsClient client = Games.getLeaderboardsClient(mActivity, account);
 
-        client.loadPlayerCenteredScores(getString(R.string.leaderboard_highscore), LeaderboardVariant.TIME_SPAN_ALL_TIME,
-                LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
-                addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
-                    @Override
-                    public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
-                                                  leaderboardScoresAnnotatedData) {
-                        LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
-                        Iterator<LeaderboardScore> it = scoreBuffer.iterator();
-                        int i = 0;
-                        while (((Iterator) it).hasNext()) {
-                            LeaderboardScore temp = it.next();
-                            int score = (int)temp.getRawScore();
-                            int rank = (int)temp.getRank();
-                            String name = temp.getScoreHolderDisplayName();
-                            mLogic.setCenterScore(rank, name, score, i);
+        for (final Logic.ScoreType scoreType : Logic.ScoreType.values()) {
+            client.loadPlayerCenteredScores(getString(scoreType.getGoogleId()), LeaderboardVariant.TIME_SPAN_ALL_TIME,
+                    LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
+                    addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
+                        @Override
+                        public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
+                                                      leaderboardScoresAnnotatedData) {
+                            LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
+                            Iterator<LeaderboardScore> it = scoreBuffer.iterator();
+                            int i = 0;
+                            while (((Iterator) it).hasNext()) {
+                                LeaderboardScore temp = it.next();
+                                int score = (int) temp.getRawScore();
+                                int rank = (int) temp.getRank();
+                                String name = temp.getScoreHolderDisplayName();
+                                mLogic.setCenterScore(rank, name, score, i, scoreType);
+                            }
+                            mActivity.mFrontEndHighScore.fillScores();
                         }
-                        mActivity.mFrontEndHighScore.fillScores();
-                    }
-                });
+                    });
+        }
     }
 
     private void getTopScore() {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
         LeaderboardsClient client = Games.getLeaderboardsClient(mActivity, account);
 
-        client.loadTopScores(getString(R.string.leaderboard_highscore), LeaderboardVariant.TIME_SPAN_ALL_TIME,
-                LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
-                addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
-                    @Override
-                    public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
-                                                  leaderboardScoresAnnotatedData) {
+        for (final Logic.ScoreType scoreType : Logic.ScoreType.values()) {
+            client.loadTopScores(getString(scoreType.getGoogleId()), LeaderboardVariant.TIME_SPAN_ALL_TIME,
+                    LeaderboardVariant.COLLECTION_PUBLIC, 25, true).
+                    addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
+                        @Override
+                        public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
+                                                      leaderboardScoresAnnotatedData) {
 
-                        LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
-                        Iterator<LeaderboardScore> it = scoreBuffer.iterator();
-                        while (((Iterator) it).hasNext()) {
-                            LeaderboardScore temp = it.next();
-                            int score = (int)temp.getRawScore();
-                            int rank = (int)temp.getRank();
-                            String name = temp.getScoreHolderDisplayName();
-                            mLogic.setTopScore(rank, name, score);
-                            mActivity.mFrontEndHighScore.fillScores();
+                            LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
+                            Iterator<LeaderboardScore> it = scoreBuffer.iterator();
+                            while (((Iterator) it).hasNext()) {
+                                LeaderboardScore temp = it.next();
+                                int score = (int) temp.getRawScore();
+                                int rank = (int) temp.getRank();
+                                String name = temp.getScoreHolderDisplayName();
+                                mLogic.setTopScore(rank, name, score, scoreType);
+                                mActivity.mFrontEndHighScore.fillScores();
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
-
 
     private void getLeaderBoard() {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
         LeaderboardsClient client = Games.getLeaderboardsClient(mActivity, account);
 
-        client.loadCurrentPlayerLeaderboardScore(getString(R.string.leaderboard_highscore),
-                LeaderboardVariant.TIME_SPAN_ALL_TIME, LeaderboardVariant.COLLECTION_PUBLIC)
-                .addOnSuccessListener(mActivity, new OnSuccessListener<AnnotatedData<LeaderboardScore>>() {
-                    @Override
-                    public void onSuccess(AnnotatedData<LeaderboardScore> leaderboardScoreAnnotatedData) {
-                        int score = 0;
-                        if (leaderboardScoreAnnotatedData != null) {
-                            LeaderboardScore leaderBoardscore = leaderboardScoreAnnotatedData.get();
-                            if (leaderBoardscore != null) {
-                                score = (int)leaderBoardscore.getRawScore();
-                                int rank = (int)leaderBoardscore.getRank();
-                                String name = leaderBoardscore.getScoreHolderDisplayName();
-                                mLogic.setUserScore(rank, name, score);
-                                mActivity.mFrontEndHighScore.fillScores();
+        for (final Logic.ScoreType scoreType : Logic.ScoreType.values()) {
+            client.loadCurrentPlayerLeaderboardScore(getString(scoreType.getGoogleId()),
+                    LeaderboardVariant.TIME_SPAN_ALL_TIME, LeaderboardVariant.COLLECTION_PUBLIC)
+                    .addOnSuccessListener(mActivity, new OnSuccessListener<AnnotatedData<LeaderboardScore>>() {
+                        @Override
+                        public void onSuccess(AnnotatedData<LeaderboardScore> leaderboardScoreAnnotatedData) {
+                            int score = 0;
+                            if (leaderboardScoreAnnotatedData != null) {
+                                LeaderboardScore leaderBoardscore = leaderboardScoreAnnotatedData.get();
+                                if (leaderBoardscore != null) {
+                                    score = (int) leaderBoardscore.getRawScore();
+                                    int rank = (int) leaderBoardscore.getRank();
+                                    String name = leaderBoardscore.getScoreHolderDisplayName();
+                                    mLogic.setUserScore(rank, name, score, scoreType);
+                                    mActivity.mFrontEndHighScore.fillScores();
+                                } else {
+                                    submitScore();
+                                }
                             } else {
                                 submitScore();
                             }
-                        } else {
-                            submitScore();
                         }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        mActivity.mFrontEnd.showAlertDialogMessage("FAILURE " + e,"");
-                        mActivity.mFrontEnd.showSignGoogleDialog();
-                    }
-                });
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            mActivity.mFrontEnd.showAlertDialogMessage("FAILURE " + e, "");
+                            mActivity.mFrontEnd.showSignGoogleDialog();
+                        }
+                    });
+        }
     }
 
     public void unlockMedal(Medal medal) {

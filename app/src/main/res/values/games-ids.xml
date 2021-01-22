@@ -69,4 +69,6 @@
   <string name="achievement_medal_30" translatable="false">CgkI-ZDOkcgXEAIQIQ</string>
   <!--leaderboard Highscore-->
   <string name="leaderboard_highscore" translatable="false">CgkI-ZDOkcgXEAIQAA</string>
+  <!--leaderboard Capacity-->
+  <string name="leaderboard_capacity" translatable="false">CgkI-ZDOkcgXEAIQIg</string>
 </resources>

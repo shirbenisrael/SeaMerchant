@@ -1,58 +1,97 @@
 package com.shirbi.seamerchant;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class FrontEndHighScore extends FrontEndGeneric {
+    private boolean currentlyShowEndResult = false;
+
     public FrontEndHighScore(MainActivity activity) {
         super(activity);
         createEmptyScoreTable();
     }
 
     public void showHighScoreAtGameEnd() {
-        String message = mActivity.getString(R.string.GAME_RESULT, mLogic.calculateTotalValue());
-        ((TextView)findViewById(R.id.current_score)).setText(message);
-
-        message = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mLogic.mHighScore);
-        ((TextView)findViewById(R.id.high_score)).setText(message);
+        currentlyShowEndResult = true;
+        showScores(Logic.ScoreType.HIGH_SCORE_TABLE_INDEX);
     }
 
     public void showHighScoreWhilePlaying() {
-        String message = mActivity.getString(R.string.YOUR_CURRENT_SCORE, mLogic.calculateTotalValue());
-        ((TextView)findViewById(R.id.current_score)).setText(message);
+        currentlyShowEndResult = false;
+        showScores(Logic.ScoreType.HIGH_SCORE_TABLE_INDEX);
+    }
 
-        message = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mLogic.mHighScore);
-        ((TextView)findViewById(R.id.high_score)).setText(message);
+    private void updateTopMessage() {
+        String message1;
+        String message2;
+
+        if (currentlyShowEndResult) {
+            if (findViewById(R.id.capacity_layout).getVisibility() == View.VISIBLE) {
+                message1 = mActivity.getString(R.string.GAME_RESULT_CAPACITY, mLogic.mCapacity);
+                message2 = mActivity.getString(R.string.YOUR_HIGHEST_CAPACITY, mLogic.mHighCapacity);
+            } else {
+                message1 = mActivity.getString(R.string.GAME_RESULT_HIGH_SCORE, mLogic.calculateTotalValue());
+                message2 = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mLogic.mHighScore);
+            }
+        } else {
+            if (findViewById(R.id.capacity_layout).getVisibility() == View.VISIBLE) {
+                message1 = mActivity.getString(R.string.YOUR_CURRENT_CAPACITY, mLogic.mCapacity);
+                message2 = mActivity.getString(R.string.YOUR_HIGHEST_CAPACITY, mLogic.mHighCapacity);
+            } else {
+                message1 = mActivity.getString(R.string.YOUR_CURRENT_SCORE, mLogic.calculateTotalValue());
+                message2 = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mLogic.mHighScore);
+            }
+        }
+
+        ((TextView)findViewById(R.id.current_score)).setText(message1);
+        ((TextView)findViewById(R.id.high_score)).setText(message2);
     }
 
     private void createEmptyScoreTable() {
-        LinearLayout table = findViewById(R.id.scores_layout);
-        for (int i = 0; i < mLogic.mScoreTable.length; i++) {
-            LayoutInflater inflater = (LayoutInflater)mActivity.getSystemService(mActivity.LAYOUT_INFLATER_SERVICE);
-            inflater.inflate(R.layout.one_high_score_layout, table);
+        int[] layoutIds = {R.id.scores_layout, R.id.capacity_layout};
+        for (int tableId = 0; tableId < layoutIds.length; tableId++) {
+            LinearLayout table = findViewById(layoutIds[tableId]);
+            for (int i = 0; i < mLogic.mScoreTable[tableId].length; i++) {
+                LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(mActivity.LAYOUT_INFLATER_SERVICE);
+                inflater.inflate(R.layout.one_high_score_layout, table);
+            }
         }
 
         fillScores();
     }
 
     public void fillScores() {
-        LinearLayout table = findViewById(R.id.scores_layout);
-        for (int i = 0; i < mLogic.mScoreTable.length; i++) {
-            int color = (mLogic.mRank == mLogic.mScoreTable[i].rank) ? mActivity.getColor(R.color.transparent_red) :
-                    mActivity.getColor(R.color.transparent);
+        int[] layoutIds = {R.id.scores_layout, R.id.capacity_layout};
+        for (int tableId = 0; tableId < layoutIds.length; tableId++) {
+            LinearLayout table = findViewById(layoutIds[tableId]);
+            for (int i = 0; i < mLogic.mScoreTable[tableId].length; i++) {
+                Logic.ScoreTable oneScore = mLogic.mScoreTable[tableId][i];
+                int color = (mLogic.mRank[tableId] == oneScore.rank) ? mActivity.getColor(R.color.transparent_red) :
+                        mActivity.getColor(R.color.transparent);
 
-            TextView rank = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(0);
-            rank.setText(String.valueOf( mLogic.mScoreTable[i].rank));
-            rank.setBackgroundColor(color);
+                TextView rank = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(0);
+                rank.setText(String.valueOf(oneScore.rank));
+                rank.setBackgroundColor(color);
 
-            TextView name = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(1);
-            name.setText(mLogic.mScoreTable[i].name);
-            name.setBackgroundColor(color);
+                TextView name = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(1);
+                name.setText(oneScore.name);
+                name.setBackgroundColor(color);
 
-            TextView score = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(2);
-            score.setText(String.valueOf(mLogic.mScoreTable[i].score));
-            score.setBackgroundColor(color);
+                TextView score = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(2);
+                score.setText(String.valueOf(oneScore.score));
+                score.setBackgroundColor(color);
+            }
         }
+    }
+
+    public void showScores(Logic.ScoreType scoreType) {
+        int[] layoutIds = {R.id.scores_layout, R.id.capacity_layout};
+
+        findViewById(layoutIds[scoreType.getValue()]).setVisibility(View.VISIBLE);
+        findViewById(layoutIds[1 -scoreType.getValue()]).setVisibility(View.GONE);
+
+        updateTopMessage();
     }
 }

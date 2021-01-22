@@ -175,11 +175,16 @@
     <string name="OPERATION_NO_TIME">This operation won\'t take more time.</string>
     <string name="OPERATION_ONE_HOUR">This operation will take one hour.</string>
 
-    <string name="GAME_RESULT">In the trading week you earned %1$d$.</string>
+    <string name="GAME_RESULT_HIGH_SCORE">In the trading week you earned %1$d$.</string>
+    <string name="GAME_RESULT_CAPACITY">In the trading week you got ship of capacity %1$d tonne.</string>
     <string name="SLEEP_QUESTION">Sleep until tomorrow?</string>
     <string name="END_GAME_QUESTION">End the trading week?</string>
     <string name="YOUR_HIGHEST_SCORE">Your highest score is %1$d$.</string>
     <string name="YOUR_CURRENT_SCORE">Your current score is %1$d$.</string>
+    <string name="YOUR_HIGHEST_CAPACITY">Your highest capacity is %1$d tonne.</string>
+    <string name="YOUR_CURRENT_CAPACITY">Your current capacity is %1$d tonne.</string>
+    <string name="CAPACITY_BUTTON">Capacity</string>
+    <string name="SCORE_BUTTON">Score</string>
 
     <string name="EXIT_GAME_TITLE">Exit game?</string>
     <string name="START_GAME_TITLE">Start game?</string>

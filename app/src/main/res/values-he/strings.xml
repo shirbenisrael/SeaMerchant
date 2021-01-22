@@ -167,7 +167,8 @@
     <string name="OPERATION_NO_TIME">הפעולה לא תיקח זמן נוסף.</string>
     <string name="OPERATION_ONE_HOUR">הפעולה תיקח שעה אחת.</string>
 
-    <string name="GAME_RESULT">בשבוע המסחר הרווחת %1$d ש\"ח</string>
+    <string name="GAME_RESULT_HIGH_SCORE">בשבוע המסחר הרווחת %1$d ש\"ח</string>
+    <string name="GAME_RESULT_CAPACITY">בשבוע המסחר השגת ספינה בקיבולת %1$d.</string>
     <string name="SLEEP_QUESTION">לנוח עד למחרת?</string>
     <string name="END_GAME_QUESTION">לסיים את שבוע המסחר?</string>
 
@@ -185,6 +186,10 @@
     <string name="BUY_ALL">קנה מקסימום</string>
     <string name="YOUR_HIGHEST_SCORE">השיא שלך הוא %1$d ש\"ח</string>
     <string name="YOUR_CURRENT_SCORE">ערך סחורתך הוא %1$d ש\"ח</string>
+    <string name="YOUR_HIGHEST_CAPACITY">שיא הקיבולת שלך הוא %1$d טון.</string>
+    <string name="YOUR_CURRENT_CAPACITY">הקיבולת הנוכחית שלך היא %1$d טון.</string>
+    <string name="CAPACITY_BUTTON">קיבולת</string>
+    <string name="SCORE_BUTTON">ניקוד</string>
 
     <string name="ABOUT_TITLE">סוחר הים - שיר בן ישראל</string>
     <string name="ABOUT_VERSION">גרסה 2.00</string>

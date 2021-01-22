@@ -257,6 +257,7 @@ public class MainActivity extends Activity {
 
             int currentScore = mLogic.calculateTotalValue();
             mLogic.setNewHighScore(currentScore);
+            mLogic.setNewHighCapacity(mLogic.mCapacity);
 
             mBackEndGoogleApi.submitScore();
         }
@@ -850,5 +851,13 @@ public class MainActivity extends Activity {
 
     public void onGameRulesClick(View view) {
         mFrontEnd.showGameRules();
+    }
+
+    public void onScorePageClick(View view) {
+        if (view == findViewById(R.id.high_capacity_button)) {
+            mFrontEndHighScore.showScores(Logic.ScoreType.HIGH_CAPACITY_TABLE_INDEX);
+        } else {
+            mFrontEndHighScore.showScores(Logic.ScoreType.HIGH_SCORE_TABLE_INDEX);
+        }
     }
 }
