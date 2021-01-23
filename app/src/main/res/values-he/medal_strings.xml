@@ -78,4 +78,5 @@
     <string name="HERO_DIE_BONUS">הנזק בקרב בו ניצחת את הפיראטים יהיה לרוב נמוך יותר</string>
     <string name="GERMAN_TIME_BONUS">הפלגת לילה תתחיל ב 18:00 במקום ב 17:00</string>
     <string name="ECONOMICAL_SAIL_BONUS">בנקאות ישירה - כל הביקורים בכל הבנקים ביום אחד יקחו שעה אחת בלבד</string>
+    <string name="FOG_OF_WAR_BONUS">בחירת יעד חדש כשנתקלים בערפל</string>
 </resources>

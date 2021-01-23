@@ -200,6 +200,10 @@ public class Sail {
         mDestination = temp;
     }
 
+    public void setNewDestinationAfterFog(State state) {
+        mDestination = state;
+    }
+
     public void createBadWeatherInSail() {
         mSailEndedPeacefully = false;
         if (mLogic.mWeather == Weather.WIND || mLogic.mWeather == Weather.FOG) {

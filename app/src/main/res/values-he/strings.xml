@@ -89,6 +89,7 @@
 
     <string name="FOG_TITLE">ערפל כבד מכסה את הנמל!</string>
     <string name="FOG_RESULT">הספינה לא יכולה לעגון ונאלצת לחזור ל%1$s.</string>
+    <string name="FOG_NEXT_STATE">הספינה לא יכולה לעגון. לאן ברצונך להמשיך?</string>
 
     <string name="SAIL_ENDED_PEACEFULLY">הגעת ל%1$s בשלום!!</string>
     <string name="SAIL_ENDED_BAD">הספינה שרדה את המסע אל %1$s.</string>

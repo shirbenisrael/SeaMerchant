@@ -486,10 +486,17 @@ public class MainActivity extends Activity {
         mFrontEndBadWeatherInSail.showBadWeather();
     }
 
-    public void onExistBadWeatherClick(View view) {
+    public void onExitBadWeatherClick(View view) {
         mFrontEnd.showWindow(Window.SAIL_WINDOW);
         mFrontEndSail.continueSail();
     }
+
+    public void onSelectNewStateAfterFogClick(View view) {
+        mFrontEnd.showWindow(Window.SAIL_WINDOW);
+        mFrontEndBadWeatherInSail.selectDestinationAfterFog(view);
+        mFrontEndSail.continueSail();
+    }
+
 
     public void onBankClick(View view) {
         if (!mLogic.canGoToBank()) {
@@ -697,7 +704,7 @@ public class MainActivity extends Activity {
                 onCancelSleep(null);
                 break;
             case BAD_WEATHER_IN_SAIL_WINDOW:
-                onExistBadWeatherClick(null);
+                onExitBadWeatherClick(null);
                 break;
             case SINK_WINDOW:
                 onSinkProgress(null);

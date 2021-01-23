@@ -29,13 +29,73 @@
         android:gravity="center_horizontal"
         android:text="" />
 
+    <LinearLayout
+        android:id="@+id/next_state_after_fog_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onSelectNewStateAfterFogClick"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/EGYPT" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onSelectNewStateAfterFogClick"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/ISRAEL" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onSelectNewStateAfterFogClick"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/TURKEY" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onSelectNewStateAfterFogClick"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/CYPRUS" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onSelectNewStateAfterFogClick"
+            android:background="@drawable/empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/GREECE" />
+
+    </LinearLayout>
+
     <Button
+        android:id="@+id/yes_button_after_bad_weather_in_sail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/yes_button"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:gravity="center_horizontal"
-        android:onClick="onExistBadWeatherClick" />
+        android:onClick="onExitBadWeatherClick" />
 
     <TextView
         android:layout_width="match_parent"

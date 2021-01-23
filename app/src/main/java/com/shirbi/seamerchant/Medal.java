@@ -214,6 +214,8 @@ public enum Medal {
                 return R.string.GERMAN_TIME_BONUS;
             case ECONOMICAL_SAIL:
                 return R.string.ECONOMICAL_SAIL_BONUS;
+            case FOG_OF_WAR:
+                return R.string.FOG_OF_WAR_BONUS;
             default:
                 return 0;
         }
