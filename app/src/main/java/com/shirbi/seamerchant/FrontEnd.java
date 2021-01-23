@@ -209,6 +209,7 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     public void showNewWeather() {
+        ((TextView)findViewById(R.id.calculator)).setText(R.string.CALCULATOR);
         ((TextView)findViewById(R.id.day_message)).setText(mLogic.mCurrentDay.toStringId());
         ((TextView)findViewById(R.id.weather_message)).setText(generateWeatherString());
     }
