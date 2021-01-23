@@ -31,6 +31,7 @@
     <string name="HERO_DIE_TITLE">Death of heroes</string>
     <string name="GERMAN_TIME_TITLE">Certified Yekke</string>
     <string name="ECONOMICAL_SAIL_TITLE">Economical Sailor</string>
+    <string name="FOG_OF_WAR_TITLE">Fog of War</string>
 
     <string name="TREASURE_1_CONDITION">Get 10,000$ in cash</string>
     <string name="TREASURE_2_CONDITION">Get 100,000$ in cash</string>
@@ -63,6 +64,7 @@
     <string name="HERO_DIE_CONDITION">Suffered 2 million $ in damage in the battle in which you defeated the Pirates</string>
     <string name="GERMAN_TIME_CONDITION">Finished all trading days at exactly midnight and earned a million dollars</string>
     <string name="ECONOMICAL_SAIL_CONDITION">Earn 2 million $ without sailing where most of your property is in cash</string>
+    <string name="FOG_OF_WAR_CONDITION">Encounter two pirates and one fog in one sail</string>
 
     <string name="TREASURE_5_BONUS">Start the game with 10,000$</string>
     <string name="CAPACITY_3_BONUS">Start the game with capacity of 200 tonne</string>

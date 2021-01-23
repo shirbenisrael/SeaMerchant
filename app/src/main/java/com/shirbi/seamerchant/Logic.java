@@ -125,6 +125,7 @@ public class Logic {
     public boolean mEgyptWheatMedal = false;
     public boolean mTitanicMedal = false;
     public boolean mAllGoodMedal = false;
+    public boolean mFogOfWarMedal = false;
 
     // For NewDayEvent.BIGGER_SHIP
     public boolean mIsBiggerShipForCash;
@@ -961,6 +962,10 @@ public class Logic {
 
         if (!hasMedal(Medal.ECONOMICAL_SAIL) && mEconomicalSail && calculateTotalValue() >= 2000000) {
             return Medal.ECONOMICAL_SAIL;
+        }
+
+        if (!hasMedal(Medal.FOG_OF_WAR) && mFogOfWarMedal) {
+            return Medal.FOG_OF_WAR;
         }
 
         return null;

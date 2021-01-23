@@ -33,9 +33,10 @@ public enum Medal {
     DIET_MERCHANT(27), // 1,000,000 without olives.
     HERO_DIE(28), // 2,000,000 damage when win pirates.
     GERMAN_TIME(29), // end all 7 days at 24:00 and profit of 1,000,000
-    ECONOMICAL_SAIL(30); // profit of 2,000,000 and no sail which most value is cash.
+    ECONOMICAL_SAIL(30), // profit of 2,000,000 and no sail which most value is cash.
+    FOG_OF_WAR(31); // encounter two pirates and one fog in one sail
 
-    public static final int NUM_MEDAL_TYPES = 31;
+    public static final int NUM_MEDAL_TYPES = 32;
     private final int value;
     Medal(int value){
         this.value = value;
@@ -109,6 +110,8 @@ public enum Medal {
                 return R.string.GERMAN_TIME_TITLE;
             case ECONOMICAL_SAIL:
                 return R.string.ECONOMICAL_SAIL_TITLE;
+            case FOG_OF_WAR:
+                return R.string.FOG_OF_WAR_TITLE;
         }
         throw new IllegalStateException("Unexpected value: " + this);
     }
@@ -177,6 +180,8 @@ public enum Medal {
                 return R.string.GERMAN_TIME_CONDITION;
             case ECONOMICAL_SAIL:
                 return R.string.ECONOMICAL_SAIL_CONDITION;
+            case FOG_OF_WAR:
+                return R.string.FOG_OF_WAR_CONDITION;
         }
         throw new IllegalStateException("Unexpected value: " + this);
     }
@@ -279,6 +284,8 @@ public enum Medal {
                 return R.string.achievement_medal_29;
             case ECONOMICAL_SAIL:
                 return R.string.achievement_medal_30;
+            case FOG_OF_WAR:
+                return R.string.achievement_medal_31;
         }
         throw new IllegalStateException("Unexpected value: " + this);
     }

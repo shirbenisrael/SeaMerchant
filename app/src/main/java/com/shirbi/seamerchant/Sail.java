@@ -21,6 +21,8 @@ public class Sail {
     Weather mSailWeather;
     boolean mSailEndedPeacefully;
     public Warning mWarning;
+    private int mPiratesCounter;
+    private boolean mIsFogInSail;
 
     static final float DEFAULT_GUARD_COST_PERCENT = 2f;
     public static final float NIGHT_SAIL_GUARD_COST_PERCENT_MULTIPLY = 1.25f;
@@ -129,6 +131,9 @@ public class Sail {
         mSailEndedPeacefully = true;
 
         mWarning = Warning.first();
+
+        mPiratesCounter = 0;
+        mIsFogInSail = false;
     }
 
     public void selectNumGuardShips(int numGuards) {
@@ -181,7 +186,9 @@ public class Sail {
             }
 
             if (mLogic.mWeather == Weather.FOG) {
-                return tryToDoSomething(PERCENT_OF_FOG_APPEAR);
+                boolean isFogAppear =  tryToDoSomething(PERCENT_OF_FOG_APPEAR);
+                mIsFogInSail |= isFogAppear;
+                return isFogAppear;
             }
         }
         return false;
@@ -268,7 +275,14 @@ public class Sail {
                 chances *= 2;
             }
         }
-        return tryToDoSomething(chances);
+
+        boolean isPirateAppear = tryToDoSomething(chances);
+
+        mPiratesCounter += isPirateAppear ? 1 : 0;
+        if (mPiratesCounter == 2 && mIsFogInSail) {
+            mLogic.mFogOfWarMedal = true;
+        }
+        return isPirateAppear;
     }
 
     public void calculateBattleResult() {
