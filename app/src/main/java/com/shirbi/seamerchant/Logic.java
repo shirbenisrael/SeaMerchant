@@ -1001,6 +1001,12 @@ public class Logic {
         }
 
         mRank[scoreType.getValue()] = rank;
+
+        if (scoreType == ScoreType.HIGH_SCORE_TABLE_INDEX) {
+            setNewHighScore(score);
+        } else {
+            setNewHighCapacity(score);
+        }
     }
 
     public void setTopScore(int rank, String name, int score, ScoreType scoreType) {
