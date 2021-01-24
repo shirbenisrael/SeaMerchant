@@ -14,6 +14,7 @@ public class Logic {
     public static final int START_HOUR = 6;
     private static final Weather START_WEATHER = Weather.GOOD_SAILING;
     private static final State START_STATE = State.ISRAEL;
+    private static final State START_WEATHER_STATE = State.ISRAEL;
     private static final int START_CAPACITY = 100;
     private static final int START_CAPACITY_WITH_MEDAL = 200;
     public static final int EVENING_TIME = 17;
@@ -165,7 +166,7 @@ public class Logic {
         mCurrentDay = WeekDay.SUNDAY;
         mCurrentHour = START_HOUR;
         mCurrentState = START_STATE;
-        mWeatherState = START_STATE;
+        mWeatherState = START_WEATHER_STATE;
         mWeather = START_WEATHER;
         mDamage = 0;
         mCapacity = hasMedal(Medal.CAPACITY_3) ? START_CAPACITY_WITH_MEDAL : START_CAPACITY;
