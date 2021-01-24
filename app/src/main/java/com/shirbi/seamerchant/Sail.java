@@ -181,7 +181,7 @@ public class Sail {
 
     public boolean isFogInSail() {
         if ((mDestination == mLogic.mWeatherState)) {
-            if (mLandingHour + mLogic.getSailDuration(mDestination) >= Logic.SLEEP_TIME) {
+            if (mLandingHour + mLogic.getSailDuration(mSource, mDestination) >= Logic.SLEEP_TIME) {
                 return false;
             }
 
