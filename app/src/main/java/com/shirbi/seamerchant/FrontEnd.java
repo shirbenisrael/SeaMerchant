@@ -642,6 +642,8 @@ public class FrontEnd extends FrontEndGeneric {
             return;
         }
 
+        mActivity.storeState(); // looks like exit() won't call it.
+
         Locale locale = new Locale(languageCode);
         Locale.setDefault(locale);
         Resources resources = mActivity.getResources();

@@ -783,7 +783,7 @@ public class MainActivity extends Activity {
         mFrontEnd.showNewGameDialog();
     }
 
-    private void storeState() {
+    public void storeState() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
