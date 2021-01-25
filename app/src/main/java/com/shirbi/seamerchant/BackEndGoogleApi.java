@@ -11,6 +11,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.games.AchievementsClient;
 import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.LeaderboardsClient;
@@ -198,38 +199,44 @@ public class BackEndGoogleApi {
 
     public void loadAchievements() {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
-        Games.getAchievementsClient(mActivity, account).load(true).addOnCompleteListener(new OnCompleteListener<AnnotatedData<AchievementBuffer>>() {
+        AchievementsClient client = Games.getAchievementsClient(mActivity, account);
+        Task<AnnotatedData<AchievementBuffer>> task = client.load(true);
+        task.addOnCompleteListener(new OnCompleteListener<AnnotatedData<AchievementBuffer>>() {
             @Override
             public void onComplete(@NonNull Task<AnnotatedData<AchievementBuffer>> task) {
-                AchievementBuffer buff = task.getResult().get();
-                Log.d("BUFF", "onComplete: ");
-                int bufSize = buff.getCount();
-                for (int i = 0; i < bufSize; i++) {
-                    Achievement ach = buff.get(i);
-                    String id = ach.getAchievementId();
-                    String name = ach.getName();
-                    boolean unlocked = ach.getState() == Achievement.STATE_UNLOCKED;
+                try {
+                    AchievementBuffer buff = task.getResult(ApiException.class).get();
+                    Log.d("BUFF", "onComplete: ");
+                    int bufSize = buff.getCount();
+                    for (int i = 0; i < bufSize; i++) {
+                        Achievement ach = buff.get(i);
+                        String id = ach.getAchievementId();
+                        String name = ach.getName();
+                        boolean unlocked = ach.getState() == Achievement.STATE_UNLOCKED;
 
-                    StringTokenizer st = new StringTokenizer(name, " ");
-                    st.nextToken(); // skip the string Medal.
-                    String medalNumber = st.nextToken();
+                        StringTokenizer st = new StringTokenizer(name, " ");
+                        st.nextToken(); // skip the string Medal.
+                        String medalNumber = st.nextToken();
 
-                    Medal medal = Medal.values()[Integer.parseInt(medalNumber)];
+                        Medal medal = Medal.values()[Integer.parseInt(medalNumber)];
 
-                    if(unlocked) {
-                        // This can happen when reinstall the app - restore the medal from google games.
-                        if (!mLogic.hasMedal(medal)) {
-                            mLogic.restoreMedal(medal);
-                        }
-                    } else {
-                        // This can happen if didn't have internet connection when achieved the medal.
-                        // send it now again to google.
-                        if (mLogic.hasMedal(medal)) {
-                            unlockMedal(medal);
+                        if (unlocked) {
+                            // This can happen when reinstall the app - restore the medal from google games.
+                            if (!mLogic.hasMedal(medal)) {
+                                mLogic.restoreMedal(medal);
+                            }
+                        } else {
+                            // This can happen if didn't have internet connection when achieved the medal.
+                            // send it now again to google.
+                            if (mLogic.hasMedal(medal)) {
+                                unlockMedal(medal);
+                            }
                         }
                     }
+                    buff.release();
+                } catch (ApiException e) {
+                    Log.w(TAG, "Failed to get medal :failed code=" + e.getStatusCode());
                 }
-                buff.release();
             }
         });
     }
