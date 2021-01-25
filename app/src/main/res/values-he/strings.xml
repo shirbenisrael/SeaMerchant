@@ -103,8 +103,8 @@
     <string name="FISH_BOAT">סירת דייג התנגשה בספינתך וגרמה\n לנזק בשווי %1$d ש\"ח!</string>
     <string name="FIRE">שריפה פורצת במחסנים\n ומכלה %1$d טון של %2$s!</string>
 
-    <string name="BIGGER_SHIP_FOR_CASH_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d ש\"ח.</string>
-    <string name="BIGGER_SHIP_FOR_GOODS_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d טון %3$s.</string>
+    <string name="BIGGER_SHIP_FOR_CASH_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d ש\"ח (יש לך %3$d ש\"ח).</string>
+    <string name="BIGGER_SHIP_FOR_GOODS_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d טון %3$s (יש לך %4$d טון).</string>
 
     <string name="MERCHANT_BUY">סוחר זקוק בדחיפות ל%1$s. הוא מוכן לשלם %2$d ש\"ח לטון בעבור כל ה%1$s שלך. האם תמכור לו?</string>
     <string name="MERCHANT_SELL">סוחר חייב להיפטר במיידי מכל ה%1$s שלו. הוא רוצה למכור לך %2$d טון במחיר של %3$d ש\"ח לטון. האם תקנה?</string>

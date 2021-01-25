@@ -291,11 +291,12 @@ public class FrontEnd extends FrontEndGeneric {
         String offerString;
         if (mLogic.mIsBiggerShipForCash) {
             offerString = mActivity.getString(R.string.BIGGER_SHIP_FOR_CASH_OFFER,
-                    mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice);
+                    mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice, mLogic.mCash);
         } else {
             String goodsString = getString(mLogic.mBiggerShipPriceGoodType.toStringId());
+            int inventory = mLogic.getInventory(mLogic.mBiggerShipPriceGoodType);
             offerString = mActivity.getString(R.string.BIGGER_SHIP_FOR_GOODS_OFFER,
-                    mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice, goodsString);
+                    mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice, goodsString, inventory);
         }
 
         return offerString;
