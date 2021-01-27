@@ -22,7 +22,7 @@
     <string name="CASH_UNITS">ש\"ח</string>
     <string name="TOTAL_VALUE">שווי כולל</string>
 
-    <string name="MONEY_STRING">%1$d ש\"ח</string>
+    <string name="MONEY_STRING">%1$s ש\"ח</string>
     <string name="HOLD_QUESTION">כמה %1$s להחזיק?</string>
     <string name="SELL_ALL">מכור הכל</string>
     <string name="FILL_CAPACITY">קיבולת מלאה</string>

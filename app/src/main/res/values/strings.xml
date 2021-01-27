@@ -24,7 +24,7 @@
     <string name="CASH_UNITS">$</string>
     <string name="TOTAL_VALUE">total value</string>
 
-    <string name="MONEY_STRING">%1$d\$</string>
+    <string name="MONEY_STRING">%1$s\$</string>
     <string name="HOLD_QUESTION">How much %1$s to hold?</string>
     <string name="BUY_ALL">Buy all</string>
     <string name="SELL_ALL">Sell all</string>

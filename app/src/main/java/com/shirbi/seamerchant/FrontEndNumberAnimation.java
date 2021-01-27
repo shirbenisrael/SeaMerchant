@@ -85,7 +85,7 @@ public class FrontEndNumberAnimation extends FrontEndGeneric {
 
     private void showText(long number) {
         if (mPrefix != 0) {
-            mTextView.setText(mActivity.getString(mPrefix, number));
+            mTextView.setText(mActivity.getString(mPrefix, mDecimalFormat.format(number)));
         } else {
             mTextView.setText(mDecimalFormat.format(number));
         }
