@@ -9,11 +9,10 @@ import java.text.DecimalFormat;
 
 public class FrontEndHighScore extends FrontEndGeneric {
     private boolean currentlyShowEndResult = false;
-    private DecimalFormat mDecimalFormat;
+
 
     public FrontEndHighScore(MainActivity activity) {
         super(activity);
-        mDecimalFormat = new DecimalFormat("#,###");
         createEmptyScoreTable();
     }
 

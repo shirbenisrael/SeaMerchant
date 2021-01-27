@@ -12,9 +12,12 @@ import android.widget.TextView;
 import androidx.annotation.IdRes;
 import androidx.annotation.StringRes;
 
+import java.text.DecimalFormat;
+
 public class FrontEndGeneric {
     MainActivity mActivity;
     Logic mLogic;
+    protected DecimalFormat mDecimalFormat;
 
     protected  <T extends View> T findViewById(@IdRes int id) {
         return mActivity.getWindow().findViewById(id);
@@ -27,6 +30,7 @@ public class FrontEndGeneric {
     public FrontEndGeneric(MainActivity activity) {
         mActivity = activity;
         mLogic = activity.mLogic;
+        mDecimalFormat = new DecimalFormat("#,###");
     }
 
     protected Point getWindowSize() {
