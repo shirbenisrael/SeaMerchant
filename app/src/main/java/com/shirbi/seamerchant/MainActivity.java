@@ -76,6 +76,8 @@ public class MainActivity extends Activity {
     }
 
     public void onMarketClick(View view) {
+        mFrontEnd.stopBlinks();
+
         if (!mLogic.canGoToMarket()) {
             playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.MARKET_CLOSED),
@@ -149,6 +151,8 @@ public class MainActivity extends Activity {
     }
 
     public void onFlagClick(View view) {
+        mFrontEnd.stopBlinks();
+
         State destination = mFrontEnd.viewToState(view);
         if (mLogic.getSailDuration(destination) == 0) {
             return;
@@ -244,6 +248,8 @@ public class MainActivity extends Activity {
     }
 
     public void onApproveSleep(View view) {
+        mFrontEnd.stopBlinks();
+
         if (!mLogic.mCurrentDay.isLastDay()) {
             playSound(R.raw.new_day);
             mLogic.startNewDay();
@@ -499,6 +505,8 @@ public class MainActivity extends Activity {
 
 
     public void onBankClick(View view) {
+        mFrontEnd.stopBlinks();
+
         if (!mLogic.canGoToBank()) {
             playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.BANK_CLOSED),
@@ -576,6 +584,7 @@ public class MainActivity extends Activity {
             mFrontEndFixShip.onFixShipClick();
             mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
         } else {
+            mFrontEnd.stopBlinks();
             playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_FIX_FIXED_SHIP),
                     getString(R.string.CANNOT_FIX_TITLE));

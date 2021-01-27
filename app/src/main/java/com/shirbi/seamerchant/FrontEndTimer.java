@@ -45,4 +45,16 @@ public class FrontEndTimer {
             }
         }
     };
+
+    public void stop() {
+        if (mTimer != null) {
+            mTimer.cancel();
+        }
+        mTimer = null;
+
+        if (mTimerTask != null) {
+            mTimerTask.cancel();
+        }
+        mTimerTask = null;
+    }
 }

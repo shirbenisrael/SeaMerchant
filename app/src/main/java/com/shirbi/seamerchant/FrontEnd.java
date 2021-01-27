@@ -562,6 +562,18 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
+    public void stopBlinks() {
+        mFrontEndMarketBlinkTimer.stop();
+        mFrontEndSailBlinkTimer.stop();
+        mFrontEndSleepBlinkTimer.stop();
+        mFrontEndFixShipBlinkTimer.stop();
+
+        blinkInventory(false);
+        blinkFlags(false);
+        blinkSleepButton(false);
+        blinkFixShipButton(false);
+    }
+
     public void blinkMarket() {
         mFrontEndMarketBlinkTimer.startTimer(500, 20);
     }
