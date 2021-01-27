@@ -5,11 +5,15 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class FrontEndHighScore extends FrontEndGeneric {
     private boolean currentlyShowEndResult = false;
+    private DecimalFormat mDecimalFormat;
 
     public FrontEndHighScore(MainActivity activity) {
         super(activity);
+        mDecimalFormat = new DecimalFormat("#,###");
         createEmptyScoreTable();
     }
 
@@ -32,16 +36,16 @@ public class FrontEndHighScore extends FrontEndGeneric {
                 message1 = mActivity.getString(R.string.GAME_RESULT_CAPACITY, mLogic.mCapacity);
                 message2 = mActivity.getString(R.string.YOUR_HIGHEST_CAPACITY, mLogic.mHighCapacity);
             } else {
-                message1 = mActivity.getString(R.string.GAME_RESULT_HIGH_SCORE, mLogic.calculateTotalValue());
-                message2 = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mLogic.mHighScore);
+                message1 = mActivity.getString(R.string.GAME_RESULT_HIGH_SCORE, mDecimalFormat.format((mLogic.calculateTotalValue())));
+                message2 = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mDecimalFormat.format(mLogic.mHighScore));
             }
         } else {
             if (findViewById(R.id.capacity_layout).getVisibility() == View.VISIBLE) {
                 message1 = mActivity.getString(R.string.YOUR_CURRENT_CAPACITY, mLogic.mCapacity);
                 message2 = mActivity.getString(R.string.YOUR_HIGHEST_CAPACITY, mLogic.mHighCapacity);
             } else {
-                message1 = mActivity.getString(R.string.YOUR_CURRENT_SCORE, mLogic.calculateTotalValue());
-                message2 = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mLogic.mHighScore);
+                message1 = mActivity.getString(R.string.YOUR_CURRENT_SCORE, mDecimalFormat.format(mLogic.calculateTotalValue()));
+                message2 = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mDecimalFormat.format(mLogic.mHighScore));
             }
         }
 
@@ -80,7 +84,7 @@ public class FrontEndHighScore extends FrontEndGeneric {
                 name.setBackgroundColor(color);
 
                 TextView score = (TextView) ((LinearLayout) table.getChildAt(i)).getChildAt(2);
-                score.setText(String.valueOf(oneScore.score));
+                score.setText(mDecimalFormat.format(oneScore.score));
                 score.setBackgroundColor(color);
             }
         }
