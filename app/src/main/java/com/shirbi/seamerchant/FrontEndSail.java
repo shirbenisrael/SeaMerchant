@@ -238,15 +238,37 @@ public class FrontEndSail extends FrontEndGeneric {
     private void showDangers() {
         Sail sail = mLogic.mSail;
 
-        findViewById(R.id.danger_night).setVisibility(sail.mNightSail ? View.VISIBLE : View.INVISIBLE);
+        int dangerCount = 1;
+
+        findViewById(R.id.danger_night).setVisibility(sail.mNightSail ? View.VISIBLE : View.GONE);
+        if (sail.mNightSail) {
+            dangerCount++;
+        }
 
         findViewById(R.id.danger_weather).setVisibility(sail.mSailWeather != Weather.GOOD_SAILING ?
-                View.VISIBLE : View.INVISIBLE);
+                View.VISIBLE : View.GONE);
         findViewById(R.id.danger_weather).setBackgroundResource(sail.mSailWeather.toSmallIcon());
+        if (sail.mSailWeather != Weather.GOOD_SAILING) {
+            dangerCount++;
+        }
 
-        findViewById(R.id.danger_broken_ship).setVisibility(sail.mBrokenShip ? View.VISIBLE : View.INVISIBLE);
+        findViewById(R.id.danger_broken_ship).setVisibility(sail.mBrokenShip ? View.VISIBLE : View.GONE);
+        if (sail.mBrokenShip) {
+            dangerCount++;
+        }
 
-        findViewById(R.id.danger_weight).setVisibility(sail.mTooLoaded ? View.VISIBLE : View.INVISIBLE);
+        findViewById(R.id.danger_weight).setVisibility(sail.mTooLoaded ? View.VISIBLE : View.GONE);
+        if (sail.mTooLoaded) {
+            dangerCount++;
+        }
+
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                (5.0f - dangerCount) / 2.0f
+        );
+        findViewById(R.id.danger_padding_end).setLayoutParams(param);
+        findViewById(R.id.danger_padding_start).setLayoutParams(param);
     }
 
     private void showTextViews() {
