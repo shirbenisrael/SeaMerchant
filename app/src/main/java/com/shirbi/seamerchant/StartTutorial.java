@@ -3,12 +3,14 @@ package com.shirbi.seamerchant;
 public class StartTutorial extends FrontEndGeneric {
     private FrontEnd mFrontEnd;
     private FrontEndMarket mFrontEndMarket;
+    private FrontEndSail mFrontEndSail;
     TutorialStage mStage;
 
     public StartTutorial(MainActivity activity) {
         super(activity);
         mFrontEnd = mActivity.mFrontEnd;
         mFrontEndMarket = mActivity.mFrontEndMarket;
+        mFrontEndSail = mActivity.mFrontEndSail;
         mStage = TutorialStage.STAGE_1;
     }
 
@@ -31,6 +33,7 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.setTutorialVisibility(true);
 
         mFrontEndMarket.showAllButton();
+        mFrontEndSail.showAllButtons();
     }
 
     public void showStage1() { // buy wheat in israel
@@ -72,6 +75,12 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_1:
                 return;
             case STAGE_2:
+                if (destination == State.TURKEY) {
+                    mLogic.initSail(destination);
+                    mFrontEnd.showWindow(Window.SAIL_WINDOW);
+                    mFrontEndSail.initSailRoute();
+                    mFrontEndSail.showOnlyStartSail();
+                }
         }
     }
 

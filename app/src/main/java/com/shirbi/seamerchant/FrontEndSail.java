@@ -151,7 +151,8 @@ public class FrontEndSail extends FrontEndGeneric {
             mProgress += (mLogic.getSailDuration(mLogic.mSail.mDestination) > 3) ? 1 : 2;
 
             if ((mProgress == 50) && mRealSail) {
-                if (mLogic.mSail.isSinkInSail()) {
+                if (mActivity.mIsStartTutorialActive) {
+                } else if (mLogic.mSail.isSinkInSail()) {
                     pauseSail();
                     mActivity.showSink();
                 } else if (mLogic.mSail.isShoalInSail()) {
@@ -365,6 +366,20 @@ public class FrontEndSail extends FrontEndGeneric {
         }
 
         showAlertDialogMessage(message, getString(R.string.DANGER_WEATHER_TITLE));
+    }
+
+    public void showAllButtons() {
+        findViewById(R.id.danger_and_text_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.guard_price).setVisibility(View.VISIBLE);
+        findViewById(R.id.guards_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.total_guard_cost).setVisibility(View.VISIBLE);
+    }
+
+    public void showOnlyStartSail() {
+        findViewById(R.id.danger_and_text_layout).setVisibility(View.INVISIBLE);
+        findViewById(R.id.guard_price).setVisibility(View.INVISIBLE);
+        findViewById(R.id.guards_layout).setVisibility(View.INVISIBLE);
+        findViewById(R.id.total_guard_cost).setVisibility(View.INVISIBLE);
     }
 
 }
