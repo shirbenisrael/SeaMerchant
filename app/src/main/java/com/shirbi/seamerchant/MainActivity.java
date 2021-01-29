@@ -247,6 +247,11 @@ public class MainActivity extends Activity {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
 
+        if (mIsStartTutorialActive) {
+            mStartTutorial.onSailEnd();
+            return;
+        }
+
         if (checkForNewMedal()) {
             return;
         }

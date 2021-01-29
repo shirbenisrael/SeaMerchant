@@ -66,8 +66,16 @@ public class StartTutorial extends FrontEndGeneric {
 
     public void showStage2() { // ship to turkey
         String string1 = "מחיר החיטה בתורכיה גבוה! בוא נפליג לשם!";
-        String string2 = "לחץ על הדגל של תורכיה כדי להפליג לשם";
+        String string2 = "לחץ על הדגל של תורכיה כדי להפליג.";
         mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkSail();
+    }
+
+    public void showStage3() { // sell wheat in turkey
+        String string1 = "הגענו לתוכיה! בוא נמכור את החיטה ביוקר!";
+        String string2 = "לחץ על כפתור החיטה כדי למכור אותה.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkMarket();
     }
 
     public void onFlagClick(State destination) {
@@ -91,6 +99,11 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
                 break;
+            case STAGE_3:
+                mLogic.initMarketDeal(goods);
+                mFrontEndMarket.onMarketClick();
+                mFrontEndMarket.showOnlySellAllButton();
+                break;
         }
     }
 
@@ -101,6 +114,15 @@ public class StartTutorial extends FrontEndGeneric {
                     mStage = TutorialStage.STAGE_2;
                     showStage2();
                 }
+                break;
+        }
+    }
+
+    public void onSailEnd() {
+        switch (mStage) {
+            case STAGE_2:
+                mStage = TutorialStage.STAGE_3;
+                showStage3();
                 break;
         }
     }

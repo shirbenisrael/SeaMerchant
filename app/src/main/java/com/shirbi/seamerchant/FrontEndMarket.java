@@ -78,4 +78,12 @@ public class FrontEndMarket extends FrontEndGeneric {
         findViewById(R.id.market_sell_all_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.market_buy_all_button).setVisibility(View.VISIBLE);
     }
+
+    public void showOnlySellAllButton() {
+        findViewById(R.id.market_plus_minus_layout).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_seek_bar).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_guards_capacity_layout).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_sell_all_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.market_buy_all_button).setVisibility(View.INVISIBLE);
+    }
 }
