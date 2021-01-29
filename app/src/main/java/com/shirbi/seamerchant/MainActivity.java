@@ -169,12 +169,12 @@ public class MainActivity extends Activity {
 
         State destination = mFrontEnd.viewToState(view);
 
-        if (mIsStartTutorialActive) {
-            mStartTutorial.onFlagClick(destination);
+        if (mLogic.getSailDuration(destination) == 0) {
             return;
         }
 
-        if (mLogic.getSailDuration(destination) == 0) {
+        if (mIsStartTutorialActive) {
+            mStartTutorial.onFlagClick(destination);
             return;
         }
 

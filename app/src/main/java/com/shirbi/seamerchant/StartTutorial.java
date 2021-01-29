@@ -17,7 +17,9 @@ public class StartTutorial extends FrontEndGeneric {
     public enum TutorialStage {
         STAGE_1, // buy wheat in israel
         STAGE_2, // ship to turkey
-        STAGE_3; // sell wheat in turkey
+        STAGE_3, // sell wheat in turkey
+        STAGE_4, // buy olives in turkey
+        STAGE_5; // ship to egypt
     }
 
     public void endTutorial() {
@@ -78,6 +80,27 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkMarket();
     }
 
+    public void showStage4() { // buy olives in turkey.
+        String string1 = "הזיתים בתורכיה זולים! כדאי לקנות!";
+        String string2 = "לחץ על כפתור הזיתים כדי לרכוש אותם.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkMarket();
+
+        mFrontEnd.setStateVisibility(State.EGYPT, true);
+
+        mFrontEnd.setGoodsVisibility(Goods.WHEAT, true);
+        mFrontEnd.setGoodsVisibility(Goods.OLIVES, true);
+
+        mLogic.mPriceTable.setPrice(State.TURKEY, Goods.OLIVES, 400);
+        mLogic.mPriceTable.setPrice(State.EGYPT, Goods.OLIVES, 650);
+        mLogic.mPriceTable.setPrice(State.ISRAEL, Goods.OLIVES, 350);
+        mLogic.mPriceTable.setPrice(State.EGYPT, Goods.WHEAT, 35);
+        mFrontEnd.showPrices();
+    }
+
+    public void showStage5() { // ship to egypt
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -89,6 +112,15 @@ public class StartTutorial extends FrontEndGeneric {
                     mFrontEndSail.initSailRoute();
                     mFrontEndSail.showOnlyStartSail();
                 }
+                break;
+            case STAGE_3:
+                mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את החיטה שלנו.", "לא כדאי");
+                mFrontEnd.blinkMarket();
+                break;
+            case STAGE_4:
+                mFrontEnd.showAlertDialogMessage("בוא נקנה קודם זיתים.", "לא כדאי");
+                mFrontEnd.blinkMarket();
+                break;
         }
     }
 
@@ -99,10 +131,23 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
                 break;
+            case STAGE_2:
+                mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
+                mFrontEnd.blinkSail();
+                break;
             case STAGE_3:
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
+                break;
+            case STAGE_4:
+                if (goods == Goods.WHEAT) {
+                    mFrontEnd.showAlertDialogMessage("אין טעם לקנות כאן חיטה. היא יקרה מדי.", "לא כדאי");
+                    break;
+                }
+                mLogic.initMarketDeal(goods);
+                mFrontEndMarket.onMarketClick();
+                mFrontEndMarket.showOnlyBuyAllButton();
                 break;
         }
     }
@@ -113,6 +158,18 @@ public class StartTutorial extends FrontEndGeneric {
                 if (mLogic.getInventory(Goods.WHEAT) == 100) {
                     mStage = TutorialStage.STAGE_2;
                     showStage2();
+                }
+                break;
+            case STAGE_3:
+                if (mLogic.getInventory(Goods.WHEAT) == 0) {
+                    mStage = TutorialStage.STAGE_4;
+                    showStage4();
+                }
+                break;
+            case STAGE_4:
+                if (mLogic.getInventory(Goods.OLIVES) > 0) {
+                    mStage = TutorialStage.STAGE_5;
+                    showStage5();
                 }
                 break;
         }
