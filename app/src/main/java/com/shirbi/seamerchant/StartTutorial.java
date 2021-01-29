@@ -24,7 +24,8 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_5, // ship to egypt with pirates and escape
         STAGE_6, // sell olives in egypt
         STAGE_7, // buy olives in egypt
-        STAGE_8;
+        STAGE_8, // sail to cyprus
+        STAGE_9, // sell wheat in cyprus
     }
 
     public void endTutorial() {
@@ -125,7 +126,7 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkMarket();
 
         mFrontEnd.setStateVisibility(State.CYPRUS, true);
-        mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.OLIVES, 350);
+        mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.OLIVES, 650);
         mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.WHEAT, 70);
         mFrontEnd.showPrices();
     }
@@ -135,6 +136,13 @@ public class StartTutorial extends FrontEndGeneric {
         String string2 = "לחץ על הדגל של קפריסין כדי להפליג.";
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkSail();
+    }
+
+    public void showStage9() { // sell wheat in cyprus
+        String string1 = "הגענו לקפריסין! בוא נמכור את החיטה ביוקר!";
+        String string2 = "לחץ על כפתור החיטה כדי למכור אותה.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkMarket();
     }
 
     public void onFlagClick(State destination) {
@@ -189,6 +197,10 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndSail.initSailRoute();
                 mFrontEndSail.showAllButtons();
                 break;
+            case STAGE_9:
+                mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג.", "לא כדאי");
+                mFrontEnd.blinkMarket();
+                break;
         }
     }
 
@@ -237,6 +249,18 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyFillCapacity();
+                break;
+            case STAGE_8:
+                mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
+                break;
+            case STAGE_9:
+                if (goods == Goods.OLIVES) {
+                    mFrontEnd.showAlertDialogMessage("בוא נמכור את החיטה.", "לא כדאי");
+                    break;
+                }
+                mLogic.initMarketDeal(goods);
+                mFrontEndMarket.onMarketClick();
+                mFrontEndMarket.showOnlySellAllButton();
         }
     }
 
@@ -284,6 +308,11 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_5:
                 mStage = TutorialStage.STAGE_6;
                 showStage6();
+                break;
+            case STAGE_8:
+                mStage = TutorialStage.STAGE_9;
+                showStage9();
+                break;
         }
     }
 
