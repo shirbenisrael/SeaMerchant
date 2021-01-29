@@ -99,6 +99,10 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void showStage5() { // ship to egypt
+        String string1 = "מחיר הזיתים במצרים גבוה! בוא נפליג לשם!";
+        String string2 = "לחץ על הדגל של מצרים כדי להפליג.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkSail();
     }
 
     public void onFlagClick(State destination) {
@@ -120,6 +124,16 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_4:
                 mFrontEnd.showAlertDialogMessage("בוא נקנה קודם זיתים.", "לא כדאי");
                 mFrontEnd.blinkMarket();
+                break;
+            case STAGE_5:
+                if (destination == State.ISRAEL) {
+                    mFrontEnd.showAlertDialogMessage("מחיר הזיתים בישראל נמוך מדי.", "לא כדאי");
+                    break;
+                }
+                mLogic.initSail(destination);
+                mFrontEnd.showWindow(Window.SAIL_WINDOW);
+                mFrontEndSail.initSailRoute();
+                mFrontEndSail.showOnlyStartSail();
                 break;
         }
     }
@@ -148,6 +162,9 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
+                break;
+            case STAGE_5:
+                mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
                 break;
         }
     }
