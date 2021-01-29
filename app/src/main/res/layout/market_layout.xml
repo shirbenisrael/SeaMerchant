@@ -143,6 +143,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/market_fill_capacity_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

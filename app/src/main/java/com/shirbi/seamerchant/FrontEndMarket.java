@@ -66,7 +66,8 @@ public class FrontEndMarket extends FrontEndGeneric {
     public void showAllButton() {
         findViewById(R.id.market_plus_minus_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.market_seek_bar).setVisibility(View.VISIBLE);
-        findViewById(R.id.market_guards_capacity_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.market_percentage_with_guards).setVisibility(View.VISIBLE);
+        findViewById(R.id.market_fill_capacity_button).setVisibility(View.VISIBLE);
         findViewById(R.id.market_sell_all_button).setVisibility(View.VISIBLE);
         findViewById(R.id.market_buy_all_button).setVisibility(View.VISIBLE);
     }
@@ -74,7 +75,8 @@ public class FrontEndMarket extends FrontEndGeneric {
     public void showOnlyBuyAllButton() {
         findViewById(R.id.market_plus_minus_layout).setVisibility(View.INVISIBLE);
         findViewById(R.id.market_seek_bar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_guards_capacity_layout).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_percentage_with_guards).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_fill_capacity_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.market_sell_all_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.market_buy_all_button).setVisibility(View.VISIBLE);
     }
@@ -82,8 +84,18 @@ public class FrontEndMarket extends FrontEndGeneric {
     public void showOnlySellAllButton() {
         findViewById(R.id.market_plus_minus_layout).setVisibility(View.INVISIBLE);
         findViewById(R.id.market_seek_bar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_guards_capacity_layout).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_percentage_with_guards).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_fill_capacity_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.market_sell_all_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.market_buy_all_button).setVisibility(View.INVISIBLE);
+    }
+
+    public void showOnlyFillCapacity() {
+        findViewById(R.id.market_plus_minus_layout).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_seek_bar).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_percentage_with_guards).setVisibility(View.INVISIBLE);
+        findViewById(R.id.market_fill_capacity_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.market_sell_all_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.market_buy_all_button).setVisibility(View.INVISIBLE);
     }
 }

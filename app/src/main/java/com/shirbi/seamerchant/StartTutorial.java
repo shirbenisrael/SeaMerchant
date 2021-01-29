@@ -23,7 +23,8 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_4, // buy olives in turkey
         STAGE_5, // ship to egypt with pirates and escape
         STAGE_6, // sell olives in egypt
-        STAGE_7;
+        STAGE_7, // buy olives in egypt
+        STAGE_8;
     }
 
     public void endTutorial() {
@@ -118,6 +119,18 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void showStage7() {
+        String string1 = "החיטה במצרים זולה! כדאי לקנות!";
+        String string2 = "לחץ על כפתור החיטה כדי לרכוש אותה.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkMarket();
+
+        mFrontEnd.setStateVisibility(State.CYPRUS, true);
+        mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.OLIVES, 350);
+        mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.WHEAT, 70);
+        mFrontEnd.showPrices();
+    }
+
+    public void showStage8() {
 
     }
 
@@ -153,6 +166,10 @@ public class StartTutorial extends FrontEndGeneric {
                 break;
             case STAGE_6:
                 mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את הזיתים שלנו.", "לא כדאי");
+                mFrontEnd.blinkMarket();
+                break;
+            case STAGE_7:
+                mFrontEnd.showAlertDialogMessage("בוא נקנה קודם חיטה.", "לא כדאי");
                 mFrontEnd.blinkMarket();
                 break;
         }
@@ -195,6 +212,14 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
                 break;
+            case STAGE_7:
+                if (goods == Goods.OLIVES) {
+                    mFrontEnd.showAlertDialogMessage("בוא נקנה חיטה.", "לא כדאי");
+                    break;
+                }
+                mLogic.initMarketDeal(goods);
+                mFrontEndMarket.onMarketClick();
+                mFrontEndMarket.showOnlyFillCapacity();
         }
     }
 
@@ -222,6 +247,12 @@ public class StartTutorial extends FrontEndGeneric {
                 if (mLogic.getInventory(Goods.OLIVES) == 0) {
                     mStage = TutorialStage.STAGE_7;
                     showStage7();
+                }
+                break;
+            case STAGE_7:
+                if (mLogic.getInventory(Goods.WHEAT) > 0) {
+                    mStage = TutorialStage.STAGE_8;
+                    showStage8();
                 }
                 break;
         }
