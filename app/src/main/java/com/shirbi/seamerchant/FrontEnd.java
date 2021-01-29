@@ -74,13 +74,14 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
-    private void showInventory() {
+    public void showInventory() {
         for (Goods goods: Goods.values()) {
             mFrontEndNumberAnimationInventory[goods.getValue()].changeNumber(mLogic.mInventory[goods.getValue()]);
         }
     }
 
-    private void showPrices(PriceTable priceTable) {
+    public void showPrices() {
+        PriceTable priceTable = mLogic.mPriceTable;
         LinearLayout statesLayout = findViewById(R.id.prices_layout);
         for (State state : State.values()) {
             LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
@@ -99,7 +100,7 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     public void showState() {
-        showPrices(mLogic.mPriceTable);
+        showPrices();
         showInventory();
 
         TextView textView;
@@ -726,5 +727,37 @@ public class FrontEnd extends FrontEndGeneric {
         String calculatorString =
                 "(" + destinationPrice + "-" + sourcePrice + ")X" + maxUnits + "=" + profit;
         ((TextView)findViewById(R.id.calculator)).setText(calculatorString);
+    }
+
+    // For Start Tutorial
+    public void setStateVisibility(State state, boolean isVisible) {
+        ((LinearLayout)findViewById(R.id.prices_layout)).getChildAt(state.getValue()).
+                setVisibility(isVisible? View.VISIBLE:View.INVISIBLE);
+    }
+
+    public void setGoodsVisibility(Goods goods, boolean isVisible) {
+        int visible = isVisible ? View.VISIBLE : View.INVISIBLE;
+
+        for (State state : State.values()) {
+            LinearLayout stateLayout =
+                    (LinearLayout)((LinearLayout) findViewById(R.id.prices_layout)).getChildAt(state.getValue());
+            stateLayout.getChildAt(goods.getValue() + 1).
+                    setVisibility(visible);
+        }
+
+        ((LinearLayout)findViewById(R.id.goods_buttons)).getChildAt(goods.getValue()).setVisibility(visible);
+    }
+
+    public void setCalculatorVisibility(boolean isVisible) {
+        findViewById(R.id.calculator).setVisibility(isVisible ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    public void setTutorialVisibility(boolean isVisible) {
+        findViewById(R.id.tutorial_button).setVisibility(isVisible ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    public void showTutorialStrings(String string1, String string2) {
+        ((TextView)findViewById((R.id.current_weather_text_view))).setText(string1);
+        ((TextView)findViewById((R.id.market_state_text_view))).setText(string2);
     }
 }

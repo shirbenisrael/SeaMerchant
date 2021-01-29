@@ -159,6 +159,12 @@ public class Logic {
 
     public NewDayEvent mNewDayEvent;
 
+    public void clearInventory() {
+        for (int i = 0 ; i < mInventory.length ; i++) {
+            mInventory[i] = 0;
+        }
+    }
+
     public void startNewGame() {
         mPriceTable.generateRandomPrices();
         mCash = hasMedal(Medal.TREASURE_5) ? START_GAME_CASH_WITH_MEDAL : START_GAME_CASH;
@@ -170,9 +176,7 @@ public class Logic {
         mWeather = START_WEATHER;
         mDamage = 0;
         mCapacity = hasMedal(Medal.CAPACITY_3) ? START_CAPACITY_WITH_MEDAL : START_CAPACITY;
-        for (int i = 0 ; i < mInventory.length ; i++) {
-            mInventory[i] = 0;
-        }
+        clearInventory();
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
         mIsFixOperationTakesTime = true;

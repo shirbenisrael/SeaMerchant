@@ -34,11 +34,14 @@ public class MainActivity extends Activity {
     FrontEndHighScore mFrontEndHighScore;
     FrontEndMedal mFrontEndMedal;
     FrontEndOpenWindow mFrontEndOpenWindow;
+    StartTutorial mStartTutorial;
 
     boolean mIsGameEnded = false;
     boolean mIsSoundEnable = false;
     boolean mIsFastAnimation = false;
     boolean mIsGoogleSignIn = false;
+
+    boolean mIsStartTutorialActive = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class MainActivity extends Activity {
         mFrontEndHighScore = new FrontEndHighScore(this);
         mFrontEndMedal = new FrontEndMedal(this);
         mFrontEndOpenWindow = new FrontEndOpenWindow(this);
+        mStartTutorial = new StartTutorial(this);
 
         mFrontEnd.showWindow(Window.OPEN_WINDOW);
         mFrontEndOpenWindow.startAnimate();
@@ -78,6 +82,13 @@ public class MainActivity extends Activity {
     public void onMarketClick(View view) {
         mFrontEnd.stopBlinks();
 
+        Goods goods = mFrontEnd.viewToGoods(view);
+
+        if (mIsStartTutorialActive) {
+            mStartTutorial.onMarketClick(goods);
+            return;
+        }
+
         if (!mLogic.canGoToMarket()) {
             playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.MARKET_CLOSED),
@@ -87,9 +98,7 @@ public class MainActivity extends Activity {
             return;
         }
 
-        Goods goods = mFrontEnd.viewToGoods(view);
         mLogic.initMarketDeal(goods);
-
         mFrontEndMarket.onMarketClick();
     }
 
@@ -143,7 +152,12 @@ public class MainActivity extends Activity {
         }
 
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
-        mFrontEnd.blinkButtons();
+
+        if (mIsStartTutorialActive) {
+            mStartTutorial.onMarketDealDoneClick();
+        } else {
+            mFrontEnd.blinkButtons();
+        }
     }
 
     public void onDealCancelClick(View view) {
@@ -154,6 +168,12 @@ public class MainActivity extends Activity {
         mFrontEnd.stopBlinks();
 
         State destination = mFrontEnd.viewToState(view);
+
+        if (mIsStartTutorialActive) {
+            mStartTutorial.onFlagClick(destination);
+            return;
+        }
+
         if (mLogic.getSailDuration(destination) == 0) {
             return;
         }
@@ -239,6 +259,9 @@ public class MainActivity extends Activity {
     }
 
     public void onSleepClick(View view) {
+        if (mIsStartTutorialActive) {
+            return;
+        }
         mFrontEnd.showSleepQuestion();
         mFrontEnd.showWindow(Window.SLEEP_WINDOW);
     }
@@ -507,6 +530,10 @@ public class MainActivity extends Activity {
     public void onBankClick(View view) {
         mFrontEnd.stopBlinks();
 
+        if (mIsStartTutorialActive) {
+            return;
+        }
+
         if (!mLogic.canGoToBank()) {
             playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.BANK_CLOSED),
@@ -572,6 +599,10 @@ public class MainActivity extends Activity {
     }
 
     public void onFixButtonClick(View view) {
+        if (mIsStartTutorialActive) {
+            return;
+        }
+
         if (mLogic.isShipBroken()) {
             if (!mLogic.isEnoughTimeForFixShip()) {
                 playSound(R.raw.cannot);
@@ -676,6 +707,9 @@ public class MainActivity extends Activity {
     }
 
     public void onTutorialClick(View view) {
+        if (mIsStartTutorialActive) {
+            return;
+        }
         mFrontEnd.showTutorial();
     }
 
@@ -874,6 +908,17 @@ public class MainActivity extends Activity {
             mFrontEndHighScore.showScores(Logic.ScoreType.HIGH_CAPACITY_TABLE_INDEX);
         } else {
             mFrontEndHighScore.showScores(Logic.ScoreType.HIGH_SCORE_TABLE_INDEX);
+        }
+    }
+
+    public void onStartTutorialButtonClick(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+        if (!mIsStartTutorialActive) {
+            mIsStartTutorialActive = true;
+            mStartTutorial.showStage1();
+        } else {
+            mIsStartTutorialActive = false;
+            mStartTutorial.endTutorial();
         }
     }
 }
