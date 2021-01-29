@@ -93,4 +93,15 @@ public class FrontEndPirates extends FrontEndGeneric {
         findViewById(R.id.negotiate_button).setVisibility(View.GONE);
         findViewById(R.id.pirates_tip).setVisibility(View.INVISIBLE);
     }
+
+    public void showAllButtons() {
+        findViewById(R.id.escape_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.negotiate_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.attack_button).setVisibility(View.VISIBLE);
+    }
+    public void showOnlyEscape() {
+        findViewById(R.id.escape_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.negotiate_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.attack_button).setVisibility(View.INVISIBLE);
+    }
 }

@@ -152,6 +152,7 @@ public class FrontEndSail extends FrontEndGeneric {
 
             if ((mProgress == 50) && mRealSail) {
                 if (mActivity.mIsStartTutorialActive) {
+                    mActivity.mStartTutorial.onMiddleSail();
                 } else if (mLogic.mSail.isSinkInSail()) {
                     pauseSail();
                     mActivity.showSink();
@@ -186,7 +187,7 @@ public class FrontEndSail extends FrontEndGeneric {
         }
     };
 
-    private void pauseSail() {
+    public void pauseSail() {
         mTimer.cancel();
         mTimer = null;
         mTimerTask.cancel();

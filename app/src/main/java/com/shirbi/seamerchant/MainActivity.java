@@ -414,7 +414,7 @@ public class MainActivity extends Activity {
     }
 
     public void onEscapeClick(View view) {
-        if (mLogic.mSail.isEscapePiratesSucceeds()) {
+        if (mIsStartTutorialActive || mLogic.mSail.isEscapePiratesSucceeds()) {
             playSound(R.raw.escape);
             mFrontEnd.showWindow(Window.ESCAPE_WINDOW);
         } else {

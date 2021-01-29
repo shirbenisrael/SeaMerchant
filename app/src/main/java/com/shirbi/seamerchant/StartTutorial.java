@@ -4,6 +4,7 @@ public class StartTutorial extends FrontEndGeneric {
     private FrontEnd mFrontEnd;
     private FrontEndMarket mFrontEndMarket;
     private FrontEndSail mFrontEndSail;
+    private FrontEndPirates mFrontEndPirates;
     TutorialStage mStage;
 
     public StartTutorial(MainActivity activity) {
@@ -11,6 +12,7 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd = mActivity.mFrontEnd;
         mFrontEndMarket = mActivity.mFrontEndMarket;
         mFrontEndSail = mActivity.mFrontEndSail;
+        mFrontEndPirates = mActivity.mFrontEndPirates;
         mStage = TutorialStage.STAGE_1;
     }
 
@@ -36,6 +38,7 @@ public class StartTutorial extends FrontEndGeneric {
 
         mFrontEndMarket.showAllButton();
         mFrontEndSail.showAllButtons();
+        mFrontEndPirates.showAllButtons();
     }
 
     public void showStage1() { // buy wheat in israel
@@ -197,6 +200,16 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_2:
                 mStage = TutorialStage.STAGE_3;
                 showStage3();
+                break;
+        }
+    }
+
+    public void onMiddleSail() {
+        switch (mStage) {
+            case STAGE_5:
+                mFrontEndSail.pauseSail();
+                mActivity.showPirates();
+                mFrontEndPirates.showOnlyEscape();
                 break;
         }
     }
