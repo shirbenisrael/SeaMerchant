@@ -131,7 +131,10 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void showStage8() {
-
+        String string1 = "מחיר החיטה בקפריסין גבוה! בוא נפליג לשם!";
+        String string2 = "לחץ על הדגל של קפריסין כדי להפליג.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkSail();
     }
 
     public void onFlagClick(State destination) {
@@ -171,6 +174,20 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_7:
                 mFrontEnd.showAlertDialogMessage("בוא נקנה קודם חיטה.", "לא כדאי");
                 mFrontEnd.blinkMarket();
+                break;
+            case STAGE_8:
+                if (destination == State.ISRAEL) {
+                    mFrontEnd.showAlertDialogMessage("מחיר החיטה ביוון גבוה יותר.", "לא כדאי");
+                    break;
+                }
+                if (destination == State.TURKEY) {
+                    mFrontEnd.showAlertDialogMessage("מאוחר מדי להפלגה כה ארוכה.", "לא כדאי");
+                    break;
+                }
+                mLogic.initSail(destination);
+                mFrontEnd.showWindow(Window.SAIL_WINDOW);
+                mFrontEndSail.initSailRoute();
+                mFrontEndSail.showAllButtons();
                 break;
         }
     }
@@ -278,5 +295,16 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndPirates.showOnlyEscape();
                 break;
         }
+    }
+
+    public boolean checkIfCanSail() {
+        switch (mStage) {
+            case STAGE_8:
+                if (mLogic.mSail.mSelectedNumGuardShips < 5) {
+                    mFrontEnd.showAlertDialogMessage("הים שורץ שודדים. בוא נשכור 5 ספינות משמר.", "לא כדאי");
+                    return false;
+                }
+        }
+        return  true;
     }
 }

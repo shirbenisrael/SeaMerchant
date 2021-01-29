@@ -238,6 +238,11 @@ public class MainActivity extends Activity {
     }
 
     public void onSailClick(View view) {
+        if (mIsStartTutorialActive) {
+            if (!mStartTutorial.checkIfCanSail()) {
+                return;
+            }
+        }
         playSound(R.raw.sail);
         mLogic.startSail();
         mFrontEndSail.startSail();
