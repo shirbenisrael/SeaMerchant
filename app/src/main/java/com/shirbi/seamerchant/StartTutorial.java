@@ -21,7 +21,9 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_2, // ship to turkey
         STAGE_3, // sell wheat in turkey
         STAGE_4, // buy olives in turkey
-        STAGE_5; // ship to egypt
+        STAGE_5, // ship to egypt with pirates and escape
+        STAGE_6, // sell olives in egypt
+        STAGE_7;
     }
 
     public void endTutorial() {
@@ -108,6 +110,17 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkSail();
     }
 
+    public void showStage6() { // sell olives in egypt
+        String string1 = "הגענו למצרים! בוא נמכור את הזיתים ביוקר!";
+        String string2 = "לחץ על כפתור הזיתים כדי למכור אותם.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkMarket();
+    }
+
+    public void showStage7() {
+
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -137,6 +150,10 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
                 mFrontEndSail.showOnlyStartSail();
+                break;
+            case STAGE_6:
+                mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את הזיתים שלנו.", "לא כדאי");
+                mFrontEnd.blinkMarket();
                 break;
         }
     }
@@ -169,6 +186,15 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_5:
                 mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
                 break;
+            case STAGE_6:
+                if (goods == Goods.WHEAT) {
+                    mFrontEnd.showAlertDialogMessage("בוא נמכור קודם כל את הזיתים.", "לא כדאי");
+                    break;
+                }
+                mLogic.initMarketDeal(goods);
+                mFrontEndMarket.onMarketClick();
+                mFrontEndMarket.showOnlySellAllButton();
+                break;
         }
     }
 
@@ -192,6 +218,12 @@ public class StartTutorial extends FrontEndGeneric {
                     showStage5();
                 }
                 break;
+            case STAGE_6:
+                if (mLogic.getInventory(Goods.OLIVES) == 0) {
+                    mStage = TutorialStage.STAGE_7;
+                    showStage7();
+                }
+                break;
         }
     }
 
@@ -201,6 +233,9 @@ public class StartTutorial extends FrontEndGeneric {
                 mStage = TutorialStage.STAGE_3;
                 showStage3();
                 break;
+            case STAGE_5:
+                mStage = TutorialStage.STAGE_6;
+                showStage6();
         }
     }
 
