@@ -294,6 +294,11 @@ public class StartTutorial extends FrontEndGeneric {
                 mActivity.showPirates();
                 mFrontEndPirates.showOnlyEscape();
                 break;
+            case STAGE_8:
+                mFrontEndSail.pauseSail();
+                mActivity.showPirates();
+                mFrontEndPirates.showOnlyAttack();
+                break;
         }
     }
 
@@ -306,5 +311,14 @@ public class StartTutorial extends FrontEndGeneric {
                 }
         }
         return  true;
+    }
+
+    public void attackPirates() {
+        mLogic.mSail.mPiratesDamage = 0;
+        mLogic.mSail.mBattleResult = Sail.BattleResult.WIN_AND_TREASURE;
+        mLogic.mSail.mPiratesTreasure = 1000;
+        mLogic.mCash += mLogic.mSail.mPiratesTreasure;
+        mFrontEndPirates.showWinPiratesMessage();
+        mFrontEnd.showWindow(Window.PIRATES_ATTACK_WINDOW);
     }
 }

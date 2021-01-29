@@ -409,7 +409,14 @@ public class MainActivity extends Activity {
 
     public void onAttackClick(View view) {
         playSound(R.raw.battle);
+
+        if (mIsStartTutorialActive) {
+            mStartTutorial.attackPirates();
+            return;
+        }
+
         mLogic.mSail.calculateBattleResult();
+
         if (mLogic.mSail.mBattleResult == Sail.BattleResult.LOSE) {
             mFrontEndPirates.showLoseToPiratesMessage();
         } else {
