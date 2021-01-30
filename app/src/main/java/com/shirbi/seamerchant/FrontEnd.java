@@ -32,6 +32,7 @@ public class FrontEnd extends FrontEndGeneric {
     FrontEndTimer mFrontEndSailBlinkTimer;
     FrontEndTimer mFrontEndSleepBlinkTimer;
     FrontEndTimer mFrontEndFixShipBlinkTimer;
+    FrontEndTimer mFrontEndBankBlinkTimer;
 
     FrontEndNumberAnimation mFrontEndNumberAnimationCash;
     FrontEndNumberAnimation mFrontEndNumberAnimationBank;
@@ -43,6 +44,7 @@ public class FrontEnd extends FrontEndGeneric {
         mFrontEndSailBlinkTimer = new FrontEndTimer(this);
         mFrontEndSleepBlinkTimer = new FrontEndTimer(this);
         mFrontEndFixShipBlinkTimer = new FrontEndTimer(this);
+        mFrontEndBankBlinkTimer = new FrontEndTimer(this);
 
         mFrontEndNumberAnimationCash = new FrontEndNumberAnimation(mActivity, R.id.wide_cash_button, R.string.MONEY_STRING);
         mFrontEndNumberAnimationBank = new FrontEndNumberAnimation(mActivity, R.id.wide_bank_button, R.string.MONEY_STRING);
@@ -551,6 +553,13 @@ public class FrontEnd extends FrontEndGeneric {
         findViewById(R.id.wide_fix_button).setBackgroundResource(backGroundId);
     }
 
+    private void blinkBankButton(boolean isRed) {
+        int colorId = isRed ? R.color.red : R.color.black;
+        @ColorInt int color = mActivity.getColor(colorId);
+        ((Button)findViewById(R.id.wide_bank_button)).setTextColor(color);
+        ((Button)findViewById(R.id.wide_cash_button)).setTextColor(color);
+    }
+
     public void timerBlinked(FrontEndTimer timer, int countDown) {
         if (timer == mFrontEndMarketBlinkTimer) {
             blinkInventory(countDown % 2 != 0);
@@ -560,7 +569,10 @@ public class FrontEnd extends FrontEndGeneric {
             blinkSleepButton(countDown % 2 != 0);
         } else if (timer == mFrontEndFixShipBlinkTimer) {
             blinkFixShipButton(countDown % 2 != 0);
+        } else if (timer == mFrontEndBankBlinkTimer) {
+            blinkBankButton(countDown % 2 != 0);
         }
+
     }
 
     public void stopBlinks() {
@@ -568,11 +580,17 @@ public class FrontEnd extends FrontEndGeneric {
         mFrontEndSailBlinkTimer.stop();
         mFrontEndSleepBlinkTimer.stop();
         mFrontEndFixShipBlinkTimer.stop();
+        mFrontEndBankBlinkTimer.stop();
 
         blinkInventory(false);
         blinkFlags(false);
         blinkSleepButton(false);
         blinkFixShipButton(false);
+        blinkBankButton(false);
+    }
+
+    public void blinkBank() {
+        mFrontEndBankBlinkTimer.startTimer(500, 20);
     }
 
     public void blinkMarket() {

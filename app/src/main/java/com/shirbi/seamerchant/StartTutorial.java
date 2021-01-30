@@ -26,6 +26,7 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_7, // buy olives in egypt
         STAGE_8, // sail to cyprus
         STAGE_9, // sell wheat in cyprus
+        STAGE_10, // go to bank
     }
 
     public void endTutorial() {
@@ -145,6 +146,13 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkMarket();
     }
 
+    public void showStage10() { // go to bank
+        String string1 = "בוא נפקיד את הכסף בבנק לפני שנלך לישון.";
+        String string2 = "לחץ על כפתור הבנק בשביל להפקיד את הכסף";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkBank();
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -200,6 +208,10 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_9:
                 mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג.", "לא כדאי");
                 mFrontEnd.blinkMarket();
+                break;
+            case STAGE_10:
+                mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג. נלך לבנק.", "לא כדאי");
+                mFrontEnd.blinkBank();
                 break;
         }
     }
@@ -261,6 +273,11 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
+                break;
+            case STAGE_10:
+                mFrontEnd.showAlertDialogMessage("מאוחר מדי לקניות. נלך לבנק.", "לא כדאי");
+                mFrontEnd.blinkBank();
+                break;
         }
     }
 
@@ -294,6 +311,12 @@ public class StartTutorial extends FrontEndGeneric {
                 if (mLogic.getInventory(Goods.WHEAT) > 0) {
                     mStage = TutorialStage.STAGE_8;
                     showStage8();
+                }
+                break;
+            case STAGE_9:
+                if (mLogic.getInventory(Goods.WHEAT) == 0) {
+                    mStage = TutorialStage.STAGE_10;
+                    showStage10();
                 }
                 break;
         }
