@@ -80,6 +80,8 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = "החיטה בישראל זולה! כדאי לקנות!";
         String string2 = "לחץ על כפתור החיטה כדי לרכוש אותה";
         mFrontEnd.showTutorialStrings(string1, string2);
+
+        mFrontEnd.blinkMarket();
     }
 
     public void showStage2() { // ship to turkey
