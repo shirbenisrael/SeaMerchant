@@ -174,6 +174,7 @@ public class StartTutorial extends FrontEndGeneric {
                     mFrontEnd.showWindow(Window.SAIL_WINDOW);
                     mFrontEndSail.initSailRoute();
                     mFrontEndSail.showOnlyStartSail();
+                    mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה לתורכיה");
                 }
                 break;
             case STAGE_3:
@@ -193,6 +194,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
                 mFrontEndSail.showOnlyStartSail();
+                mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה למצרים");
                 break;
             case STAGE_6:
                 mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את הזיתים שלנו.", "לא כדאי");
@@ -215,6 +217,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
                 mFrontEndSail.showAllButtons();
+                mFrontEnd.showAlertDialogMessage("לחץ על כפתור 5 כדי לשכור ספינות משמר ואז על הוי הירוק כדאי לצאת לדרך.", "הפלגה לקפריסין");
                 break;
             case STAGE_9:
                 mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג.", "לא כדאי");
@@ -233,6 +236,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
+                mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית חיטה");
                 break;
             case STAGE_2:
                 mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
@@ -242,6 +246,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
+                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת חיטה");
                 break;
             case STAGE_4:
                 if (goods == Goods.WHEAT) {
@@ -251,6 +256,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
+                mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית זיתים");
                 break;
             case STAGE_5:
                 mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
@@ -263,6 +269,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
+                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת זיתים");
                 break;
             case STAGE_7:
                 if (goods == Goods.OLIVES) {
@@ -272,6 +279,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyFillCapacity();
+                mFrontEnd.showAlertDialogMessage("לחץ על -קיבולת מלאה- כדי למלא את הספינה בהתאם לקיבולת ואז על כפתור וי ירוק.", "קנית חיטה");
                 break;
             case STAGE_8:
                 mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
@@ -284,6 +292,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
+                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת חיטה");
                 break;
             case STAGE_10:
                 mFrontEnd.showAlertDialogMessage("מאוחר מדי לקניות. נלך לבנק.", "לא כדאי");
