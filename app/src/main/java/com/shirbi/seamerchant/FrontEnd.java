@@ -794,5 +794,7 @@ public class FrontEnd extends FrontEndGeneric {
     public void showTutorialStrings(String string1, String string2) {
         ((TextView)findViewById((R.id.current_weather_text_view))).setText(string1);
         ((TextView)findViewById((R.id.market_state_text_view))).setText(string2);
+
+        showAlertDialogMessage(string1 +  " " + string2, "הדרכה" );
     }
 }
