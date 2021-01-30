@@ -40,6 +40,10 @@ public class StartTutorial extends FrontEndGeneric {
 
         mFrontEnd.setCalculatorVisibility(true);
         mFrontEnd.setTutorialVisibility(true);
+        mFrontEnd.setBankVisibility(true);
+        mFrontEnd.setFixVisibility(true);
+        mFrontEnd.setSleepVisibility(true);
+        mFrontEnd.setCapacityVisibility(true);
 
         mFrontEndMarket.showAllButton();
         mFrontEndSail.showAllButtons();
@@ -61,6 +65,10 @@ public class StartTutorial extends FrontEndGeneric {
 
         mFrontEnd.setCalculatorVisibility(false);
         mFrontEnd.setTutorialVisibility(false);
+        mFrontEnd.setBankVisibility(false);
+        mFrontEnd.setFixVisibility(false);
+        mFrontEnd.setSleepVisibility(false);
+        mFrontEnd.setCapacityVisibility(false);
 
         mLogic.mPriceTable.setPrice(State.ISRAEL, Goods.WHEAT, 50);
         mLogic.mPriceTable.setPrice(State.TURKEY, Goods.WHEAT, 60);
@@ -150,6 +158,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = "בוא נפקיד את הכסף בבנק לפני שנלך לישון.";
         String string2 = "לחץ על כפתור הבנק בשביל להפקיד את הכסף";
         mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.setBankVisibility(true);
         mFrontEnd.blinkBank();
     }
 

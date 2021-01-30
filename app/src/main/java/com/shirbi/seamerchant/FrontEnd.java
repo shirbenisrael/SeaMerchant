@@ -774,6 +774,23 @@ public class FrontEnd extends FrontEndGeneric {
         setViewEnable(R.id.tutorial_button, isVisible);
     }
 
+    public void setBankVisibility(boolean isVisible) {
+        setViewEnable(R.id.wide_cash_button, isVisible);
+        setViewEnable(R.id.wide_bank_button, isVisible);
+    }
+
+    public void setSleepVisibility(boolean isVisible) {
+        setViewEnable(R.id.wide_sleep_button, isVisible);
+    }
+
+    public void setFixVisibility(boolean isVisible) {
+        setViewEnable(R.id.wide_fix_button, isVisible);
+    }
+
+    public void setCapacityVisibility(boolean isVisible) {
+        setViewEnable(R.id.wide_capacity_button, isVisible);
+    }
+
     public void showTutorialStrings(String string1, String string2) {
         ((TextView)findViewById((R.id.current_weather_text_view))).setText(string1);
         ((TextView)findViewById((R.id.market_state_text_view))).setText(string2);
