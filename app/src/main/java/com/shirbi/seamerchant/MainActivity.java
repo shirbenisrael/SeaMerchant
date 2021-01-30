@@ -318,6 +318,10 @@ public class MainActivity extends Activity {
     }
 
     public void startNewGame() {
+        if (mIsStartTutorialActive) {
+            mStartTutorial.endTutorial();
+            mIsStartTutorialActive = false;
+        }
         playSound(R.raw.new_day);
         mLogic.startNewGame();
         mFrontEnd.showWindow(Window.WEATHER_WINDOW);

@@ -48,9 +48,12 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEndMarket.showAllButton();
         mFrontEndSail.showAllButtons();
         mFrontEndPirates.showAllButtons();
+
+        mFrontEnd.showState();
     }
 
     public void showStage1() { // buy wheat in israel
+        mStage = TutorialStage.STAGE_1;
         mLogic.startNewGame();
 
         mFrontEnd.setStateVisibility(State.EGYPT, false);
