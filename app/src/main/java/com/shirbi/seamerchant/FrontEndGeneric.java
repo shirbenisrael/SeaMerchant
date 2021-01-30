@@ -85,4 +85,34 @@ public class FrontEndGeneric {
     public void timerBlinked(FrontEndTimer timer, int countDown) {
         throw new IllegalStateException("Unexpected timer blink");
     }
+
+    protected void disableButton(View view) {
+        view.setAlpha(0.3f);
+        view.setEnabled(false);
+    }
+
+    protected void enableButton(View view) {
+        view.setAlpha(1.0f);
+        view.setEnabled(true);
+    }
+
+    protected void setViewEnable(View view, boolean isEnable) {
+        if (isEnable) {
+            enableButton(view);
+        } else {
+            disableButton(view);
+        }
+    }
+
+    protected void setViewEnable(@IdRes int id, boolean isEnable) {
+        setViewEnable(findViewById(id), isEnable);
+    }
+
+    protected void disableButton(@IdRes int id) {
+        setViewEnable(id, false);
+    }
+
+    protected void enableButton(@IdRes int id) {
+        setViewEnable(id, true);
+    }
 }

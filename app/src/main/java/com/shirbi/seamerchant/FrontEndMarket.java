@@ -5,6 +5,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.annotation.IdRes;
+
 public class FrontEndMarket extends FrontEndGeneric {
     public FrontEndMarket(MainActivity activity) {
         super(activity);
@@ -64,38 +66,50 @@ public class FrontEndMarket extends FrontEndGeneric {
     }
 
     public void showAllButton() {
-        findViewById(R.id.market_plus_minus_layout).setVisibility(View.VISIBLE);
-        findViewById(R.id.market_seek_bar).setVisibility(View.VISIBLE);
-        findViewById(R.id.market_percentage_with_guards).setVisibility(View.VISIBLE);
-        findViewById(R.id.market_fill_capacity_button).setVisibility(View.VISIBLE);
-        findViewById(R.id.market_sell_all_button).setVisibility(View.VISIBLE);
-        findViewById(R.id.market_buy_all_button).setVisibility(View.VISIBLE);
+        enableButton(R.id.market_plus_10);
+        enableButton(R.id.market_plus_1);
+        enableButton(R.id.market_minus_1);
+        enableButton(R.id.market_minus_10);
+        enableButton(R.id.market_seek_bar);
+        enableButton(R.id.market_percentage_with_guards);
+        enableButton(R.id.market_fill_capacity_button);
+        enableButton(R.id.market_sell_all_button);
+        enableButton(R.id.market_buy_all_button);
     }
 
     public void showOnlyBuyAllButton() {
-        findViewById(R.id.market_plus_minus_layout).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_seek_bar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_percentage_with_guards).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_fill_capacity_button).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_sell_all_button).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_buy_all_button).setVisibility(View.VISIBLE);
+        disableButton(R.id.market_percentage_with_guards);
+        disableButton(R.id.market_plus_10);
+        disableButton(R.id.market_plus_1);
+        disableButton(R.id.market_minus_1);
+        disableButton(R.id.market_minus_10);
+        disableButton(R.id.market_seek_bar);
+        disableButton(R.id.market_fill_capacity_button);
+        disableButton(R.id.market_sell_all_button);
+        enableButton(R.id.market_buy_all_button);
     }
 
     public void showOnlySellAllButton() {
-        findViewById(R.id.market_plus_minus_layout).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_seek_bar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_percentage_with_guards).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_fill_capacity_button).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_sell_all_button).setVisibility(View.VISIBLE);
-        findViewById(R.id.market_buy_all_button).setVisibility(View.INVISIBLE);
+        disableButton(R.id.market_percentage_with_guards);
+        disableButton(R.id.market_plus_10);
+        disableButton(R.id.market_plus_1);
+        disableButton(R.id.market_minus_1);
+        disableButton(R.id.market_minus_10);
+        disableButton(R.id.market_seek_bar);
+        disableButton(R.id.market_fill_capacity_button);
+        enableButton(R.id.market_sell_all_button);
+        disableButton(R.id.market_buy_all_button);
     }
 
     public void showOnlyFillCapacity() {
-        findViewById(R.id.market_plus_minus_layout).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_seek_bar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_percentage_with_guards).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_fill_capacity_button).setVisibility(View.VISIBLE);
-        findViewById(R.id.market_sell_all_button).setVisibility(View.INVISIBLE);
-        findViewById(R.id.market_buy_all_button).setVisibility(View.INVISIBLE);
+        disableButton(R.id.market_percentage_with_guards);
+        disableButton(R.id.market_plus_10);
+        disableButton(R.id.market_plus_1);
+        disableButton(R.id.market_minus_1);
+        disableButton(R.id.market_minus_10);
+        disableButton(R.id.market_seek_bar);
+        enableButton(R.id.market_fill_capacity_button);
+        disableButton(R.id.market_sell_all_button);
+        disableButton(R.id.market_buy_all_button);
     }
 }

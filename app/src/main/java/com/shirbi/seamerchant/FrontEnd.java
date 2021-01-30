@@ -763,15 +763,15 @@ public class FrontEnd extends FrontEndGeneric {
                     setVisibility(visible);
         }
 
-        ((LinearLayout)findViewById(R.id.goods_buttons)).getChildAt(goods.getValue()).setVisibility(visible);
+        setViewEnable(((LinearLayout)findViewById(R.id.goods_buttons)).getChildAt(goods.getValue()), isVisible);
     }
 
     public void setCalculatorVisibility(boolean isVisible) {
-        findViewById(R.id.calculator).setVisibility(isVisible ? View.VISIBLE : View.INVISIBLE);
+        setViewEnable(R.id.calculator, isVisible);
     }
 
     public void setTutorialVisibility(boolean isVisible) {
-        findViewById(R.id.tutorial_button).setVisibility(isVisible ? View.VISIBLE : View.INVISIBLE);
+        setViewEnable(R.id.tutorial_button, isVisible);
     }
 
     public void showTutorialStrings(String string1, String string2) {
