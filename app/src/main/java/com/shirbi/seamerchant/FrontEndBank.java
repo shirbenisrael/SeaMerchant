@@ -45,4 +45,28 @@ public class FrontEndBank extends FrontEndGeneric {
         SeekBar seekBar = (SeekBar)findViewById(R.id.bank_seek_bar);
         seekBar.setProgress(mLogic.mBankDeal.mDeposit);
     }
+
+    public void showOnlyDepositAll() {
+        enableButton(R.id.bank_deposit_all_button);
+        disableButton(R.id.bank_cash_for_guards_button);
+        disableButton(R.id.bank_draw_all_button);
+        disableButton(R.id.bank_plus_10000_button);
+        disableButton(R.id.bank_plus_1000_button);
+        disableButton(R.id.bank_minus_1000_button);
+        disableButton(R.id.bank_minus_10000_button);
+        disableButton(R.id.bank_seek_bar);
+        disableButton(R.id.bank_cancel_button);
+    }
+
+    public void showAllButtons() {
+        enableButton(R.id.bank_deposit_all_button);
+        enableButton(R.id.bank_cash_for_guards_button);
+        enableButton(R.id.bank_draw_all_button);
+        enableButton(R.id.bank_plus_10000_button);
+        enableButton(R.id.bank_plus_1000_button);
+        enableButton(R.id.bank_minus_1000_button);
+        enableButton(R.id.bank_minus_10000_button);
+        enableButton(R.id.bank_seek_bar);
+        enableButton(R.id.bank_cancel_button);
+    }
 }

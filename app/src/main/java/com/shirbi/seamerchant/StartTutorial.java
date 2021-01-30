@@ -5,6 +5,7 @@ public class StartTutorial extends FrontEndGeneric {
     private FrontEndMarket mFrontEndMarket;
     private FrontEndSail mFrontEndSail;
     private FrontEndPirates mFrontEndPirates;
+    private FrontEndBank mFrontEndBank;
     TutorialStage mStage;
 
     public StartTutorial(MainActivity activity) {
@@ -13,6 +14,7 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEndMarket = mActivity.mFrontEndMarket;
         mFrontEndSail = mActivity.mFrontEndSail;
         mFrontEndPirates = mActivity.mFrontEndPirates;
+        mFrontEndBank = mActivity.mFrontEndBank;
         mStage = TutorialStage.STAGE_1;
     }
 
@@ -48,6 +50,7 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEndMarket.showAllButton();
         mFrontEndSail.showAllButtons();
         mFrontEndPirates.showAllButtons();
+        mFrontEndBank.showAllButtons();
 
         mFrontEnd.showState();
     }
@@ -373,6 +376,18 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndSail.pauseSail();
                 mActivity.showPirates();
                 mFrontEndPirates.showOnlyAttack();
+                break;
+        }
+    }
+
+    public void onBankClick() {
+        switch (mStage) {
+            case STAGE_10:
+                mLogic.initBankDeal();
+                mFrontEnd.showWindow(Window.BANK_WINDOW);
+                mFrontEndBank.onBankClick();
+                mFrontEndBank.showOnlyDepositAll();
+                mFrontEnd.showAlertDialogMessage("להפקדה - לחץ על -הפקד הכל- ואז על הוי הירוק.", "הפקדה בבנק");
                 break;
         }
     }

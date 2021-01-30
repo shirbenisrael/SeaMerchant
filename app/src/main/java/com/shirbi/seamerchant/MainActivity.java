@@ -552,6 +552,7 @@ public class MainActivity extends Activity {
         mFrontEnd.stopBlinks();
 
         if (mIsStartTutorialActive) {
+            mStartTutorial.onBankClick();
             return;
         }
 
