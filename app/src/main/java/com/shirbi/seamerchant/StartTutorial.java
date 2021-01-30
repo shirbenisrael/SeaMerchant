@@ -369,7 +369,7 @@ public class StartTutorial extends FrontEndGeneric {
         switch (mStage) {
             case STAGE_8:
                 if (mLogic.mSail.mSelectedNumGuardShips < 5) {
-                    mFrontEnd.showAlertDialogMessage("הים שורץ שודדים. בוא נשכור 5 ספינות משמר.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage("הים שורץ שודדים. בוא נשכור 5 ספינות משמר. לחץ על כפתור ה-5.", "לא כדאי");
                     return false;
                 }
         }
