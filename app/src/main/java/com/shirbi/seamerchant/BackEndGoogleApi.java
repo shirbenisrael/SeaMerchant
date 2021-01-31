@@ -113,8 +113,10 @@ public class BackEndGoogleApi {
                                 LeaderboardScore temp = it.next();
                                 int score = (int) temp.getRawScore();
                                 int rank = (int) temp.getRank();
-                                String name = temp.getScoreHolderDisplayName();
-                                mLogic.setCenterScore(rank, name, score, i, scoreType);
+                                if (rank != LeaderboardScore.LEADERBOARD_RANK_UNKNOWN) {
+                                    String name = temp.getScoreHolderDisplayName();
+                                    mLogic.setCenterScore(rank, name, score, i, scoreType);
+                                }
                             }
 
                             scoreBuffer.release();
@@ -142,9 +144,11 @@ public class BackEndGoogleApi {
                                 LeaderboardScore temp = it.next();
                                 int score = (int) temp.getRawScore();
                                 int rank = (int) temp.getRank();
-                                String name = temp.getScoreHolderDisplayName();
-                                mLogic.setTopScore(rank, name, score, scoreType);
-                                mActivity.mFrontEndHighScore.fillScores();
+                                if (rank != LeaderboardScore.LEADERBOARD_RANK_UNKNOWN) {
+                                    String name = temp.getScoreHolderDisplayName();
+                                    mLogic.setTopScore(rank, name, score, scoreType);
+                                    mActivity.mFrontEndHighScore.fillScores();
+                                }
                             }
 
                             scoreBuffer.release();
@@ -169,9 +173,11 @@ public class BackEndGoogleApi {
                                 if (leaderBoardscore != null) {
                                     score = (int) leaderBoardscore.getRawScore();
                                     int rank = (int) leaderBoardscore.getRank();
-                                    String name = leaderBoardscore.getScoreHolderDisplayName();
-                                    mLogic.setUserScore(rank, name, score, scoreType);
-                                    mActivity.mFrontEndHighScore.fillScores();
+                                    if (rank != LeaderboardScore.LEADERBOARD_RANK_UNKNOWN) {
+                                        String name = leaderBoardscore.getScoreHolderDisplayName();
+                                        mLogic.setUserScore(rank, name, score, scoreType);
+                                        mActivity.mFrontEndHighScore.fillScores();
+                                    }
                                 } else {
                                     submitScore();
                                 }

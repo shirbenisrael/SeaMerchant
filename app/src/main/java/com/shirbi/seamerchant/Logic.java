@@ -997,6 +997,10 @@ public class Logic {
     }
 
     public void setUserScore(int rank, String name, int score, ScoreType scoreType) {
+        if (rank <  1) {
+            // This should not happen, but in any case that google sends bad value.
+            return;
+        }
         ScoreTable scoreTable;
         if (rank < 6) {
             scoreTable = mScoreTable[scoreType.getValue()][rank - 1];
@@ -1015,6 +1019,11 @@ public class Logic {
     }
 
     public void setTopScore(int rank, String name, int score, ScoreType scoreType) {
+        if (rank < 1) {
+            // This should not happen, but in any case that google sends bad value.
+            return;
+        }
+
         ScoreTable scoreTable = mScoreTable[scoreType.getValue()][rank - 1];
         scoreTable.name = name;
         scoreTable.score = score;
@@ -1022,6 +1031,11 @@ public class Logic {
     }
 
     public void setCenterScore(int rank, String name, int score, int index, ScoreType scoreType) {
+        if (rank < 1) {
+            // This should not happen, but in any case that google sends bad value.
+            return;
+        }
+
         ScoreTable oneScore;
         ScoreTable[] scoreTable = mScoreTable[scoreType.getValue()];
         if (rank < 6) {
