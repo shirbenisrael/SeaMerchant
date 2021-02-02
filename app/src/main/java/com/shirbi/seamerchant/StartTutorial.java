@@ -40,6 +40,7 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_16, // sell copper
         STAGE_17, // buy wheat in greece
         STAGE_18, // sail to cyprus
+        STAGE_19, // sell wheat in cyprus
     }
 
     public void endTutorial() {
@@ -57,6 +58,7 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.setFixVisibility(true);
         mFrontEnd.setSleepVisibility(true);
         mFrontEnd.setCapacityVisibility(true);
+        mFrontEnd.resetMarketStateText();
 
         mFrontEndMarket.showAllButton();
         mFrontEndSail.showAllButtons();
@@ -264,6 +266,13 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkSail();
     }
 
+    public void showStage19() { // sell wheat in cyprus
+        String string1 = "הגענו לקפריסין עם רוב החיטה! בוא נמכור אותה ביוקר!";
+        String string2 = "לחץ על כפתור החיטה כדי למכור אותה.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkMarket();
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -364,6 +373,10 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
                 mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה לקפריסין");
+                break;
+            case STAGE_19:
+                mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את החיטה.", "לא כדאי");
+                mFrontEnd.blinkMarket();
                 break;
         }
     }
@@ -480,6 +493,16 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndMarket.showOnlyBuyAllButton();
                 mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית חיטה");
                 break;
+            case STAGE_19:
+                if (goods != Goods.WHEAT) {
+                    mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את החיטה.", "לא כדאי");
+                    break;
+                }
+                mLogic.initMarketDeal(goods);
+                mFrontEndMarket.onMarketClick();
+                mFrontEndMarket.showOnlySellAllButton();
+                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת חיטה");
+                break;
         }
     }
 
@@ -537,8 +560,13 @@ public class StartTutorial extends FrontEndGeneric {
                 if (mLogic.getInventory(Goods.WHEAT) > 0 ) {
                     mStage = TutorialStage.STAGE_18;
                     showStage18();
-            }
-            break;
+                }
+                break;
+            case STAGE_19:
+                if (mLogic.getInventory(Goods.WHEAT) == 0 ) {
+                    mFrontEnd.startNewGameAfterTutorial();
+                }
+                break;
         }
     }
 
@@ -576,6 +604,10 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_14:
                 mStage = TutorialStage.STAGE_15;
                 showStage15();
+                break;
+            case STAGE_18:
+                mStage = TutorialStage.STAGE_19;
+                showStage19();
                 break;
         }
     }
@@ -639,6 +671,10 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_18:
                 mFrontEnd.showAlertDialogMessage("בוא נפליג לקפריסין.", "לא כדאי");
                 mFrontEnd.blinkSail();
+                break;
+            case STAGE_19:
+                mFrontEnd.showAlertDialogMessage("בוא נמכור את החיטה.", "לא כדאי");
+                mFrontEnd.blinkMarket();
                 break;
         }
     }

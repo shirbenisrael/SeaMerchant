@@ -797,4 +797,8 @@ public class FrontEnd extends FrontEndGeneric {
 
         showAlertDialogMessage(string1 +  " " + string2, "הדרכה" );
     }
+
+    public void resetMarketStateText() {
+        ((TextView)findViewById(R.id.market_state_text_view)).setText(R.string.MARKET_STATE);
+    }
 }

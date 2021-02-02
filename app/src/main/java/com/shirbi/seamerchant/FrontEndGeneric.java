@@ -82,6 +82,32 @@ public class FrontEndGeneric {
                 mActivity.getResources().getDisplayMetrics().density);
     }
 
+    public void startNewGameAfterTutorial() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+
+        builder.setTitle("סיום הדרכה");
+        builder.setMessage("ההדרכה הסתימה. בהצלחה במסחר. היזהר מסכנות!");
+        builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.startNewGame();
+            }
+        });
+        builder.setIcon( R.drawable.boat_right);
+
+        AlertDialog dialog = builder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+
+        dialog.getWindow().getAttributes();
+        TextView textView = dialog.findViewById(android.R.id.message);
+        textView.setTextSize(mActivity.getResources().getDimension(R.dimen.info_message_size) /
+                mActivity.getResources().getDisplayMetrics().density);
+
+        Button btn1 = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        btn1.setTextSize(mActivity.getResources().getDimension(R.dimen.info_message_confirm_button_size) /
+                mActivity.getResources().getDisplayMetrics().density);
+    }
+
     public void timerBlinked(FrontEndTimer timer, int countDown) {
         throw new IllegalStateException("Unexpected timer blink");
     }
