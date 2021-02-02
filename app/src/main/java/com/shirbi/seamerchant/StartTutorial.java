@@ -294,6 +294,7 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_11:
                 mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג. נלך לישון.", "לא כדאי");
                 mFrontEnd.blinkSleep();
+                break;
             case STAGE_12:
                 mFrontEnd.showAlertDialogMessage("בוא נמשוך קודם את הכסף מהבנק.", "לא כדאי");
                 mFrontEnd.blinkBank();
