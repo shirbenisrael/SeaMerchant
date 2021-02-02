@@ -6,6 +6,7 @@ public class StartTutorial extends FrontEndGeneric {
     private FrontEndSail mFrontEndSail;
     private FrontEndPirates mFrontEndPirates;
     private FrontEndBank mFrontEndBank;
+    private FrontEndFixShip mFrontEndFixShip;
     TutorialStage mStage;
 
     public StartTutorial(MainActivity activity) {
@@ -15,6 +16,8 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEndSail = mActivity.mFrontEndSail;
         mFrontEndPirates = mActivity.mFrontEndPirates;
         mFrontEndBank = mActivity.mFrontEndBank;
+        mFrontEndFixShip = mActivity.mFrontEndFixShip;
+
         mStage = TutorialStage.STAGE_1;
     }
 
@@ -33,6 +36,7 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_12, // go to bank to draw cash
         STAGE_13, // buy copper
         STAGE_14, // sail to greece
+        STAGE_15, // fix ship
     }
 
     public void endTutorial() {
@@ -228,6 +232,14 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkSail();
     }
 
+    public void showStage15() { // fix ship
+        String string1 = "הספינה שלנו שבורה. כדאי לתקנה!";
+        String string2 = "לחץ על כפתור התיקון.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.setFixVisibility(true);
+        mFrontEnd.blinkFixShip();
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -313,6 +325,10 @@ public class StartTutorial extends FrontEndGeneric {
                     mFrontEnd.showAlertDialogMessage("עדיף להפליג ליוון.", "לא כדאי");
                     mFrontEnd.blinkSail();
                 }
+                break;
+            case STAGE_15:
+                mFrontEnd.showAlertDialogMessage("בוא נתקן את הספינה לפני שנפליג שוב.", "לא כדאי");
+                mFrontEnd.blinkFixShip();
                 break;
         }
     }
@@ -404,6 +420,10 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndMarket.showOnlyBuyAllButton();
                 mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית נחושת");
                 break;
+            case STAGE_15:
+                mFrontEnd.showAlertDialogMessage("בוא נתקן את הספינה קודם.", "לא כדאי");
+                mFrontEnd.blinkFixShip();
+                break;
         }
     }
 
@@ -485,6 +505,10 @@ public class StartTutorial extends FrontEndGeneric {
                 mStage = TutorialStage.STAGE_9;
                 showStage9();
                 break;
+            case STAGE_14:
+                mStage = TutorialStage.STAGE_15;
+                showStage15();
+                break;
         }
     }
 
@@ -527,6 +551,10 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_14:
                 mFrontEnd.showAlertDialogMessage("בוא נפליג ליוון.", "לא כדאי");
                 mFrontEnd.blinkSail();
+                break;
+            case STAGE_15:
+                mFrontEnd.showAlertDialogMessage("בוא נתקן את הספינה קודם.", "לא כדאי");
+                mFrontEnd.blinkFixShip();
                 break;
         }
     }
@@ -572,5 +600,18 @@ public class StartTutorial extends FrontEndGeneric {
     public void startNewDayAfterWeather() {
         mStage = TutorialStage.STAGE_12;
         showStage12();
+    }
+
+    public void onFixButtonClick() {
+        mLogic.initFixShipDeal();
+        mFrontEndFixShip.onFixShipClick();
+        mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
+        mFrontEnd.showAlertDialogMessage("לחץ על -תקן ככל האפשר- ואז על כפתור וי ירוק.", "תיקון הספינה");
+    }
+
+    public void fixDone() {
+        if (mLogic.mDamage == 0) {
+            
+        }
     }
 }

@@ -628,15 +628,16 @@ public class MainActivity extends Activity {
     }
 
     public void onFixButtonClick(View view) {
-        if (mIsStartTutorialActive) {
-            return;
-        }
-
         if (mLogic.isShipBroken()) {
             if (!mLogic.isEnoughTimeForFixShip()) {
                 playSound(R.raw.cannot);
                 mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_FIX_AT_NIGHT),
                         getString(R.string.CANNOT_FIX_TITLE));
+                return;
+            }
+
+            if (mIsStartTutorialActive) {
+                mStartTutorial.onFixButtonClick();
                 return;
             }
 
@@ -664,6 +665,10 @@ public class MainActivity extends Activity {
         mLogic.applyShipFixDeal();
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
+
+        if (mIsStartTutorialActive) {
+            mStartTutorial.fixDone();
+        }
     }
 
     public void onCancelBecauseOfDanger(View view) {
