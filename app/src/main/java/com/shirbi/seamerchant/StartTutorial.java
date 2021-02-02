@@ -28,8 +28,9 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_7, // buy olives in egypt
         STAGE_8, // sail to cyprus
         STAGE_9, // sell wheat in cyprus
-        STAGE_10, // go to bank
+        STAGE_10, // go to bank to deposit
         STAGE_11, // go to sleep
+        STAGE_12, // go to bank to draw cash
     }
 
     public void endTutorial() {
@@ -180,6 +181,37 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkSleep();
     }
 
+    public void showStage12() { // draw cash from bank
+        mLogic.mPriceTable.setPrice(State.ISRAEL, Goods.WHEAT, 35);
+        mLogic.mPriceTable.setPrice(State.TURKEY, Goods.WHEAT, 35);
+        mLogic.mPriceTable.setPrice(State.EGYPT, Goods.WHEAT, 35);
+        mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.WHEAT, 60);
+        mLogic.mPriceTable.setPrice(State.GREECE, Goods.WHEAT, 60);
+
+        mLogic.mPriceTable.setPrice(State.ISRAEL, Goods.OLIVES, 350);
+        mLogic.mPriceTable.setPrice(State.TURKEY, Goods.OLIVES, 350);
+        mLogic.mPriceTable.setPrice(State.EGYPT, Goods.OLIVES, 350);
+        mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.OLIVES, 600);
+        mLogic.mPriceTable.setPrice(State.GREECE, Goods.OLIVES, 600);
+
+        mLogic.mPriceTable.setPrice(State.ISRAEL, Goods.COPPER, 2500);
+        mLogic.mPriceTable.setPrice(State.TURKEY, Goods.COPPER, 2500);
+        mLogic.mPriceTable.setPrice(State.EGYPT, Goods.COPPER, 2500);
+        mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.COPPER, 2500);
+        mLogic.mPriceTable.setPrice(State.GREECE, Goods.COPPER, 4500);
+
+        mFrontEnd.setGoodsVisibility(Goods.COPPER, true);
+        mFrontEnd.setStateVisibility(State.GREECE, true);
+        mFrontEnd.showState();
+
+        String string1 = "בוא נמשוך את הכסף מהבנק כדי להמשיך במסחר.";
+        String string2 = "לחץ על כפתור הבנק בשביל למשוך את הכסף";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.setBankVisibility(true);
+        mFrontEnd.setSleepVisibility(false);
+        mFrontEnd.blinkBank();
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -246,6 +278,10 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_11:
                 mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג. נלך לישון.", "לא כדאי");
                 mFrontEnd.blinkSleep();
+            case STAGE_12:
+                mFrontEnd.showAlertDialogMessage("בוא נמשוך קודם את הכסף מהבנק.", "לא כדאי");
+                mFrontEnd.blinkBank();
+                break;
         }
     }
 
@@ -316,9 +352,14 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_10:
                 mFrontEnd.showAlertDialogMessage("מאוחר מדי לקניות. נלך לבנק.", "לא כדאי");
                 mFrontEnd.blinkBank();
+                break;
             case STAGE_11:
                 mFrontEnd.showAlertDialogMessage("מאוחר מדי לקניות. נלך לישון.", "לא כדאי");
                 mFrontEnd.blinkSleep();
+                break;
+            case STAGE_12:
+                mFrontEnd.showAlertDialogMessage("בוא נמשוך קודם את הכסף מהבנק.", "לא כדאי");
+                mFrontEnd.blinkBank();
                 break;
         }
     }
@@ -416,6 +457,13 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndBank.showOnlyDepositAll();
                 mFrontEnd.showAlertDialogMessage("להפקדה - לחץ על -הפקד הכל- ואז על הוי הירוק.", "הפקדה בבנק");
                 break;
+            case STAGE_12:
+                mLogic.initBankDeal();
+                mFrontEnd.showWindow(Window.BANK_WINDOW);
+                mFrontEndBank.onBankClick();
+                mFrontEndBank.showOnlyDrawAll();
+                mFrontEnd.showAlertDialogMessage("למשיכת כספנו כולל הריבית הלילית - לחץ על -משוך הכל- ואז על הוי הירוק.", "משיכה מהבנק");
+                break;
         }
     }
 
@@ -437,5 +485,14 @@ public class StartTutorial extends FrontEndGeneric {
         mLogic.mCash += mLogic.mSail.mPiratesTreasure;
         mFrontEndPirates.showWinPiratesMessage();
         mFrontEnd.showWindow(Window.PIRATES_ATTACK_WINDOW);
+    }
+
+    public void startNewDay() {
+        mLogic.mWeather = Weather.GOOD_SAILING;
+    }
+
+    public void startNewDayAfterWeather() {
+        mStage = TutorialStage.STAGE_12;
+        showStage12();
     }
 }

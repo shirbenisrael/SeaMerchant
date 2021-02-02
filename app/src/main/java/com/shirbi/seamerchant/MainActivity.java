@@ -283,6 +283,9 @@ public class MainActivity extends Activity {
         if (!mLogic.mCurrentDay.isLastDay()) {
             playSound(R.raw.new_day);
             mLogic.startNewDay();
+            if (mIsStartTutorialActive) {
+                mStartTutorial.startNewDay();
+            }
             mFrontEnd.showWindow(Window.WEATHER_WINDOW);
             mFrontEnd.showNewWeather();
         } else {
@@ -344,6 +347,11 @@ public class MainActivity extends Activity {
     }
 
     public void onExitWeatherWindow(View view) {
+        if (mIsStartTutorialActive) {
+            mFrontEnd.showWindow(Window.MAIN_WINDOW);
+            mStartTutorial.startNewDayAfterWeather();
+            return;
+        }
         if (mLogic.mCurrentDay != WeekDay.SUNDAY) {
             mLogic.generateNewDayEvent();
             if (mLogic.mNewDayEvent == Logic.NewDayEvent.STRIKE) {
