@@ -319,8 +319,7 @@ public class MainActivity extends Activity {
 
     public void startNewGame() {
         if (mIsStartTutorialActive) {
-            mStartTutorial.endTutorial();
-            mIsStartTutorialActive = false;
+            endTutorial();
         }
         playSound(R.raw.new_day);
         mLogic.startNewGame();
@@ -956,11 +955,21 @@ public class MainActivity extends Activity {
     public void onStartTutorialButtonClick(View view) {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         if (!mIsStartTutorialActive) {
-            mIsStartTutorialActive = true;
-            mStartTutorial.showStage1();
+            mFrontEnd.showStartingTutorialDialog();
         } else {
-            mIsStartTutorialActive = false;
-            mStartTutorial.endTutorial();
+            mFrontEnd.showEndTutorialDialog();
         }
+    }
+
+    public void startTutorial() {
+        mIsStartTutorialActive = true;
+        mStartTutorial.showStage1();
+        mFrontEnd.setStartingTutorialButtonText();
+    }
+
+    public void endTutorial() {
+        mIsStartTutorialActive = false;
+        mStartTutorial.endTutorial();
+        mFrontEnd.setStartingTutorialButtonText();
     }
 }

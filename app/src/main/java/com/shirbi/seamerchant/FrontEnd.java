@@ -648,6 +648,42 @@ public class FrontEnd extends FrontEndGeneric {
         builder.show();
     }
 
+    void showStartingTutorialDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+
+        builder.setTitle("להתחיל הדרכה?");
+        builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.startTutorial();
+            }
+        });
+        builder.setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing
+            }
+        });
+        builder.setIcon(R.drawable.boat_right);
+        builder.show();
+    }
+
+    void showEndTutorialDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+
+        builder.setTitle("לסיים הדרכה?");
+        builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.startNewGame();
+            }
+        });
+        builder.setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing
+            }
+        });
+        builder.setIcon(R.drawable.boat_right);
+        builder.show();
+    }
+
     void showExitDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
 
@@ -800,5 +836,10 @@ public class FrontEnd extends FrontEndGeneric {
 
     public void resetMarketStateText() {
         ((TextView)findViewById(R.id.market_state_text_view)).setText(R.string.MARKET_STATE);
+    }
+
+    public void setStartingTutorialButtonText() {
+        String text = mActivity.mIsStartTutorialActive ? "סיום הדרכה" : "התחל הדרכה";
+        ((Button)findViewById(R.id.start_tutorial_button)).setText(text);
     }
 }
