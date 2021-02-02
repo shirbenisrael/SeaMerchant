@@ -269,9 +269,6 @@ public class MainActivity extends Activity {
     }
 
     public void onSleepClick(View view) {
-        if (mIsStartTutorialActive) {
-            return;
-        }
         mFrontEnd.showSleepQuestion();
         mFrontEnd.showWindow(Window.SLEEP_WINDOW);
     }
@@ -615,7 +612,9 @@ public class MainActivity extends Activity {
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
 
-        if (checkForNewMedal()) {
+        if (mIsStartTutorialActive) {
+            mStartTutorial.onBankDealDoneClick();
+        } else if (checkForNewMedal()) {
             return;
         }
     }

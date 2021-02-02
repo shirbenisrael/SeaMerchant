@@ -29,6 +29,7 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_8, // sail to cyprus
         STAGE_9, // sell wheat in cyprus
         STAGE_10, // go to bank
+        STAGE_11, // go to sleep
     }
 
     public void endTutorial() {
@@ -170,6 +171,15 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkBank();
     }
 
+    public void showStage11() { // go to sleep
+        String string1 = "הגיע הזמן ללכת לישון.";
+        String string2 = "לחץ על כפתור השינה כדי לנוח עד למחרת.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.setBankVisibility(false);
+        mFrontEnd.setSleepVisibility(true);
+        mFrontEnd.blinkSleep();
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -233,6 +243,9 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג. נלך לבנק.", "לא כדאי");
                 mFrontEnd.blinkBank();
                 break;
+            case STAGE_11:
+                mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג. נלך לישון.", "לא כדאי");
+                mFrontEnd.blinkSleep();
         }
     }
 
@@ -303,6 +316,9 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_10:
                 mFrontEnd.showAlertDialogMessage("מאוחר מדי לקניות. נלך לבנק.", "לא כדאי");
                 mFrontEnd.blinkBank();
+            case STAGE_11:
+                mFrontEnd.showAlertDialogMessage("מאוחר מדי לקניות. נלך לישון.", "לא כדאי");
+                mFrontEnd.blinkSleep();
                 break;
         }
     }
@@ -343,6 +359,17 @@ public class StartTutorial extends FrontEndGeneric {
                 if (mLogic.getInventory(Goods.WHEAT) == 0) {
                     mStage = TutorialStage.STAGE_10;
                     showStage10();
+                }
+                break;
+        }
+    }
+
+    public void onBankDealDoneClick() {
+        switch (mStage) {
+            case STAGE_10:
+                if (mLogic.mCash == 0) {
+                    mStage = TutorialStage.STAGE_11;
+                    showStage11();
                 }
                 break;
         }

@@ -147,7 +147,7 @@
             android:layout_height="wrap_content"
             android:text="Start Tutorial"
             android:onClick="onStartTutorialButtonClick"
-            android:visibility="gone"
+            android:visibility="visible"
             tools:ignore="RtlSymmetry" />
 
     </LinearLayout>
