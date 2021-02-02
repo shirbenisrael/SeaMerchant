@@ -308,6 +308,9 @@ public class StartTutorial extends FrontEndGeneric {
                     mFrontEnd.showWindow(Window.SAIL_WINDOW);
                     mFrontEndSail.initSailRoute();
                     mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה ליוון");
+                } else {
+                    mFrontEnd.showAlertDialogMessage("עדיף להפליג ליוון.", "לא כדאי");
+                    mFrontEnd.blinkSail();
                 }
                 break;
         }
@@ -492,6 +495,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndPirates.showOnlyEscape();
                 break;
             case STAGE_8:
+            case STAGE_14:
                 mFrontEndSail.pauseSail();
                 mActivity.showPirates();
                 mFrontEndPirates.showOnlyAttack();
@@ -529,6 +533,7 @@ public class StartTutorial extends FrontEndGeneric {
     public boolean checkIfCanSail() {
         switch (mStage) {
             case STAGE_8:
+            case STAGE_14:
                 if (mLogic.mSail.mSelectedNumGuardShips < 5) {
                     mFrontEnd.showAlertDialogMessage("הים שורץ שודדים. בוא נשכור 5 ספינות משמר. לחץ על כפתור ה-5.", "לא כדאי");
                     return false;
@@ -538,12 +543,25 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void attackPirates() {
-        mLogic.mSail.mPiratesDamage = 0;
-        mLogic.mSail.mBattleResult = Sail.BattleResult.WIN_AND_TREASURE;
-        mLogic.mSail.mPiratesTreasure = 1000;
-        mLogic.mCash += mLogic.mSail.mPiratesTreasure;
-        mFrontEndPirates.showWinPiratesMessage();
-        mFrontEnd.showWindow(Window.PIRATES_ATTACK_WINDOW);
+        switch (mStage) {
+            case STAGE_8:
+                mLogic.mSail.mPiratesDamage = 0;
+                mLogic.mSail.mBattleResult = Sail.BattleResult.WIN_AND_TREASURE;
+                mLogic.mSail.mPiratesTreasure = 1000;
+                mLogic.mCash += mLogic.mSail.mPiratesTreasure;
+                mFrontEndPirates.showWinPiratesMessage();
+                mFrontEnd.showWindow(Window.PIRATES_ATTACK_WINDOW);
+                break;
+            case STAGE_14:
+                mLogic.mSail.mPiratesDamage = 5000;
+                mLogic.mSail.mBattleResult = Sail.BattleResult.WIN_AND_TREASURE;
+                mLogic.mSail.mPiratesTreasure = 10000;
+                mLogic.mCash += mLogic.mSail.mPiratesTreasure;
+                mLogic.mDamage += mLogic.mSail.mPiratesDamage;
+                mFrontEndPirates.showWinPiratesMessage();
+                mFrontEnd.showWindow(Window.PIRATES_ATTACK_WINDOW);
+                break;
+        }
     }
 
     public void startNewDay() {
