@@ -37,6 +37,7 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_13, // buy copper
         STAGE_14, // sail to greece
         STAGE_15, // fix ship
+        STAGE_16, // sell copper
     }
 
     public void endTutorial() {
@@ -240,6 +241,13 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkFixShip();
     }
 
+    public void showStage16() { // sell copper in greece
+        String string1 = "בוא נמכור את הנחושת שלנו ביוקר!";
+        String string2 = "לחץ על כפתור הנחושת כדי למכור אותה.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkMarket();
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -329,6 +337,10 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_15:
                 mFrontEnd.showAlertDialogMessage("בוא נתקן את הספינה לפני שנפליג שוב.", "לא כדאי");
                 mFrontEnd.blinkFixShip();
+                break;
+            case STAGE_16:
+                mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את הנחושת.", "לא כדאי");
+                mFrontEnd.blinkMarket();
                 break;
         }
     }
@@ -423,6 +435,16 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_15:
                 mFrontEnd.showAlertDialogMessage("בוא נתקן את הספינה קודם.", "לא כדאי");
                 mFrontEnd.blinkFixShip();
+                break;
+            case STAGE_16:
+                if (goods != Goods.COPPER) {
+                    mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את הנחושת.", "לא כדאי");
+                    break;
+                }
+                mLogic.initMarketDeal(goods);
+                mFrontEndMarket.onMarketClick();
+                mFrontEndMarket.showOnlySellAllButton();
+                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת נחושת");
                 break;
         }
     }
@@ -556,6 +578,10 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showAlertDialogMessage("בוא נתקן את הספינה קודם.", "לא כדאי");
                 mFrontEnd.blinkFixShip();
                 break;
+            case STAGE_16:
+                mFrontEnd.showAlertDialogMessage("בוא נמכור את החנושת.", "לא כדאי");
+                mFrontEnd.blinkMarket();
+                break;
         }
     }
 
@@ -611,7 +637,8 @@ public class StartTutorial extends FrontEndGeneric {
 
     public void fixDone() {
         if (mLogic.mDamage == 0) {
-            
+            mStage = TutorialStage.STAGE_16;
+            showStage16();
         }
     }
 }
