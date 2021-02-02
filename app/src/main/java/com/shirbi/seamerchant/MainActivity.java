@@ -884,6 +884,10 @@ public class MainActivity extends Activity {
     }
 
     private boolean checkForNewMedal() {
+        if (mIsStartTutorialActive) {
+            return false;
+        }
+
         Medal medal = mLogic.acquireNewMedal();
         if (medal != null) {
             playSound(R.raw.agreement);
