@@ -31,6 +31,8 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_10, // go to bank to deposit
         STAGE_11, // go to sleep
         STAGE_12, // go to bank to draw cash
+        STAGE_13, // buy copper
+        STAGE_14, // sail to greece
     }
 
     public void endTutorial() {
@@ -212,6 +214,20 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkBank();
     }
 
+    public void showStage13() { // buy cooper
+        String string1 = "מחיר הנחושת היום בקפריסין נמוך! כדאי לקנות!";
+        String string2 = "לחץ על כפתור הנחושת כדי לרכוש אותה.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkMarket();
+    }
+
+    public void showStage14() { // sail to greece
+        String string1 = "מחיר הנחושת ביוון גבוה! בוא נפליג לשם!";
+        String string2 = "לחץ על הדגל של יוון כדי להפליג.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkSail();
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -282,6 +298,18 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showAlertDialogMessage("בוא נמשוך קודם את הכסף מהבנק.", "לא כדאי");
                 mFrontEnd.blinkBank();
                 break;
+            case STAGE_13:
+                mFrontEnd.showAlertDialogMessage("בוא נקנה קודם נחושת.", "לא כדאי");
+                mFrontEnd.blinkMarket();
+                break;
+            case STAGE_14:
+                if (destination == State.GREECE) {
+                    mLogic.initSail(destination);
+                    mFrontEnd.showWindow(Window.SAIL_WINDOW);
+                    mFrontEndSail.initSailRoute();
+                    mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה ליוון");
+                }
+                break;
         }
     }
 
@@ -337,6 +365,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showAlertDialogMessage("לחץ על -קיבולת מלאה- כדי למלא את הספינה בהתאם לקיבולת ואז על כפתור וי ירוק.", "קנית חיטה");
                 break;
             case STAGE_8:
+            case STAGE_14:
                 mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
                 break;
             case STAGE_9:
@@ -360,6 +389,16 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_12:
                 mFrontEnd.showAlertDialogMessage("בוא נמשוך קודם את הכסף מהבנק.", "לא כדאי");
                 mFrontEnd.blinkBank();
+                break;
+            case STAGE_13:
+                if (goods != Goods.COPPER) {
+                    mFrontEnd.showAlertDialogMessage("אין טעם. עדיף לקנות כאן נחושת.", "לא כדאי");
+                    break;
+                }
+                mLogic.initMarketDeal(goods);
+                mFrontEndMarket.onMarketClick();
+                mFrontEndMarket.showOnlyBuyAllButton();
+                mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית נחושת");
                 break;
         }
     }
@@ -402,6 +441,12 @@ public class StartTutorial extends FrontEndGeneric {
                     showStage10();
                 }
                 break;
+            case STAGE_13:
+                if (mLogic.getInventory(Goods.COPPER) != 0) {
+                    mStage = TutorialStage.STAGE_14;
+                    showStage14();
+                }
+                break;
         }
     }
 
@@ -411,6 +456,12 @@ public class StartTutorial extends FrontEndGeneric {
                 if (mLogic.mCash == 0) {
                     mStage = TutorialStage.STAGE_11;
                     showStage11();
+                }
+                break;
+            case STAGE_12:
+                if (mLogic.mCash != 0) {
+                    mStage = TutorialStage.STAGE_13;
+                    showStage13();
                 }
                 break;
         }
@@ -463,6 +514,14 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndBank.onBankClick();
                 mFrontEndBank.showOnlyDrawAll();
                 mFrontEnd.showAlertDialogMessage("למשיכת כספנו כולל הריבית הלילית - לחץ על -משוך הכל- ואז על הוי הירוק.", "משיכה מהבנק");
+                break;
+            case STAGE_13:
+                mFrontEnd.showAlertDialogMessage("בוא נקנה חנושת.", "לא כדאי");
+                mFrontEnd.blinkMarket();
+                break;
+            case STAGE_14:
+                mFrontEnd.showAlertDialogMessage("בוא נפליג ליוון.", "לא כדאי");
+                mFrontEnd.blinkSail();
                 break;
         }
     }
