@@ -173,11 +173,6 @@ public class MainActivity extends Activity {
             return;
         }
 
-        if (mIsStartTutorialActive) {
-            mStartTutorial.onFlagClick(destination);
-            return;
-        }
-
         if (mLogic.getSailDuration(destination) == -1) {
             playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.GREECE_IS_TOO_FAR),
@@ -203,6 +198,11 @@ public class MainActivity extends Activity {
             playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_REACH_BEFORE_SLEEP_TIME),
                     getString(R.string.CANNOT_SAIL_TITLE));
+            return;
+        }
+
+        if (mIsStartTutorialActive) {
+            mStartTutorial.onFlagClick(destination);
             return;
         }
 
@@ -522,13 +522,17 @@ public class MainActivity extends Activity {
 
     public void showSink() {
         playSound(R.raw.sink);
-        mLogic.mSail.createSink();
+        if (mIsStartTutorialActive) {
+            mStartTutorial.createSink();
+        } else {
+            mLogic.mSail.createSink();
+        }
         mFrontEnd.showWindow(Window.SINK_WINDOW);
         mFrontEndSink.showSink();
     }
 
     public void onSinkProgress(View view) {
-        if (mLogic.mSail.isSinkInSail()) {
+        if ((!mIsStartTutorialActive) && mLogic.mSail.isSinkInSail()) {
             showSink();
         } else {
             onExitSimpleSeaEvent(view);

@@ -38,6 +38,8 @@ public class StartTutorial extends FrontEndGeneric {
         STAGE_14, // sail to greece
         STAGE_15, // fix ship
         STAGE_16, // sell copper
+        STAGE_17, // buy wheat in greece
+        STAGE_18, // sail to cyprus
     }
 
     public void endTutorial() {
@@ -192,8 +194,8 @@ public class StartTutorial extends FrontEndGeneric {
         mLogic.mPriceTable.setPrice(State.ISRAEL, Goods.WHEAT, 35);
         mLogic.mPriceTable.setPrice(State.TURKEY, Goods.WHEAT, 35);
         mLogic.mPriceTable.setPrice(State.EGYPT, Goods.WHEAT, 35);
-        mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.WHEAT, 60);
-        mLogic.mPriceTable.setPrice(State.GREECE, Goods.WHEAT, 60);
+        mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.WHEAT, 70);
+        mLogic.mPriceTable.setPrice(State.GREECE, Goods.WHEAT, 20);
 
         mLogic.mPriceTable.setPrice(State.ISRAEL, Goods.OLIVES, 350);
         mLogic.mPriceTable.setPrice(State.TURKEY, Goods.OLIVES, 350);
@@ -248,6 +250,20 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.blinkMarket();
     }
 
+    public void showStage17() { // buy wheat in greece
+        String string1 = "מחיר החיטה ביוון נמוך! כדאי לקנות!";
+        String string2 = "לחץ על כפתור החיטה כדי לרכוש אותה.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkMarket();
+    }
+
+    public void showStage18() { // sail to cyprus
+        String string1 = "מחיר החיטה בקפריסין גבוה! בוא נפליג לשם!";
+        String string2 = "לחץ על הדגל של קפריסין כדי להפליג.";
+        mFrontEnd.showTutorialStrings(string1, string2);
+        mFrontEnd.blinkSail();
+    }
+
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
@@ -285,6 +301,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.blinkMarket();
                 break;
             case STAGE_7:
+            case STAGE_17:
                 mFrontEnd.showAlertDialogMessage("בוא נקנה קודם חיטה.", "לא כדאי");
                 mFrontEnd.blinkMarket();
                 break;
@@ -342,6 +359,12 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את הנחושת.", "לא כדאי");
                 mFrontEnd.blinkMarket();
                 break;
+            case STAGE_18:
+                mLogic.initSail(destination);
+                mFrontEnd.showWindow(Window.SAIL_WINDOW);
+                mFrontEndSail.initSailRoute();
+                mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה לקפריסין");
+                break;
         }
     }
 
@@ -373,6 +396,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndMarket.showOnlyBuyAllButton();
                 mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית זיתים");
                 break;
+            case STAGE_18:
             case STAGE_5:
                 mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
                 break;
@@ -446,13 +470,23 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEndMarket.showOnlySellAllButton();
                 mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת נחושת");
                 break;
+            case STAGE_17:
+                if (goods != Goods.WHEAT) {
+                    mFrontEnd.showAlertDialogMessage("אין טעם. עדיף לקנות כאן חיטה.", "לא כדאי");
+                    break;
+                }
+                mLogic.initMarketDeal(goods);
+                mFrontEndMarket.onMarketClick();
+                mFrontEndMarket.showOnlyBuyAllButton();
+                mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית חיטה");
+                break;
         }
     }
 
     public void onMarketDealDoneClick() {
         switch (mStage) {
             case STAGE_1:
-                if (mLogic.getInventory(Goods.WHEAT) == 100) {
+                if (mLogic.getInventory(Goods.WHEAT) > 0) {
                     mStage = TutorialStage.STAGE_2;
                     showStage2();
                 }
@@ -493,6 +527,18 @@ public class StartTutorial extends FrontEndGeneric {
                     showStage14();
                 }
                 break;
+            case STAGE_16:
+                if (mLogic.getInventory(Goods.COPPER) == 0) {
+                    mStage = TutorialStage.STAGE_17;
+                    showStage17();
+                }
+                break;
+            case STAGE_17:
+                if (mLogic.getInventory(Goods.WHEAT) > 0 ) {
+                    mStage = TutorialStage.STAGE_18;
+                    showStage18();
+            }
+            break;
         }
     }
 
@@ -547,6 +593,10 @@ public class StartTutorial extends FrontEndGeneric {
                 mActivity.showPirates();
                 mFrontEndPirates.showOnlyAttack();
                 break;
+            case STAGE_18:
+                mFrontEndSail.pauseSail();
+                mActivity.showSink();
+                break;
         }
     }
 
@@ -582,6 +632,14 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showAlertDialogMessage("בוא נמכור את החנושת.", "לא כדאי");
                 mFrontEnd.blinkMarket();
                 break;
+            case STAGE_17:
+                mFrontEnd.showAlertDialogMessage("בוא נקנה חיטה.", "לא כדאי");
+                mFrontEnd.blinkMarket();
+                break;
+            case STAGE_18:
+                mFrontEnd.showAlertDialogMessage("בוא נפליג לקפריסין.", "לא כדאי");
+                mFrontEnd.blinkSail();
+                break;
         }
     }
 
@@ -595,6 +653,13 @@ public class StartTutorial extends FrontEndGeneric {
                 }
         }
         return  true;
+    }
+
+    public void createSink() {
+        mLogic.mSail.mSailEndedPeacefully = false;
+        mLogic.mSail.mSinkGood = Goods.WHEAT;
+        mLogic.mSail.mSinkGoodsUnitsLost = 100;
+        mLogic.removeGoodsFromInventory(mLogic.mSail.mSinkGood, mLogic.mSail.mSinkGoodsUnitsLost);
     }
 
     public void attackPirates() {
