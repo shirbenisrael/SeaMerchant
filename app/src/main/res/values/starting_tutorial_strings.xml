@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="BUY_CHIP_GOODS">The %1$s in %2$s is cheap! We should buy it!</string>
+    <string name="PRESS_GOODS_BUTTON_TO_BUY">Press on the %1$s button to buy.</string>
+
+    <string name="SAIL_TO_STATE_WITH_HIGH_PRICE">The %1$s\'s price in %2$s is high. Lets sail to there!</string>
+    <string name="PRESS_ON_FLAG_TO_SAIL_TO_STATE">Press on %1$s\'s flag to sail.</string>
+
+    <string name="REACH_STATE_AND_SELL_GOODS">We reached %1$s! Lets sell our %2$s is high price!</string>
+    <string name="REACH_STATE_AND_SELL_MOST_GOODS">We reached %1$s with most of our %2$s. Lets sell it high price!</string>
+    <string name="SELL_GOODS">Lets sell our %1$s is high price!</string>
+    <string name="PRESS_GOODS_BUTTON_TO_SELL">Press on the %1$s button to sell it.</string>
+
+    <string name="DEPOSIT_IN_BANK_BEFORE_SLEEP">We should deposit our cash in the bank before go to sleep.</string>
+    <string name="PRESS_BANK_BUTTON_TO_DEPOSIT">Press on the bank button to deposit the money.</string>
+
+    <string name="TIME_TO_GO_TO_SLEEP">It is a good time to go to sleep.</string>
+    <string name="PRESS_SLEEP_BUTTON_TO_REST">Press on the sleep button to rest until tomorrow.</string>
+
+    <string name="DRAW_MONEY_FROM_BANK">We should draw the money from the bank to continue trading.</string>
+    <string name="PRESS_BANK_BUTTON_TO_DRAW">Press on the bank button to draw the money.</string>
+
+    <string name="WE_SHOUD_FIX_DAMAGED_SHIP">Our ship is damaged. We should fix it!</string>
+    <string name="PRESS_ON_THE_FIX_BUTTON">Press on the fix button to do it.</string>
+
+</resources>

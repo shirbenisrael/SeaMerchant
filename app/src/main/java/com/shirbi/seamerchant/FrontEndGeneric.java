@@ -141,4 +141,12 @@ public class FrontEndGeneric {
     protected void enableButton(@IdRes int id) {
         setViewEnable(id, true);
     }
+
+    protected String getStateString(State state) {
+        return mActivity.getString(state.toStringId());
+    }
+
+    protected String getGoodsString(Goods goods) {
+        return mActivity.getString(goods.toStringId());
+    }
 }

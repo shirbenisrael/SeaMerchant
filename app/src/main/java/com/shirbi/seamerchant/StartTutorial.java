@@ -97,30 +97,30 @@ public class StartTutorial extends FrontEndGeneric {
         mLogic.clearInventory();
         mFrontEnd.showInventory();
 
-        String string1 = "החיטה בישראל זולה! כדאי לקנות!";
-        String string2 = "לחץ על כפתור החיטה כדי לרכוש אותה";
+        String string1 = mActivity.getString(R.string.BUY_CHIP_GOODS, getGoodsString(Goods.WHEAT), getStateString(State.ISRAEL));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
 
         mFrontEnd.blinkMarket();
     }
 
     public void showStage2() { // ship to turkey
-        String string1 = "מחיר החיטה בתורכיה גבוה! בוא נפליג לשם!";
-        String string2 = "לחץ על הדגל של תורכיה כדי להפליג.";
+        String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.WHEAT), getStateString(State.TURKEY));
+        String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.TURKEY));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkSail();
     }
 
     public void showStage3() { // sell wheat in turkey
-        String string1 = "הגענו לתוכיה! בוא נמכור את החיטה ביוקר!";
-        String string2 = "לחץ על כפתור החיטה כדי למכור אותה.";
+        String string1 = mActivity.getString(R.string.REACH_STATE_AND_SELL_GOODS, getStateString(State.TURKEY), getGoodsString(Goods.WHEAT));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkMarket();
     }
 
     public void showStage4() { // buy olives in turkey.
-        String string1 = "הזיתים בתורכיה זולים! כדאי לקנות!";
-        String string2 = "לחץ על כפתור הזיתים כדי לרכוש אותם.";
+        String string1 = mActivity.getString(R.string.BUY_CHIP_GOODS, getGoodsString(Goods.OLIVES), getStateString(State.TURKEY));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.OLIVES));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkMarket();
 
@@ -137,22 +137,22 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void showStage5() { // ship to egypt
-        String string1 = "מחיר הזיתים במצרים גבוה! בוא נפליג לשם!";
-        String string2 = "לחץ על הדגל של מצרים כדי להפליג.";
+        String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.OLIVES), getStateString(State.EGYPT));
+        String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.EGYPT));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkSail();
     }
 
     public void showStage6() { // sell olives in egypt
-        String string1 = "הגענו למצרים! בוא נמכור את הזיתים ביוקר!";
-        String string2 = "לחץ על כפתור הזיתים כדי למכור אותם.";
+        String string1 = mActivity.getString(R.string.REACH_STATE_AND_SELL_GOODS, getStateString(State.EGYPT), getGoodsString(Goods.OLIVES));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.OLIVES));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkMarket();
     }
 
     public void showStage7() {
-        String string1 = "החיטה במצרים זולה! כדאי לקנות!";
-        String string2 = "לחץ על כפתור החיטה כדי לרכוש אותה.";
+        String string1 = mActivity.getString(R.string.BUY_CHIP_GOODS, getGoodsString(Goods.WHEAT), getStateString(State.EGYPT));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkMarket();
 
@@ -163,30 +163,30 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void showStage8() {
-        String string1 = "מחיר החיטה בקפריסין גבוה! בוא נפליג לשם!";
-        String string2 = "לחץ על הדגל של קפריסין כדי להפליג.";
+        String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.WHEAT), getStateString(State.CYPRUS));
+        String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.CYPRUS));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkSail();
     }
 
     public void showStage9() { // sell wheat in cyprus
-        String string1 = "הגענו לקפריסין! בוא נמכור את החיטה ביוקר!";
-        String string2 = "לחץ על כפתור החיטה כדי למכור אותה.";
+        String string1 = mActivity.getString(R.string.REACH_STATE_AND_SELL_GOODS, getStateString(State.CYPRUS), getGoodsString(Goods.WHEAT));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkMarket();
     }
 
     public void showStage10() { // go to bank
-        String string1 = "בוא נפקיד את הכסף בבנק לפני שנלך לישון.";
-        String string2 = "לחץ על כפתור הבנק בשביל להפקיד את הכסף";
+        String string1 = getString(R.string.DEPOSIT_IN_BANK_BEFORE_SLEEP);
+        String string2 = getString(R.string.PRESS_BANK_BUTTON_TO_DEPOSIT);
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.setBankVisibility(true);
         mFrontEnd.blinkBank();
     }
 
     public void showStage11() { // go to sleep
-        String string1 = "הגיע הזמן ללכת לישון.";
-        String string2 = "לחץ על כפתור השינה כדי לנוח עד למחרת.";
+        String string1 = getString(R.string.TIME_TO_GO_TO_SLEEP);
+        String string2 = getString(R.string.PRESS_SLEEP_BUTTON_TO_REST);
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.setBankVisibility(false);
         mFrontEnd.setSleepVisibility(true);
@@ -216,8 +216,8 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.setStateVisibility(State.GREECE, true);
         mFrontEnd.showState();
 
-        String string1 = "בוא נמשוך את הכסף מהבנק כדי להמשיך במסחר.";
-        String string2 = "לחץ על כפתור הבנק בשביל למשוך את הכסף";
+        String string1 = getString(R.string.DRAW_MONEY_FROM_BANK);
+        String string2 = getString(R.string.PRESS_BANK_BUTTON_TO_DRAW);
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.setBankVisibility(true);
         mFrontEnd.setSleepVisibility(false);
@@ -225,51 +225,51 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void showStage13() { // buy cooper
-        String string1 = "מחיר הנחושת היום בקפריסין נמוך! כדאי לקנות!";
-        String string2 = "לחץ על כפתור הנחושת כדי לרכוש אותה.";
+        String string1 = mActivity.getString(R.string.BUY_CHIP_GOODS, getGoodsString(Goods.COPPER), getStateString(State.CYPRUS));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.COPPER));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkMarket();
     }
 
     public void showStage14() { // sail to greece
-        String string1 = "מחיר הנחושת ביוון גבוה! בוא נפליג לשם!";
-        String string2 = "לחץ על הדגל של יוון כדי להפליג.";
+        String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.COPPER), getStateString(State.GREECE));
+        String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.GREECE));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkSail();
     }
 
     public void showStage15() { // fix ship
-        String string1 = "הספינה שלנו שבורה. כדאי לתקנה!";
-        String string2 = "לחץ על כפתור התיקון.";
+        String string1 = getString(R.string.WE_SHOUD_FIX_DAMAGED_SHIP);
+        String string2 = getString(R.string.PRESS_ON_THE_FIX_BUTTON);
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.setFixVisibility(true);
         mFrontEnd.blinkFixShip();
     }
 
     public void showStage16() { // sell copper in greece
-        String string1 = "בוא נמכור את הנחושת שלנו ביוקר!";
-        String string2 = "לחץ על כפתור הנחושת כדי למכור אותה.";
+        String string1 = mActivity.getString(R.string.SELL_GOODS, getGoodsString(Goods.COPPER));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.COPPER));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkMarket();
     }
 
     public void showStage17() { // buy wheat in greece
-        String string1 = "מחיר החיטה ביוון נמוך! כדאי לקנות!";
-        String string2 = "לחץ על כפתור החיטה כדי לרכוש אותה.";
+        String string1 = mActivity.getString(R.string.BUY_CHIP_GOODS, getGoodsString(Goods.WHEAT), getStateString(State.GREECE));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkMarket();
     }
 
     public void showStage18() { // sail to cyprus
-        String string1 = "מחיר החיטה בקפריסין גבוה! בוא נפליג לשם!";
-        String string2 = "לחץ על הדגל של קפריסין כדי להפליג.";
+        String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.WHEAT), getStateString(State.CYPRUS));
+        String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.CYPRUS));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkSail();
     }
 
     public void showStage19() { // sell wheat in cyprus
-        String string1 = "הגענו לקפריסין עם רוב החיטה! בוא נמכור אותה ביוקר!";
-        String string2 = "לחץ על כפתור החיטה כדי למכור אותה.";
+        String string1 = mActivity.getString(R.string.REACH_STATE_AND_SELL_MOST_GOODS, getStateString(State.CYPRUS), getGoodsString(Goods.WHEAT));
+        String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
         mFrontEnd.blinkMarket();
     }
