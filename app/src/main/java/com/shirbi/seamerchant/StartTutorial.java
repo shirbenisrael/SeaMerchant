@@ -284,70 +284,76 @@ public class StartTutorial extends FrontEndGeneric {
                     mFrontEnd.showWindow(Window.SAIL_WINDOW);
                     mFrontEndSail.initSailRoute();
                     mFrontEndSail.showOnlyStartSail();
-                    mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה לתורכיה");
+                    mFrontEnd.showAlertDialogMessage(getString(R.string.PRESS_ON_V_TO_SAIL),
+                            mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.TURKEY)));
                 }
                 break;
             case STAGE_3:
-                mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את החיטה שלנו.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.WHEAT)), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkMarket();
                 break;
             case STAGE_4:
-                mFrontEnd.showAlertDialogMessage("בוא נקנה קודם זיתים.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_BUY_FIRST, getGoodsString(Goods.OLIVES)), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkMarket();
                 break;
             case STAGE_5:
                 if (destination == State.ISRAEL) {
-                    mFrontEnd.showAlertDialogMessage("מחיר הזיתים בישראל נמוך מדי.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.GOODS_PRICE_IS_TO_LOW_IN_STATE,
+                            getGoodsString(Goods.OLIVES), getStateString(State.ISRAEL)), getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initSail(destination);
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
                 mFrontEndSail.showOnlyStartSail();
-                mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה למצרים");
+                mFrontEnd.showAlertDialogMessage(getString(R.string.PRESS_ON_V_TO_SAIL), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.EGYPT)));
                 break;
             case STAGE_6:
-                mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את הזיתים שלנו.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.OLIVES)),
+                        getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkMarket();
                 break;
             case STAGE_7:
             case STAGE_17:
-                mFrontEnd.showAlertDialogMessage("בוא נקנה קודם חיטה.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_BUY_FIRST, getGoodsString(Goods.WHEAT)),
+                        getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkMarket();
                 break;
             case STAGE_8:
                 if (destination == State.ISRAEL) {
-                    mFrontEnd.showAlertDialogMessage("מחיר החיטה ביוון גבוה יותר.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.GOODS_PRICE_IS_TO_HIGHER_IN_STATE, getGoodsString(Goods.WHEAT),
+                            getStateString(State.CYPRUS)), getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 if (destination == State.TURKEY) {
-                    mFrontEnd.showAlertDialogMessage("מאוחר מדי להפלגה כה ארוכה.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(getString(R.string.TO_LATE_FOR_LONG_SAIL), getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initSail(destination);
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
                 mFrontEndSail.showAllButtons();
-                mFrontEnd.showAlertDialogMessage("לחץ על כפתור 5 כדי לשכור ספינות משמר ואז על הוי הירוק כדאי לצאת לדרך.", "הפלגה לקפריסין");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.GET_5_GUARDS), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.CYPRUS)));
                 break;
             case STAGE_9:
-                mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(getString(R.string.TO_LATE_FOR_SAIL), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkMarket();
                 break;
             case STAGE_10:
-                mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג. נלך לבנק.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.TO_LATE_FOR_SAIL_GO_TO_BANK), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkBank();
                 break;
             case STAGE_11:
-                mFrontEnd.showAlertDialogMessage("מאוחר מדי בשביל להפליג. נלך לישון.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.TO_LATE_FOR_SAIL_GO_TO_SLEEP), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkSleep();
                 break;
             case STAGE_12:
-                mFrontEnd.showAlertDialogMessage("בוא נמשוך קודם את הכסף מהבנק.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.DRAW_CASH_FIRST), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkBank();
                 break;
             case STAGE_13:
-                mFrontEnd.showAlertDialogMessage("בוא נקנה קודם נחושת.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_BUY_FIRST, getGoodsString(Goods.COPPER)),
+                        getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkMarket();
                 break;
             case STAGE_14:
@@ -355,28 +361,30 @@ public class StartTutorial extends FrontEndGeneric {
                     mLogic.initSail(destination);
                     mFrontEnd.showWindow(Window.SAIL_WINDOW);
                     mFrontEndSail.initSailRoute();
-                    mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה ליוון");
+                    mFrontEnd.showAlertDialogMessage(getString(R.string.GET_5_GUARDS), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.GREECE)));
                 } else {
-                    mFrontEnd.showAlertDialogMessage("עדיף להפליג ליוון.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.GOODS_PRICE_IS_TO_HIGHER_IN_STATE, getGoodsString(Goods.COPPER),
+                            getStateString(State.GREECE)), getString(R.string.WE_SHOULD_NOT));
                     mFrontEnd.blinkSail();
                 }
                 break;
             case STAGE_15:
-                mFrontEnd.showAlertDialogMessage("בוא נתקן את הספינה לפני שנפליג שוב.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(getString(R.string.FIX_SHIP_BEFORE_SAIL), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkFixShip();
                 break;
             case STAGE_16:
-                mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את הנחושת.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.COPPER)), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkMarket();
                 break;
             case STAGE_18:
                 mLogic.initSail(destination);
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
-                mFrontEnd.showAlertDialogMessage("לחץ על הוי הירוק כדי לצאת לדרך.", "הפלגה לקפריסין");
+                mFrontEnd.showAlertDialogMessage(getString(R.string.PRESS_ON_V_TO_SAIL), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.CYPRUS)));
                 break;
             case STAGE_19:
-                mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את החיטה.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.WHEAT)),
+                        getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkMarket();
                 break;
         }

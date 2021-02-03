@@ -23,4 +23,22 @@
     <string name="WE_SHOUD_FIX_DAMAGED_SHIP">Our ship is damaged. We should fix it!</string>
     <string name="PRESS_ON_THE_FIX_BUTTON">Press on the fix button to do it.</string>
 
+    <string name="SHIP_TO_STATE_TITLE">Ship to %1$s</string>
+    <string name="PRESS_ON_V_TO_SAIL">Press on the green V to sail.</string>
+
+    <string name="WE_SHOULD_NOT">We shouldn\'t</string>
+
+    <string name="WE_SHOULD_SELL_FIRST">We should first sell our %1$s.</string>
+    <string name="WE_SHOULD_BUY_FIRST">We should first buy %1$s.</string>
+    <string name="GOODS_PRICE_IS_TO_LOW_IN_STATE">The %1$s\'s price is too low in %2$s.</string>
+    <string name="GOODS_PRICE_IS_TO_HIGHER_IN_STATE">The %1$s\'s price in %2$s is higher.</string>
+    <string name="TO_LATE_FOR_LONG_SAIL">The voyage is too long for such a late hour.</string>
+    <string name="TO_LATE_FOR_SAIL">Too late for sail.</string>
+    <string name="TO_LATE_FOR_SAIL_GO_TO_BANK">Too late for sail. We should go to bank.</string>
+    <string name="TO_LATE_FOR_SAIL_GO_TO_SLEEP">Too late for sail. We should go to sleep.</string>
+    <string name="DRAW_CASH_FIRST">We should draw cash from the bank first.</string>
+    <string name="GET_5_GUARDS">Press on the 5 button to rent guard ships and then on the green V to start sail.</string>
+    <string name="FIX_SHIP_BEFORE_SAIL">We should fix our ship before sailing again.</string>
+
+
 </resources>
