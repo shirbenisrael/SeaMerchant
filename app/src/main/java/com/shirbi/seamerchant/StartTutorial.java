@@ -414,6 +414,7 @@ public class StartTutorial extends FrontEndGeneric {
                 if (goods == Goods.WHEAT) {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.DONT_BUT_EXPENSIVE_GOODS, getGoodsString(Goods.WHEAT)),
                             getString(R.string.WE_SHOULD_NOT));
+                    mFrontEnd.blinkMarket(Goods.OLIVES);
                     break;
                 }
                 mLogic.initMarketDeal(goods);
@@ -432,6 +433,7 @@ public class StartTutorial extends FrontEndGeneric {
                 if (goods == Goods.WHEAT) {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.OLIVES)),
                             getString(R.string.WE_SHOULD_NOT));
+                    mFrontEnd.blinkMarket(Goods.OLIVES);
                     break;
                 }
                 mLogic.initMarketDeal(goods);
@@ -444,6 +446,7 @@ public class StartTutorial extends FrontEndGeneric {
                 if (goods == Goods.OLIVES) {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_BUY_GOODS, getGoodsString(Goods.WHEAT)),
                             getString(R.string.WE_SHOULD_NOT));
+                    mFrontEnd.blinkMarket(Goods.WHEAT);
                     break;
                 }
                 mLogic.initMarketDeal(goods);
@@ -456,6 +459,7 @@ public class StartTutorial extends FrontEndGeneric {
                 if (goods == Goods.OLIVES) {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_SELL_GOODS, getGoodsString(Goods.WHEAT)),
                             getString(R.string.WE_SHOULD_NOT));
+                    mFrontEnd.blinkMarket(Goods.WHEAT);
                     break;
                 }
                 mLogic.initMarketDeal(goods);
@@ -480,6 +484,7 @@ public class StartTutorial extends FrontEndGeneric {
                 if (goods != Goods.COPPER) {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_BUY_GOODS, getGoodsString(Goods.COPPER)),
                             getString(R.string.WE_SHOULD_NOT));
+                    mFrontEnd.blinkMarket(Goods.COPPER);
                     break;
                 }
                 mLogic.initMarketDeal(goods);
@@ -496,6 +501,7 @@ public class StartTutorial extends FrontEndGeneric {
                 if (goods != Goods.COPPER) {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_SELL_GOODS, getGoodsString(Goods.COPPER)),
                             getString(R.string.WE_SHOULD_NOT));
+                    mFrontEnd.blinkMarket(Goods.COPPER);
                     break;
                 }
                 mLogic.initMarketDeal(goods);
@@ -508,6 +514,7 @@ public class StartTutorial extends FrontEndGeneric {
                 if (goods != Goods.WHEAT) {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_BUY_GOODS, getGoodsString(Goods.WHEAT)),
                             getString(R.string.WE_SHOULD_NOT));
+                    mFrontEnd.blinkMarket(Goods.WHEAT);
                     break;
                 }
                 mLogic.initMarketDeal(goods);
@@ -520,6 +527,7 @@ public class StartTutorial extends FrontEndGeneric {
                 if (goods != Goods.WHEAT) {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.WHEAT)),
                             getString(R.string.WE_SHOULD_NOT));
+                    mFrontEnd.blinkMarket(Goods.WHEAT);
                     break;
                 }
                 mLogic.initMarketDeal(goods);
