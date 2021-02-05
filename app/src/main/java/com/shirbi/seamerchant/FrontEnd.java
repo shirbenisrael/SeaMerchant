@@ -35,6 +35,7 @@ public class FrontEnd extends FrontEndGeneric {
     FrontEndTimer mFrontEndBankBlinkTimer;
 
     State mStateToBlink;
+    Goods mGoodsToBlink;
 
     FrontEndNumberAnimation mFrontEndNumberAnimationCash;
     FrontEndNumberAnimation mFrontEndNumberAnimationBank;
@@ -470,7 +471,7 @@ public class FrontEnd extends FrontEndGeneric {
 
             String message = mActivity.getString(R.string.TUTORIAL_SELL, stateString, goodsString, price, units);
             showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
-            blinkMarket();
+            blinkMarket(goods);
             return;
         }
 
@@ -486,7 +487,7 @@ public class FrontEnd extends FrontEndGeneric {
 
             String message = mActivity.getString(R.string.TUTORIAL_BUY, stateString, goodsString, price, otherStateString, otherPrice);
             showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
-            blinkMarket();
+            blinkMarket(goods);
             return;
         }
 
@@ -518,9 +519,15 @@ public class FrontEnd extends FrontEndGeneric {
     private void blinkInventory(boolean isRed) {
         LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
 
-        for (Goods goods: Goods.values()) {
-            Button goodsButton = (Button)goodsLayout.getChildAt(goods.getValue());
-            @DrawableRes int backGroundId = isRed ? goods.toWideButtonRedId() : goods.toWideButtonId();
+        if (mGoodsToBlink == null || !isRed) {
+            for (Goods goods: Goods.values()) {
+                Button goodsButton = (Button)goodsLayout.getChildAt(goods.getValue());
+                @DrawableRes int backGroundId = isRed ? goods.toWideButtonRedId() : goods.toWideButtonId();
+                goodsButton.setBackgroundResource(backGroundId);
+            }
+        } else {
+            Button goodsButton = (Button)goodsLayout.getChildAt(mGoodsToBlink.getValue());
+            @DrawableRes int backGroundId = isRed ? mGoodsToBlink.toWideButtonRedId() : mGoodsToBlink.toWideButtonId();
             goodsButton.setBackgroundResource(backGroundId);
         }
 
@@ -608,7 +615,8 @@ public class FrontEnd extends FrontEndGeneric {
         mFrontEndBankBlinkTimer.startTimer(500, 20);
     }
 
-    public void blinkMarket() {
+    public void blinkMarket(Goods goods) {
+        mGoodsToBlink = goods;
         mFrontEndMarketBlinkTimer.startTimer(500, 20);
     }
 
@@ -629,7 +637,7 @@ public class FrontEnd extends FrontEndGeneric {
                 blinkSail(null);
             }
         } else {
-            blinkMarket();
+            blinkMarket(null);
         }
 
         if (mLogic.getDayPart() == DayPart.NIGHT) {

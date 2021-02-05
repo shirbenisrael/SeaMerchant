@@ -261,7 +261,7 @@ public class MainActivity extends Activity {
             return;
         }
 
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(null);
 
         if (mLogic.canFixShip()) {
             mFrontEnd.blinkFixShip();

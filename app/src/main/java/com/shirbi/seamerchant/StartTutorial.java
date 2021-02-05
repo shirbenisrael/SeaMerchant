@@ -101,7 +101,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
 
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.WHEAT);
     }
 
     public void showStage2() { // ship to turkey
@@ -115,14 +115,14 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.REACH_STATE_AND_SELL_GOODS, getStateString(State.TURKEY), getGoodsString(Goods.WHEAT));
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.WHEAT);
     }
 
     public void showStage4() { // buy olives in turkey.
         String string1 = mActivity.getString(R.string.BUY_CHIP_GOODS, getGoodsString(Goods.OLIVES), getStateString(State.TURKEY));
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.OLIVES));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.OLIVES);
 
         mFrontEnd.setStateVisibility(State.EGYPT, true);
 
@@ -147,14 +147,14 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.REACH_STATE_AND_SELL_GOODS, getStateString(State.EGYPT), getGoodsString(Goods.OLIVES));
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.OLIVES));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.OLIVES);
     }
 
     public void showStage7() {
         String string1 = mActivity.getString(R.string.BUY_CHIP_GOODS, getGoodsString(Goods.WHEAT), getStateString(State.EGYPT));
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.WHEAT);
 
         mFrontEnd.setStateVisibility(State.CYPRUS, true);
         mLogic.mPriceTable.setPrice(State.CYPRUS, Goods.OLIVES, 650);
@@ -173,7 +173,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.REACH_STATE_AND_SELL_GOODS, getStateString(State.CYPRUS), getGoodsString(Goods.WHEAT));
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.WHEAT);
     }
 
     public void showStage10() { // go to bank
@@ -228,7 +228,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.BUY_CHIP_GOODS, getGoodsString(Goods.COPPER), getStateString(State.CYPRUS));
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.COPPER));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.COPPER);
     }
 
     public void showStage14() { // sail to greece
@@ -250,14 +250,14 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.SELL_GOODS, getGoodsString(Goods.COPPER));
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.COPPER));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.COPPER);
     }
 
     public void showStage17() { // buy wheat in greece
         String string1 = mActivity.getString(R.string.BUY_CHIP_GOODS, getGoodsString(Goods.WHEAT), getStateString(State.GREECE));
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_BUY, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.WHEAT);
     }
 
     public void showStage18() { // sail to cyprus
@@ -271,7 +271,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.REACH_STATE_AND_SELL_MOST_GOODS, getStateString(State.CYPRUS), getGoodsString(Goods.WHEAT));
         String string2 = mActivity.getString(R.string.PRESS_GOODS_BUTTON_TO_SELL, getGoodsString(Goods.WHEAT));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkMarket();
+        mFrontEnd.blinkMarket(Goods.WHEAT);
     }
 
     public void onFlagClick(State destination) {
@@ -290,11 +290,11 @@ public class StartTutorial extends FrontEndGeneric {
                 break;
             case STAGE_3:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.WHEAT)), getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.WHEAT);
                 break;
             case STAGE_4:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_BUY_FIRST, getGoodsString(Goods.OLIVES)), getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.OLIVES);
                 break;
             case STAGE_5:
                 if (destination == State.ISRAEL) {
@@ -311,13 +311,13 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_6:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.OLIVES)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.OLIVES);
                 break;
             case STAGE_7:
             case STAGE_17:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_BUY_FIRST, getGoodsString(Goods.WHEAT)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.WHEAT);
                 break;
             case STAGE_8:
                 if (destination == State.ISRAEL) {
@@ -337,7 +337,7 @@ public class StartTutorial extends FrontEndGeneric {
                 break;
             case STAGE_9:
                 mFrontEnd.showAlertDialogMessage(getString(R.string.TO_LATE_FOR_SAIL), getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.WHEAT);
                 break;
             case STAGE_10:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.TO_LATE_FOR_SAIL_GO_TO_BANK), getString(R.string.WE_SHOULD_NOT));
@@ -354,7 +354,7 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_13:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_BUY_FIRST, getGoodsString(Goods.COPPER)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.COPPER);
                 break;
             case STAGE_14:
                 if (destination == State.GREECE) {
@@ -374,7 +374,7 @@ public class StartTutorial extends FrontEndGeneric {
                 break;
             case STAGE_16:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.COPPER)), getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.COPPER);
                 break;
             case STAGE_18:
                 mLogic.initSail(destination);
@@ -385,7 +385,7 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_19:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.WHEAT)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.WHEAT);
                 break;
         }
     }
@@ -679,7 +679,7 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_13:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_BUY_GOODS, getGoodsString(Goods.COPPER)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.COPPER);
                 break;
             case STAGE_14:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.SAIL_TO_DESTINATION, getStateString(State.GREECE)),
@@ -694,12 +694,12 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_16:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.COPPER)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.COPPER);
                 break;
             case STAGE_17:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_BUY_FIRST, getGoodsString(Goods.WHEAT)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.WHEAT);
                 break;
             case STAGE_18:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.SAIL_TO_DESTINATION, getStateString(State.CYPRUS)),
@@ -709,7 +709,7 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_19:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.WHEAT)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkMarket();
+                mFrontEnd.blinkMarket(Goods.WHEAT);
                 break;
         }
     }
