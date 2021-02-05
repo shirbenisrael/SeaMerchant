@@ -57,4 +57,8 @@
 
     <string name="SAIL_TO_DESTINATION">Lets sail to %1$s.</string>
 
+    <string name="TAKE_5_GUARDS_SHIPS">The sea is infested with bandits.Lets rent 5 guard ships. Press on the 5 button.</string>
+
+    <string name="FIX_SHIP_TITLE">Fix ship.</string>
+
 </resources>

@@ -719,7 +719,7 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_8:
             case STAGE_14:
                 if (mLogic.mSail.mSelectedNumGuardShips < 5) {
-                    mFrontEnd.showAlertDialogMessage("הים שורץ שודדים. בוא נשכור 5 ספינות משמר. לחץ על כפתור ה-5.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(getString(R.string.TAKE_5_GUARDS_SHIPS), getString(R.string.WE_SHOULD_NOT));
                     return false;
                 }
         }
@@ -768,7 +768,8 @@ public class StartTutorial extends FrontEndGeneric {
         mLogic.initFixShipDeal();
         mFrontEndFixShip.onFixShipClick();
         mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
-        mFrontEnd.showAlertDialogMessage("לחץ על -תקן ככל האפשר- ואז על כפתור וי ירוק.", "תיקון הספינה");
+        mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.FIXED_AS_POSSIBLE)),
+                 getString(R.string.FIX_SHIP_TITLE));
     }
 
     public void fixDone() {
