@@ -277,7 +277,9 @@ public class StartTutorial extends FrontEndGeneric {
     public void onFlagClick(State destination) {
         switch (mStage) {
             case STAGE_1:
-                return;
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_BUY_FIRST, getGoodsString(Goods.WHEAT)), getString(R.string.WE_SHOULD_NOT));
+                mFrontEnd.blinkMarket(Goods.WHEAT);
+                break;
             case STAGE_2:
                 if (destination == State.TURKEY) {
                     mLogic.initSail(destination);
