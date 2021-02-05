@@ -59,6 +59,11 @@
 
     <string name="TAKE_5_GUARDS_SHIPS">הים שורץ שודדים. בוא נשכור 5 ספינות משמר. לחץ על כפתור ה 5.</string>
 
+    <string name="PIRATES_WITH_5_GUARDS">הפעם אנו חמושים ב-5 ספינות משמר!</string>
+    <string name="PIRATES_WITH_NO_GUARDS">לא שכרנו ספינות משמר. אין ברירה אלא לנסות להימלט!</string>
+    <string name="HOPE_ESCAPE_WORK">נחזיק אצבעות שהבריחה תצליח.</string>
+    <string name="PIRATE_GO_TO_BATTLE">בוא נילחם בפיראטים!</string>
+
     <string name="FIX_SHIP_TITLE">תיקון הספינה</string>
 
     <string name="START_TUTORIAL">התחל הדרכה</string>

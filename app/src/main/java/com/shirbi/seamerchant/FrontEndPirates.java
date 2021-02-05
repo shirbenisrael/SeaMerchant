@@ -98,7 +98,6 @@ public class FrontEndPirates extends FrontEndGeneric {
         findViewById(R.id.escape_button).setVisibility(View.VISIBLE);
         findViewById(R.id.negotiate_button).setVisibility(View.VISIBLE);
         findViewById(R.id.attack_button).setVisibility(View.VISIBLE);
-        ((TextView)findViewById(R.id.pirates_chances_text_view)).setText("הפעם אנחנו חמושים ב-5 ספינות משמר!.");
         ((TextView)findViewById(R.id.pirates_tip)).setText(R.string.PIRATES_TIP);
     }
 
@@ -106,15 +105,15 @@ public class FrontEndPirates extends FrontEndGeneric {
         findViewById(R.id.escape_button).setVisibility(View.VISIBLE);
         findViewById(R.id.negotiate_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.attack_button).setVisibility(View.INVISIBLE);
-        ((TextView)findViewById(R.id.pirates_chances_text_view)).setText("לא שכרנו ספינות משמר. אין ברירה אלא לנסות לברוח.");
-        ((TextView)findViewById(R.id.pirates_tip)).setText("נחזיק אצבעות שהבריחה תצליח.");
+        ((TextView)findViewById(R.id.pirates_chances_text_view)).setText(R.string.PIRATES_WITH_NO_GUARDS);
+        ((TextView)findViewById(R.id.pirates_tip)).setText(R.string.HOPE_ESCAPE_WORK);
     }
 
     public void showOnlyAttack() {
         findViewById(R.id.escape_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.negotiate_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.attack_button).setVisibility(View.VISIBLE);
-        ((TextView)findViewById(R.id.pirates_chances_text_view)).setText("הפעם אנחנו חמושים ב-5 ספינות משמר!");
-        ((TextView)findViewById(R.id.pirates_tip)).setText("בוא נצא לקרב!");
+        ((TextView)findViewById(R.id.pirates_chances_text_view)).setText(R.string.PIRATES_WITH_5_GUARDS);
+        ((TextView)findViewById(R.id.pirates_tip)).setText(R.string.PIRATE_GO_TO_BATTLE);
     }
 }

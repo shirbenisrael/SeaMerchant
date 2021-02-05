@@ -59,6 +59,11 @@
 
     <string name="TAKE_5_GUARDS_SHIPS">The sea is infested with bandits.Lets rent 5 guard ships. Press on the 5 button.</string>
 
+    <string name="PIRATES_WITH_5_GUARDS">This time we are armoured with 5 guard ships!</string>
+    <string name="PIRATES_WITH_NO_GUARDS">We didn\'t rent guard ships. We must try to escape!</string>
+    <string name="HOPE_ESCAPE_WORK">Lets hold fingers that escape will succeed.</string>
+    <string name="PIRATE_GO_TO_BATTLE">Lets fight the pirates!</string>
+
     <string name="FIX_SHIP_TITLE">Fix ship</string>
 
     <string name="START_TUTORIAL">Start Tutorial</string>
