@@ -72,7 +72,7 @@ public class FrontEndMedal extends FrontEndGeneric {
         setMedalIcon(medal);
     }
 
-    private void setMedalIcon(Medal medal) {
+    public void setMedalIcon(Medal medal) {
         LinearLayout scroll = findViewById(R.id.medal_scroll_view);
 
         Button medalImage = (Button)((LinearLayout)scroll.getChildAt(medal.getValue())).getChildAt(0);

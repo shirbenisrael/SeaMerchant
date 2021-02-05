@@ -230,6 +230,7 @@ public class BackEndGoogleApi {
                             // This can happen when reinstall the app - restore the medal from google games.
                             if (!mLogic.hasMedal(medal)) {
                                 mLogic.restoreMedal(medal);
+                                mActivity.mFrontEndMedal.setMedalIcon(medal);
                             }
                         } else {
                             // This can happen if didn't have internet connection when achieved the medal.
