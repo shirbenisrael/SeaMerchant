@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="BUY_CHIP_GOODS">מחיר ה%1$s ב%2$s נמוך!כדאי לנו לקנות!</string>
+    <string name="BUY_CHIP_GOODS">מחיר ה%1$s ב%2$s נמוך! כדאי לנו לקנות!</string>
     <string name="PRESS_GOODS_BUTTON_TO_BUY">לחץ על כפתור ה%1$s כדי לקנות.</string>
 
     <string name="SAIL_TO_STATE_WITH_HIGH_PRICE">מחיר ה%1$s ב%2$s גבוה. בוא נפליג לשם!</string>
