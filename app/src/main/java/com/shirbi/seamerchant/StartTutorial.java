@@ -396,121 +396,137 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
-                mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית חיטה");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
+                        mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_2:
-                mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(getString(R.string.BUY_ENOUGH_NOW_SAIL), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkSail();
                 break;
             case STAGE_3:
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת חיטה");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                        mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_4:
                 if (goods == Goods.WHEAT) {
-                    mFrontEnd.showAlertDialogMessage("אין טעם לקנות כאן חיטה. היא יקרה מדי.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.DONT_BUT_EXPENSIVE_GOODS, getGoodsString(Goods.WHEAT)),
+                            getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
-                mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית זיתים");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
+                        mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.OLIVES)));
                 break;
-            case STAGE_18:
             case STAGE_5:
-                mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
+            case STAGE_8:
+            case STAGE_14:
+            case STAGE_18:
+                mFrontEnd.showAlertDialogMessage(getString(R.string.BUY_ENOUGH_NOW_SAIL), getString(R.string.WE_SHOULD_NOT));
                 break;
             case STAGE_6:
                 if (goods == Goods.WHEAT) {
-                    mFrontEnd.showAlertDialogMessage("בוא נמכור קודם כל את הזיתים.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.OLIVES)),
+                            getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת זיתים");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                        mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.OLIVES)));
                 break;
             case STAGE_7:
                 if (goods == Goods.OLIVES) {
-                    mFrontEnd.showAlertDialogMessage("בוא נקנה חיטה.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_BUY_GOODS, getGoodsString(Goods.WHEAT)),
+                            getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyFillCapacity();
-                mFrontEnd.showAlertDialogMessage("לחץ על -קיבולת מלאה- כדי למלא את הספינה בהתאם לקיבולת ואז על כפתור וי ירוק.", "קנית חיטה");
-                break;
-            case STAGE_8:
-            case STAGE_14:
-                mFrontEnd.showAlertDialogMessage("קנינו מספיק. עכשיו הזמן להפליג.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.FILL_CAPACITY)),
+                        mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_9:
                 if (goods == Goods.OLIVES) {
-                    mFrontEnd.showAlertDialogMessage("בוא נמכור את החיטה.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_SELL_GOODS, getGoodsString(Goods.WHEAT)),
+                            getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת חיטה");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                        mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_10:
-                mFrontEnd.showAlertDialogMessage("מאוחר מדי לקניות. נלך לבנק.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(getString(R.string.TO_LATE_FOR_MARKET_GO_TO_BANK), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkBank();
                 break;
             case STAGE_11:
-                mFrontEnd.showAlertDialogMessage("מאוחר מדי לקניות. נלך לישון.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(getString(R.string.TO_LATE_FOR_MARKET_GO_TO_SLEEP), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkSleep();
                 break;
             case STAGE_12:
-                mFrontEnd.showAlertDialogMessage("בוא נמשוך קודם את הכסף מהבנק.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(getString(R.string.DRAW_FIRST_CACH_FROM_BANK), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkBank();
                 break;
             case STAGE_13:
                 if (goods != Goods.COPPER) {
-                    mFrontEnd.showAlertDialogMessage("אין טעם. עדיף לקנות כאן נחושת.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_BUY_GOODS, getGoodsString(Goods.COPPER)),
+                            getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
-                mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית נחושת");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
+                        mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.COPPER)));
                 break;
             case STAGE_15:
-                mFrontEnd.showAlertDialogMessage("בוא נתקן את הספינה קודם.", "לא כדאי");
+                mFrontEnd.showAlertDialogMessage(getString(R.string.FIX_SHIP_FIRST), getString(R.string.WE_SHOULD_NOT));
                 mFrontEnd.blinkFixShip();
                 break;
             case STAGE_16:
                 if (goods != Goods.COPPER) {
-                    mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את הנחושת.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_SELL_GOODS, getGoodsString(Goods.COPPER)),
+                            getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת נחושת");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                        mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.COPPER)));
                 break;
             case STAGE_17:
                 if (goods != Goods.WHEAT) {
-                    mFrontEnd.showAlertDialogMessage("אין טעם. עדיף לקנות כאן חיטה.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.LETS_BUY_GOODS, getGoodsString(Goods.WHEAT)),
+                            getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
-                mFrontEnd.showAlertDialogMessage("לחץ על -קנה מקסימום- ואז על כפתור וי ירוק.", "קניית חיטה");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
+                        mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_19:
                 if (goods != Goods.WHEAT) {
-                    mFrontEnd.showAlertDialogMessage("בוא נמכור קודם את החיטה.", "לא כדאי");
+                    mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.WHEAT)),
+                            getString(R.string.WE_SHOULD_NOT));
                     break;
                 }
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage("לחץ על -מכור הכל- ואז על כפתור וי ירוק.", "מכירת חיטה");
+                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                        mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
         }
     }
