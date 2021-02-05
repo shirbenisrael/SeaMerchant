@@ -108,7 +108,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.WHEAT), getStateString(State.TURKEY));
         String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.TURKEY));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkSail();
+        mFrontEnd.blinkSail(State.TURKEY);
     }
 
     public void showStage3() { // sell wheat in turkey
@@ -140,7 +140,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.OLIVES), getStateString(State.EGYPT));
         String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.EGYPT));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkSail();
+        mFrontEnd.blinkSail(State.EGYPT);
     }
 
     public void showStage6() { // sell olives in egypt
@@ -166,7 +166,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.WHEAT), getStateString(State.CYPRUS));
         String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.CYPRUS));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkSail();
+        mFrontEnd.blinkSail(State.CYPRUS);
     }
 
     public void showStage9() { // sell wheat in cyprus
@@ -235,7 +235,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.COPPER), getStateString(State.GREECE));
         String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.GREECE));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkSail();
+        mFrontEnd.blinkSail(State.GREECE);
     }
 
     public void showStage15() { // fix ship
@@ -264,7 +264,7 @@ public class StartTutorial extends FrontEndGeneric {
         String string1 = mActivity.getString(R.string.SAIL_TO_STATE_WITH_HIGH_PRICE, getGoodsString(Goods.WHEAT), getStateString(State.CYPRUS));
         String string2 = mActivity.getString(R.string.PRESS_ON_FLAG_TO_SAIL_TO_STATE, getStateString(State.CYPRUS));
         mFrontEnd.showTutorialStrings(string1, string2);
-        mFrontEnd.blinkSail();
+        mFrontEnd.blinkSail(State.CYPRUS);
     }
 
     public void showStage19() { // sell wheat in cyprus
@@ -365,7 +365,7 @@ public class StartTutorial extends FrontEndGeneric {
                 } else {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.GOODS_PRICE_IS_TO_HIGHER_IN_STATE, getGoodsString(Goods.COPPER),
                             getStateString(State.GREECE)), getString(R.string.WE_SHOULD_NOT));
-                    mFrontEnd.blinkSail();
+                    mFrontEnd.blinkSail(State.GREECE);
                 }
                 break;
             case STAGE_15:
@@ -401,7 +401,7 @@ public class StartTutorial extends FrontEndGeneric {
                 break;
             case STAGE_2:
                 mFrontEnd.showAlertDialogMessage(getString(R.string.BUY_ENOUGH_NOW_SAIL), getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkSail();
+                mFrontEnd.blinkSail(State.TURKEY);
                 break;
             case STAGE_3:
                 mLogic.initMarketDeal(goods);
@@ -684,7 +684,7 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_14:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.SAIL_TO_DESTINATION, getStateString(State.GREECE)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkSail();
+                mFrontEnd.blinkSail(State.GREECE);
                 break;
             case STAGE_15:
                 mFrontEnd.showAlertDialogMessage(getString(R.string.FIX_SHIP_FIRST),
@@ -704,7 +704,7 @@ public class StartTutorial extends FrontEndGeneric {
             case STAGE_18:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.SAIL_TO_DESTINATION, getStateString(State.CYPRUS)),
                         getString(R.string.WE_SHOULD_NOT));
-                mFrontEnd.blinkSail();
+                mFrontEnd.blinkSail(State.CYPRUS);
                 break;
             case STAGE_19:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.WHEAT)),

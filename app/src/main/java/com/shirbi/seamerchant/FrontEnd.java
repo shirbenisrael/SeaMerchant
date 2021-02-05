@@ -34,6 +34,8 @@ public class FrontEnd extends FrontEndGeneric {
     FrontEndTimer mFrontEndFixShipBlinkTimer;
     FrontEndTimer mFrontEndBankBlinkTimer;
 
+    State mStateToBlink;
+
     FrontEndNumberAnimation mFrontEndNumberAnimationCash;
     FrontEndNumberAnimation mFrontEndNumberAnimationBank;
     FrontEndNumberAnimation mFrontEndNumberAnimationInventory[];
@@ -505,7 +507,7 @@ public class FrontEnd extends FrontEndGeneric {
                 String message = mActivity.getString(R.string.TUTORIAL_SAIL_WITH_GOODS, goodsString, otherStateString, otherPrice);
                 showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
             }
-            blinkSail();
+            blinkSail(mLogic.mTutorial.mStateToSail);
             return;
         }
 
@@ -530,6 +532,20 @@ public class FrontEnd extends FrontEndGeneric {
     private void blinkFlags(boolean isRed) {
         @DrawableRes int backGroundId = isRed ? R.drawable.sail_help_red : R.drawable.sail_help;
         findViewById(R.id.sail_help).setBackgroundResource(backGroundId);
+
+        LinearLayout statesLayout = findViewById(R.id.prices_layout);
+
+        if (mStateToBlink == null || !isRed) {
+            for (State state : State.values()) {
+                LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
+                RelativeLayout flagButtonWrapper = (RelativeLayout)stateLayout.getChildAt(0);
+                flagButtonWrapper.setAlpha(isRed ? 0.3f : 1.0f);
+            }
+        } else {
+            LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(mStateToBlink.getValue());
+            RelativeLayout flagButtonWrapper = (RelativeLayout)stateLayout.getChildAt(0);
+            flagButtonWrapper.setAlpha(isRed ? 0.3f : 1.0f);
+        }
     }
 
     private void blinkSleepButton(boolean isRed) {
@@ -597,7 +613,8 @@ public class FrontEnd extends FrontEndGeneric {
         mFrontEndMarketBlinkTimer.startTimer(500, 20);
     }
 
-    public void blinkSail() {
+    public void blinkSail(State state) {
+        mStateToBlink = state;
         mFrontEndSailBlinkTimer.startTimer(500, 20);
     }
 
@@ -610,7 +627,7 @@ public class FrontEnd extends FrontEndGeneric {
     public void blinkButtons() {
         if (mLogic.calculateLoad() > 0) {
             if (mLogic.getDayPart() != DayPart.NIGHT) {
-                blinkSail();
+                blinkSail(null);
             }
         } else {
             blinkMarket();
