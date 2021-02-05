@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="BUY_CHIP_GOODS">מחיר ה%1$s ב%2$s נמוך!כדאי לנו לקנות!</string>
+    <string name="PRESS_GOODS_BUTTON_TO_BUY">לחץ על כפתור ה%1$s כדי לקנות.</string>
+
+    <string name="SAIL_TO_STATE_WITH_HIGH_PRICE">מחיר ה%1$s ב%2$s גבוה. בוא נפליג לשם!</string>
+    <string name="PRESS_ON_FLAG_TO_SAIL_TO_STATE">לחץ על הדגל של %1$s כדי להפליג.</string>
+
+    <string name="REACH_STATE_AND_SELL_GOODS">הגענו ל%1$s! בוא נמכור את ה%2$s שלנו במחיר גבוה!</string>
+    <string name="REACH_STATE_AND_SELL_MOST_GOODS">הגענו ל%1$s עם מרבית ה%2$s שלנו. בוא נמכור את הסחורה במחיר גבוה!</string>
+    <string name="SELL_GOODS">בוא נמכור את ה%1$s שלנו במחיר גבוה!</string>
+    <string name="PRESS_GOODS_BUTTON_TO_SELL">לחץ על כפתור ה%1$s כדי למכור את הסחורה.</string>
+
+    <string name="DEPOSIT_IN_BANK_BEFORE_SLEEP">כדי לנו להפקיד את כספנו בבנק לפני שנלך לישון.</string>
+    <string name="PRESS_BANK_BUTTON_TO_DEPOSIT">לחץ על כפתור הבנק כדי להקיד את הכסף.</string>
+
+    <string name="TIME_TO_GO_TO_SLEEP">הגיע הזמן ללכת לישון.</string>
+    <string name="PRESS_SLEEP_BUTTON_TO_REST">לחץ על כפתור השינה על מנת לנוח עד למחרת.</string>
+
+    <string name="DRAW_MONEY_FROM_BANK">עלינו למשוך את הכסף מהבנק כדי להמשיך במסחר.</string>
+    <string name="PRESS_BANK_BUTTON_TO_DRAW">לחץ על כפתור הבנק כדי למשוך את הכסף.</string>
+
+    <string name="WE_SHOUD_FIX_DAMAGED_SHIP">הספינה שלנו ספגה נזק. עלינו לתקנה!</string>
+    <string name="PRESS_ON_THE_FIX_BUTTON">לחץ על כפתור התיקון כדי לבצע זאת.</string>
+
+    <string name="SHIP_TO_STATE_TITLE">הפלגה ל%1$s</string>
+    <string name="PRESS_ON_V_TO_SAIL">לחץ על הוי הירוק כדי להפליג.</string>
+
+    <string name="WE_SHOULD_NOT">לא כדאי</string>
+
+    <string name="WE_SHOULD_SELL_FIRST">כדאי קודם למכור את ה%1$s.</string>
+    <string name="WE_SHOULD_BUY_FIRST">כדאי קודם לקנות %1$s.</string>
+    <string name="GOODS_PRICE_IS_TO_LOW_IN_STATE">מחיר ה%1$s ב%2$s נמוך מדי.</string>
+    <string name="GOODS_PRICE_IS_TO_HIGHER_IN_STATE">מחיר ה%1$s ב%2$s גבוה יותר.</string>
+    <string name="TO_LATE_FOR_LONG_SAIL">המסע ארוך מדי לשעה כה מאוחרת.</string>
+    <string name="TO_LATE_FOR_SAIL">מאוחר מדי בשביל להפליג.</string>
+    <string name="TO_LATE_FOR_SAIL_GO_TO_BANK">מאוחר מדי בשביל להפליג. עלינו ללכת לבנק.</string>
+    <string name="TO_LATE_FOR_SAIL_GO_TO_SLEEP">מאוחר מדי בשביל להפליג. עלינו ללכת לישון.</string>
+    <string name="DRAW_CASH_FIRST">עלינו למשוך קודם את הכסף מהבנק.</string>
+    <string name="GET_5_GUARDS">לחץ על כפתור ה 5 כדי לשכור ספינות משמר ואז על הוי הירוק כדי לצאת לדרך.</string>
+    <string name="FIX_SHIP_BEFORE_SAIL">עלינו לתקן את הספינה לפני שנצא שוב להפלגה.</string>
+
+    <string name="BUY_GOODS_TITLE">קניית %1$s</string>
+    <string name="SELL_GOODS_TITLE">מכירת %1$s</string>
+    <string name="PRESS_ON_BUTTON_AND_ON_V">לחץ על -%1$s- ואז על הוי הירוק.</string>
+    <string name="BUY_ENOUGH_NOW_SAIL">קנינו מספיק. עכשיו הזמן להפליג.</string>
+    <string name="DONT_BUT_EXPENSIVE_GOODS">לא כדאי לנו לקנות %1$s. המחיר כאן גבוה.</string>
+    <string name="LETS_BUY_GOODS">בוא נקנה %1$s.</string>
+    <string name="LETS_SELL_GOODS">בוא נמכור את ה %1$s שלנו.</string>
+    <string name="TO_LATE_FOR_MARKET_GO_TO_BANK">מאוחר מדי ללכת לשוק. בוא נלך לבנק.</string>
+    <string name="TO_LATE_FOR_MARKET_GO_TO_SLEEP">מאוחר מדי ללכת לשוק. בוא נלך לישון.</string>
+    <string name="DRAW_FIRST_CACH_FROM_BANK">בוא נמשוך קודם את כספנו מהבנק.</string>
+    <string name="FIX_SHIP_FIRST">בוא נתקן קודם את הספינה.</string>
+
+    <string name="BANK_DEPOSIT_TITLE">הפקדה לבנק</string>
+    <string name="BANK_DRAW_TITLE">משיכה מהבנק</string>
+
+    <string name="SAIL_TO_DESTINATION">בוא נפליג ל%1$s.</string>
+
+    <string name="TAKE_5_GUARDS_SHIPS">הים שורץ שודדים. בוא נשכור 5 ספינות משמר. לחץ על כפתור ה 5.</string>
+
+    <string name="FIX_SHIP_TITLE">תיקון הספינה</string>
+
+    <string name="START_TUTORIAL">התחל הדרכה</string>
+    <string name="END_TUTORIAL">סיים הדרכה</string>
+    <string name="START_TUTORIAL_QUESTION">להתחיל הדרכה?</string>
+    <string name="END_TUTORIAL_QUESTION">לסיים הדרכה?</string>
+
+
+</resources>
