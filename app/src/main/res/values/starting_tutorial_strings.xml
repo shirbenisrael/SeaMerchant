@@ -52,4 +52,9 @@
     <string name="DRAW_FIRST_CACH_FROM_BANK">Lets first draw our money from the bank.</string>
     <string name="FIX_SHIP_FIRST">Lets fix our ship first.</string>
 
+    <string name="BANK_DEPOSIT_TITLE">Bank deposit.</string>
+    <string name="BANK_DRAW_TITLE">Draw from bank.</string>
+
+    <string name="SAIL_TO_DESTINATION">Lets sail to %1$s.</string>
+
 </resources>
