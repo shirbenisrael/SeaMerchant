@@ -517,12 +517,11 @@ public class FrontEnd extends FrontEndGeneric {
 
     private void blinkInventory(boolean isRed) {
         LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
-        int colorId = isRed ? R.color.red : R.color.black;
-        @ColorInt int color = mActivity.getColor(colorId);
 
         for (Goods goods: Goods.values()) {
             Button goodsButton = (Button)goodsLayout.getChildAt(goods.getValue());
-            goodsButton.setTextColor(color);
+            @DrawableRes int backGroundId = isRed ? goods.toWideButtonRedId() : goods.toWideButtonId();
+            goodsButton.setBackgroundResource(backGroundId);
         }
 
         @DrawableRes int backGroundId = isRed ? R.drawable.market_help_red : R.drawable.market_help;
