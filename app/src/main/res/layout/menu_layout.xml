@@ -145,7 +145,7 @@
             android:id="@+id/start_tutorial_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start Tutorial"
+            android:text="@string/START_TUTORIAL"
             android:onClick="onStartTutorialButtonClick"
             android:visibility="visible"
             tools:ignore="RtlSymmetry" />

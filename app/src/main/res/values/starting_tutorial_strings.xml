@@ -61,4 +61,10 @@
 
     <string name="FIX_SHIP_TITLE">Fix ship.</string>
 
+    <string name="START_TUTORIAL">Start Tutorial</string>
+    <string name="END_TUTORIAL">End Tutorial</string>
+    <string name="START_TUTORIAL_QUESTION">Start tutorial?</string>
+    <string name="END_TUTORIAL_QUESTION">End tutorial?</string>
+
+
 </resources>

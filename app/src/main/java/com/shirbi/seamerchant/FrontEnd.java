@@ -651,7 +651,7 @@ public class FrontEnd extends FrontEndGeneric {
     void showStartingTutorialDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
 
-        builder.setTitle("להתחיל הדרכה?");
+        builder.setTitle(R.string.START_TUTORIAL_QUESTION);
         builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 mActivity.startTutorial();
@@ -669,7 +669,7 @@ public class FrontEnd extends FrontEndGeneric {
     void showEndTutorialDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
 
-        builder.setTitle("לסיים הדרכה?");
+        builder.setTitle(R.string.END_TUTORIAL_QUESTION);
         builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 mActivity.startNewGame();
@@ -831,7 +831,7 @@ public class FrontEnd extends FrontEndGeneric {
         ((TextView)findViewById((R.id.current_weather_text_view))).setText(string1);
         ((TextView)findViewById((R.id.market_state_text_view))).setText(string2);
 
-        showAlertDialogMessage(string1 +  " " + string2, "הדרכה" );
+        showAlertDialogMessage(string1 +  " " + string2, getString(R.string.TUTORIAL) );
     }
 
     public void resetMarketStateText() {
@@ -839,7 +839,7 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     public void setStartingTutorialButtonText() {
-        String text = mActivity.mIsStartTutorialActive ? "סיום הדרכה" : "התחל הדרכה";
+        String text = mActivity.mIsStartTutorialActive ? getString(R.string.END_TUTORIAL) : getString(R.string.START_TUTORIAL);
         ((Button)findViewById(R.id.start_tutorial_button)).setText(text);
     }
 }
