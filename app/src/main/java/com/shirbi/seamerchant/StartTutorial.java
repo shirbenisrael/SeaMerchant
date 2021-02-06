@@ -71,6 +71,9 @@ public class StartTutorial extends FrontEndGeneric {
     public void showStage1() { // buy wheat in israel
         mStage = TutorialStage.STAGE_1;
         mLogic.startNewGame();
+
+        mLogic.mCapacity = Logic.START_CAPACITY; // Ignore medal
+        mLogic.mCash = Logic.START_GAME_CASH; // Ignore medal
         mFrontEnd.showState();
 
         mFrontEnd.setStateVisibility(State.EGYPT, false);
@@ -754,6 +757,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showWindow(Window.PIRATES_ATTACK_WINDOW);
                 break;
             case STAGE_14:
+                mLogic.mSail.mSailEndedPeacefully = false;
                 mLogic.mSail.mPiratesDamage = 5000;
                 mLogic.mSail.mBattleResult = Sail.BattleResult.WIN_AND_TREASURE;
                 mLogic.mSail.mPiratesTreasure = 10000;

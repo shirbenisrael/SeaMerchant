@@ -9,13 +9,13 @@ import java.util.Random;
 import java.util.StringTokenizer;
 
 public class Logic {
-    private static final int START_GAME_CASH = 5000;
+    protected static final int START_GAME_CASH = 5000;
     private static final int START_GAME_CASH_WITH_MEDAL = 10000;
     public static final int START_HOUR = 6;
     private static final Weather START_WEATHER = Weather.GOOD_SAILING;
     private static final State START_STATE = State.ISRAEL;
     private static final State START_WEATHER_STATE = State.ISRAEL;
-    private static final int START_CAPACITY = 100;
+    protected static final int START_CAPACITY = 100;
     private static final int START_CAPACITY_WITH_MEDAL = 200;
     public static final int EVENING_TIME = 17;
     public static final int NIGHT_TIME = 21;
@@ -661,6 +661,9 @@ public class Logic {
     }
 
     public int getBankNightlyInterest() {
+        if (mActivity.mIsStartTutorialActive) {
+            return BANK_NIGHTLY_INTEREST;
+        }
         return hasMedal(Medal.FEDERAL_RESERVE) ? BANK_NIGHTLY_INTEREST_WITH_MEDAL : BANK_NIGHTLY_INTEREST;
     }
 
