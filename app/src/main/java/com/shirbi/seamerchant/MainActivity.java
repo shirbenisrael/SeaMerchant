@@ -965,6 +965,7 @@ public class MainActivity extends Activity {
     }
 
     public void startTutorial() {
+        playSound(R.raw.new_day);
         mIsStartTutorialActive = true;
         mStartTutorial.showStage1();
         mFrontEnd.setStartingTutorialButtonText();
