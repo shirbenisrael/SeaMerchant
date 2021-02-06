@@ -159,6 +159,10 @@ public class Logic {
 
     public NewDayEvent mNewDayEvent;
 
+    private int generateRandom(int bound) {
+        return mRand.nextInt(Math.max(1, bound));
+    }
+
     public void clearInventory() {
         for (int i = 0 ; i < mInventory.length ; i++) {
             mInventory[i] = 0;
@@ -377,7 +381,7 @@ public class Logic {
 
     private void generateFishBoatCollision() {
         int maxDamage = Math.min(calculateTotalValue(), mCapacity * mCapacity) / 5;
-        mFishBoatCollisionDamage = mRand.nextInt(maxDamage);
+        mFishBoatCollisionDamage = generateRandom(maxDamage);
         mDamage += mFishBoatCollisionDamage;
         mNewDayEvent = NewDayEvent.FISH_BOAT_COLLISION;
     }
@@ -402,7 +406,7 @@ public class Logic {
         mGoodsUnitsToBurn = mInventory[mGoodsToBurn.getValue()];
 
         if (mGoodsUnitsToBurn > 0) {
-            mGoodsUnitsToBurn = mRand.nextInt(mGoodsUnitsToBurn / 2) + 1;
+            mGoodsUnitsToBurn = generateRandom(mGoodsUnitsToBurn / 2) + 1;
             mNewDayEvent = NewDayEvent.FIRE;
             removeGoodsFromInventory(mGoodsToBurn, mGoodsUnitsToBurn);
             return true;
@@ -428,7 +432,7 @@ public class Logic {
             mBiggerShipPrice /= mPriceTable.getPrice(mCurrentState, mBiggerShipPriceGoodType);
         }
 
-        mBiggerShipPrice = mRand.nextInt(mBiggerShipPrice) + 1;
+        mBiggerShipPrice = generateRandom(mBiggerShipPrice) + 1;
 
         int maxCapacityForCopper = calculateTotalValue() / mPriceTable.getPrice(mCurrentState, Goods.COPPER);
         mBiggerShipCapacity = ((mRand.nextInt(maxCapacityForCopper + 1) + mRand.nextInt(100) + 26) / 25) * 25;
@@ -590,7 +594,7 @@ public class Logic {
 
         int divider = (mNegotiationType == NegotiationType.PIRATES) ? 2 : 3;
 
-        int desired = mRand.nextInt((calculateTotalValue() - mBankDeposit) / divider);
+        int desired = generateRandom((calculateTotalValue() - mBankDeposit) / divider);
 
         if (desired > offerValue) {
             if (mNegotiationType == NegotiationType.CREW) {
