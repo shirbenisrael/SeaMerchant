@@ -584,10 +584,12 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     private void blinkBankButton(boolean isRed) {
-        int colorId = isRed ? R.color.red : R.color.black;
-        @ColorInt int color = mActivity.getColor(colorId);
-        ((Button)findViewById(R.id.wide_bank_button)).setTextColor(color);
-        ((Button)findViewById(R.id.wide_cash_button)).setTextColor(color);
+        @DrawableRes int backGroundId;
+        backGroundId = isRed ? R.drawable.wide_bank_button_red : R.drawable.wide_bank_button;
+        ((Button)findViewById(R.id.wide_bank_button)).setBackgroundResource(backGroundId);
+
+        backGroundId = isRed ? R.drawable.wide_cash_button_red : R.drawable.wide_cash_button;
+        ((Button)findViewById(R.id.wide_cash_button)).setBackgroundResource(backGroundId);
     }
 
     public void timerBlinked(FrontEndTimer timer, int countDown) {
