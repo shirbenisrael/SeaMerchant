@@ -77,6 +77,9 @@ public class MainActivity extends Activity {
     public void onExitOpenScreen(View view) {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
+        if (mIsStartTutorialActive) {
+            startTutorial();
+        }
     }
 
     public void onMarketClick(View view) {

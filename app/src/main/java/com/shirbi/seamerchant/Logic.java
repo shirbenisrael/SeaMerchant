@@ -706,6 +706,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mIsFastAnimation), mActivity.mIsFastAnimation);
         editor.putBoolean(getString(R.string.mIsSoundEnable), mActivity.mIsSoundEnable);
         editor.putBoolean(getString(R.string.mIsGoogleSignIn), mActivity.mIsGoogleSignIn);
+        editor.putBoolean(getString(R.string.mIsStartTutorialActive), mActivity.mIsStartTutorialActive);
 
         StringBuilder str = new StringBuilder();
         for (Goods goods : Goods.values()) {
@@ -748,13 +749,15 @@ public class Logic {
         mActivity.mIsFastAnimation = sharedPref.getBoolean(getString(R.string.mIsFastAnimation), false);
         mActivity.mIsSoundEnable = sharedPref.getBoolean(getString(R.string.mIsSoundEnable), true);
         mActivity.mIsGoogleSignIn = sharedPref.getBoolean(getString(R.string.mIsGoogleSignIn), false);
+        mActivity.mIsStartTutorialActive = sharedPref.getBoolean(getString(R.string.mIsStartTutorialActive), true);
 
-        mCurrentHour = sharedPref.getInt(getString(R.string.mCurrentHour), 0);
-        if (mCurrentHour == 0) {
+        if (mActivity.mIsStartTutorialActive) {
             startNewGame();
+            // First time enter the game - start tutorial by mActivity later.
             return;
         }
 
+        mCurrentHour = sharedPref.getInt(getString(R.string.mCurrentHour), 0);
         mCash = sharedPref.getInt(getString(R.string.mCash), START_GAME_CASH);
         mBankDeposit = sharedPref.getInt(getString(R.string.mBankDeposit), 0);
         mCurrentDay = WeekDay.values()[sharedPref.getInt(getString(R.string.mCurrentDay), 0)];
