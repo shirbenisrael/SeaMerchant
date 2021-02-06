@@ -749,7 +749,13 @@ public class Logic {
         mActivity.mIsFastAnimation = sharedPref.getBoolean(getString(R.string.mIsFastAnimation), false);
         mActivity.mIsSoundEnable = sharedPref.getBoolean(getString(R.string.mIsSoundEnable), true);
         mActivity.mIsGoogleSignIn = sharedPref.getBoolean(getString(R.string.mIsGoogleSignIn), false);
-        mActivity.mIsStartTutorialActive = sharedPref.getBoolean(getString(R.string.mIsStartTutorialActive), true);
+        mActivity.mIsStartTutorialActive = sharedPref.getBoolean(getString(R.string.mIsStartTutorialActive), false);
+        mCurrentHour = sharedPref.getInt(getString(R.string.mCurrentHour), 0);
+        if (mCurrentHour == 0) {
+            // When starting after first installation - this will be 0, so start tutorial.
+            // When loading from previous version, this won't be 0, so do not start tutorial.
+            mActivity.mIsStartTutorialActive = true;
+        }
 
         if (mActivity.mIsStartTutorialActive) {
             startNewGame();
@@ -757,7 +763,6 @@ public class Logic {
             return;
         }
 
-        mCurrentHour = sharedPref.getInt(getString(R.string.mCurrentHour), 0);
         mCash = sharedPref.getInt(getString(R.string.mCash), START_GAME_CASH);
         mBankDeposit = sharedPref.getInt(getString(R.string.mBankDeposit), 0);
         mCurrentDay = WeekDay.values()[sharedPref.getInt(getString(R.string.mCurrentDay), 0)];
