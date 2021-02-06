@@ -517,6 +517,13 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     private void blinkInventory(boolean isRed) {
+        @DrawableRes int marketBackGroundId = isRed ? R.drawable.market_help_red : R.drawable.market_help;
+        findViewById(R.id.market_help).setBackgroundResource(marketBackGroundId);
+
+        if (mGoodsToBlink == null && isRed) {
+            return;
+        }
+
         LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
 
         if (mGoodsToBlink == null || !isRed) {
@@ -530,9 +537,6 @@ public class FrontEnd extends FrontEndGeneric {
             @DrawableRes int backGroundId = isRed ? mGoodsToBlink.toWideButtonRedId() : mGoodsToBlink.toWideButtonId();
             goodsButton.setBackgroundResource(backGroundId);
         }
-
-        @DrawableRes int backGroundId = isRed ? R.drawable.market_help_red : R.drawable.market_help;
-        findViewById(R.id.market_help).setBackgroundResource(backGroundId);
     }
 
     private void blinkFlags(boolean isRed) {
@@ -540,6 +544,10 @@ public class FrontEnd extends FrontEndGeneric {
         findViewById(R.id.sail_help).setBackgroundResource(backGroundId);
 
         LinearLayout statesLayout = findViewById(R.id.prices_layout);
+
+        if (mStateToBlink == null && isRed) {
+            return;
+        }
 
         if (mStateToBlink == null || !isRed) {
             for (State state : State.values()) {
