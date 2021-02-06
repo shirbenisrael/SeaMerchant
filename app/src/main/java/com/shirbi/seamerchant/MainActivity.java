@@ -183,6 +183,11 @@ public class MainActivity extends Activity {
             return;
         }
 
+        if (mIsStartTutorialActive) {
+            mStartTutorial.onFlagClick(destination);
+            return;
+        }
+
         if (mLogic.getDayPart() == DayPart.NIGHT) {
             playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_SAIL_AT_NIGHT),
@@ -201,11 +206,6 @@ public class MainActivity extends Activity {
             playSound(R.raw.cannot);
             mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_REACH_BEFORE_SLEEP_TIME),
                     getString(R.string.CANNOT_SAIL_TITLE));
-            return;
-        }
-
-        if (mIsStartTutorialActive) {
-            mStartTutorial.onFlagClick(destination);
             return;
         }
 
