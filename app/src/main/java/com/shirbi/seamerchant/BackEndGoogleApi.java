@@ -217,10 +217,10 @@ public class BackEndGoogleApi {
                     for (int i = 0; i < bufSize; i++) {
                         Achievement ach = buff.get(i);
                         String id = ach.getAchievementId();
-                        String name = ach.getName();
+                        String description = ach.getDescription();
                         boolean unlocked = ach.getState() == Achievement.STATE_UNLOCKED;
 
-                        StringTokenizer st = new StringTokenizer(name, " ");
+                        StringTokenizer st = new StringTokenizer(description, " ");
                         st.nextToken(); // skip the string Medal.
                         String medalNumber = st.nextToken();
 
