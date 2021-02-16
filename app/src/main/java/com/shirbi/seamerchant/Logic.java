@@ -1000,7 +1000,7 @@ public class Logic {
             mEconomicalSail = false;
         }
 
-        mCash -= mSail.mGuardShipCost * mSail.mSelectedNumGuardShips;
+        mCash -= mSail.mTotalGuardShipsCost;
     }
 
     public void setNewHighScore(int highScore) {

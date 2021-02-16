@@ -121,7 +121,7 @@ public class Sail {
         }
 
         mGuardShipCost = (int)Math.max(MIN_GUARD_SHIP_COST, (mGuardShipCostPercent * mValueOnShip / 100));
-        mMaxGuardShips = Math.min(MAX_GUARD_SHIPS, logic.mCash / mGuardShipCost);
+        mMaxGuardShips = Math.min(MAX_GUARD_SHIPS, ((logic.mCash / mGuardShipCost) + (mLogic.hasMedal(Medal.ALWAYS_FIGHTER) ? 1 : 0)));
 
         mBrokenShip = (logic.mDamage != 0);
         mTooLoaded = (mTotalLoad > logic.mCapacity);
