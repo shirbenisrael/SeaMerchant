@@ -278,6 +278,10 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void onFlagClick(State destination) {
+        if (mFrontEnd.isDelayedMessageExist()) {
+            return;
+        }
+
         switch (mStage) {
             case STAGE_1:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_BUY_FIRST, getGoodsString(Goods.WHEAT)), getString(R.string.WE_SHOULD_NOT));
@@ -289,7 +293,7 @@ public class StartTutorial extends FrontEndGeneric {
                     mFrontEnd.showWindow(Window.SAIL_WINDOW);
                     mFrontEndSail.initSailRoute();
                     mFrontEndSail.showOnlyStartSail();
-                    mFrontEnd.showAlertDialogMessage(getString(R.string.PRESS_ON_V_TO_SAIL),
+                    mFrontEnd.showDelayedMessage(getString(R.string.PRESS_ON_V_TO_SAIL),
                             mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.TURKEY)));
                 }
                 break;
@@ -311,7 +315,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
                 mFrontEndSail.showOnlyStartSail();
-                mFrontEnd.showAlertDialogMessage(getString(R.string.PRESS_ON_V_TO_SAIL), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.EGYPT)));
+                mFrontEnd.showDelayedMessage(getString(R.string.PRESS_ON_V_TO_SAIL), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.EGYPT)));
                 break;
             case STAGE_6:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.OLIVES)),
@@ -338,7 +342,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
                 mFrontEndSail.showAllButtons();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.GET_5_GUARDS), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.CYPRUS)));
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.GET_5_GUARDS), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.CYPRUS)));
                 break;
             case STAGE_9:
                 mFrontEnd.showAlertDialogMessage(getString(R.string.TO_LATE_FOR_SAIL), getString(R.string.WE_SHOULD_NOT));
@@ -366,7 +370,7 @@ public class StartTutorial extends FrontEndGeneric {
                     mLogic.initSail(destination);
                     mFrontEnd.showWindow(Window.SAIL_WINDOW);
                     mFrontEndSail.initSailRoute();
-                    mFrontEnd.showAlertDialogMessage(getString(R.string.GET_5_GUARDS), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.GREECE)));
+                    mFrontEnd.showDelayedMessage(getString(R.string.GET_5_GUARDS), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.GREECE)));
                 } else {
                     mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.GOODS_PRICE_IS_TO_HIGHER_IN_STATE, getGoodsString(Goods.COPPER),
                             getStateString(State.GREECE)), getString(R.string.WE_SHOULD_NOT));
@@ -385,7 +389,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initSail(destination);
                 mFrontEnd.showWindow(Window.SAIL_WINDOW);
                 mFrontEndSail.initSailRoute();
-                mFrontEnd.showAlertDialogMessage(getString(R.string.PRESS_ON_V_TO_SAIL), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.CYPRUS)));
+                mFrontEnd.showDelayedMessage(getString(R.string.PRESS_ON_V_TO_SAIL), mActivity.getString(R.string.SHIP_TO_STATE_TITLE, getStateString(State.CYPRUS)));
                 break;
             case STAGE_19:
                 mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.WE_SHOULD_SELL_FIRST, getGoodsString(Goods.WHEAT)),
@@ -396,12 +400,16 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void onMarketClick(Goods goods) {
+        if (mFrontEnd.isDelayedMessageExist()) {
+            return;
+        }
+
         switch (mStage) {
             case STAGE_1:
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
                         mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_2:
@@ -412,7 +420,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
                         mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_4:
@@ -425,7 +433,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
                         mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.OLIVES)));
                 break;
             case STAGE_5:
@@ -444,7 +452,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
                         mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.OLIVES)));
                 break;
             case STAGE_7:
@@ -457,7 +465,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyFillCapacity();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.FILL_CAPACITY)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.FILL_CAPACITY)),
                         mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_9:
@@ -470,7 +478,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
                         mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_10:
@@ -495,7 +503,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
                         mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.COPPER)));
                 break;
             case STAGE_15:
@@ -512,7 +520,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
                         mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.COPPER)));
                 break;
             case STAGE_17:
@@ -525,7 +533,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlyBuyAllButton();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BUY_ALL)),
                         mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
             case STAGE_19:
@@ -538,13 +546,15 @@ public class StartTutorial extends FrontEndGeneric {
                 mLogic.initMarketDeal(goods);
                 mFrontEndMarket.onMarketClick();
                 mFrontEndMarket.showOnlySellAllButton();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.SELL_ALL)),
                         mActivity.getString(R.string.SELL_GOODS_TITLE, getGoodsString(Goods.WHEAT)));
                 break;
         }
     }
 
     public void onMarketDealDoneClick() {
+        mFrontEnd.cancelDelayedMessage();
+
         switch (mStage) {
             case STAGE_1:
                 if (mLogic.getInventory(Goods.WHEAT) > 0) {
@@ -609,6 +619,8 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void onBankDealDoneClick() {
+        mFrontEnd.cancelDelayedMessage();
+
         switch (mStage) {
             case STAGE_10:
                 if (mLogic.mCash == 0) {
@@ -671,13 +683,17 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void onBankClick() {
+        if (mFrontEnd.isDelayedMessageExist()) {
+            return;
+        }
+
         switch (mStage) {
             case STAGE_10:
                 mLogic.initBankDeal();
                 mFrontEnd.showWindow(Window.BANK_WINDOW);
                 mFrontEndBank.onBankClick();
                 mFrontEndBank.showOnlyDepositAll();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BANK_DEPOSIT_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BANK_DEPOSIT_ALL)),
                         getString(R.string.BANK_DEPOSIT_TITLE));
 
                 break;
@@ -686,7 +702,7 @@ public class StartTutorial extends FrontEndGeneric {
                 mFrontEnd.showWindow(Window.BANK_WINDOW);
                 mFrontEndBank.onBankClick();
                 mFrontEndBank.showOnlyDrawAll();
-                mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BANK_DRAW_ALL)),
+                mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.BANK_DRAW_ALL)),
                         getString(R.string.BANK_DRAW_TITLE));
                 break;
             case STAGE_13:
@@ -728,7 +744,7 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public boolean checkIfCanSail() {
-        switch (mStage) {
+         switch (mStage) {
             case STAGE_8:
             case STAGE_14:
                 if (mLogic.mSail.mSelectedNumGuardShips < 5) {
@@ -779,14 +795,20 @@ public class StartTutorial extends FrontEndGeneric {
     }
 
     public void onFixButtonClick() {
+        if (mFrontEnd.isDelayedMessageExist()) {
+            return;
+        }
+
         mLogic.initFixShipDeal();
         mFrontEndFixShip.onFixShipClick();
         mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
-        mFrontEnd.showAlertDialogMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.FIXED_AS_POSSIBLE)),
+        mFrontEnd.showDelayedMessage(mActivity.getString(R.string.PRESS_ON_BUTTON_AND_ON_V, getString(R.string.FIXED_AS_POSSIBLE)),
                  getString(R.string.FIX_SHIP_TITLE));
     }
 
     public void fixDone() {
+        mFrontEnd.cancelDelayedMessage();
+
         if (mLogic.mDamage == 0) {
             mStage = TutorialStage.STAGE_16;
             showStage16();

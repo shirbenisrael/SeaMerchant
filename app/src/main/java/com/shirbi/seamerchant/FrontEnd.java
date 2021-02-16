@@ -25,6 +25,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class FrontEnd extends FrontEndGeneric {
     private Point mFlagSize;
@@ -863,11 +865,52 @@ public class FrontEnd extends FrontEndGeneric {
         setViewEnable(R.id.wide_capacity_button, isVisible);
     }
 
-    public void showTutorialStrings(String string1, String string2) {
+    public void showTutorialStrings(final String string1, final String string2) {
         ((TextView)findViewById((R.id.current_weather_text_view))).setText(string1);
         ((TextView)findViewById((R.id.market_state_text_view))).setText(string2);
 
-        showAlertDialogMessage(string1 +  " " + string2, getString(R.string.TUTORIAL) );
+        final String string = string1 + " " +string2;
+        final String title =  getString(R.string.TUTORIAL);
+        showDelayedMessage(string, title);
+    }
+
+    private TimerTask mPreviousMessageTask = null;
+
+    public boolean isDelayedMessageExist() {
+        return mPreviousMessageTask != null;
+    }
+
+    public void cancelDelayedMessage() {
+        if (mPreviousMessageTask != null) {
+            mPreviousMessageTask.cancel();
+            mPreviousMessageTask = null;
+        }
+    }
+
+    public void showDelayedMessage(final String string, final String title) {
+        final Runnable timerTick = new Runnable() {
+            public void run() {
+                mPreviousMessageTask = null;
+                showAlertDialogMessage(string, title);
+            }
+        };
+
+        Timer timer = new Timer();
+        TimerTask timerTask = (new TimerTask() {
+            @Override
+            public void run() {
+                mActivity.runOnUiThread(timerTick);
+            }
+        });
+
+        if (mPreviousMessageTask != null) {
+            mPreviousMessageTask.cancel();
+        }
+
+        mPreviousMessageTask = timerTask;
+
+        int milliseconds = 2000;
+        timer.schedule(timerTask, milliseconds);
     }
 
     public void resetMarketStateText() {

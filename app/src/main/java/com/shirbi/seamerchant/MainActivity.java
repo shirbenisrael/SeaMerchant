@@ -251,6 +251,7 @@ public class MainActivity extends Activity {
             if (!mStartTutorial.checkIfCanSail()) {
                 return;
             }
+            mFrontEnd.cancelDelayedMessage();
         }
         playSound(R.raw.sail);
         mLogic.startSail();
