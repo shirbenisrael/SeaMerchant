@@ -40,6 +40,7 @@ public class FrontEnd extends FrontEndGeneric {
     FrontEndNumberAnimation mFrontEndNumberAnimationCash;
     FrontEndNumberAnimation mFrontEndNumberAnimationBank;
     FrontEndNumberAnimation mFrontEndNumberAnimationInventory[];
+    FrontEndTimeAnimation mFrontEndTimeAnimation;
 
     public FrontEnd(MainActivity activity) {
         super(activity);
@@ -52,6 +53,7 @@ public class FrontEnd extends FrontEndGeneric {
         mFrontEndNumberAnimationCash = new FrontEndNumberAnimation(mActivity, R.id.wide_cash_button, R.string.MONEY_STRING);
         mFrontEndNumberAnimationBank = new FrontEndNumberAnimation(mActivity, R.id.wide_bank_button, R.string.MONEY_STRING);
         mFrontEndNumberAnimationInventory = new FrontEndNumberAnimation[Goods.NUM_GOODS_TYPES];
+        mFrontEndTimeAnimation = new FrontEndTimeAnimation(mActivity, R.id.current_hour_text_view);
 
         LinearLayout goodsLayout = findViewById(R.id.goods_buttons);
         for (Goods goods: Goods.values()) {
@@ -111,8 +113,7 @@ public class FrontEnd extends FrontEndGeneric {
         TextView textView;
         Button button;
 
-        textView = findViewById(R.id.current_hour_text_view);
-        textView.setText(String.valueOf(mLogic.mCurrentHour) + ":00");
+        mFrontEndTimeAnimation.updateTime(mLogic.mCurrentHour);
 
         textView = findViewById(R.id.current_day_text_view);
         textView.setText(getString(mLogic.mCurrentDay.toStringId()));
