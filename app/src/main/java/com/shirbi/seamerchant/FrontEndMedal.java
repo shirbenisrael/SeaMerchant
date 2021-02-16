@@ -76,10 +76,25 @@ public class FrontEndMedal extends FrontEndGeneric {
         LinearLayout scroll = findViewById(R.id.medal_scroll_view);
 
         Button medalImage = (Button)((LinearLayout)scroll.getChildAt(medal.getValue())).getChildAt(0);
+
+        float alpha = 1.0f;
+
         if (mLogic.hasMedal(medal)) {
             medalImage.setBackgroundResource(R.drawable.medal_red);
         } else {
             medalImage.setBackgroundResource(R.drawable.medal_gray);
+
+            if (!mLogic.canGetThisMedal(medal)) {
+                alpha = 0.3f; // set opacity for medal that cannot get int this game.
+            }
+        }
+
+        medalImage.setAlpha(alpha);
+    }
+
+    public void updateAllMedalImages() {
+        for (Medal medal : Medal.values()) {
+            setMedalIcon(medal);
         }
     }
 }

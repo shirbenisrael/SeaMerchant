@@ -994,6 +994,41 @@ public class Logic {
         return null;
     }
 
+    public boolean canGetThisMedal(Medal medal) {
+        switch (medal) {
+            default:
+                return true;
+
+            case ALWAYS_FIGHTER:
+                return mWinPiratesCount >= 0;
+
+            case BDS_TURKEY:
+                return mBdsTurkey;
+
+            case GREECE_VISITOR:
+                if (mStatesVisitedToday[State.GREECE.getValue()]) {
+                    return mGreeceVisitCount == mCurrentDay.getValue() + 1;
+                } else {
+                    return mGreeceVisitCount == mCurrentDay.getValue();
+                }
+
+            case FEDERAL_RESERVE:
+                return mAlwaysDeposit;
+
+            case FAST_EXIT:
+                return mCurrentDay.getValue() <= WeekDay.TUESDAY.getValue();
+
+            case DIET_MERCHANT:
+                return mBdsOlives;
+
+            case GERMAN_TIME:
+                return mAlwaysSleepAtMidnight;
+
+            case ECONOMICAL_SAIL:
+                return mEconomicalSail;
+        }
+    }
+
     public void disableWinPiratesCount() {
         mWinPiratesCount = -10000;
     }

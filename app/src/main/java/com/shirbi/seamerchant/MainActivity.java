@@ -853,6 +853,7 @@ public class MainActivity extends Activity {
     }
 
     public void onMedalClick(View view) {
+        mFrontEndMedal.updateAllMedalImages();
         mFrontEnd.showWindow(Window.MEDAL_WINDOW);
     }
 
