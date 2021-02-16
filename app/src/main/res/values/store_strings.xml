@@ -34,4 +34,6 @@
     <string name="mHighScore" translatable="false">mHighScore</string>
     <string name="mHighCapacity" translatable="false">mHighCapacity</string>
     <string name="mIsStartTutorialActive" translatable="false">mIsStartTutorialActive</string>
+    <string name="mCurrentLanguage" translatable="false">mCurrentLanguage</string>
+
 </resources>

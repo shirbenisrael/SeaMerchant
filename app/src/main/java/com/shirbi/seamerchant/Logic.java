@@ -714,6 +714,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mIsSoundEnable), mActivity.mIsSoundEnable);
         editor.putBoolean(getString(R.string.mIsGoogleSignIn), mActivity.mIsGoogleSignIn);
         editor.putBoolean(getString(R.string.mIsStartTutorialActive), mActivity.mIsStartTutorialActive);
+        editor.putString(getString(R.string.mCurrentLanguage), mActivity.mCurrentLanguage);
 
         StringBuilder str = new StringBuilder();
         for (Goods goods : Goods.values()) {
@@ -752,6 +753,8 @@ public class Logic {
                 mIsMedalAchieved[medal.getValue()] = false;
             }
         }
+
+        mActivity.mCurrentLanguage = sharedPref.getString(getString(R.string.mCurrentLanguage), null);
 
         mActivity.mIsFastAnimation = sharedPref.getBoolean(getString(R.string.mIsFastAnimation), false);
         mActivity.mIsSoundEnable = sharedPref.getBoolean(getString(R.string.mIsSoundEnable), true);

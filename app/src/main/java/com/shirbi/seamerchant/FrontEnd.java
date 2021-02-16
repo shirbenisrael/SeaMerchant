@@ -737,13 +737,14 @@ public class FrontEnd extends FrontEndGeneric {
         builder.show();
     }
 
-    private void setLocale(String languageCode) {
+    public void setLocale(String languageCode) {
         String currentLanguage = mActivity.getResources().getConfiguration().getLocales().get(0).getLanguage();
         boolean isCurrentHebrew = (currentLanguage.equals("iw") || currentLanguage.equals("he"));
         if (languageCode.equals("he") == isCurrentHebrew) {
             return;
         }
 
+        mActivity.mCurrentLanguage = languageCode;
         mActivity.storeState(); // looks like exit() won't call it.
 
         Locale locale = new Locale(languageCode);

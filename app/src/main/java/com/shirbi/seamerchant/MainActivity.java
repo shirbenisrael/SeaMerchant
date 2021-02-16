@@ -43,6 +43,8 @@ public class MainActivity extends Activity {
 
     boolean mIsStartTutorialActive = false;
 
+    String mCurrentLanguage = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +74,10 @@ public class MainActivity extends Activity {
         mFrontEnd.showWindow(Window.OPEN_WINDOW);
         mFrontEndOpenWindow.startAnimate();
         playSound(R.raw.open_screen);
+
+        if (mCurrentLanguage != null) {
+            mFrontEnd.setLocale(mCurrentLanguage);
+        }
     }
 
     public void onExitOpenScreen(View view) {
