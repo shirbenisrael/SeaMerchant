@@ -40,6 +40,7 @@
     <string name="FOG_STRING">יש היום ערפל בנמל %1$s</string>
     <string name="WIND_STRING">רוחות חזקות נושבות היום ליד %1$s</string>
 
+    <string name="SAIL_WITH_NO_GURADS">להפליג ללא ספינות משמר?</string>
     <string name="ONE_GUARD_COST">מחיר ספינת משמר: %1$d ש\"ח  (%2$.2f%%)</string>
     <string name="TOTAL_GUARD_COST">מחיר כולל: %1$d, מזומן: %2$d</string>
     <string name="SAIL_DESTINATION">יעד ההפלגה: %1$s</string>
