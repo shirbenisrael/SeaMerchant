@@ -9,7 +9,11 @@ import java.util.TimerTask;
 public class FrontEndOpenWindow extends FrontEndGeneric {
     public FrontEndOpenWindow(MainActivity activity) {
         super(activity);
+
+        mScreenHeight = getWindowSize().y;
     }
+
+    private int mScreenHeight;
 
     private int mTextIds[] = {
             R.string.OPEN_SCREEN_1,
@@ -69,12 +73,19 @@ public class FrontEndOpenWindow extends FrontEndGeneric {
     }
 
     private void placeTextAccordingIterator() {
-        mTextView.setPadding(0,mIterator * 4,0,0);
+        int totalHeightMove = mScreenHeight / 3;
+        int startHeight = mScreenHeight * 30 / 100;
+
+        mTextView.setPadding(0, startHeight - (mIterator * totalHeightMove / 100),0,0);
         if (mIterator < 50) {
             mTextView.setAlpha(1.0f);
+            mTextView.setTextSize(30);
         } else {
             float opacity = (100.0f - mIterator) / 50.0f;
             mTextView.setAlpha(opacity);
+
+            float textSize = 25 + (100.0f - mIterator) / 10.0f;
+            mTextView.setTextSize(textSize);
         }
     }
 
