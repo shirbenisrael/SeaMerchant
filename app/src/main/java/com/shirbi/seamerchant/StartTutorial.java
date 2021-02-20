@@ -60,6 +60,8 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.setCapacityVisibility(true);
         mFrontEnd.resetMarketStateText();
 
+        mFrontEnd.setRedTutorialMessages(false);
+
         mFrontEndMarket.showAllButton();
         mFrontEndSail.showAllButtons();
         mFrontEndPirates.showAllButtons();
@@ -92,6 +94,8 @@ public class StartTutorial extends FrontEndGeneric {
         mFrontEnd.setFixVisibility(false);
         mFrontEnd.setSleepVisibility(false);
         mFrontEnd.setCapacityVisibility(false);
+
+        mFrontEnd.setRedTutorialMessages(true);
 
         mLogic.mPriceTable.setPrice(State.ISRAEL, Goods.WHEAT, 50);
         mLogic.mPriceTable.setPrice(State.TURKEY, Goods.WHEAT, 60);

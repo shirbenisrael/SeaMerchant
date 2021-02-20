@@ -840,6 +840,12 @@ public class FrontEnd extends FrontEndGeneric {
         setViewEnable(((LinearLayout)findViewById(R.id.goods_buttons)).getChildAt(goods.getValue()), isVisible);
     }
 
+    public void setRedTutorialMessages(boolean isRed) {
+        int color = isRed ? mActivity.getColor(R.color.red) : mActivity.getColor(R.color.black);
+        ((TextView)findViewById((R.id.current_weather_text_view))).setTextColor(color);
+        ((TextView)findViewById((R.id.market_state_text_view))).setTextColor(color);
+    }
+
     public void setCalculatorVisibility(boolean isVisible) {
         setViewEnable(R.id.calculator, isVisible);
     }
