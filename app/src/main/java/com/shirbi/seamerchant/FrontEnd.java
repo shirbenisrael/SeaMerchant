@@ -887,11 +887,20 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
+    public void showLastDelayedMessage() {
+        if (mPreviousMessageTask != null) {
+            mPreviousMessageTask.run();
+        }
+    }
+
     public void showDelayedMessage(final String string, final String title) {
         final Runnable timerTick = new Runnable() {
             public void run() {
-                mPreviousMessageTask = null;
-                showAlertDialogMessage(string, title);
+                if (getCurrentVisibleWindow() != Window.MENU_WINDOW) {
+                    mPreviousMessageTask.cancel();
+                    showAlertDialogMessage(string, title);
+                    mPreviousMessageTask = null;
+                }
             }
         };
 

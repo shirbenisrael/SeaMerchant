@@ -874,6 +874,9 @@ public class MainActivity extends Activity {
 
     public void onExitMenu(View view) {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
+        if (mIsStartTutorialActive) {
+            mFrontEnd.showLastDelayedMessage();
+        }
     }
 
     public void onMenuClick(View view) {
