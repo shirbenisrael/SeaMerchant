@@ -437,10 +437,17 @@ public class StartTutorial extends FrontEndGeneric {
                         mActivity.getString(R.string.BUY_GOODS_TITLE, getGoodsString(Goods.OLIVES)));
                 break;
             case STAGE_5:
+                mFrontEnd.showAlertDialogMessage(getString(R.string.BUY_ENOUGH_NOW_SAIL), getString(R.string.WE_SHOULD_NOT));
+                mFrontEnd.blinkSail(State.EGYPT);
+                break;
             case STAGE_8:
-            case STAGE_14:
             case STAGE_18:
                 mFrontEnd.showAlertDialogMessage(getString(R.string.BUY_ENOUGH_NOW_SAIL), getString(R.string.WE_SHOULD_NOT));
+                mFrontEnd.blinkSail(State.CYPRUS);
+                break;
+            case STAGE_14:
+                mFrontEnd.showAlertDialogMessage(getString(R.string.BUY_ENOUGH_NOW_SAIL), getString(R.string.WE_SHOULD_NOT));
+                mFrontEnd.blinkSail(State.GREECE);
                 break;
             case STAGE_6:
                 if (goods == Goods.WHEAT) {
