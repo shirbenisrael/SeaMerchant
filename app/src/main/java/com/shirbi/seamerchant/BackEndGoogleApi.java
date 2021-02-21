@@ -116,6 +116,7 @@ public class BackEndGoogleApi {
                                 if (rank != LeaderboardScore.LEADERBOARD_RANK_UNKNOWN) {
                                     String name = temp.getScoreHolderDisplayName();
                                     mLogic.setCenterScore(rank, name, score, i, scoreType);
+                                    i++;
                                 }
                             }
 
