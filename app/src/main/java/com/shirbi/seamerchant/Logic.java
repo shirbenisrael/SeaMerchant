@@ -567,7 +567,7 @@ public class Logic {
     }
 
     public long calculateLoad() {
-        int load = 0;
+        long load = 0;
         for (Goods goods : Goods.values()) {
             load += mInventory[goods.getValue()];
         }

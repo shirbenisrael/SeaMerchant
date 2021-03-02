@@ -268,7 +268,9 @@ public class Sail {
     public void createSink() {
         mSailEndedPeacefully = false;
         mSinkGood = mLogic.findGoodsWithMostUnits();
-        mSinkGoodsUnitsLost = 1 + mLogic.generateRandom(mLogic.mInventory[mSinkGood.getValue()]);
+
+        long maxToLose = Math.min(mLogic.calculateLoad() - mLogic.mCapacity, mLogic.getInventory(mSinkGood));
+        mSinkGoodsUnitsLost = 1 + mLogic.generateRandom(maxToLose);
         mLogic.removeGoodsFromInventory(mSinkGood, mSinkGoodsUnitsLost);
     }
 
