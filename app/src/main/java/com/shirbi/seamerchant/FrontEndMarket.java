@@ -5,8 +5,6 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.annotation.IdRes;
-
 public class FrontEndMarket extends FrontEndGeneric {
     public FrontEndMarket(MainActivity activity) {
         super(activity);
@@ -15,7 +13,7 @@ public class FrontEndMarket extends FrontEndGeneric {
         marketSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    mLogic.mMarketDeal.setGoods(progress);
+                    mLogic.mMarketDeal.setGoods(mLogic.mMarketDeal.mMaxUnitsToHold * progress / MAX_SEEK_BAR_UNITS);
                     showDealState();
                 }
             }
@@ -41,7 +39,7 @@ public class FrontEndMarket extends FrontEndGeneric {
         ((TextView)findViewById(R.id.goods_value)).setText(value);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.market_seek_bar);
-        seekBar.setProgress(mLogic.mMarketDeal.mGoodsUnits);
+        seekBar.setProgress((int)(MAX_SEEK_BAR_UNITS * mLogic.mMarketDeal.mGoodsUnits / mLogic.mMarketDeal.mMaxUnitsToHold));
     }
 
     public void onMarketClick() {
@@ -53,7 +51,7 @@ public class FrontEndMarket extends FrontEndGeneric {
         ((ImageView)findViewById(R.id.market_goods_image)).setImageResource(goods.toMainImageId());
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.market_seek_bar);
-        seekBar.setMax(mLogic.mMarketDeal.mMaxUnitsToHold);
+        seekBar.setMax(MAX_SEEK_BAR_UNITS);
 
         showDealState();
 

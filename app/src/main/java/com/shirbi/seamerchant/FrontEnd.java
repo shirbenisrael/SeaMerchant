@@ -303,7 +303,7 @@ public class FrontEnd extends FrontEndGeneric {
                     mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice, mLogic.mCash);
         } else {
             String goodsString = getString(mLogic.mBiggerShipPriceGoodType.toStringId());
-            int inventory = mLogic.getInventory(mLogic.mBiggerShipPriceGoodType);
+            long inventory = mLogic.getInventory(mLogic.mBiggerShipPriceGoodType);
             offerString = mActivity.getString(R.string.BIGGER_SHIP_FOR_GOODS_OFFER,
                     mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice, goodsString, inventory);
         }
@@ -470,7 +470,7 @@ public class FrontEnd extends FrontEndGeneric {
             String goodsString = getString(goods.toStringId());
             String stateString = getString(state.toStringId());
             int price = mLogic.mPriceTable.getPrice(state, goods);
-            int units = mLogic.getInventory(goods);
+            long units = mLogic.getInventory(goods);
 
             String message = mActivity.getString(R.string.TUTORIAL_SELL, stateString, goodsString, price, units);
             showAlertDialogMessage(message, getString(R.string.TUTORIAL_TITLE));
@@ -813,8 +813,8 @@ public class FrontEnd extends FrontEndGeneric {
 
         int destinationPrice = mLogic.mPriceTable.getPrice(destinationState, goods);
         int sourcePrice = mLogic.mPriceTable.getPrice(mLogic.mCurrentState, goods);
-        int maxUnits = Math.min(mLogic.calculateTotalValue() / sourcePrice, mLogic.mCapacity);
-        int profit = (destinationPrice - sourcePrice) * maxUnits;
+        long maxUnits = Math.min(mLogic.calculateTotalValue() / sourcePrice, mLogic.mCapacity);
+        long profit = (destinationPrice - sourcePrice) * maxUnits;
 
         String calculatorString =
                 "(" + destinationPrice + "-" + sourcePrice + ")X" + maxUnits + "=" + profit;

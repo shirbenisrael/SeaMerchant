@@ -15,8 +15,9 @@ public class FrontEndNegotiation extends FrontEndGeneric {
         String goodString = getString(goods.toStringId());
         SeekBar seekBar = (SeekBar)inventoryLayout.getChildAt(goods.getValue() * 2 + 1);
 
-        int maxUnits = mLogic.mInventory[goods.getValue()];
-        String goodToGive = mActivity.getString(R.string.GOODS_TO_OFFSET, goodString, seekBar.getProgress(), maxUnits);
+        long maxUnits = mLogic.mInventory[goods.getValue()];
+        long goodToGiveLong = seekBar.getProgress() * maxUnits / MAX_SEEK_BAR_UNITS;
+        String goodToGive = mActivity.getString(R.string.GOODS_TO_OFFSET, goodString, goodToGiveLong, maxUnits);
 
         TextView textView = (TextView)inventoryLayout.getChildAt(goods.getValue() * 2);
         textView.setText(goodToGive);
@@ -25,8 +26,9 @@ public class FrontEndNegotiation extends FrontEndGeneric {
     private void updateCashOffer() {
         TextView textView = findViewById(R.id.negotiate_cash_text);
         SeekBar seekBar = findViewById(R.id.negotiate_cash_seek_bar);
-        int maxUnits = mLogic.mCash;
-        String cashToGive = mActivity.getString(R.string.CASH_TO_OFFER, seekBar.getProgress(), maxUnits);
+        long maxUnits = mLogic.mCash;
+        long cashToGiveLong = seekBar.getProgress() * maxUnits / MAX_SEEK_BAR_UNITS;
+        String cashToGive = mActivity.getString(R.string.CASH_TO_OFFER, cashToGiveLong, maxUnits);
         textView.setText(cashToGive);
     }
 
@@ -40,9 +42,8 @@ public class FrontEndNegotiation extends FrontEndGeneric {
         LinearLayout inventoryLayout = findViewById(R.id.inventory_to_offer);
         for (Goods goods : Goods.values()) {
             SeekBar seekBar = (SeekBar)inventoryLayout.getChildAt(goods.getValue() * 2 + 1);
-            int maxUnits = mLogic.mInventory[goods.getValue()];
-            seekBar.setMax(maxUnits);
-            seekBar.setProgress(maxUnits / 2);
+            seekBar.setMax(MAX_SEEK_BAR_UNITS);
+            seekBar.setProgress(MAX_SEEK_BAR_UNITS / 2);
 
             updateGoodsOffer(goods);
 
@@ -60,9 +61,8 @@ public class FrontEndNegotiation extends FrontEndGeneric {
         }
 
         SeekBar seekBar = findViewById(R.id.negotiate_cash_seek_bar);
-        int maxUnits = mLogic.mCash;
-        seekBar.setMax(maxUnits);
-        seekBar.setProgress(maxUnits / 2);
+        seekBar.setMax(MAX_SEEK_BAR_UNITS);
+        seekBar.setProgress(MAX_SEEK_BAR_UNITS / 2);
 
         updateCashOffer();
 
@@ -81,14 +81,15 @@ public class FrontEndNegotiation extends FrontEndGeneric {
 
     public boolean sendOffer() {
         LinearLayout inventoryLayout = findViewById(R.id.inventory_to_offer);
-        int[] goodToOffer = new int[Goods.NUM_GOODS_TYPES];
+        long[] goodToOffer = new long[Goods.NUM_GOODS_TYPES];
         for (Goods goods : Goods.values()) {
             SeekBar seekBar = (SeekBar)inventoryLayout.getChildAt(goods.getValue() * 2 + 1);
-            goodToOffer[goods.getValue()] = seekBar.getProgress();
+            long maxUnits = mLogic.mInventory[goods.getValue()];
+            goodToOffer[goods.getValue()] = seekBar.getProgress() * maxUnits / MAX_SEEK_BAR_UNITS;
         }
 
         SeekBar seekBar = findViewById(R.id.negotiate_cash_seek_bar);
-        int cashToOffer = seekBar.getProgress();
+        long cashToOffer = seekBar.getProgress() * mLogic.mCash / MAX_SEEK_BAR_UNITS;
 
         return mLogic.sendOffer(goodToOffer, cashToOffer);
     }

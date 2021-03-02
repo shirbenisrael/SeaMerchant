@@ -111,7 +111,7 @@ public class BackEndGoogleApi {
                             int i = 0;
                             while (((Iterator) it).hasNext()) {
                                 LeaderboardScore temp = it.next();
-                                int score = (int) temp.getRawScore();
+                                long score = temp.getRawScore();
                                 int rank = (int) temp.getRank();
                                 if (rank != LeaderboardScore.LEADERBOARD_RANK_UNKNOWN) {
                                     String name = temp.getScoreHolderDisplayName();
@@ -143,7 +143,7 @@ public class BackEndGoogleApi {
                             Iterator<LeaderboardScore> it = scoreBuffer.iterator();
                             while (((Iterator) it).hasNext()) {
                                 LeaderboardScore temp = it.next();
-                                int score = (int) temp.getRawScore();
+                                long score = temp.getRawScore();
                                 int rank = (int) temp.getRank();
                                 if (rank != LeaderboardScore.LEADERBOARD_RANK_UNKNOWN) {
                                     String name = temp.getScoreHolderDisplayName();
@@ -168,11 +168,11 @@ public class BackEndGoogleApi {
                     .addOnSuccessListener(mActivity, new OnSuccessListener<AnnotatedData<LeaderboardScore>>() {
                         @Override
                         public void onSuccess(AnnotatedData<LeaderboardScore> leaderboardScoreAnnotatedData) {
-                            int score = 0;
+                            long score = 0;
                             if (leaderboardScoreAnnotatedData != null) {
                                 LeaderboardScore leaderBoardscore = leaderboardScoreAnnotatedData.get();
                                 if (leaderBoardscore != null) {
-                                    score = (int) leaderBoardscore.getRawScore();
+                                    score = leaderBoardscore.getRawScore();
                                     int rank = (int) leaderBoardscore.getRank();
                                     if (rank != LeaderboardScore.LEADERBOARD_RANK_UNKNOWN) {
                                         String name = leaderBoardscore.getScoreHolderDisplayName();

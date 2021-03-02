@@ -2,13 +2,12 @@ package com.shirbi.seamerchant;
 
 public class MarketDeal {
     Goods mGoods;
-    int mGoodsUnits;
+    long mGoodsUnits;
     int mPrice;
-    int mCash;
-    int mCapacityForThisGoods;
-    int mMaxUnitsToHold;
-    int mMaxUnitsWithEnoughGuardShips;
-    int mPercentageOfValueForEnoughGuardShips;
+    long mCash;
+    long mCapacityForThisGoods;
+    long mMaxUnitsToHold;
+    long mMaxUnitsWithEnoughGuardShips;
 
     public MarketDeal(Goods goods, Logic logic) {
         mGoods = goods;
@@ -36,20 +35,20 @@ public class MarketDeal {
             guardsForInventoryPart *= Sail.NIGHT_SAIL_GUARD_COST_PERCENT_MULTIPLY;
         }
 
-        int valueForGuardPrice = logic.calculateInventoryValue() + logic.mCash;
-        int guardPrice = (int)(valueForGuardPrice * guardsForInventoryPart);
+        long valueForGuardPrice = logic.calculateInventoryValue() + logic.mCash;
+        long guardPrice = (int)(valueForGuardPrice * guardsForInventoryPart);
 
-        int totalMoneyCanBeUsedForGuards = mCash + getGoodsValue();
+        long totalMoneyCanBeUsedForGuards = mCash + getGoodsValue();
         mMaxUnitsWithEnoughGuardShips = Math.max(0, totalMoneyCanBeUsedForGuards - guardPrice) / mPrice;
 
         mMaxUnitsToHold = mGoodsUnits + mCash / mPrice;
     }
 
-    public int getGoodsValue() {
+    public long getGoodsValue() {
         return mGoodsUnits * mPrice;
     }
 
-    public void setGoods(int units) {
+    public void setGoods(long units) {
         if (units > mGoodsUnits) {
             addGoods(units - mGoodsUnits);
         } else {
@@ -57,8 +56,8 @@ public class MarketDeal {
         }
     }
 
-    public void addGoods(int units) {
-        int totalPrice = units * mPrice;
+    public void addGoods(long units) {
+        long totalPrice = units * mPrice;
         if (mCash >= totalPrice) {
             mGoodsUnits += units;
             mCash -= totalPrice;
@@ -67,7 +66,7 @@ public class MarketDeal {
         }
     }
 
-    public void removeGoods(int units) {
+    public void removeGoods(long units) {
         if (mGoodsUnits >= units) {
             mGoodsUnits -= units;
             mCash += units * mPrice;;
@@ -77,7 +76,7 @@ public class MarketDeal {
     }
 
     public void buyAll() {
-        int unitsToBuy = mCash / mPrice;
+        long unitsToBuy = mCash / mPrice;
         addGoods(unitsToBuy);
     }
 
@@ -86,7 +85,7 @@ public class MarketDeal {
     }
 
     public void fillCapacity() {
-        int unitsToAdd = mCapacityForThisGoods - mGoodsUnits;
+        long unitsToAdd = mCapacityForThisGoods - mGoodsUnits;
         if (unitsToAdd > 0) {
             addGoods(unitsToAdd);
         } else {

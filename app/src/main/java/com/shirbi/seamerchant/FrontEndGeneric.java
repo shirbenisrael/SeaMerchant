@@ -15,6 +15,8 @@ import androidx.annotation.StringRes;
 import java.text.DecimalFormat;
 
 public class FrontEndGeneric {
+    static final int MAX_SEEK_BAR_UNITS = (1000 * 1000 * 1000 * 2);
+
     MainActivity mActivity;
     Logic mLogic;
     protected DecimalFormat mDecimalFormat;

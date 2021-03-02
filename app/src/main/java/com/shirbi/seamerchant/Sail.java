@@ -8,15 +8,15 @@ public class Sail {
     State mDestination;
     State mSource;
     int mLandingHour;
-    int mValueOnShip; // inventory + cash
+    long mValueOnShip; // inventory + cash
     boolean mNightSail;
     boolean mBrokenShip;
-    int mTotalLoad;
+    long mTotalLoad;
     boolean mTooLoaded;
-    int mGuardShipCost;
+    long mGuardShipCost;
     int mMaxGuardShips;
     int mSelectedNumGuardShips;
-    int mTotalGuardShipsCost;
+    long mTotalGuardShipsCost;
     float mGuardShipCostPercent;
     Weather mSailWeather;
     boolean mSailEndedPeacefully;
@@ -47,24 +47,24 @@ public class Sail {
     }
 
     public BattleResult mBattleResult;
-    public int mPiratesCapacity;
-    public int mPiratesTreasure;
-    public int mPiratesDamage;
+    public long mPiratesCapacity;
+    public long mPiratesTreasure;
+    public long mPiratesDamage;
     public boolean mIsPirateStoleGoods;
     public Goods mPiratesStolenGoods;
-    public int mPiratesStolen;
+    public long mPiratesStolen;
 
-    public boolean mIsStormWashGoods; // else ship damage
+    public boolean mIsStormWashGoods; // Else ship damage
     public Goods mStormLostGoodType;
-    public int mStormLostUnits;
+    public long mStormLostUnits;
 
     public Goods mAbandonedShipGoods;
-    public int mAbandonedShipGoodsUnits;
+    public long mAbandonedShipGoodsUnits;
 
-    public int mShoalDamage;
+    public long mShoalDamage;
 
     public Goods mSinkGood;
-    public int mSinkGoodsUnitsLost;
+    public long mSinkGoodsUnitsLost;
 
     private void calculateShipValue() {
         mValueOnShip = mLogic.mCash;
@@ -120,8 +120,8 @@ public class Sail {
                 break;
         }
 
-        mGuardShipCost = (int)Math.max(MIN_GUARD_SHIP_COST, (mGuardShipCostPercent * mValueOnShip / 100));
-        mMaxGuardShips = Math.min(MAX_GUARD_SHIPS, ((logic.mCash / mGuardShipCost) + (mLogic.hasMedal(Medal.ALWAYS_FIGHTER) ? 1 : 0)));
+        mGuardShipCost = (long)Math.max(MIN_GUARD_SHIP_COST, (mGuardShipCostPercent * mValueOnShip / 100));
+        mMaxGuardShips = (int)Math.min(MAX_GUARD_SHIPS, ((logic.mCash / mGuardShipCost) + (mLogic.hasMedal(Medal.ALWAYS_FIGHTER) ? 1 : 0)));
 
         mBrokenShip = (logic.mDamage != 0);
         mTooLoaded = (mTotalLoad > logic.mCapacity);
@@ -157,11 +157,11 @@ public class Sail {
     }
 
     public boolean isSinkInSail() {
-        int load = mLogic.calculateLoad();
+        long load = mLogic.calculateLoad();
         if (load <= mLogic.mCapacity) {
             return false;
         }
-        return (mRand.nextInt(load) >= mLogic.mCapacity);
+        return (mLogic.generateRandom(load) >= mLogic.mCapacity);
     }
 
     public boolean isBadWeatherInSail() {
@@ -213,9 +213,9 @@ public class Sail {
                 mIsStormWashGoods = false; // damage to ship
                 // Easy start - small damage from storm before achieve 100,000
                 if (mLogic.hasMedal(Medal.TREASURE_2)) {
-                    mStormLostUnits = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity);
+                    mStormLostUnits = 100 + mLogic.generateRandom(mLogic.mCapacity * mLogic.mCapacity);
                 } else {
-                    mStormLostUnits = 100 + mRand.nextInt(1000);
+                    mStormLostUnits = 100 + mLogic.generateRandom(1000);
                 }
                 mLogic.mDamage += mStormLostUnits;
             } else {
@@ -226,7 +226,7 @@ public class Sail {
                         mStormLostGoodType = goods;
                     }
                 }
-                mStormLostUnits = 1 + mRand.nextInt(1 + mLogic.mInventory[mStormLostGoodType.getValue()] / 2);
+                mStormLostUnits = 1 + mLogic.generateRandom(1 + mLogic.mInventory[mStormLostGoodType.getValue()] / 2);
                 mLogic.mInventory[mStormLostGoodType.getValue()] -= mStormLostUnits;
             }
         }
@@ -234,21 +234,21 @@ public class Sail {
 
     public void createAbandonedShip() {
         mAbandonedShipGoods = Goods.values()[mRand.nextInt(Goods.NUM_GOODS_TYPES)];
-        mAbandonedShipGoodsUnits = mRand.nextInt(mLogic.mBankDeposit + mValueOnShip + 1) /
+        mAbandonedShipGoodsUnits = mLogic.generateRandom(mLogic.mBankDeposit + mValueOnShip + 1) /
                 mLogic.mPriceTable.getPrice(mSource, mAbandonedShipGoods) + 1;
         mLogic.addGoodsToInventory(mAbandonedShipGoods, mAbandonedShipGoodsUnits);
     }
 
-    public int calculateMaxShoalDamage() {
+    public long calculateMaxShoalDamage() {
         return mLogic.mCapacity * mLogic.mCapacity;
     }
 
-    private int generateShoalDamage() {
+    private long generateShoalDamage() {
         // Easy start - small damage from shoal before achieve 100,000
         if (mLogic.hasMedal(Medal.TREASURE_2)) {
-            return 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+            return 100 + mLogic.generateRandom(mLogic.mCapacity * mLogic.mCapacity - 99);
         } else {
-            return 100 + mRand.nextInt(1000);
+            return 100 + mLogic.generateRandom(1000);
         }
     }
 
@@ -268,7 +268,7 @@ public class Sail {
     public void createSink() {
         mSailEndedPeacefully = false;
         mSinkGood = mLogic.findGoodsWithMostUnits();
-        mSinkGoodsUnitsLost = 1 + mRand.nextInt(mLogic.mInventory[mSinkGood.getValue()]);
+        mSinkGoodsUnitsLost = 1 + mLogic.generateRandom(mLogic.mInventory[mSinkGood.getValue()]);
         mLogic.removeGoodsFromInventory(mSinkGood, mSinkGoodsUnitsLost);
     }
 
@@ -298,16 +298,16 @@ public class Sail {
 
             // Easy start - small damage from pirates before achieve 100,000
             if (mLogic.hasMedal(Medal.TREASURE_2)) {
-                mPiratesDamage = 100 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity - 99);
+                mPiratesDamage = 100 + mLogic.generateRandom(mLogic.mCapacity * mLogic.mCapacity - 99);
             } else {
-                mPiratesDamage = 100 + mRand.nextInt(1000);
+                mPiratesDamage = 100 + mLogic.generateRandom(1000);
             }
             mLogic.mDamage += mPiratesDamage;
             mLogic.disableWinPiratesCount();
 
             if (mTotalLoad == 0) {
                 mIsPirateStoleGoods = false;
-                mPiratesStolen = mRand.nextInt(1 + mLogic.mCash / 2);
+                mPiratesStolen = mLogic.generateRandom(1 + mLogic.mCash / 2);
                 mLogic.mCash -= mPiratesStolen;
             } else {
                 mIsPirateStoleGoods = true;
@@ -317,7 +317,7 @@ public class Sail {
                         mPiratesStolenGoods = goods;
                     }
                 }
-                mPiratesStolen = 1 + mRand.nextInt(1 + mLogic.mInventory[mPiratesStolenGoods.getValue()] / 2);
+                mPiratesStolen = 1 + mLogic.generateRandom(1 + mLogic.mInventory[mPiratesStolenGoods.getValue()] / 2);
                 mLogic.removeGoodsFromInventory(mPiratesStolenGoods, mPiratesStolen);
             }
 
@@ -329,11 +329,11 @@ public class Sail {
 
         if (isWinCapturePirates()) {
             mBattleResult = BattleResult.WIN_AND_CAPTURE;
-            mPiratesCapacity = mRand.nextInt(mLogic.mCapacity / 25) * 25 + 25;
+            mPiratesCapacity = mLogic.generateRandom(mLogic.mCapacity / 25) * 25 + 25;
             mLogic.mCapacity += mPiratesCapacity;
         } else {
             mBattleResult = BattleResult.WIN_AND_TREASURE;
-            mPiratesTreasure = 1 + mRand.nextInt(mValueOnShip + mLogic.mBankDeposit) / 3;
+            mPiratesTreasure = 1 + mLogic.generateRandom(mValueOnShip + mLogic.mBankDeposit) / 3;
             mLogic.mCash += mPiratesTreasure;
         }
 
@@ -351,8 +351,8 @@ public class Sail {
         }
     }
 
-    private int generateWinPirateDamage() {
-        return 1 + mRand.nextInt(mLogic.mCapacity * mLogic.mCapacity / 5);
+    private long generateWinPirateDamage() {
+        return 1 + mLogic.generateRandom(mLogic.mCapacity * mLogic.mCapacity / 5);
     }
 
     public boolean isEscapePiratesSucceeds() {
@@ -388,7 +388,7 @@ public class Sail {
             return 1;
         }
 
-        return 100 * (mLogic.mCapacity - mTotalLoad) / mLogic.mCapacity;
+        return (int)(100 * (mLogic.mCapacity - mTotalLoad) / mLogic.mCapacity);
     }
 
     private boolean tryToDoSomething(int percentsToSucceed) {

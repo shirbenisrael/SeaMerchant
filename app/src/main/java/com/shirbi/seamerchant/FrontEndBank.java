@@ -12,7 +12,7 @@ public class FrontEndBank extends FrontEndGeneric {
         bankSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    mLogic.mBankDeal.setDeposit(progress);
+                    mLogic.mBankDeal.setDeposit(mLogic.mBankDeal.mMaxDeposit * progress / MAX_SEEK_BAR_UNITS);
                     showDealState();
                 }
             }
@@ -24,7 +24,7 @@ public class FrontEndBank extends FrontEndGeneric {
 
     public void onBankClick() {
         SeekBar seekBar = (SeekBar)findViewById(R.id.bank_seek_bar);
-        seekBar.setMax(mLogic.mBankDeal.mMaxDeposit);
+        seekBar.setMax(MAX_SEEK_BAR_UNITS);
         showDealState();
 
         String tipString = mActivity.getString(R.string.BANK_TIP, mLogic.getBankNightlyInterest());
@@ -43,7 +43,7 @@ public class FrontEndBank extends FrontEndGeneric {
         ((TextView)findViewById(R.id.bank_cash_units)).setText(cash);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.bank_seek_bar);
-        seekBar.setProgress(mLogic.mBankDeal.mDeposit);
+        seekBar.setProgress((int)(MAX_SEEK_BAR_UNITS * mLogic.mBankDeal.mDeposit / mLogic.mBankDeal.mMaxDeposit));
     }
 
     public void showOnlyDepositAll() {

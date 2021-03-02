@@ -314,7 +314,7 @@ public class MainActivity extends Activity {
             mFrontEndHighScore.showHighScoreAtGameEnd();
             mFrontEnd.showWindow(Window.HIGH_SCORE_WINDOW);
 
-            int currentScore = mLogic.calculateTotalValue();
+            long currentScore = mLogic.calculateTotalValue();
             mLogic.setNewHighScore(currentScore);
             mLogic.setNewHighCapacity(mLogic.mCapacity);
 

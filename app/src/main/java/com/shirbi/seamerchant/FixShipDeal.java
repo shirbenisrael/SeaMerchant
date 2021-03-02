@@ -1,9 +1,9 @@
 package com.shirbi.seamerchant;
 
 public class FixShipDeal {
-    int mMaxFix;
-    int mCurrentFix;
-    int mCash;
+    long mMaxFix;
+    long mCurrentFix;
+    long mCash;
 
     public FixShipDeal(Logic logic) {
        mMaxFix = Math.min(logic.mDamage, logic.mCash);
@@ -11,7 +11,7 @@ public class FixShipDeal {
        mCash = logic.mCash;
     }
 
-    public void setFix(int fix) {
+    public void setFix(long fix) {
         mCash += mCurrentFix;
         mCash -= fix;
         mCurrentFix = fix;

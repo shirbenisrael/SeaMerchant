@@ -1,11 +1,10 @@
 package com.shirbi.seamerchant;
 
 public class BankDeal {
-    int mDeposit;
-    int mCash;
-    int mMaxDeposit;
-    int mMaxDepositWithEnoughGuardShips;
-    int mPercentageOfValueForEnoughGuardShips;
+    long mDeposit;
+    long mCash;
+    long mMaxDeposit;
+    long mMaxDepositWithEnoughGuardShips;
 
     public BankDeal(Logic logic) {
         mDeposit = logic.mBankDeposit;
@@ -13,7 +12,7 @@ public class BankDeal {
 
         mMaxDeposit = mDeposit + mCash;
 
-        int inventoryValue = logic.calculateInventoryValue();
+        long inventoryValue = logic.calculateInventoryValue();
         float guardsForInventoryPart = 0.1f;
 
         if (logic.mCurrentState == logic.mWeatherState) {
@@ -30,17 +29,17 @@ public class BankDeal {
 
         float cashForGuardsForInventoryAndCash = inventoryValue / (1/guardsForInventoryPart - 1);
 
-        int minCashForGuards = Sail.MIN_GUARD_SHIP_COST * Sail.MAX_GUARD_SHIPS;
+        long minCashForGuards = Sail.MIN_GUARD_SHIP_COST * Sail.MAX_GUARD_SHIPS;
         if (logic.hasMedal(Medal.ALWAYS_FIGHTER)) {
             minCashForGuards -= Sail.MIN_GUARD_SHIP_COST;
         }
         cashForGuardsForInventoryAndCash = Math.max(cashForGuardsForInventoryAndCash, minCashForGuards);
-        int CashForGuard = (int) Math.ceil(cashForGuardsForInventoryAndCash);
+        long CashForGuard = (long) Math.ceil(cashForGuardsForInventoryAndCash);
 
-        mMaxDepositWithEnoughGuardShips = (int)(mMaxDeposit - CashForGuard);
+        mMaxDepositWithEnoughGuardShips = (long)(mMaxDeposit - CashForGuard);
     }
 
-    public void setDeposit(int units) {
+    public void setDeposit(long units) {
         if (units > mDeposit) {
             addDeposit(units - mDeposit);
         } else {
@@ -48,7 +47,7 @@ public class BankDeal {
         }
     }
 
-    public void addDeposit(int units) {
+    public void addDeposit(long units) {
         if (mCash >= units) {
             mDeposit += units;
             mCash -= units;
@@ -57,7 +56,7 @@ public class BankDeal {
         }
     }
 
-    public void removeDeposit(int units) {
+    public void removeDeposit(long units) {
         if (mDeposit >= units) {
             mDeposit -= units;
             mCash += units;

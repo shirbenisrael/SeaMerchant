@@ -12,7 +12,7 @@ public class FrontEndFixShip  extends FrontEndGeneric {
         bankSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    mLogic.mFixShipDeal.setFix(progress);
+                    mLogic.mFixShipDeal.setFix(mLogic.mFixShipDeal.mMaxFix * progress / MAX_SEEK_BAR_UNITS);
                     showDealState();
                 }
             }
@@ -30,12 +30,12 @@ public class FrontEndFixShip  extends FrontEndGeneric {
         ((TextView)findViewById(R.id.fix_cash_units)).setText(cash);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.fix_seek_bar);
-        seekBar.setProgress(mLogic.mFixShipDeal.mCurrentFix);
+        seekBar.setProgress((int)(MAX_SEEK_BAR_UNITS * mLogic.mFixShipDeal.mCurrentFix / mLogic.mFixShipDeal.mMaxFix));
     }
 
     public void onFixShipClick() {
         SeekBar seekBar = (SeekBar)findViewById(R.id.fix_seek_bar);
-        seekBar.setMax(mLogic.mFixShipDeal.mMaxFix);
+        seekBar.setMax(MAX_SEEK_BAR_UNITS);
         showDealState();
 
         String operationTimeString = mLogic.isFixOperationTakesTime() ?

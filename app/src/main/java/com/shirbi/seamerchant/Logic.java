@@ -55,16 +55,16 @@ public class Logic {
 
     // Variable need to store
     public PriceTable mPriceTable = new PriceTable(this);
-    public int mInventory[] = new int[Goods.NUM_GOODS_TYPES];
-    public int mCash;
-    public int mBankDeposit;
+    public long mInventory[] = new long[Goods.NUM_GOODS_TYPES];
+    public long mCash;
+    public long mBankDeposit;
     public WeekDay mCurrentDay;
     public int mCurrentHour;
     public State mCurrentState;
     public State mWeatherState;
     public Weather mWeather;
-    public int mDamage;
-    public int mCapacity;
+    public long mDamage;
+    public long mCapacity;
     public boolean mIsBankOperationTakesTime;
     public boolean mIsMarketOperationTakesTime;
     public boolean mIsFixOperationTakesTime;
@@ -81,16 +81,16 @@ public class Logic {
     public boolean mAlwaysSleepAtMidnight;
     public boolean mAlwaysDeposit;
     public boolean mEconomicalSail;
-    public int mValueAtStartOfDay = 0;
+    public long mValueAtStartOfDay = 0;
     public boolean mHeroDieMedal = false;
-    public int mHighScore = 0;
-    public int mHighCapacity = 0;
+    public long mHighScore = 0;
+    public long mHighCapacity = 0;
     public int[] mRank = {-1, -1};
 
     public static class ScoreTable {
         public int rank;
         public String name;
-        public int score;
+        public long score;
     };
 
     public enum ScoreType {
@@ -118,11 +118,11 @@ public class Logic {
     public State mSpecialPriceState;
     public Goods mSpecialPriceGoods;
     public boolean mIsSpecialPriceHigh;
-    public int mFishBoatCollisionDamage;
-    public int mGoodsUnitsToBurn = 0;
+    public long mFishBoatCollisionDamage;
+    public long mGoodsUnitsToBurn = 0;
     public Goods mGoodsToBurn;
-    public int mValueBeforeSail;
-    public int mValueAfterSail;
+    public long mValueBeforeSail;
+    public long mValueAfterSail;
     public boolean mEgyptWheatMedal = false;
     public boolean mTitanicMedal = false;
     public boolean mAllGoodMedal = false;
@@ -130,15 +130,15 @@ public class Logic {
 
     // For NewDayEvent.BIGGER_SHIP
     public boolean mIsBiggerShipForCash;
-    public int mBiggerShipPrice;
+    public long mBiggerShipPrice;
     public Goods mBiggerShipPriceGoodType;
-    public int mBiggerShipCapacity;
+    public long mBiggerShipCapacity;
 
     // For NewDayEvent.MERCHANT
     public boolean mIsMerchantBuy;
-    public int mMerchantPrice;
+    public long mMerchantPrice;
     public Goods mMerchantGoods;
-    public int mMerchantUnits;
+    public long mMerchantUnits;
 
     public NegotiationType mNegotiationType;
     public int mLoseDayByStrike;
@@ -159,8 +159,8 @@ public class Logic {
 
     public NewDayEvent mNewDayEvent;
 
-    private int generateRandom(int bound) {
-        return mRand.nextInt(Math.max(1, bound));
+    public long generateRandom(long bound) {
+        return Math.abs(mRand.nextLong()) % Math.max(1, bound);
     }
 
     public void clearInventory() {
@@ -380,7 +380,7 @@ public class Logic {
     }
 
     private void generateFishBoatCollision() {
-        int maxDamage = Math.min(calculateTotalValue(), mCapacity * mCapacity) / 5;
+        long maxDamage = Math.min(calculateTotalValue(), mCapacity * mCapacity) / 5;
         mFishBoatCollisionDamage = generateRandom(maxDamage);
         mDamage += mFishBoatCollisionDamage;
         mNewDayEvent = NewDayEvent.FISH_BOAT_COLLISION;
@@ -388,7 +388,7 @@ public class Logic {
 
     protected Goods findGoodsWithMostUnits() {
         Goods foundGoods = Goods.COPPER;
-        int maxUnits = 0;
+        long maxUnits = 0;
 
         for (Goods goods : Goods.values()) {
             if (mInventory[goods.getValue()] > maxUnits) {
@@ -434,8 +434,8 @@ public class Logic {
 
         mBiggerShipPrice = generateRandom(mBiggerShipPrice) + 1;
 
-        int maxCapacityForCopper = calculateTotalValue() / mPriceTable.getPrice(mCurrentState, Goods.COPPER);
-        mBiggerShipCapacity = ((mRand.nextInt(maxCapacityForCopper + 1) + mRand.nextInt(100) + 26) / 25) * 25;
+        long maxCapacityForCopper = calculateTotalValue() / mPriceTable.getPrice(mCurrentState, Goods.COPPER);
+        mBiggerShipCapacity = ((generateRandom(maxCapacityForCopper + 1) + generateRandom(100) + 26) / 25) * 25;
         mNewDayEvent = NewDayEvent.BIGGER_SHIP_OFFER;
         return true;
     }
@@ -473,7 +473,7 @@ public class Logic {
     }
 
     public boolean generateMerchantDeal() {
-        int availableValue = calculateTotalValue() - mBankDeposit;
+        long availableValue = calculateTotalValue() - mBankDeposit;
         if (availableValue < MIN_VALUE_FOR_MERCHANT) {
             return false;
         }
@@ -486,7 +486,7 @@ public class Logic {
         } else {
             mMerchantGoods = Goods.generateRandomType();
             mMerchantPrice = mMerchantGoods.generateRandomMerchant();
-            mMerchantUnits = mRand.nextInt(mCash / mMerchantPrice) + 1;
+            mMerchantUnits = generateRandom(mCash / mMerchantPrice) + 1;
         }
 
         mNewDayEvent = NewDayEvent.MERCHANT;
@@ -554,19 +554,19 @@ public class Logic {
         mPriceTable.setPrice(mSpecialPriceState, mSpecialPriceGoods, specialPrice);
     }
 
-    public int calculateInventoryValue() {
-        int totalValue = 0;
+    public long calculateInventoryValue() {
+        long totalValue = 0;
         for (Goods goods : Goods.values()) {
             totalValue += mInventory[goods.getValue()] * mPriceTable.getPrice(mCurrentState, goods);
         }
         return totalValue;
     }
 
-    public int calculateTotalValue() {
+    public long calculateTotalValue() {
         return mCash + mBankDeposit + calculateInventoryValue();
     }
 
-    public int calculateLoad() {
+    public long calculateLoad() {
         int load = 0;
         for (Goods goods : Goods.values()) {
             load += mInventory[goods.getValue()];
@@ -574,27 +574,27 @@ public class Logic {
         return  load;
     }
 
-    public int getInventory(Goods goods) {
+    public long getInventory(Goods goods) {
         return mInventory[goods.getValue()];
     }
 
-    public void addGoodsToInventory(Goods goods, int units) {
+    public void addGoodsToInventory(Goods goods, long units) {
         mInventory[goods.getValue()] += units;
     }
 
-    public void removeGoodsFromInventory(Goods goods, int units) {
+    public void removeGoodsFromInventory(Goods goods, long units) {
         mInventory[goods.getValue()] -= units;
     }
 
-    public boolean sendOffer(int goodsOffer[], int cashOffer) {
-        int offerValue = cashOffer;
+    public boolean sendOffer(long goodsOffer[], long cashOffer) {
+        long offerValue = cashOffer;
         for (Goods goods : Goods.values()) {
             offerValue += goodsOffer[goods.getValue()] * mPriceTable.getPrice(mCurrentState, goods);
         }
 
         int divider = (mNegotiationType == NegotiationType.PIRATES) ? 2 : 3;
 
-        int desired = generateRandom((calculateTotalValue() - mBankDeposit) / divider);
+        long desired = generateRandom((calculateTotalValue() - mBankDeposit) / divider);
 
         if (desired > offerValue) {
             if (mNegotiationType == NegotiationType.CREW) {
@@ -684,23 +684,23 @@ public class Logic {
     }
 
     public void storeState( SharedPreferences.Editor editor) {
-        editor.putInt(getString(R.string.mCash), mCash);
-        editor.putInt(getString(R.string.mBankDeposit), mBankDeposit);
+        editor.putLong(getString(R.string.mCash), mCash);
+        editor.putLong(getString(R.string.mBankDeposit), mBankDeposit);
         editor.putInt(getString(R.string.mCurrentDay), mCurrentDay.getValue());
         editor.putInt(getString(R.string.mCurrentHour), mCurrentHour);
         editor.putInt(getString(R.string.mCurrentState), mCurrentState.getValue());
         editor.putInt(getString(R.string.mWeatherState), mWeatherState.getValue());
         editor.putInt(getString(R.string.mWeather), mWeather.getValue());
-        editor.putInt(getString(R.string.mDamage), mDamage);
-        editor.putInt(getString(R.string.mCapacity), mCapacity);
-        editor.putInt(getString(R.string.mHighScore), mHighScore);
-        editor.putInt(getString(R.string.mHighCapacity), mHighCapacity);
+        editor.putLong(getString(R.string.mDamage), mDamage);
+        editor.putLong(getString(R.string.mCapacity), mCapacity);
+        editor.putLong(getString(R.string.mHighScore), mHighScore);
+        editor.putLong(getString(R.string.mHighCapacity), mHighCapacity);
         editor.putInt(getString(R.string.mEscapeCountInOneDay), mEscapeCountInOneDay);
         editor.putInt(getString(R.string.mCompromiseWithCrewCount), mCompromiseWithCrewCount);
         editor.putInt(getString(R.string.mWrongNavigationCountInOneDay), mWrongNavigationCountInOneDay);
         editor.putInt(getString(R.string.mWinPiratesCountInOneDay), mWinPiratesCountInOneDay);
         editor.putInt(getString(R.string.mWinPiratesCount), mWinPiratesCount);
-        editor.putInt(getString(R.string.mValueAtStartOfDay), mValueAtStartOfDay);
+        editor.putLong(getString(R.string.mValueAtStartOfDay), mValueAtStartOfDay);
         editor.putInt(getString(R.string.mGreeceVisitCount), mGreeceVisitCount);
         editor.putBoolean(getString(R.string.mBdsTurkey), mBdsTurkey);
         editor.putBoolean(getString(R.string.mBdsOlives), mBdsOlives);
@@ -743,6 +743,14 @@ public class Logic {
         editor.putString(getString(R.string.mStatesVisitedToday), str.toString());
     }
 
+    private long getLongOrInt(SharedPreferences sharedPref, int stringId, int defaultValue) {
+        try {
+            return sharedPref.getLong(getString(stringId), defaultValue);
+        } catch (Exception e) {
+            return sharedPref.getInt(getString(stringId), defaultValue);
+        }
+    }
+
     public void restoreState( SharedPreferences sharedPref) {
         String savedString = sharedPref.getString(getString(R.string.mIsMedalAchieved), "");
         StringTokenizer st = new StringTokenizer(savedString, ",");
@@ -773,23 +781,22 @@ public class Logic {
             return;
         }
 
-        mCash = sharedPref.getInt(getString(R.string.mCash), START_GAME_CASH);
-        mBankDeposit = sharedPref.getInt(getString(R.string.mBankDeposit), 0);
+        mCash = getLongOrInt(sharedPref, R.string.mCash, START_GAME_CASH);
+        mBankDeposit = getLongOrInt(sharedPref, R.string.mBankDeposit, 0);
         mCurrentDay = WeekDay.values()[sharedPref.getInt(getString(R.string.mCurrentDay), 0)];
         mCurrentState = State.values()[sharedPref.getInt(getString(R.string.mCurrentState), State.ISRAEL.getValue())];
         mWeatherState = State.values()[sharedPref.getInt(getString(R.string.mWeatherState), State.ISRAEL.getValue())];
         mWeather = Weather.values()[sharedPref.getInt(getString(R.string.mWeather), Weather.GOOD_SAILING.getValue())];
-        mWeather = Weather.values()[sharedPref.getInt(getString(R.string.mWeather), Weather.GOOD_SAILING.getValue())];
-        mDamage = sharedPref.getInt(getString(R.string.mDamage), 0);
-        mCapacity = sharedPref.getInt(getString(R.string.mCapacity), START_CAPACITY);
-        mHighScore = sharedPref.getInt(getString(R.string.mHighScore), 0);
-        mHighCapacity = sharedPref.getInt(getString(R.string.mHighCapacity), 0);
+        mDamage = getLongOrInt(sharedPref, R.string.mDamage, 0);
+        mCapacity = getLongOrInt(sharedPref, R.string.mCapacity, START_CAPACITY);
+        mHighScore = getLongOrInt(sharedPref, R.string.mHighScore, 0);
+        mHighCapacity = getLongOrInt(sharedPref, R.string.mHighCapacity, 0);
         mEscapeCountInOneDay = sharedPref.getInt(getString(R.string.mEscapeCountInOneDay), 0);
         mCompromiseWithCrewCount = sharedPref.getInt(getString(R.string.mCompromiseWithCrewCount), 0);
         mWrongNavigationCountInOneDay = sharedPref.getInt(getString(R.string.mWrongNavigationCountInOneDay), 0);
         mWinPiratesCountInOneDay = sharedPref.getInt(getString(R.string.mWinPiratesCountInOneDay), 0);
         mWinPiratesCount = sharedPref.getInt(getString(R.string.mWinPiratesCount), -10000);
-        mValueAtStartOfDay = sharedPref.getInt(getString(R.string.mValueAtStartOfDay), -10000);
+        mValueAtStartOfDay = getLongOrInt(sharedPref, R.string.mValueAtStartOfDay, -10000);
         mGreeceVisitCount = sharedPref.getInt(getString(R.string.mGreeceVisitCount), 0);
         mBdsTurkey = sharedPref.getBoolean(getString(R.string.mBdsTurkey), false);
         mBdsOlives = sharedPref.getBoolean(getString(R.string.mBdsOlives), false);
@@ -804,7 +811,7 @@ public class Logic {
         st = new StringTokenizer(savedString, ",");
         for (Goods goods : Goods.values()) {
             if (st.hasMoreTokens()){
-                mInventory[goods.getValue()] = Integer.parseInt(st.nextToken());
+                mInventory[goods.getValue()] = Long.parseLong(st.nextToken());
             }
         }
 
@@ -1041,15 +1048,15 @@ public class Logic {
         mCash -= mSail.mTotalGuardShipsCost;
     }
 
-    public void setNewHighScore(int highScore) {
+    public void setNewHighScore(long highScore) {
         mHighScore = Math.max(mHighScore, highScore);
     }
 
-    public void setNewHighCapacity(int highCapacity) {
+    public void setNewHighCapacity(long highCapacity) {
         mHighCapacity = Math.max(mHighCapacity, highCapacity);
     }
 
-    public void setUserScore(int rank, String name, int score, ScoreType scoreType) {
+    public void setUserScore(int rank, String name, long score, ScoreType scoreType) {
         if (rank <  1) {
             // This should not happen, but in any case that google sends bad value.
             return;
@@ -1071,7 +1078,7 @@ public class Logic {
         }
     }
 
-    public void setTopScore(int rank, String name, int score, ScoreType scoreType) {
+    public void setTopScore(int rank, String name, long score, ScoreType scoreType) {
         if (rank < 1) {
             // This should not happen, but in any case that google sends bad value.
             return;
@@ -1083,7 +1090,7 @@ public class Logic {
         scoreTable.rank = rank;
     }
 
-    public void setCenterScore(int rank, String name, int score, int index, ScoreType scoreType) {
+    public void setCenterScore(int rank, String name, long score, int index, ScoreType scoreType) {
         if (rank < 1) {
             // This should not happen, but in any case that google sends bad value.
             return;
