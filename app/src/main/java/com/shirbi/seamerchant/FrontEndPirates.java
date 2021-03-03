@@ -44,19 +44,19 @@ public class FrontEndPirates extends FrontEndGeneric {
         ((TextView) findViewById(R.id.battle_result_title)).setText(R.string.WIN_THE_BATTLE);
 
         if (sail.mBattleResult == Sail.BattleResult.WIN_AND_CAPTURE) {
-            String result = mActivity.getString(R.string.WIN_CAPACITY, sail.mPiratesCapacity);
+            String result = mActivity.getString(R.string.WIN_CAPACITY, mDecimalFormat.format(sail.mPiratesCapacity));
             ((TextView) findViewById(R.id.battle_result)).setText(result);
 
             findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.capture);
         } else {
-            String result = mActivity.getString(R.string.WIN_TREASURE, sail.mPiratesTreasure);
+            String result = mActivity.getString(R.string.WIN_TREASURE, mDecimalFormat.format(sail.mPiratesTreasure));
             ((TextView) findViewById(R.id.battle_result)).setText(result);
 
             findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.treasure);
         }
 
         if (sail.mPiratesDamage > 0) {
-            String damage = mActivity.getString(R.string.WIN_WITH_DAMAGE, sail.mPiratesDamage);
+            String damage = mActivity.getString(R.string.WIN_WITH_DAMAGE, mDecimalFormat.format(sail.mPiratesDamage));
             ((TextView) findViewById(R.id.battle_damage)).setText(damage);
             findViewById(R.id.battle_damage).setVisibility(View.VISIBLE);
         } else {
@@ -71,14 +71,14 @@ public class FrontEndPirates extends FrontEndGeneric {
 
         String stolen;
         if (sail.mIsPirateStoleGoods) {
-            String goodString = getString(sail.mPiratesStolenGoods.toStringId());
-            stolen = mActivity.getString(R.string.LOSE_BATTLE_AND_GOODS, sail.mPiratesStolen, goodString);
+            String goodString = getGoodsString(sail.mPiratesStolenGoods);
+            stolen = mActivity.getString(R.string.LOSE_BATTLE_AND_GOODS, mDecimalFormat.format(sail.mPiratesStolen), goodString);
         } else {
-            stolen = mActivity.getString(R.string.LOSE_BATTLE_AND_CASH, sail.mPiratesStolen);
+            stolen = mActivity.getString(R.string.LOSE_BATTLE_AND_CASH, mDecimalFormat.format(sail.mPiratesStolen));
         }
         ((TextView)findViewById(R.id.battle_result)).setText(stolen);
 
-        String damage = mActivity.getString(R.string.LOSE_BATTLE_DAMAGE, sail.mPiratesDamage);
+        String damage = mActivity.getString(R.string.LOSE_BATTLE_DAMAGE, mDecimalFormat.format(sail.mPiratesDamage));
         ((TextView)findViewById(R.id.battle_damage)).setText(damage);
         findViewById(R.id.battle_damage).setVisibility(View.VISIBLE);
 

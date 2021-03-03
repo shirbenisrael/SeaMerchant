@@ -53,11 +53,11 @@
     <string name="PIRATES_MUST_ATTACK">אין ברירה אלא לתקוף אותם!</string>
     <string name="PIRATES_REFUSE_OFFER">הפיראטים מסרבים להצעתך!</string>
     <string name="WIN_THE_BATTLE">ניצחת בקרב!</string>
-    <string name="WIN_TREASURE">מצאת על ספינת הפיראטים אוצר בשווי %1$d ש\"ח</string>
-    <string name="WIN_WITH_DAMAGE">לרוע המזל, במהלך הקרב נגרם לספינתך נזק בשווי %1$d ש\"ח</string>
-    <string name="LOSE_BATTLE_AND_CASH">הפיראטים ניצחו בקרב ושדדו %1$d ש\"ח</string>
-    <string name="LOSE_BATTLE_AND_GOODS">הפיראטים ניצחו בקרב ושדדו %1$d טון %2$s!</string>
-    <string name="LOSE_BATTLE_DAMAGE">בנוסף, הפיראטים גרמו לספינה לנזק בשווי %1$d ש\"ח.</string>
+    <string name="WIN_TREASURE">מצאת על ספינת הפיראטים אוצר בשווי %1$s ש\"ח</string>
+    <string name="WIN_WITH_DAMAGE">לרוע המזל, במהלך הקרב נגרם לספינתך נזק בשווי %1$s ש\"ח</string>
+    <string name="LOSE_BATTLE_AND_CASH">הפיראטים ניצחו בקרב ושדדו %1$s ש\"ח</string>
+    <string name="LOSE_BATTLE_AND_GOODS">הפיראטים ניצחו בקרב ושדדו %1$s טון %2$s!</string>
+    <string name="LOSE_BATTLE_DAMAGE">בנוסף, הפיראטים גרמו לספינה לנזק בשווי %1$s ש\"ח.</string>
     <string name="WHAT_TO_DO_WITH_PIRATES">מה ברצונך לעשות?</string>
     <string name="NO_GUARD_SHIPS">אין לך ספינות משמר?</string>
     <string name="NUM_GUARDS_AGAINST_PIRATES">יש לך %1$d ספינות משמר.</string>
@@ -184,7 +184,7 @@
     <string name="OLIVES">זיתים</string>
     <string name="LOCK_STRING">כספת: %1$d ש\"ח</string>
     <string name="FIXED_SHIP_TIP">טיפ: ספינה שבורה מתפרקת לחלקים בהפלגה</string>
-    <string name="WIN_CAPACITY">לכדת את ספינת הפיראטים וקיבולת\nהספינה שלך גדלה ב %1$d טון</string>
+    <string name="WIN_CAPACITY">לכדת את ספינת הפיראטים וקיבולת\nהספינה שלך גדלה ב %1$s טון</string>
     <string name="BUY_ALL">קנה מקסימום</string>
     <string name="YOUR_HIGHEST_SCORE">השיא שלך הוא %1$s ש\"ח</string>
     <string name="YOUR_CURRENT_SCORE">ערך סחורתך הוא %1$s ש\"ח</string>
