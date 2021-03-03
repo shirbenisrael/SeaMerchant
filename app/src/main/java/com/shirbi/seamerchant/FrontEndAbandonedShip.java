@@ -10,8 +10,8 @@ public class FrontEndAbandonedShip extends FrontEndGeneric {
 
     public void showAbandonedShip() {
         Sail sail = mLogic.mSail;
-        String goods = getString(sail.mAbandonedShipGoods.toStringId());
-        String message = mActivity.getString(R.string.ABANDONED_SHIP_INVENTORY, sail.mAbandonedShipGoodsUnits, goods);
+        String goods = getGoodsString(sail.mAbandonedShipGoods);
+        String message = mActivity.getString(R.string.ABANDONED_SHIP_INVENTORY, mDecimalFormat.format(sail.mAbandonedShipGoodsUnits), goods);
         ((TextView)findViewById(R.id.abandoned_ship_message)).setText(message);
     }
 }

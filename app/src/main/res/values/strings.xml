@@ -81,7 +81,7 @@
     <string name="PIRATES_OFFER_ACCEPTED">The pirates accepted your offer.</string>
 
     <string name="ABANDONED_SHIP">Abandoned Ship!</string>
-    <string name="ABANDONED_SHIP_INVENTORY">You have found an abandoned ship with %1$d tonne of %2$s on it.</string>
+    <string name="ABANDONED_SHIP_INVENTORY">You have found an abandoned ship with %1$s tonne of %2$s on it.</string>
 
     <string name="SHOAL">Shoal!</string>
     <string name="SHOAL_DAMAGE">Due to the poor visibility conditions at night, your ship runs aground!\n the damage is %1$d$.</string>

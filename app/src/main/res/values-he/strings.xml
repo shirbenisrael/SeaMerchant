@@ -73,7 +73,7 @@
     <string name="PIRATES_OFFER_ACCEPTED">הפירטאים מקבלים את הצעתך.</string>
 
     <string name="ABANDONED_SHIP">ספינה נטושה!</string>
-    <string name="ABANDONED_SHIP_INVENTORY">מצאת ספינה נטושה ועליה %1$d טון של %2$s</string>
+    <string name="ABANDONED_SHIP_INVENTORY">מצאת ספינה נטושה ועליה %1$s טון של %2$s</string>
 
     <string name="SHOAL">שרטון!</string>
     <string name="SHOAL_DAMAGE">עקב תנאי הראות הגרועים בלילה, ספינתך עלתה על שרטון! נגרם לה נזק בשווי %1$d ש"ח.</string>
