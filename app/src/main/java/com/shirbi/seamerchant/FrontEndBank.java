@@ -36,10 +36,10 @@ public class FrontEndBank extends FrontEndGeneric {
     }
 
     public void showDealState() {
-        String lock = mActivity.getString(R.string.LOCK_STRING, mLogic.mBankDeal.mDeposit);
+        String lock = mActivity.getString(R.string.LOCK_STRING, mDecimalFormat.format(mLogic.mBankDeal.mDeposit));
         ((TextView)findViewById(R.id.bank_lock_units)).setText(lock);
 
-        String cash = mActivity.getString(R.string.CASH_STRING, mLogic.mBankDeal.mCash);
+        String cash = mActivity.getString(R.string.CASH_STRING, mDecimalFormat.format(mLogic.mBankDeal.mCash));
         ((TextView)findViewById(R.id.bank_cash_units)).setText(cash);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.bank_seek_bar);

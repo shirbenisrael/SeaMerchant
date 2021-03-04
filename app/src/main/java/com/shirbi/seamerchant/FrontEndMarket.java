@@ -26,15 +26,15 @@ public class FrontEndMarket extends FrontEndGeneric {
     public void showDealState() {
         Goods goods = mLogic.mMarketDeal.mGoods;
 
-        String units = getString(goods.toStringId()) + ": " + mLogic.mMarketDeal.mGoodsUnits + " " +
+        String units = getGoodsString(goods) + ": " + mDecimalFormat.format(mLogic.mMarketDeal.mGoodsUnits) + " " +
                 getString(R.string.TONNE);
         ((TextView)findViewById(R.id.market_goods_units)).setText(units);
 
-        String cash = getString(R.string.CASH) + ": " + mLogic.mMarketDeal.mCash + " " +
+        String cash = getString(R.string.CASH) + ": " + mDecimalFormat.format(mLogic.mMarketDeal.mCash) + " " +
                 getString(R.string.CASH_UNITS);
         ((TextView)findViewById(R.id.market_cash)).setText(cash);
 
-        String value = getString(R.string.TOTAL_VALUE) + ": " + mLogic.mMarketDeal.getGoodsValue() + " " +
+        String value = getString(R.string.TOTAL_VALUE) + ": " + mDecimalFormat.format(mLogic.mMarketDeal.getGoodsValue()) + " " +
                 getString(R.string.CASH_UNITS);
         ((TextView)findViewById(R.id.goods_value)).setText(value);
 
@@ -45,7 +45,7 @@ public class FrontEndMarket extends FrontEndGeneric {
     public void onMarketClick() {
         Goods goods = mLogic.mMarketDeal.mGoods;
 
-        String holdQuestion = mActivity.getString(R.string.HOLD_QUESTION, getString(goods.toStringId()));
+        String holdQuestion = mActivity.getString(R.string.HOLD_QUESTION, getGoodsString(goods));
         ((TextView)findViewById(R.id.market_hold_question)).setText(holdQuestion);
 
         ((ImageView)findViewById(R.id.market_goods_image)).setImageResource(goods.toMainImageId());

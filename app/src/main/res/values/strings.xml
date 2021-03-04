@@ -32,8 +32,8 @@
     <string name="SELL_ALL">Sell all</string>
     <string name="FILL_CAPACITY">Fill capacity</string>
 
-    <string name="CASH_STRING">Cash: %1$d\$</string>
-    <string name="LOCK_STRING">Lock: %1$d\$</string>
+    <string name="CASH_STRING">Cash: %1$s\$</string>
+    <string name="LOCK_STRING">Lock: %1$s\$</string>
 
     <string name="FIXED_SHIP_QUESTION">How much to invest in repairing the ship?</string>
     <string name="FIXED_AS_POSSIBLE">Fix as possible</string>

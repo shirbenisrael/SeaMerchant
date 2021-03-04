@@ -27,7 +27,7 @@
     <string name="SELL_ALL">מכור הכל</string>
     <string name="FILL_CAPACITY">קיבולת מלאה</string>
 
-    <string name="CASH_STRING">מזומן: %1$d ש\"ח</string>
+    <string name="CASH_STRING">מזומן: %1$s ש\"ח</string>
 
     <string name="FIXED_SHIP_QUESTION">כמה להשקיע בתיקון הספינה?</string>
     <string name="FIXED_AS_POSSIBLE">תקן ככל האפשר</string>
@@ -182,7 +182,7 @@
     <string name="ALL_GOODS_CONDITION">בהפלגה אחת העבר את כל סוגי הסחורות ברווח</string>
     <string name="CYPRUS">קפריסין</string>
     <string name="OLIVES">זיתים</string>
-    <string name="LOCK_STRING">כספת: %1$d ש\"ח</string>
+    <string name="LOCK_STRING">כספת: %1$s ש\"ח</string>
     <string name="FIXED_SHIP_TIP">טיפ: ספינה שבורה מתפרקת לחלקים בהפלגה</string>
     <string name="WIN_CAPACITY">לכדת את ספינת הפיראטים וקיבולת\nהספינה שלך גדלה ב %1$s טון</string>
     <string name="BUY_ALL">קנה מקסימום</string>
