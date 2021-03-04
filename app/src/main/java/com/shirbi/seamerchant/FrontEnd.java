@@ -133,7 +133,7 @@ public class FrontEnd extends FrontEndGeneric {
         @DrawableRes int resource = (mLogic.mDamage == 0) ? R.drawable.wide_ship_button : R.drawable.wide_fix_button;
         button.setBackgroundResource(resource);
         String damageString = (mLogic.mDamage == 0) ? getString(R.string.FIXED_SHIP) :
-                mActivity.getString(R.string.DAMAGED_SHIP, mLogic.mDamage);
+                mActivity.getString(R.string.DAMAGED_SHIP, mDecimalFormat.format(mLogic.mDamage));
         button.setText(damageString);
 
         button = findViewById(R.id.wide_sleep_button);
@@ -285,12 +285,12 @@ public class FrontEnd extends FrontEndGeneric {
 
     private  @NonNull  String generateNewDayMerchantOffer() {
         String offerString;
-        String goodsString = getString(mLogic.mMerchantGoods.toStringId());
+        String goodsString = getGoodsString(mLogic.mMerchantGoods);
         if (mLogic.mIsMerchantBuy) {
             offerString = mActivity.getString(R.string.MERCHANT_BUY, goodsString, mLogic.mMerchantPrice);
         } else {
             offerString = mActivity.getString(R.string.MERCHANT_SELL, goodsString,
-                    mLogic.mMerchantUnits, mLogic.mMerchantPrice);
+                    mDecimalFormat.format(mLogic.mMerchantUnits), mLogic.mMerchantPrice);
         }
 
         return offerString;
@@ -300,12 +300,16 @@ public class FrontEnd extends FrontEndGeneric {
         String offerString;
         if (mLogic.mIsBiggerShipForCash) {
             offerString = mActivity.getString(R.string.BIGGER_SHIP_FOR_CASH_OFFER,
-                    mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice, mLogic.mCash);
+                    mDecimalFormat.format(mLogic.mBiggerShipCapacity),
+                    mDecimalFormat.format(mLogic.mBiggerShipPrice),
+                    mDecimalFormat.format(mLogic.mCash));
         } else {
-            String goodsString = getString(mLogic.mBiggerShipPriceGoodType.toStringId());
+            String goodsString = getGoodsString(mLogic.mBiggerShipPriceGoodType);
             long inventory = mLogic.getInventory(mLogic.mBiggerShipPriceGoodType);
             offerString = mActivity.getString(R.string.BIGGER_SHIP_FOR_GOODS_OFFER,
-                    mLogic.mBiggerShipCapacity, mLogic.mBiggerShipPrice, goodsString, inventory);
+                    mDecimalFormat.format(mLogic.mBiggerShipCapacity),
+                    mDecimalFormat.format(mLogic.mBiggerShipPrice), goodsString,
+                    mDecimalFormat.format(inventory));
         }
 
         return offerString;
@@ -349,8 +353,8 @@ public class FrontEnd extends FrontEndGeneric {
                 idToShow = R.id.approve_event;
                 idToHide = R.id.agree_or_cancel_layout;
                 backgroundId = R.drawable.fire;
-                String goodsString = getString(mLogic.mGoodsToBurn.toStringId());
-                message = mActivity.getString(R.string.FIRE, mLogic.mGoodsUnitsToBurn, goodsString);
+                String goodsString = getGoodsString(mLogic.mGoodsToBurn);
+                message = mActivity.getString(R.string.FIRE, mDecimalFormat.format(mLogic.mGoodsUnitsToBurn), goodsString);
                 soundId = R.raw.fire;
                 break;
 
@@ -358,7 +362,7 @@ public class FrontEnd extends FrontEndGeneric {
                 idToShow = R.id.approve_event;
                 idToHide = R.id.agree_or_cancel_layout;
                 backgroundId = R.drawable.fish_boat;
-                message = mActivity.getString(R.string.FISH_BOAT, mLogic.mFishBoatCollisionDamage);
+                message = mActivity.getString(R.string.FISH_BOAT, mDecimalFormat.format(mLogic.mFishBoatCollisionDamage));
                 soundId = R.raw.fish_boat;
                 break;
 
@@ -423,7 +427,7 @@ public class FrontEnd extends FrontEndGeneric {
                 case NIGHT_SAIL:
                     backgroundId = R.drawable.night_sail;
                     message = mActivity.getString(R.string.DANGER_NIGHT_SAIL_MESSAGE,
-                            mLogic.mSail.calculateMaxShoalDamage());
+                            mDecimalFormat.format(mLogic.mSail.calculateMaxShoalDamage()));
                     color = mActivity.getColor(R.color.yellow);
                     break;
                 case WEATHER:

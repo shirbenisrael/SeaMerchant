@@ -60,12 +60,12 @@ public class FrontEndBadWeatherInSail extends FrontEndGeneric {
                 if (sail.mIsStormWashGoods) {
                     backGroundId = (R.drawable.storm_with_lost_goods);
                     findViewById(R.id.bad_weather_in_sail_layout).setBackgroundResource(R.drawable.storm_with_lost_goods);
-                    String lostGoodsType = getString(sail.mStormLostGoodType.toStringId());
-                    result = mActivity.getString(R.string.STORM_WASH_GOODS, sail.mStormLostUnits, lostGoodsType);
+                    String lostGoodsType = getGoodsString(sail.mStormLostGoodType);
+                    result = mActivity.getString(R.string.STORM_WASH_GOODS, mDecimalFormat.format(sail.mStormLostUnits), lostGoodsType);
                 } else {
                     backGroundId = (R.drawable.storm_with_damage);
                     findViewById(R.id.bad_weather_in_sail_layout).setBackgroundResource(R.drawable.storm_with_damage);
-                    result = mActivity.getString(R.string.STORM_HURT_SHIP, sail.mStormLostUnits);
+                    result = mActivity.getString(R.string.STORM_HURT_SHIP, mDecimalFormat.format(sail.mStormLostUnits));
                 }
                 soundId = R.raw.storm;
                 break;

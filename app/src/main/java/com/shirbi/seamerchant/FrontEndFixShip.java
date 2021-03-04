@@ -23,10 +23,10 @@ public class FrontEndFixShip  extends FrontEndGeneric {
     }
 
     private void showDealState() {
-        String lock = mActivity.getString(R.string.FIXING_STRING, mLogic.mFixShipDeal.mCurrentFix);
+        String lock = mActivity.getString(R.string.FIXING_STRING, mDecimalFormat.format(mLogic.mFixShipDeal.mCurrentFix));
         ((TextView)findViewById(R.id.fix_ship_units)).setText(lock);
 
-        String cash = mActivity.getString(R.string.CASH_STRING, mLogic.mFixShipDeal.mCash);
+        String cash = mActivity.getString(R.string.CASH_STRING, mDecimalFormat.format(mLogic.mFixShipDeal.mCash));
         ((TextView)findViewById(R.id.fix_cash_units)).setText(cash);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.fix_seek_bar);

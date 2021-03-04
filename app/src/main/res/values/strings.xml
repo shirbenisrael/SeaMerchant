@@ -39,8 +39,8 @@
     <string name="FIXED_AS_POSSIBLE">Fix as possible</string>
     <string name="FIXED_SHIP_TIP">Tip: A broken ship falls apart on the voyage</string>
     <string name="FIXED_SHIP">Fixed ship</string>
-    <string name="DAMAGED_SHIP">Damage: %1$d\$</string>
-    <string name="FIXING_STRING">Fix: %1$d\$</string>
+    <string name="DAMAGED_SHIP">Damage: %1$s\$</string>
+    <string name="FIXING_STRING">Fix: %1$s\$</string>
 
     <string name="GOOD_SEA_STRING">The sea looks good today</string>
     <string name="STORM_STRING">Storm develops near %1$s today</string>
@@ -84,17 +84,17 @@
     <string name="ABANDONED_SHIP_INVENTORY">You have found an abandoned ship with %1$s tonne of %2$s on it.</string>
 
     <string name="SHOAL">Shoal!</string>
-    <string name="SHOAL_DAMAGE">Due to the poor visibility conditions at night, your ship runs aground!\n the damage is %1$d$.</string>
+    <string name="SHOAL_DAMAGE">Due to the poor visibility conditions at night, your ship runs aground!\n the damage is %1$s$.</string>
 
     <string name="SINK_DUE_TO_OVERLOAD">The ship sinks due to overload!</string>
-    <string name="SINK_DAMAGE">The sailors throw %1$d tons of %2$s into the sea to save it.</string>
+    <string name="SINK_DAMAGE">The sailors throw %1$s tons of %2$s into the sea to save it.</string>
 
     <string name="NAVIGATION_ERROR_TITLE">Strong winds confuse the navigators!</string>
     <string name="NAVIGATION_ERROR_RESULT">The ship reaches %1$s instead of %2$s!</string>
 
     <string name="STORM_TITLE">The ship was caught in a storm!</string>
-    <string name="STORM_WASH_GOODS">The high waves wash %1$d tonne of %2$s from the ship.</string>
-    <string name="STORM_HURT_SHIP">The high waves hurt the ship and create damage worth %1$d$.</string>
+    <string name="STORM_WASH_GOODS">The high waves wash %1$s tonne of %2$s from the ship.</string>
+    <string name="STORM_HURT_SHIP">The high waves hurt the ship and create damage worth %1$s$.</string>
 
     <string name="FOG_TITLE">Heavy fog covers the harbor!</string>
     <string name="FOG_RESULT">The ship cannot land and must return to %1$s.</string>
@@ -109,14 +109,14 @@
     <string name="MARKET_STATE">Market state in the middle east</string>
     <string name="PRICE_UP">The %1$s\'s price in %2$s raised to %3$d$!</string>
     <string name="PRICE_DOWN">The %1$s\'s price in %2$s fall to %3$d$!</string>
-    <string name="FISH_BOAT">A fish boat collide with your ship. The damage is %1$d$!</string>
-    <string name="FIRE">A fire breaks out in warehouses and destroys %1$d tonne of %2$s!</string>
+    <string name="FISH_BOAT">A fish boat collide with your ship. The damage is %1$s$!</string>
+    <string name="FIRE">A fire breaks out in warehouses and destroys %1$s tonne of %2$s!</string>
 
-    <string name="BIGGER_SHIP_FOR_CASH_OFFER">You can increase the ship capacity by %1$d tonne for %2$d$ (You have %3$d$).</string>
-    <string name="BIGGER_SHIP_FOR_GOODS_OFFER">You can increase the ship capacity by %1$d tonne for %2$d tonne of %3$s (You have %4$d tonne).</string>
+    <string name="BIGGER_SHIP_FOR_CASH_OFFER">You can increase the ship capacity by %1$s tonne for %2$s$ (You have %3$s$).</string>
+    <string name="BIGGER_SHIP_FOR_GOODS_OFFER">You can increase the ship capacity by %1$s tonne for %2$s tonne of %3$s (You have %4$s tonne).</string>
 
     <string name="MERCHANT_BUY">A merchant needs urgently %1$s. He is willing to pay %2$d$ for tonne for all your inventory. Will you sell?</string>
-    <string name="MERCHANT_SELL">A merchant needs urgently to get rid of his %1$s. He is willing to sell %2$d tonne for %3$d$ per tonne. Will you buy?</string>
+    <string name="MERCHANT_SELL">A merchant needs urgently to get rid of his %1$s. He is willing to sell %2$s tonne for %3$d$ per tonne. Will you buy?</string>
 
     <string name="STRIKE_TITLE">The ship crew strikes!\n Will you negotiate with them?</string>
     <string name="STRIKE_OPTIONS">If negotiation fails it would take two days to find new crew. You can look for a new crew now and lose one day job. </string>
@@ -134,7 +134,7 @@
 
     <string name="DANGER_BROKEN_SHIP_MESSAGE">Sailing on a broken ship can aggravate the damage.</string>
     <string name="DANGER_OVERLOAD_MESSAGE">The ship is overloaded beyond its capacity and may sink.</string>
-    <string name="DANGER_NIGHT_SAIL_MESSAGE">The ship could run aground that would cause damage of up to %1$d$.</string>
+    <string name="DANGER_NIGHT_SAIL_MESSAGE">The ship could run aground that would cause damage of up to %1$s$.</string>
     <string name="DANGER_NIGHT_SAIL_SHORT_MESSAGE">The ship could run aground.</string>
     <string name="DANGER_FOG_MESSAGE">The fog in %1$s could prevent the mooring in the port.</string>
     <string name="DANGER_FOG_SHORT_MESSAGE">The fog could prevent the mooring in the port.</string>
@@ -180,13 +180,13 @@
     <string name="OPERATION_ONE_HOUR">This operation will take one hour.</string>
 
     <string name="GAME_RESULT_HIGH_SCORE">In the trading week you earned %1$s$.</string>
-    <string name="GAME_RESULT_CAPACITY">In the trading week you got ship of capacity %1$d tonne.</string>
+    <string name="GAME_RESULT_CAPACITY">In the trading week you got ship of capacity %1$s tonne.</string>
     <string name="SLEEP_QUESTION">Sleep until tomorrow?</string>
     <string name="END_GAME_QUESTION">End the trading week?</string>
     <string name="YOUR_HIGHEST_SCORE">Your highest score is %1$s$.</string>
     <string name="YOUR_CURRENT_SCORE">Your current score is %1$s$.</string>
-    <string name="YOUR_HIGHEST_CAPACITY">Your highest capacity is %1$d tonne.</string>
-    <string name="YOUR_CURRENT_CAPACITY">Your current capacity is %1$d tonne.</string>
+    <string name="YOUR_HIGHEST_CAPACITY">Your highest capacity is %1$s tonne.</string>
+    <string name="YOUR_CURRENT_CAPACITY">Your current capacity is %1$s tonne.</string>
     <string name="CAPACITY_BUTTON">Capacity</string>
     <string name="SCORE_BUTTON">Score</string>
 

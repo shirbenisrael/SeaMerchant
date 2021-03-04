@@ -32,8 +32,8 @@
     <string name="FIXED_SHIP_QUESTION">כמה להשקיע בתיקון הספינה?</string>
     <string name="FIXED_AS_POSSIBLE">תקן ככל האפשר</string>
     <string name="FIXED_SHIP">ספינה תקינה</string>
-    <string name="DAMAGED_SHIP">נזק: %1$d ש\"ח</string>
-    <string name="FIXING_STRING">תיקון: %1$d ש\"ח</string>
+    <string name="DAMAGED_SHIP">נזק: %1$s ש\"ח</string>
+    <string name="FIXING_STRING">תיקון: %1$s ש\"ח</string>
 
     <string name="GOOD_SEA_STRING">תנאי השייט היום טובים</string>
     <string name="STORM_STRING">סערה מתפתחת היום ליד %1$s</string>
@@ -76,17 +76,17 @@
     <string name="ABANDONED_SHIP_INVENTORY">מצאת ספינה נטושה ועליה %1$s טון של %2$s</string>
 
     <string name="SHOAL">שרטון!</string>
-    <string name="SHOAL_DAMAGE">עקב תנאי הראות הגרועים בלילה, ספינתך עלתה על שרטון! נגרם לה נזק בשווי %1$d ש"ח.</string>
+    <string name="SHOAL_DAMAGE">עקב תנאי הראות הגרועים בלילה, ספינתך עלתה על שרטון! נגרם לה נזק בשווי %1$s ש"ח.</string>
 
     <string name="SINK_DUE_TO_OVERLOAD">הספינה שוקעת בגלל עודף המטען!</string>
-    <string name="SINK_DAMAGE">המלחים משליכים לים %1$d טון של %2$s כדי להצילה.</string>
+    <string name="SINK_DAMAGE">המלחים משליכים לים %1$s טון של %2$s כדי להצילה.</string>
 
     <string name="NAVIGATION_ERROR_TITLE">רוחות חזקות מבלבלות את הנווטים!</string>
     <string name="NAVIGATION_ERROR_RESULT">הספינה מגיעה ל%1$s במקום ל%2$s!</string>
 
     <string name="STORM_TITLE">הספינה נלכדה בסערה!</string>
-    <string name="STORM_WASH_GOODS">הגלים הגבוהים שוטפים מהספינה %1$d טון של %2$s.</string>
-    <string name="STORM_HURT_SHIP">הגלים הגבוהים פוגעים בספינה וגורמים לנזק בשווי %1$d ש\"ח.</string>
+    <string name="STORM_WASH_GOODS">הגלים הגבוהים שוטפים מהספינה %1$s טון של %2$s.</string>
+    <string name="STORM_HURT_SHIP">הגלים הגבוהים פוגעים בספינה וגורמים לנזק בשווי %1$s ש\"ח.</string>
 
     <string name="FOG_TITLE">ערפל כבד מכסה את הנמל!</string>
     <string name="FOG_RESULT">הספינה לא יכולה לעגון ונאלצת לחזור ל%1$s.</string>
@@ -101,14 +101,14 @@
     <string name="MARKET_STATE">מצב השווקים במזרח התיכון</string>
     <string name="PRICE_UP">מחיר ה%1$s ב%2$s עלה\nל-%3$d ש\"ח לטון!</string>
     <string name="PRICE_DOWN">מחיר ה%1$s ב%2$s ירד\nל-%3$d ש\"ח לטון!</string>
-    <string name="FISH_BOAT">סירת דייג התנגשה בספינתך וגרמה\n לנזק בשווי %1$d ש\"ח!</string>
-    <string name="FIRE">שריפה פורצת במחסנים\n ומכלה %1$d טון של %2$s!</string>
+    <string name="FISH_BOAT">סירת דייג התנגשה בספינתך וגרמה\n לנזק בשווי %1$s ש\"ח!</string>
+    <string name="FIRE">שריפה פורצת במחסנים\n ומכלה %1$s טון של %2$s!</string>
 
-    <string name="BIGGER_SHIP_FOR_CASH_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d ש\"ח (יש לך %3$d ש\"ח).</string>
-    <string name="BIGGER_SHIP_FOR_GOODS_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$d טון תמורת %2$d טון %3$s (יש לך %4$d טון).</string>
+    <string name="BIGGER_SHIP_FOR_CASH_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$s טון תמורת %2$s ש\"ח (יש לך %3$s ש\"ח).</string>
+    <string name="BIGGER_SHIP_FOR_GOODS_OFFER">באפשרותך להגדיל את קיבולת הספינה ב-%1$s טון תמורת %2$s טון %3$s (יש לך %4$s טון).</string>
 
     <string name="MERCHANT_BUY">סוחר זקוק בדחיפות ל%1$s. הוא מוכן לשלם %2$d ש\"ח לטון בעבור כל ה%1$s שלך. האם תמכור לו?</string>
-    <string name="MERCHANT_SELL">סוחר חייב להיפטר במיידי מכל ה%1$s שלו. הוא רוצה למכור לך %2$d טון במחיר של %3$d ש\"ח לטון. האם תקנה?</string>
+    <string name="MERCHANT_SELL">סוחר חייב להיפטר במיידי מכל ה%1$s שלו. הוא רוצה למכור לך %2$s טון במחיר של %3$d ש\"ח לטון. האם תקנה?</string>
 
     <string name="STRIKE_TITLE">צוות הספינה שובת!\nהאם תדון איתם על פשרה?</string>
     <string name="STRIKE_OPTIONS">אם המשא ומתן ייכשל יקח לך שני ימים למצוא צוות חדש. תוכל לחפש צוות חדש כבר עכשיו ולהפסיד יום עבודה אחד.</string>
@@ -126,7 +126,7 @@
 
     <string name="DANGER_BROKEN_SHIP_MESSAGE">הפלגה בספינה שבורה עשויה להחמיר את הנזק.</string>
     <string name="DANGER_OVERLOAD_MESSAGE">הספינה טעונה מעל הקיבולת שלה ועלולה לשקוע.</string>
-    <string name="DANGER_NIGHT_SAIL_MESSAGE">הספינה עלולה לעלות על שרטון שעשוי לגרום נזק בשווי עד %1$d ש\"ח.</string>
+    <string name="DANGER_NIGHT_SAIL_MESSAGE">הספינה עלולה לעלות על שרטון שעשוי לגרום נזק בשווי עד %1$s ש\"ח.</string>
     <string name="DANGER_NIGHT_SAIL_SHORT_MESSAGE">הספינה עלולה לעלות על שרטון.</string>
     <string name="DANGER_FOG_MESSAGE">הערפל ב%1$s עלול למנוע עגינה בנמל.</string>
     <string name="DANGER_FOG_SHORT_MESSAGE">הערפל עלול למנוע עגינה בנמל.</string>
@@ -170,7 +170,7 @@
     <string name="OPERATION_ONE_HOUR">הפעולה תיקח שעה אחת.</string>
 
     <string name="GAME_RESULT_HIGH_SCORE">בשבוע המסחר הרווחת %1$s ש\"ח</string>
-    <string name="GAME_RESULT_CAPACITY">בשבוע המסחר השגת ספינה בקיבולת %1$d טון.</string>
+    <string name="GAME_RESULT_CAPACITY">בשבוע המסחר השגת ספינה בקיבולת %1$s טון.</string>
     <string name="SLEEP_QUESTION">לנוח עד למחרת?</string>
     <string name="END_GAME_QUESTION">לסיים את שבוע המסחר?</string>
 
@@ -188,8 +188,8 @@
     <string name="BUY_ALL">קנה מקסימום</string>
     <string name="YOUR_HIGHEST_SCORE">השיא שלך הוא %1$s ש\"ח</string>
     <string name="YOUR_CURRENT_SCORE">ערך סחורתך הוא %1$s ש\"ח</string>
-    <string name="YOUR_HIGHEST_CAPACITY">שיא הקיבולת שלך הוא %1$d טון.</string>
-    <string name="YOUR_CURRENT_CAPACITY">הקיבולת הנוכחית שלך היא %1$d טון.</string>
+    <string name="YOUR_HIGHEST_CAPACITY">שיא הקיבולת שלך הוא %1$s טון.</string>
+    <string name="YOUR_CURRENT_CAPACITY">הקיבולת הנוכחית שלך היא %1$s טון.</string>
     <string name="CAPACITY_BUTTON">קיבולת</string>
     <string name="SCORE_BUTTON">ניקוד</string>
 

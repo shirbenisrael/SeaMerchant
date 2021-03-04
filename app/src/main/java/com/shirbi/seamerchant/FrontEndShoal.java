@@ -10,7 +10,7 @@ public class FrontEndShoal extends FrontEndGeneric {
 
     public void showShoal() {
         Sail sail = mLogic.mSail;
-        String message = mActivity.getString(R.string.SHOAL_DAMAGE, sail.mShoalDamage);
+        String message = mActivity.getString(R.string.SHOAL_DAMAGE, mDecimalFormat.format(sail.mShoalDamage));
         ((TextView)findViewById(R.id.shoal_message)).setText(message);
     }
 }

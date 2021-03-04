@@ -32,16 +32,16 @@ public class FrontEndHighScore extends FrontEndGeneric {
 
         if (currentlyShowEndResult) {
             if (findViewById(R.id.capacity_layout).getVisibility() == View.VISIBLE) {
-                message1 = mActivity.getString(R.string.GAME_RESULT_CAPACITY, mLogic.mCapacity);
-                message2 = mActivity.getString(R.string.YOUR_HIGHEST_CAPACITY, mLogic.mHighCapacity);
+                message1 = mActivity.getString(R.string.GAME_RESULT_CAPACITY, mDecimalFormat.format(mLogic.mCapacity));
+                message2 = mActivity.getString(R.string.YOUR_HIGHEST_CAPACITY, mDecimalFormat.format(mLogic.mHighCapacity));
             } else {
                 message1 = mActivity.getString(R.string.GAME_RESULT_HIGH_SCORE, mDecimalFormat.format((mLogic.calculateTotalValue())));
                 message2 = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mDecimalFormat.format(mLogic.mHighScore));
             }
         } else {
             if (findViewById(R.id.capacity_layout).getVisibility() == View.VISIBLE) {
-                message1 = mActivity.getString(R.string.YOUR_CURRENT_CAPACITY, mLogic.mCapacity);
-                message2 = mActivity.getString(R.string.YOUR_HIGHEST_CAPACITY, mLogic.mHighCapacity);
+                message1 = mActivity.getString(R.string.YOUR_CURRENT_CAPACITY, mDecimalFormat.format(mLogic.mCapacity));
+                message2 = mActivity.getString(R.string.YOUR_HIGHEST_CAPACITY, mDecimalFormat.format(mLogic.mHighCapacity));
             } else {
                 message1 = mActivity.getString(R.string.YOUR_CURRENT_SCORE, mDecimalFormat.format(mLogic.calculateTotalValue()));
                 message2 = mActivity.getString(R.string.YOUR_HIGHEST_SCORE, mDecimalFormat.format(mLogic.mHighScore));
