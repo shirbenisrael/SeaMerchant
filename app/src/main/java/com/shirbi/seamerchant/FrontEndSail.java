@@ -279,7 +279,7 @@ public class FrontEndSail extends FrontEndGeneric {
         Sail sail = mLogic.mSail;
 
         TextView guardsPriceTextView = findViewById(R.id.guard_price);
-        String costString = mActivity.getString(R.string.ONE_GUARD_COST, sail.mGuardShipCost, sail.mGuardShipCostPercent);
+        String costString = mActivity.getString(R.string.ONE_GUARD_COST, mDecimalFormat.format(sail.mGuardShipCost), sail.mGuardShipCostPercent);
         guardsPriceTextView.setText(costString);
 
         TextView sailDestinationTextView = findViewById(R.id.sail_destination);
@@ -308,7 +308,8 @@ public class FrontEndSail extends FrontEndGeneric {
 
     private void showTotalGuardShipsPrice() {
         String guardCostMessage =
-                mActivity.getString(R.string.TOTAL_GUARD_COST, mLogic.mSail.mTotalGuardShipsCost, mLogic.mCash);
+                mActivity.getString(R.string.TOTAL_GUARD_COST, mDecimalFormat.format(mLogic.mSail.mTotalGuardShipsCost),
+                        mDecimalFormat.format(mLogic.mCash));
         ((TextView)findViewById(R.id.total_guard_cost)).setText(guardCostMessage);
     }
 

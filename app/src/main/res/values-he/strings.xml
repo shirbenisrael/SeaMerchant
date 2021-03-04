@@ -41,8 +41,8 @@
     <string name="WIND_STRING">רוחות חזקות נושבות היום ליד %1$s</string>
 
     <string name="SAIL_WITH_NO_GURADS">להפליג ללא ספינות משמר?</string>
-    <string name="ONE_GUARD_COST">מחיר ספינת משמר: %1$d ש\"ח  (%2$.2f%%)</string>
-    <string name="TOTAL_GUARD_COST">מחיר כולל: %1$d, מזומן: %2$d</string>
+    <string name="ONE_GUARD_COST">מחיר ספינת משמר: %1$s ש\"ח  (%2$.2f%%)</string>
+    <string name="TOTAL_GUARD_COST">מחיר כולל: %1$s, מזומן: %2$s</string>
     <string name="SAIL_DESTINATION">יעד ההפלגה: %1$s</string>
     <string name="SAIL_LANDING_HOUR">שעת הגעה:%1$d:00</string>
     <string name="SAIL_CURRENT_TIME">הזמן הנוכחי: %1$d:%2$02d</string>
