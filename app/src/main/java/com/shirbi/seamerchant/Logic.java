@@ -1085,6 +1085,13 @@ public class Logic {
         }
 
         ScoreTable scoreTable = mScoreTable[scoreType.getValue()][rank - 1];
+
+        if (rank > 5) {
+            if (scoreTable.rank != rank) {
+                // maybe already got centered score which is more important.
+                return;
+            }
+        }
         scoreTable.name = name;
         scoreTable.score = score;
         scoreTable.rank = rank;

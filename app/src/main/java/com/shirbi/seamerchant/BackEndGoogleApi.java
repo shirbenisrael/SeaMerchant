@@ -133,7 +133,7 @@ public class BackEndGoogleApi {
 
         for (final Logic.ScoreType scoreType : Logic.ScoreType.values()) {
             client.loadTopScores(getString(scoreType.getGoogleId()), LeaderboardVariant.TIME_SPAN_ALL_TIME,
-                    LeaderboardVariant.COLLECTION_PUBLIC, 5, true).
+                    LeaderboardVariant.COLLECTION_PUBLIC, 10, true).
                     addOnSuccessListener(new OnSuccessListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() {
                         @Override
                         public void onSuccess(AnnotatedData<LeaderboardsClient.LeaderboardScores>
