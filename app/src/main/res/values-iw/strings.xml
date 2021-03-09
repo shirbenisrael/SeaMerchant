@@ -225,4 +225,6 @@
 
     <string name="SIGN_IN_QUESTION">התחבר ל Google Games?</string>
     <string name="SIGN_IN_BENIFITS">זה יאפשר לשמור שיאים ומדליות</string>
+
+    <string name="SCORE_IS_HIDDEN">השיאים שלך מוסתרים ב Google Play. שנה את ההגדרות באפליקצית המשחקים של גוגל כדי להציגם.</string>
 </resources>

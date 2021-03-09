@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
-
 public class FrontEndHighScore extends FrontEndGeneric {
     private boolean currentlyShowEndResult = false;
 
@@ -66,6 +64,8 @@ public class FrontEndHighScore extends FrontEndGeneric {
     }
 
     public void fillScores() {
+        findViewById(R.id.note_on_google_games).setVisibility((mLogic.mRank[0] == -1) ? View.VISIBLE : View.GONE);
+
         int[] layoutIds = {R.id.scores_layout, R.id.capacity_layout};
         for (int tableId = 0; tableId < layoutIds.length; tableId++) {
             LinearLayout table = findViewById(layoutIds[tableId]);
