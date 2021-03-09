@@ -30,7 +30,11 @@ public class FrontEndFixShip  extends FrontEndGeneric {
         ((TextView)findViewById(R.id.fix_cash_units)).setText(cash);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.fix_seek_bar);
-        seekBar.setProgress((int)(MAX_SEEK_BAR_UNITS * mLogic.mFixShipDeal.mCurrentFix / mLogic.mFixShipDeal.mMaxFix));
+        if (mLogic.mFixShipDeal.mMaxFix > 0) {
+            seekBar.setProgress((int) (MAX_SEEK_BAR_UNITS * mLogic.mFixShipDeal.mCurrentFix / mLogic.mFixShipDeal.mMaxFix));
+        } else {
+            seekBar.setProgress(0);
+        }
     }
 
     public void onFixShipClick() {

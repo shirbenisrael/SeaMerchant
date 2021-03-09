@@ -39,7 +39,11 @@ public class FrontEndMarket extends FrontEndGeneric {
         ((TextView)findViewById(R.id.goods_value)).setText(value);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.market_seek_bar);
-        seekBar.setProgress((int)(MAX_SEEK_BAR_UNITS * mLogic.mMarketDeal.mGoodsUnits / mLogic.mMarketDeal.mMaxUnitsToHold));
+        if (mLogic.mMarketDeal.mMaxUnitsToHold > 0) {
+            seekBar.setProgress((int) (MAX_SEEK_BAR_UNITS * mLogic.mMarketDeal.mGoodsUnits / mLogic.mMarketDeal.mMaxUnitsToHold));
+        } else {
+            seekBar.setProgress(0);
+        }
     }
 
     public void onMarketClick() {

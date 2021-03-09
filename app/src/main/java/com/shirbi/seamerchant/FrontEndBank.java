@@ -43,7 +43,11 @@ public class FrontEndBank extends FrontEndGeneric {
         ((TextView)findViewById(R.id.bank_cash_units)).setText(cash);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.bank_seek_bar);
-        seekBar.setProgress((int)(MAX_SEEK_BAR_UNITS * mLogic.mBankDeal.mDeposit / mLogic.mBankDeal.mMaxDeposit));
+        if (mLogic.mBankDeal.mMaxDeposit > 0) {
+            seekBar.setProgress((int) (MAX_SEEK_BAR_UNITS * mLogic.mBankDeal.mDeposit / mLogic.mBankDeal.mMaxDeposit));
+        } else {
+            seekBar.setProgress(0);
+        }
     }
 
     public void showOnlyDepositAll() {
