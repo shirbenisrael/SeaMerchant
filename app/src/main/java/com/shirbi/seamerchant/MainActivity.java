@@ -112,43 +112,59 @@ public class MainActivity extends Activity {
     }
 
     public void onMarketMinusTenClick(View view) {
-        mLogic.mMarketDeal.removeGoods(10);
-        mFrontEndMarket.showDealState();
+        if (mLogic.mMarketDeal != null) {
+            mLogic.mMarketDeal.removeGoods(10);
+            mFrontEndMarket.showDealState();
+        }
     }
 
     public void onMarketMinusOneClick(View view) {
-        mLogic.mMarketDeal.removeGoods(1);
-        mFrontEndMarket.showDealState();
+        if (mLogic.mMarketDeal != null) {
+            mLogic.mMarketDeal.removeGoods(1);
+            mFrontEndMarket.showDealState();
+        }
     }
 
     public void onMarketPlusOneClick(View view) {
-        mLogic.mMarketDeal.addGoods(1);
-        mFrontEndMarket.showDealState();
+        if (mLogic.mMarketDeal != null) {
+            mLogic.mMarketDeal.addGoods(1);
+            mFrontEndMarket.showDealState();
+        }
     }
 
     public void onMarketPlusTenClick(View view) {
-        mLogic.mMarketDeal.addGoods(10);
-        mFrontEndMarket.showDealState();
+        if (mLogic.mMarketDeal != null) {
+            mLogic.mMarketDeal.addGoods(10);
+            mFrontEndMarket.showDealState();
+        }
     }
 
     public void onMarketBuyAllClick(View view) {
-        mLogic.mMarketDeal.buyAll();
-        mFrontEndMarket.showDealState();
+        if (mLogic.mMarketDeal != null) {
+            mLogic.mMarketDeal.buyAll();
+            mFrontEndMarket.showDealState();
+        }
     }
 
     public void onMarketSellAllClick(View view) {
-        mLogic.mMarketDeal.sellAll();
-        mFrontEndMarket.showDealState();
+        if (mLogic.mMarketDeal != null) {
+            mLogic.mMarketDeal.sellAll();
+            mFrontEndMarket.showDealState();
+        }
     }
 
     public void onMarketFillCapacityClick(View view) {
-        mLogic.mMarketDeal.fillCapacity();
-        mFrontEndMarket.showDealState();
+        if (mLogic.mMarketDeal != null) {
+            mLogic.mMarketDeal.fillCapacity();
+            mFrontEndMarket.showDealState();
+        }
     }
 
     public void onMarketPercentageForGuardsClick(View view) {
-        mLogic.mMarketDeal.leaveCashForGuards();
-        mFrontEndMarket.showDealState();
+        if (mLogic.mMarketDeal != null) {
+            mLogic.mMarketDeal.leaveCashForGuards();
+            mFrontEndMarket.showDealState();
+        }
     }
 
     public void onDealDoneClick(View view) {
