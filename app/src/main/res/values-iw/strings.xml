@@ -227,4 +227,9 @@
     <string name="SIGN_IN_BENIFITS">זה יאפשר לשמור שיאים ומדליות</string>
 
     <string name="SCORE_IS_HIDDEN">השיאים שלך מוסתרים ב Google Play. שנה את ההגדרות באפליקצית המשחקים של גוגל כדי להציגם.</string>
+
+    <string name="FORTUNE_TELLER">מגדת עתידות</string>
+    <string name="FORTUNE_TELLER_QUESTION">"האם ברצונך לדעת את מחיר ה%1$s ב%2$s מחר?</string>
+    <string name="FORTUNE_TELLER_ANSWER">"מחיר ה%1$s ב%2$s יהיה מחר %3$d ש"ח.</string>
+    <string name="FORTUNE_TELLER_ALSSEP">מגדת העתידות כבר הלכה לישון.</string>
 </resources>

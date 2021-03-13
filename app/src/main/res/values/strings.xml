@@ -233,4 +233,9 @@
     <string name="SIGN_IN_BENIFITS">This will allow to store high scores and medals</string>
 
     <string name="SCORE_IS_HIDDEN">Your high scores are hidden in Google Play. Update setting in google play games to change this.</string>
+
+    <string name="FORTUNE_TELLER">Fortune Teller</string>
+    <string name="FORTUNE_TELLER_QUESTION">Would you like to know the tomorrow price of %1$s in %2$s?</string>
+    <string name="FORTUNE_TELLER_ANSWER">The tomorrow price of %1$s in %2$s will be %3$d$.</string>
+    <string name="FORTUNE_TELLER_ALSSEP">The fortune teller already went to sleep.</string>
 </resources>

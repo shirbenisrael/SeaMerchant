@@ -30,6 +30,7 @@ import java.util.TimerTask;
 
 public class FrontEnd extends FrontEndGeneric {
     private Point mFlagSize;
+    private Point mFortuneTellerButtonContainerSize;
     FrontEndTimer mFrontEndMarketBlinkTimer;
     FrontEndTimer mFrontEndSailBlinkTimer;
     FrontEndTimer mFrontEndSleepBlinkTimer;
@@ -65,7 +66,7 @@ public class FrontEnd extends FrontEndGeneric {
                     new FrontEndNumberAnimation(mActivity, imageButton, 0);
         }
 
-        calculateFlagSize();
+        calculateObjectsSizes();
 
         LinearLayout statesLayout = findViewById(R.id.prices_layout);
         for (State state : State.values()) {
@@ -81,6 +82,9 @@ public class FrontEnd extends FrontEndGeneric {
             ImageView flagWeather = (ImageView)flagButtonWrapper.getChildAt(2);
             putObjectOnRelativeLayout(flagWeather, 0, 0.5f, 0.33f, 0.5f, mFlagSize );
         }
+
+        putObjectOnRelativeLayout(findViewById(R.id.fortune_teller_button) ,
+                0.33f, 0.33f, 0.66f, 0.66f, mFortuneTellerButtonContainerSize);
     }
 
     public void showInventory() {
@@ -148,6 +152,9 @@ public class FrontEnd extends FrontEndGeneric {
 
         showWeatherOnFlag();
         showSailDurationOnFlag();
+
+        int visibility = mLogic.isFortuneTellButtonShown() ? View.VISIBLE : View.GONE;
+        findViewById(R.id.fortune_teller_button).setVisibility(visibility);
     }
 
     public Goods viewToGoods(View view) {
@@ -223,7 +230,7 @@ public class FrontEnd extends FrontEndGeneric {
         ((TextView)findViewById(R.id.weather_message)).setText(generateWeatherString());
     }
 
-    private void calculateFlagSize() {
+    private void calculateObjectsSizes() {
         mFlagSize = getWindowSize(); // need to adjust y
 
         float weightY = 1.0f;
@@ -240,6 +247,10 @@ public class FrontEnd extends FrontEndGeneric {
         mFlagSize.y *= weightY / totalWeightsY;
 
         mFlagSize.x /= 4; // Flags sit near 3 prices.
+
+        mFortuneTellerButtonContainerSize = getWindowSize();
+        mFortuneTellerButtonContainerSize.y *= weightY * 2.0f / totalWeightsY;
+        mFortuneTellerButtonContainerSize.x /= 4;
     }
 
     private void showWeatherOnFlag() {

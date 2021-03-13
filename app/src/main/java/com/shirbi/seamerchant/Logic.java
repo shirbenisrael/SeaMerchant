@@ -86,6 +86,13 @@ public class Logic {
     public long mHighScore = 0;
     public long mHighCapacity = 0;
     public int[] mRank = {-1, -1};
+    public FortuneTellerInformation mFortuneTellerInformation;
+
+    public class FortuneTellerInformation {
+        public State state;
+        public Goods goods;
+        int price;
+    };
 
     public static class ScoreTable {
         public int rank;
@@ -208,6 +215,8 @@ public class Logic {
         if (hasMedal(Medal.GREECE_VISITOR)) {
             updateGreeceSailDuration();
         }
+
+        mFortuneTellerInformation = null;
     }
 
     public void initMarketDeal(Goods goods) {
@@ -340,6 +349,12 @@ public class Logic {
         int wheatPriceInEgyptBeforeNight = mPriceTable.getPrice(State.EGYPT, Goods.WHEAT);
         mLoseDayByStrike = 0;
         mPriceTable.generateRandomPrices();
+
+        if (mFortuneTellerInformation != null && mFortuneTellerInformation.price != 0) {
+            mPriceTable.setPrice(mFortuneTellerInformation.state, mFortuneTellerInformation.goods, mFortuneTellerInformation.price);
+        }
+        mFortuneTellerInformation = null;
+
         if (mCurrentHour != SLEEP_TIME) {
             mAlwaysSleepAtMidnight = false;
         }
@@ -716,6 +731,16 @@ public class Logic {
         editor.putBoolean(getString(R.string.mIsStartTutorialActive), mActivity.mIsStartTutorialActive);
         editor.putString(getString(R.string.mCurrentLanguage), mActivity.mCurrentLanguage);
 
+        if (mFortuneTellerInformation != null) {
+            editor.putInt(getString(R.string.mFortuneTellerState), mFortuneTellerInformation.state.getValue());
+            editor.putInt(getString(R.string.mFortuneTellerGoods), mFortuneTellerInformation.goods.getValue());
+            editor.putInt(getString(R.string.mFortuneTellerPrice), mFortuneTellerInformation.price);
+        } else {
+            editor.remove(getString(R.string.mFortuneTellerState));
+            editor.remove(getString(R.string.mFortuneTellerGoods));
+            editor.remove(getString(R.string.mFortuneTellerPrice));
+        }
+
         StringBuilder str = new StringBuilder();
         for (Goods goods : Goods.values()) {
             str.append(mInventory[goods.getValue()]).append(",");
@@ -838,6 +863,20 @@ public class Logic {
 
         if (hasMedal(Medal.GREECE_VISITOR)) {
             updateGreeceSailDuration();
+        }
+
+        try {
+            State state = State.values()[sharedPref.getInt(getString(R.string.mFortuneTellerState), State.NUM_STATES)];
+            Goods goods = Goods.values()[sharedPref.getInt(getString(R.string.mFortuneTellerGoods), Goods.NUM_GOODS_TYPES)];
+            int price = sharedPref.getInt(getString(R.string.mFortuneTellerPrice), 0);
+
+            mFortuneTellerInformation = new FortuneTellerInformation();
+            mFortuneTellerInformation.state = state;
+            mFortuneTellerInformation.goods = goods;
+            mFortuneTellerInformation.price = price;
+
+        } catch (Exception e) {
+            mFortuneTellerInformation = null;
         }
     }
 
@@ -1120,5 +1159,51 @@ public class Logic {
         oneScore.name = name;
         oneScore.score = score;
         oneScore.rank = rank;
+    }
+
+    public void callFortuneTeller() {
+        if (mFortuneTellerInformation != null) {
+            return;
+        }
+
+        //Fortune teller works only at evening
+        if (getDayPart() != DayPart.EVENING) {
+            return;
+        }
+
+        mFortuneTellerInformation = new FortuneTellerInformation();
+        mFortuneTellerInformation.goods = Goods.generateRandomType();
+        mFortuneTellerInformation.state = State.generateRandomType();
+        mFortuneTellerInformation.price = 0;
+    }
+
+    public boolean canAskFortuneTeller() {
+        return (mFortuneTellerInformation != null) && (mFortuneTellerInformation.price == 0) && (getDayPart() == DayPart.EVENING);
+    }
+
+    public boolean  isInfoFromFortuneTellerAvailable() {
+        return (mFortuneTellerInformation != null) && (mFortuneTellerInformation.price != 0);
+    }
+
+    public void askFortuneTeller() {
+        mFortuneTellerInformation.price = mFortuneTellerInformation.goods.generateRandom();
+
+        if ((mFortuneTellerInformation.state == State.GREECE) ||
+                ((mFortuneTellerInformation.state == State.EGYPT) && hasMedal(Medal.EGYPT_WHEAT)) ||
+                ((mFortuneTellerInformation.state == State.TURKEY) && hasMedal(Medal.BDS_TURKEY))) {
+            mFortuneTellerInformation.price = mPriceTable.setSpecialPrice(mFortuneTellerInformation.price);
+        }
+
+        mCurrentHour++;
+    }
+
+    // fortune teller will appear only at evening.
+    public boolean isFortuneTellButtonShown() {
+        // TODO: Enable FortuneTeller once get the relevant medal.
+        if (getDayPart() == DayPart.SUN_SHINES || true) {
+            return false ;
+        }
+
+        return true;
     }
 }

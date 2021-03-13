@@ -140,4 +140,9 @@
         android:id="@+id/help_layout"
         layout="@layout/help_layout"
         android:visibility="gone" />
+
+    <include
+        android:id="@+id/fortune_teller_layout"
+        layout="@layout/fortune_teller_layout"
+        android:visibility="gone" />
 </LinearLayout>

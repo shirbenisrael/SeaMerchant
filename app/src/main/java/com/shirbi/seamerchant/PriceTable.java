@@ -32,15 +32,22 @@ public class PriceTable {
         }
     }
 
+    public int setSpecialPrice(int originalPrice) {
+        int price = originalPrice;
+        if (mRand.nextBoolean()) {
+            price *= 1.5;
+        } else {
+            price /= 1.5;
+        }
+        price = (price / 10) * 10;
+
+        return price;
+    }
+
     public void setSpecialPricesOnState(State state) {
         for (Goods goods: Goods.values()) {
             int price = getPrice(state, goods);
-            if (mRand.nextBoolean()) {
-                price *= 1.5;
-            } else {
-                price /= 1.5;
-            }
-            price = (price / 10) * 10;
+            price = setSpecialPrice(price);
             setPrice(state, goods, price);
         }
     }

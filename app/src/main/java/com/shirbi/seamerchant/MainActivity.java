@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
     FrontEndHighScore mFrontEndHighScore;
     FrontEndMedal mFrontEndMedal;
     FrontEndOpenWindow mFrontEndOpenWindow;
+    FrontEndFortuneTeller mFrontEndFortuneTeller;
     StartTutorial mStartTutorial;
 
     boolean mIsGameEnded = false;
@@ -69,6 +70,7 @@ public class MainActivity extends Activity {
         mFrontEndHighScore = new FrontEndHighScore(this);
         mFrontEndMedal = new FrontEndMedal(this);
         mFrontEndOpenWindow = new FrontEndOpenWindow(this);
+        mFrontEndFortuneTeller = new FrontEndFortuneTeller(this);
         mStartTutorial = new StartTutorial(this);
 
         mFrontEnd.showWindow(Window.OPEN_WINDOW);
@@ -302,6 +304,32 @@ public class MainActivity extends Activity {
         if (mLogic.canFixShip()) {
             mFrontEnd.blinkFixShip();
         }
+    }
+
+    public void onFortuneTellerClick(View view) {
+        mLogic.callFortuneTeller();
+
+        if (mLogic.canAskFortuneTeller()) {
+            mFrontEnd.showWindow(Window.FORTUNE_TELLER_WINDOW);
+            mFrontEndFortuneTeller.showInitialMessage();
+        } else {
+            if (mLogic.isInfoFromFortuneTellerAvailable()) {
+                mFrontEndFortuneTeller.showFortune();
+            } else {
+                mFrontEndFortuneTeller.showFortuneTellerNotAvailable();
+            }
+        }
+    }
+
+    public void onCancelFortuneTeller(View view) {
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+    }
+
+    public void onApproveFortuneTeller(View view) {
+        mLogic.askFortuneTeller();
+        mFrontEndFortuneTeller.showFortune();
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+        mFrontEnd.showState();
     }
 
     public void onSleepClick(View view) {
@@ -864,6 +892,9 @@ public class MainActivity extends Activity {
                 break;
             case HELP_WINDOW:
                 onExitHelpClick(null);
+                break;
+            case FORTUNE_TELLER_WINDOW:
+                onCancelFortuneTeller(null);
                 break;
             case STRIKE_WINDOW:
             case PIRATES_WINDOW:

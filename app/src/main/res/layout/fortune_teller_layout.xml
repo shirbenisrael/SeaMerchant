@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fortune_teller"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="@string/FORTUNE_TELLER"
+        android:textColor="@color/yellow"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/fortune_teller_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/yellow"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:gravity="center_horizontal"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/fortune_teller_operation_time"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/yellow"
+        android:textSize="16dp"
+        android:text="@string/OPERATION_ONE_HOUR" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <include layout="@layout/empty_horizontal_text" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/no_button"
+            android:gravity="center_horizontal"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:onClick="onCancelFortuneTeller" />
+
+        <include layout="@layout/empty_horizontal_text" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/yes_button"
+            android:gravity="center_horizontal"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:onClick="onApproveFortuneTeller" />
+
+        <include layout="@layout/empty_horizontal_text" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="" />
+
+</LinearLayout>

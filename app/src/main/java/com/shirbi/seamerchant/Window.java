@@ -27,7 +27,8 @@ public enum Window {
     NEW_MEDAL_WINDOW(23),
     ABOUT_WINDOW(24),
     OPEN_WINDOW(25),
-    HELP_WINDOW(26);
+    HELP_WINDOW(26),
+    FORTUNE_TELLER_WINDOW(27);
 
     private static final int[] mLayoutId = {
             R.id.main_window_layout,
@@ -56,7 +57,8 @@ public enum Window {
             R.id.new_medal_layout,
             R.id.about_layout,
             R.id.open_screen_layout,
-            R.id.help_layout};
+            R.id.help_layout,
+            R.id.fortune_teller_layout};
 
     private final int value;
     Window(int value){

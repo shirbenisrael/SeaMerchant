@@ -35,5 +35,8 @@
     <string name="mHighCapacity" translatable="false">mHighCapacity</string>
     <string name="mIsStartTutorialActive" translatable="false">mIsStartTutorialActive</string>
     <string name="mCurrentLanguage" translatable="false">mCurrentLanguage</string>
+    <string name="mFortuneTellerState" translatable="false">mFortuneTellerState</string>
+    <string name="mFortuneTellerGoods" translatable="false">mFortuneTellerGoods</string>
+    <string name="mFortuneTellerPrice" translatable="false">mFortuneTellerPrice</string>
 
 </resources>
