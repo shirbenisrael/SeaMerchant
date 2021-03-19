@@ -225,7 +225,16 @@ public class BackEndGoogleApi {
                         st.nextToken(); // skip the string Medal.
                         String medalNumber = st.nextToken();
 
-                        Medal medal = Medal.values()[Integer.parseInt(medalNumber)];
+                        int medal_number;
+                        try {
+                            medal_number = Integer.parseInt(medalNumber);
+                            if (medal_number >= Medal.NUM_MEDAL_TYPES) {
+                                continue;
+                            }
+                        } catch (Exception e) {
+                            continue;
+                        }
+                        Medal medal = Medal.values()[medal_number];
 
                         if (unlocked) {
                             // This can happen when reinstall the app - restore the medal from google games.
