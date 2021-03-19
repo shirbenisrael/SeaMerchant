@@ -21,7 +21,7 @@ public class MarketDeal {
             }
         }
 
-        float guardsForInventoryPart = 0.1f;
+        float guardsForInventoryPart = logic.maxValuePartForGuards();
 
         if (logic.mCurrentState == logic.mWeatherState) {
             // if we know we are in bad weather, then we know guards will cost more.

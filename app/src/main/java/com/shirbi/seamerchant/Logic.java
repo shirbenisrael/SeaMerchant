@@ -1206,4 +1206,13 @@ public class Logic {
 
         return true;
     }
+
+    public float maxValuePartForGuards() {
+        int maxGuards = Sail.MAX_GUARD_SHIPS;
+        if (hasMedal(Medal.ALWAYS_FIGHTER)) {
+            maxGuards --;
+        }
+
+        return Sail.DEFAULT_GUARD_COST_PERCENT * maxGuards / 100;
+    }
 }
