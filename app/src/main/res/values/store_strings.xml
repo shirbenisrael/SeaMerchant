@@ -28,6 +28,7 @@
     <string name="mBdsOlives" translatable="false">mBdsOlives</string>
     <string name="mValueAtStartOfDay" translatable="false">mValueAtStartOfDay</string>
     <string name="mGreeceVisitCount" translatable="false">mGreeceVisitCount</string>
+    <string name="mNightProfitCount" translatable="false">mNightProfitCount</string>
     <string name="mAlwaysDeposit" translatable="false">mAlwaysDeposit</string>
     <string name="mAlwaysSleepAtMidnight" translatable="false">mAlwaysSleepAtMidnight</string>
     <string name="mEconomicalSail" translatable="false">mEconomicalSail</string>

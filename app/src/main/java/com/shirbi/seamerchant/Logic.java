@@ -76,6 +76,7 @@ public class Logic {
     public int mWrongNavigationCountInOneDay;
     public int mWinPiratesCountInOneDay;
     public int mWinPiratesCount;
+    private int mNightProfitCount;
     public boolean mBdsTurkey;
     public boolean mBdsOlives;
     public boolean mAlwaysSleepAtMidnight;
@@ -209,6 +210,7 @@ public class Logic {
         mHeroDieMedal = false;
         mAlwaysSleepAtMidnight = true;
         mEconomicalSail = true;
+        mNightProfitCount = 0;
         mValueAtStartOfDay = calculateTotalValue();
         mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
 
@@ -346,7 +348,12 @@ public class Logic {
     }
 
     public void startNewDay() {
-        int wheatPriceInEgyptBeforeNight = mPriceTable.getPrice(State.EGYPT, Goods.WHEAT);
+        int[] pricesBeforeNight = new int[Goods.NUM_GOODS_TYPES];
+        for (Goods goods : Goods.values()) {
+            pricesBeforeNight[goods.getValue()] =
+                    mPriceTable.getPrice(mCurrentState, goods);
+        }
+
         mLoseDayByStrike = 0;
         mPriceTable.generateRandomPrices();
 
@@ -381,11 +388,28 @@ public class Logic {
 
         if (mCurrentState == State.EGYPT) {
             int wheatPriceInEgyptAtMorning = mPriceTable.getPrice(State.EGYPT, Goods.WHEAT);
-            if (wheatPriceInEgyptAtMorning >= 2 * wheatPriceInEgyptBeforeNight) {
+            if (wheatPriceInEgyptAtMorning >= 2 * pricesBeforeNight[Goods.WHEAT.getValue()]) {
                 if (getInventory(Goods.WHEAT) >= 10000) {
                     mEgyptWheatMedal = true;
                 }
             }
+        }
+
+        boolean hasGoodsWithNightProfit = false;
+        boolean hasGoodsWithoutNightProfit = false;
+        for (Goods goods : Goods.values()) {
+            if (getInventory(goods) > 0) {
+                if (mPriceTable.getPrice(mCurrentState, goods) > pricesBeforeNight[goods.getValue()]) {
+                    hasGoodsWithNightProfit = true;
+                } else {
+                    hasGoodsWithoutNightProfit = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasGoodsWithNightProfit && (!hasGoodsWithoutNightProfit)) {
+            mNightProfitCount++;
         }
 
         mEscapeCountInOneDay = 0;
@@ -717,6 +741,7 @@ public class Logic {
         editor.putInt(getString(R.string.mWinPiratesCount), mWinPiratesCount);
         editor.putLong(getString(R.string.mValueAtStartOfDay), mValueAtStartOfDay);
         editor.putInt(getString(R.string.mGreeceVisitCount), mGreeceVisitCount);
+        editor.putInt(getString(R.string.mNightProfitCount), mNightProfitCount);
         editor.putBoolean(getString(R.string.mBdsTurkey), mBdsTurkey);
         editor.putBoolean(getString(R.string.mBdsOlives), mBdsOlives);
         editor.putBoolean(getString(R.string.mAlwaysDeposit), mAlwaysDeposit);
@@ -823,6 +848,7 @@ public class Logic {
         mWinPiratesCount = sharedPref.getInt(getString(R.string.mWinPiratesCount), -10000);
         mValueAtStartOfDay = getLongOrInt(sharedPref, R.string.mValueAtStartOfDay, -10000);
         mGreeceVisitCount = sharedPref.getInt(getString(R.string.mGreeceVisitCount), 0);
+        mNightProfitCount = sharedPref.getInt(getString(R.string.mNightProfitCount), 0);
         mBdsTurkey = sharedPref.getBoolean(getString(R.string.mBdsTurkey), false);
         mBdsOlives = sharedPref.getBoolean(getString(R.string.mBdsOlives), false);
         mAlwaysSleepAtMidnight = sharedPref.getBoolean(getString(R.string.mAlwaysSleepAtMidnight), false);
@@ -1037,6 +1063,10 @@ public class Logic {
             return Medal.FOG_OF_WAR;
         }
 
+        if (!hasMedal(Medal.NIGHT_MERCHANT) && mNightProfitCount == WeekDay.NUM_WEEK_DAYS - 1 && calculateTotalValue() >= 10000000) {
+            return Medal.NIGHT_MERCHANT;
+        }
+
         return null;
     }
 
@@ -1072,6 +1102,9 @@ public class Logic {
 
             case ECONOMICAL_SAIL:
                 return mEconomicalSail;
+
+            case NIGHT_MERCHANT:
+                return mNightProfitCount >= mCurrentDay.getValue();
         }
     }
 
