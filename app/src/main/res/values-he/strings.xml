@@ -81,6 +81,9 @@
     <string name="SINK_DUE_TO_OVERLOAD">הספינה שוקעת בגלל עודף המטען!</string>
     <string name="SINK_DAMAGE">המלחים משליכים לים %1$s טון של %2$s כדי להצילה.</string>
 
+    <string name="MORE_DAMAGE">הנזק של הספינה מתגבר!</string>
+    <string name="MORE_DAMAGE_RESULT">בגלל ההפלגה עם ספינה שבורה, הנזק מתגבר בעוד %1$s ש\"ח.</string>
+
     <string name="NAVIGATION_ERROR_TITLE">רוחות חזקות מבלבלות את הנווטים!</string>
     <string name="NAVIGATION_ERROR_RESULT">הספינה מגיעה ל%1$s במקום ל%2$s!</string>
 

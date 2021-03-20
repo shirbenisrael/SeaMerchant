@@ -89,6 +89,9 @@
     <string name="SINK_DUE_TO_OVERLOAD">The ship sinks due to overload!</string>
     <string name="SINK_DAMAGE">The sailors throw %1$s tons of %2$s into the sea to save it.</string>
 
+    <string name="MORE_DAMAGE">The ship damage is increasing!</string>
+    <string name="MORE_DAMAGE_RESULT">Due to the sailing with a broken ship, the damage increases with %1$s$.</string>
+
     <string name="NAVIGATION_ERROR_TITLE">Strong winds confuse the navigators!</string>
     <string name="NAVIGATION_ERROR_RESULT">The ship reaches %1$s instead of %2$s!</string>
 

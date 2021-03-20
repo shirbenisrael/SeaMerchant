@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
     FrontEndFixShip mFrontEndFixShip;
     FrontEndShoal mFrontEndShoal;
     FrontEndSink mFrontEndSink;
+    FrontEndMoreDamage mFrontEndMoreDamage;
     FrontEndHighScore mFrontEndHighScore;
     FrontEndMedal mFrontEndMedal;
     FrontEndOpenWindow mFrontEndOpenWindow;
@@ -67,6 +68,7 @@ public class MainActivity extends Activity {
         mFrontEndFixShip = new FrontEndFixShip(this);
         mFrontEndShoal = new FrontEndShoal(this);
         mFrontEndSink = new FrontEndSink(this);
+        mFrontEndMoreDamage = new FrontEndMoreDamage(this);
         mFrontEndHighScore = new FrontEndHighScore(this);
         mFrontEndMedal = new FrontEndMedal(this);
         mFrontEndOpenWindow = new FrontEndOpenWindow(this);
@@ -594,6 +596,13 @@ public class MainActivity extends Activity {
         mFrontEndSink.showSink();
     }
 
+    public void showMoreDamage() {
+        playSound(R.raw.fish_boat);
+        mLogic.mSail.createMoreDamage();
+        mFrontEnd.showWindow(Window.MORE_DAMAGE_WINDOW);
+        mFrontEndMoreDamage.showDamage();
+    }
+
     public void onSinkProgress(View view) {
         if ((!mIsStartTutorialActive) && mLogic.mSail.isSinkInSail()) {
             showSink();
@@ -855,6 +864,7 @@ public class MainActivity extends Activity {
                 break;
             case SHOAL_WINDOW:
             case ABANDONED_SHIP_WINDOW:
+            case MORE_DAMAGE_WINDOW:
                 onExitSimpleSeaEvent(null);
                 break;
             case ESCAPE_WINDOW:

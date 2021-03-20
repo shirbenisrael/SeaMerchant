@@ -158,6 +158,9 @@ public class FrontEndSail extends FrontEndGeneric {
                 } else if (mLogic.mSail.isSinkInSail()) {
                     pauseSail();
                     mActivity.showSink();
+                } else if (mLogic.mSail.isMoreDamageInSail()) {
+                    pauseSail();
+                    mActivity.showMoreDamage();
                 } else if (mLogic.mSail.isShoalInSail()) {
                     pauseSail();
                     mActivity.showShoal();
