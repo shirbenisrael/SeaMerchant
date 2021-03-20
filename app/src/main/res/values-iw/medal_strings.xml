@@ -33,6 +33,7 @@
     <string name="ECONOMICAL_SAIL_TITLE">הסוחר החסכן</string>
     <string name="FOG_OF_WAR_TITLE">ערפל קרב</string>
     <string name="NIGHT_MERCHANT_TITLE">סוחר לילה</string>
+    <string name="SAFE_SAIL_TITLE">הפלגה זהירה</string>
 
     <string name="TREASURE_1_CONDITION">השג 10,000 ש"ח במזומן</string>
     <string name="TREASURE_2_CONDITION">השג 100,000 ש"ח במזומן</string>
@@ -66,6 +67,7 @@
     <string name="ECONOMICAL_SAIL_CONDITION">הרווח 2 מליון ש\"ח ללא הפלגה בה מרבית רכושך הוא במזומן</string>
     <string name="FOG_OF_WAR_CONDITION">פגוש שתי ספינות שודדים וערפל אחד בהפלגה אחת</string>
     <string name="NIGHT_MERCHANT_CONDITION">הרווח משמירת סחורה בכל הלילות והשג עשרה מליון ש\"ח</string>
+    <string name="SAFE_SAIL_CONDITION">השג עשרה מליון ש\"ח בלי לספוג נזק בהפלגה</string>
 
     <string name="TREASURE_5_BONUS">התחל את המשחק עם 10,000 ש\"ח</string>
     <string name="CAPACITY_3_BONUS">התחל את המשחק עם קיבולת של 200 טון</string>

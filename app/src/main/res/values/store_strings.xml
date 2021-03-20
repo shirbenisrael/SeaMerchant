@@ -32,6 +32,7 @@
     <string name="mAlwaysDeposit" translatable="false">mAlwaysDeposit</string>
     <string name="mAlwaysSleepAtMidnight" translatable="false">mAlwaysSleepAtMidnight</string>
     <string name="mEconomicalSail" translatable="false">mEconomicalSail</string>
+    <string name="mSafeSail" translatable="false">mSafeSail</string>
     <string name="mHighScore" translatable="false">mHighScore</string>
     <string name="mHighCapacity" translatable="false">mHighCapacity</string>
     <string name="mIsStartTutorialActive" translatable="false">mIsStartTutorialActive</string>

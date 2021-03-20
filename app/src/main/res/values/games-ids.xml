@@ -71,6 +71,8 @@
   <string name="achievement_medal_31" translatable="false">CgkI-ZDOkcgXEAIQIw</string>
   <!--achievement Medal 32-->
   <string name="achievement_medal_32" translatable="false">CgkI-ZDOkcgXEAIQJA</string>
+  <!--achievement Medal 33-->
+  <string name="achievement_medal_33" translatable="false">CgkI-ZDOkcgXEAIQJQ</string>
   <!--leaderboard Highscore-->
   <string name="leaderboard_highscore" translatable="false">CgkI-ZDOkcgXEAIQAA</string>
   <!--leaderboard Capacity-->

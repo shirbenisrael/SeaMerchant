@@ -77,6 +77,7 @@ public class Logic {
     public int mWinPiratesCountInOneDay;
     public int mWinPiratesCount;
     private int mNightProfitCount;
+    public boolean mSafeSail;
     public boolean mBdsTurkey;
     public boolean mBdsOlives;
     public boolean mAlwaysSleepAtMidnight;
@@ -210,6 +211,7 @@ public class Logic {
         mHeroDieMedal = false;
         mAlwaysSleepAtMidnight = true;
         mEconomicalSail = true;
+        mSafeSail = true;
         mNightProfitCount = 0;
         mValueAtStartOfDay = calculateTotalValue();
         mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
@@ -747,6 +749,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mAlwaysDeposit), mAlwaysDeposit);
         editor.putBoolean(getString(R.string.mAlwaysSleepAtMidnight), mAlwaysSleepAtMidnight);
         editor.putBoolean(getString(R.string.mEconomicalSail), mEconomicalSail);
+        editor.putBoolean(getString(R.string.mSafeSail), mSafeSail);
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsFixOperationTakesTime), mIsFixOperationTakesTime);
@@ -854,6 +857,7 @@ public class Logic {
         mAlwaysSleepAtMidnight = sharedPref.getBoolean(getString(R.string.mAlwaysSleepAtMidnight), false);
         mAlwaysDeposit = sharedPref.getBoolean(getString(R.string.mAlwaysDeposit), false);
         mEconomicalSail = sharedPref.getBoolean(getString(R.string.mEconomicalSail), false);
+        mSafeSail = sharedPref.getBoolean(getString(R.string.mSafeSail), false);
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
         mIsFixOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsFixOperationTakesTime), true);
@@ -1069,6 +1073,10 @@ public class Logic {
             return Medal.NIGHT_MERCHANT;
         }
 
+        if (!hasMedal(Medal.SAFE_SAIL) && mSafeSail && totalValue >= 10000000) {
+            return Medal.SAFE_SAIL;
+        }
+
         return null;
     }
 
@@ -1107,6 +1115,9 @@ public class Logic {
 
             case NIGHT_MERCHANT:
                 return mNightProfitCount >= mCurrentDay.getValue();
+
+            case SAFE_SAIL:
+                return mSafeSail;
         }
     }
 
@@ -1249,5 +1260,10 @@ public class Logic {
         }
 
         return Sail.DEFAULT_GUARD_COST_PERCENT * maxGuards / 100;
+    }
+
+    public void setSailDamage(long damage) {
+        mDamage += damage;
+        mSafeSail = false;
     }
 }

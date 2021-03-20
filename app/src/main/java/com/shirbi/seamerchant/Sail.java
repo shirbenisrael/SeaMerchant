@@ -217,7 +217,7 @@ public class Sail {
                 } else {
                     mStormLostUnits = 100 + mLogic.generateRandom(1000);
                 }
-                mLogic.mDamage += mStormLostUnits;
+                mLogic.setSailDamage(mStormLostUnits);
             } else {
                 mIsStormWashGoods = true;
                 mStormLostGoodType = Goods.WHEAT;
@@ -259,7 +259,7 @@ public class Sail {
             mShoalDamage = Math.min(mShoalDamage, generateShoalDamage());
         }
 
-        mLogic.mDamage += mShoalDamage;
+        mLogic.setSailDamage(mShoalDamage);
         if (mShoalDamage >= 200000) {
             mLogic.mTitanicMedal = true;
         }
@@ -304,7 +304,7 @@ public class Sail {
             } else {
                 mPiratesDamage = 100 + mLogic.generateRandom(1000);
             }
-            mLogic.mDamage += mPiratesDamage;
+            mLogic.setSailDamage(mPiratesDamage);
             mLogic.disableWinPiratesCount();
 
             if (mTotalLoad == 0) {
@@ -344,7 +344,7 @@ public class Sail {
             if (mLogic.hasMedal(Medal.HERO_DIE)) {
                 mPiratesDamage = Math.min(mPiratesDamage, generateWinPirateDamage());
             }
-            mLogic.mDamage += mPiratesDamage;
+            mLogic.setSailDamage(mPiratesDamage);
             mSailEndedPeacefully = false;
 
             if (mPiratesDamage >= 2000000) {
