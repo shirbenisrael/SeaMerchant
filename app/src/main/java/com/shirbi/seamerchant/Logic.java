@@ -923,6 +923,8 @@ public class Logic {
     }
 
     private Medal whichMedalShouldAcquire() {
+        long totalValue = calculateTotalValue();
+
         if ((!hasMedal(Medal.TREASURE_1)) && (mCash >= 10000)) {
             return Medal.TREASURE_1;
         }
@@ -1016,25 +1018,25 @@ public class Logic {
             return Medal.BDS_TURKEY;
         }
 
-        if (!hasMedal(Medal.GOOD_DAY_1) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 2 <=  calculateTotalValue())) {
+        if (!hasMedal(Medal.GOOD_DAY_1) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 2 <=  totalValue)) {
             return Medal.GOOD_DAY_1;
         }
 
-        if (!hasMedal(Medal.GOOD_DAY_2) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 5 <=  calculateTotalValue())) {
+        if (!hasMedal(Medal.GOOD_DAY_2) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 5 <=  totalValue)) {
             return Medal.GOOD_DAY_2;
         }
 
-        if (!hasMedal(Medal.GOOD_DAY_3) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 8 <=  calculateTotalValue())) {
+        if (!hasMedal(Medal.GOOD_DAY_3) && (mValueAtStartOfDay > 0) && (mValueAtStartOfDay * 8 <=  totalValue)) {
             return Medal.GOOD_DAY_3;
         }
 
-        if (!hasMedal(Medal.GREECE_VISITOR) && (mGreeceVisitCount == 7) && (calculateTotalValue() >= 1000000)) {
+        if (!hasMedal(Medal.GREECE_VISITOR) && (mGreeceVisitCount == 7) && (totalValue >= 1000000)) {
             updateGreeceSailDuration();
             return Medal.GREECE_VISITOR;
         }
 
         if (!hasMedal(Medal.FEDERAL_RESERVE) && (mCurrentDay.isLastDay()) &&
-                (mAlwaysDeposit) && (calculateTotalValue() >= 1000000)) {
+                (mAlwaysDeposit) && (totalValue >= 1000000)) {
             return Medal.FEDERAL_RESERVE;
         }
 
@@ -1050,12 +1052,12 @@ public class Logic {
             return Medal.HERO_DIE;
         }
 
-        if (!hasMedal(Medal.GERMAN_TIME) && mAlwaysSleepAtMidnight && (calculateTotalValue() >= 1000000) &&
+        if (!hasMedal(Medal.GERMAN_TIME) && mAlwaysSleepAtMidnight && (totalValue >= 1000000) &&
                 mCurrentDay.isLastDay() && mCurrentHour == SLEEP_TIME) {
             return Medal.GERMAN_TIME;
         }
 
-        if (!hasMedal(Medal.ECONOMICAL_SAIL) && mEconomicalSail && calculateTotalValue() >= 2000000) {
+        if (!hasMedal(Medal.ECONOMICAL_SAIL) && mEconomicalSail && totalValue >= 2000000) {
             return Medal.ECONOMICAL_SAIL;
         }
 
@@ -1063,7 +1065,7 @@ public class Logic {
             return Medal.FOG_OF_WAR;
         }
 
-        if (!hasMedal(Medal.NIGHT_MERCHANT) && mNightProfitCount == WeekDay.NUM_WEEK_DAYS - 1 && calculateTotalValue() >= 10000000) {
+        if (!hasMedal(Medal.NIGHT_MERCHANT) && mNightProfitCount == WeekDay.NUM_WEEK_DAYS - 1 && totalValue >= 10000000) {
             return Medal.NIGHT_MERCHANT;
         }
 
