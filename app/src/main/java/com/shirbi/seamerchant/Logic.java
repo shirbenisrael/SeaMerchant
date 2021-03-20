@@ -68,7 +68,7 @@ public class Logic {
     public boolean mIsBankOperationTakesTime;
     public boolean mIsMarketOperationTakesTime;
     public boolean mIsFixOperationTakesTime;
-    private boolean mIsMedalAchieved[] = new boolean[Medal.NUM_MEDAL_TYPES];
+    private boolean mIsMedalAchieved[] = new boolean[Medal.values().length];
     private boolean mStatesVisitedToday[] = new boolean[State.values().length];
     private int mGreeceVisitCount;
     public int mEscapeCountInOneDay;

@@ -228,7 +228,7 @@ public class BackEndGoogleApi {
                         int medal_number;
                         try {
                             medal_number = Integer.parseInt(medalNumber);
-                            if (medal_number >= Medal.NUM_MEDAL_TYPES) {
+                            if (medal_number >= Medal.values().length) {
                                 continue;
                             }
                         } catch (Exception e) {

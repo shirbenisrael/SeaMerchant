@@ -37,7 +37,6 @@ public enum Medal {
     FOG_OF_WAR(31), // encounter two pirates and one fog in one sail
     NIGHT_MERCHANT(32); // profit in each night
 
-    public static final int NUM_MEDAL_TYPES = 33;
     private final int value;
     Medal(int value){
         this.value = value;
