@@ -1,5 +1,6 @@
 package com.shirbi.seamerchant;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FrontEndFortuneTeller extends FrontEndGeneric {
@@ -9,11 +10,17 @@ public class FrontEndFortuneTeller extends FrontEndGeneric {
     }
 
     public void showInitialMessage() {
-        String stateString = getStateString(mLogic.mFortuneTellerInformation.state);
-        String goodsString = getGoodsString(mLogic.mFortuneTellerInformation.goods);
+        State state = mLogic.mFortuneTellerInformation.state;
+        Goods goods = mLogic.mFortuneTellerInformation.goods;
+
+        String stateString = getStateString(state);
+        String goodsString = getGoodsString(goods);
 
         String questionString = mActivity.getString(R.string.FORTUNE_TELLER_QUESTION, goodsString, stateString);
         ((TextView)findViewById(R.id.fortune_teller_message)).setText(questionString);
+
+        ((ImageView)findViewById(R.id.fortune_teller_goods_image)).setImageResource(goods.toMainImageId());
+        ((ImageView)findViewById(R.id.fortune_teller_flag_image)).setImageResource(state.toFlagId());
     }
 
     public void showFortune() {
