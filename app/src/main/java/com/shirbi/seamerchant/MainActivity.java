@@ -747,6 +747,17 @@ public class MainActivity extends Activity {
         }
     }
 
+    public void onFixFreeClick(View view) {
+        mFrontEndFixShip.showFreeFixDialog();
+    }
+
+    public void freeFix() {
+        playSound(R.raw.fix);
+        mLogic.applyFreeShipFixDeal();
+        mFrontEnd.showState();
+        mFrontEnd.showWindow(Window.MAIN_WINDOW);
+    }
+
     public void onCancelBecauseOfDanger(View view) {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }

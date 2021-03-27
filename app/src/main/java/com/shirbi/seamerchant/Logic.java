@@ -68,6 +68,7 @@ public class Logic {
     public boolean mIsBankOperationTakesTime;
     public boolean mIsMarketOperationTakesTime;
     public boolean mIsFixOperationTakesTime;
+    public boolean mIsFreeFixUsed;
     private boolean mIsMedalAchieved[] = new boolean[Medal.values().length];
     private boolean mStatesVisitedToday[] = new boolean[State.values().length];
     private int mGreeceVisitCount;
@@ -193,6 +194,7 @@ public class Logic {
         mIsBankOperationTakesTime = true;
         mIsMarketOperationTakesTime = true;
         mIsFixOperationTakesTime = true;
+        mIsFreeFixUsed = false;
 
         for (State state : State.values()) {
             mStatesVisitedToday[state.getValue()] = (state == START_STATE);
@@ -260,6 +262,16 @@ public class Logic {
     public void applyShipFixDeal() {
         mCash -= mFixShipDeal.mCurrentFix;
         mDamage -= mFixShipDeal.mCurrentFix;
+
+        if (mIsFixOperationTakesTime) {
+            mIsFixOperationTakesTime = false;
+            mCurrentHour++;
+        }
+    }
+
+    public void applyFreeShipFixDeal() {
+        mDamage = 0;
+        mIsFreeFixUsed = true;
 
         if (mIsFixOperationTakesTime) {
             mIsFixOperationTakesTime = false;
@@ -753,6 +765,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mIsBankOperationTakesTime), mIsBankOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsMarketOperationTakesTime), mIsMarketOperationTakesTime);
         editor.putBoolean(getString(R.string.mIsFixOperationTakesTime), mIsFixOperationTakesTime);
+        editor.putBoolean(getString(R.string.mIsFreeFixUsed), mIsFreeFixUsed);
         editor.putBoolean(getString(R.string.mIsFastAnimation), mActivity.mIsFastAnimation);
         editor.putBoolean(getString(R.string.mIsSoundEnable), mActivity.mIsSoundEnable);
         editor.putBoolean(getString(R.string.mIsGoogleSignIn), mActivity.mIsGoogleSignIn);
@@ -861,6 +874,7 @@ public class Logic {
         mIsBankOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsBankOperationTakesTime), true);
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
         mIsFixOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsFixOperationTakesTime), true);
+        mIsFreeFixUsed = sharedPref.getBoolean(getString(R.string.mIsFreeFixUsed), false);
 
         savedString = sharedPref.getString(getString(R.string.mInventory), "");
         st = new StringTokenizer(savedString, ",");
@@ -1265,5 +1279,9 @@ public class Logic {
     public void setSailDamage(long damage) {
         mDamage += damage;
         mSafeSail = false;
+    }
+
+    public boolean isFreeFixButtonVisible() {
+        return (!mIsFreeFixUsed) && (!mActivity.mIsStartTutorialActive) && hasMedal(Medal.SAFE_SAIL);
     }
 }

@@ -1,5 +1,8 @@
 package com.shirbi.seamerchant;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -35,6 +38,8 @@ public class FrontEndFixShip  extends FrontEndGeneric {
         } else {
             seekBar.setProgress(0);
         }
+
+        findViewById(R.id.one_free_fix_button).setVisibility(mLogic.isFreeFixButtonVisible() ? View.VISIBLE : View.INVISIBLE);
     }
 
     public void onFixShipClick() {
@@ -50,5 +55,23 @@ public class FrontEndFixShip  extends FrontEndGeneric {
     public void fixAsPossible() {
         mLogic.mFixShipDeal.fixAsPossible();
         showDealState();
+    }
+
+    public void showFreeFixDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+
+        builder.setTitle(getString(R.string.ONE_FREE_FIX));
+        builder.setMessage(getString(R.string.ONE_FREE_FIX_QUESTION));
+        builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.freeFix();
+            }
+        });
+        builder.setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.setIcon(R.drawable.fix);
+        builder.show();
     }
 }

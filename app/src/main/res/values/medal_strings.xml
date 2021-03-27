@@ -84,4 +84,6 @@
     <string name="GERMAN_TIME_BONUS">Night sail will start at 18:00 instead of 17:00</string>
     <string name="ECONOMICAL_SAIL_BONUS">Direct bank - all visits in all banks in one day will take  only one hour</string>
     <string name="FOG_OF_WAR_BONUS">Select new destination after fog</string>
+    <string name="SAFE_SAIL_BONUS">One free complete fix in the game</string>
+
 </resources>

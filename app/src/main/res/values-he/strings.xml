@@ -29,6 +29,8 @@
 
     <string name="CASH_STRING">מזומן: %1$s ש\"ח</string>
 
+    <string name="ONE_FREE_FIX">תיקון אחד בחינם</string>
+    <string name="ONE_FREE_FIX_QUESTION">לבצע תיקון מושלם אחד חינם במשחק?</string>
     <string name="FIXED_SHIP_QUESTION">כמה להשקיע בתיקון הספינה?</string>
     <string name="FIXED_AS_POSSIBLE">תקן ככל האפשר</string>
     <string name="FIXED_SHIP">ספינה תקינה</string>

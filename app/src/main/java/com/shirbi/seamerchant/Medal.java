@@ -225,6 +225,8 @@ public enum Medal {
                 return R.string.ECONOMICAL_SAIL_BONUS;
             case FOG_OF_WAR:
                 return R.string.FOG_OF_WAR_BONUS;
+            case SAFE_SAIL:
+                return R.string.SAFE_SAIL_BONUS;
             default:
                 return 0;
         }

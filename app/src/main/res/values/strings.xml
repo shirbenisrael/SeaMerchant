@@ -35,6 +35,8 @@
     <string name="CASH_STRING">Cash: %1$s\$</string>
     <string name="LOCK_STRING">Lock: %1$s\$</string>
 
+    <string name="ONE_FREE_FIX">One free fix</string>
+    <string name="ONE_FREE_FIX_QUESTION">Free complete fixing of the ship, once in the game?</string>
     <string name="FIXED_SHIP_QUESTION">How much to invest in repairing the ship?</string>
     <string name="FIXED_AS_POSSIBLE">Fix as possible</string>
     <string name="FIXED_SHIP_TIP">Tip: A broken ship falls apart on the voyage</string>

@@ -14,6 +14,7 @@
     <string name="mIsBankOperationTakesTime" translatable="false">mIsBankOperationTakesTime</string>
     <string name="mIsMarketOperationTakesTime" translatable="false">mIsMarketOperationTakesTime</string>
     <string name="mIsFixOperationTakesTime" translatable="false">mIsFixOperationTakesTime</string>
+    <string name="mIsFreeFixUsed" translatable="false">mIsFreeFixUsed</string>
     <string name="mIsFastAnimation" translatable="false">mIsFastAnimation</string>
     <string name="mIsSoundEnable" translatable="false">mIsSoundEnable</string>
     <string name="mIsGoogleSignIn" translatable="false">mIsGoogleSignIn</string>

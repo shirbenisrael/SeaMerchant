@@ -78,9 +78,32 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:gravity="center_horizontal"
         android:text="" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <include layout="@layout/empty_horizontal_text" />
+
+        <Button
+            android:id="@+id/one_free_fix_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:onClick="onFixFreeClick"
+            android:background="@drawable/wide_empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/ONE_FREE_FIX" />
+
+        <include layout="@layout/empty_horizontal_text" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -96,6 +119,8 @@
             android:layout_weight="2"
             android:gravity="center"
             android:onClick="fixAsPossible"
+            android:background="@drawable/wide_empty_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="@string/FIXED_AS_POSSIBLE" />
 
         <include layout="@layout/empty_horizontal_text" />
