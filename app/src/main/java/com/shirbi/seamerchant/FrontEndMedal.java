@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class FrontEndMedal extends FrontEndGeneric {
@@ -21,16 +22,31 @@ public class FrontEndMedal extends FrontEndGeneric {
         setMedalAppearance();
     }
 
+    private ProgressBar getMedalProgressBar(Medal medal)
+    {
+        LinearLayout scroll = findViewById(R.id.medal_scroll_view);
+        LinearLayout thisMedalInfo = (LinearLayout)scroll.getChildAt(medal.getValue());
+        LinearLayout textAndProgressLayout = (LinearLayout)(thisMedalInfo.getChildAt(1));
+        ProgressBar progressBar = (ProgressBar)((textAndProgressLayout).getChildAt(1));
+        return progressBar;
+    }
+
     private void setMedalAppearance() {
         Point windowSize = getWindowSize();
 
         LinearLayout scroll = findViewById(R.id.medal_scroll_view);
         for (Medal medal : Medal.values()) {
-            Button medalImage = (Button)((LinearLayout)scroll.getChildAt(medal.getValue())).getChildAt(0);
+            LinearLayout thisMedalInfo = (LinearLayout)scroll.getChildAt(medal.getValue());
+            Button medalImage = (Button)(thisMedalInfo.getChildAt(0));
             medalImage.setLayoutParams(new LinearLayout.LayoutParams(windowSize.x / 6, windowSize.x / 6));
-            Button medalText = (Button)((LinearLayout)scroll.getChildAt(medal.getValue())).getChildAt(1);
+
+            LinearLayout textAndProgressLayout = (LinearLayout)(thisMedalInfo.getChildAt(1));
+            Button medalText = (Button)((textAndProgressLayout).getChildAt(0));
             medalText.setText(getString(medal.getTitle()));
-            medalText.setLayoutParams(new LinearLayout.LayoutParams(5 * windowSize.x / 6, windowSize.x / 6));
+            medalText.setLayoutParams(new LinearLayout.LayoutParams(5 * windowSize.x / 6, windowSize.x / 6 * 3 / 4));
+
+            ProgressBar progressBar = getMedalProgressBar(medal);
+            progressBar.setLayoutParams(new LinearLayout.LayoutParams(5 * windowSize.x / 6, windowSize.x / 6 * 1 / 4));
 
             int colorId = ((medal.getBonus() == 0) ? R.color.black : R.color.red);
             medalText.setTextColor(mActivity.getColor(colorId));
@@ -40,7 +56,7 @@ public class FrontEndMedal extends FrontEndGeneric {
 
     public void showMedalCondition(View medalButton) {
         LinearLayout scroll = findViewById(R.id.medal_scroll_view);
-        int medalIndex = scroll.indexOfChild((View)medalButton.getParent());
+        int medalIndex = scroll.indexOfChild((View)medalButton.getParent().getParent());
         Medal medal = Medal.values()[medalIndex];
 
         int medalBonusId = medal.getBonus();
@@ -92,9 +108,29 @@ public class FrontEndMedal extends FrontEndGeneric {
         medalImage.setAlpha(alpha);
     }
 
+    private void updateMedalProgress(Medal medal)
+    {
+        ProgressBar progressBar = getMedalProgressBar(medal);
+        if (mLogic.hasMedal(medal)) {
+            progressBar.setMax(1);
+            progressBar.setProgress(1);
+            return;
+        }
+
+        if (!mLogic.canGetThisMedal(medal)) {
+            progressBar.setMax(1);
+            progressBar.setProgress(0);
+            return;
+        }
+
+        progressBar.setMax(100);
+        progressBar.setProgress(Math.min(100, (int)(mLogic.getMedalProgress(medal) * 100)));
+    }
+
     public void updateAllMedalImages() {
         for (Medal medal : Medal.values()) {
             setMedalIcon(medal);
+            updateMedalProgress(medal);
         }
     }
 }

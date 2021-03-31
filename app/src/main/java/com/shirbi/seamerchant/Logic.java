@@ -1094,6 +1094,65 @@ public class Logic {
         return null;
     }
 
+    public float getMedalProgress(Medal medal) {
+        long totalValue = calculateTotalValue();
+
+        switch (medal) {
+            case TREASURE_1:
+                return ((float)mCash) / 10000f;
+            case TREASURE_2:
+                return ((float)mCash) / 100000f;
+            case TREASURE_3:
+            case BDS_TURKEY:
+            case FAST_EXIT:
+            case DIET_MERCHANT:
+                return ((float)mCash) / 1000000f;
+            case TREASURE_4:
+                return ((float)mCash) / 2000000f;
+            case TREASURE_5:
+                return ((float)mCash) / 10000000f;
+            case CAPACITY_1:
+                return ((float)mCapacity) / 200f;
+            case CAPACITY_2:
+                return ((float)mCapacity) / 500f;
+            case CAPACITY_3:
+                return ((float)mCapacity) / 1000;
+            case AROUND_THE_WORLD:
+                float count = 0;
+                for (boolean stateVisited : mStatesVisitedToday) {
+                    count += stateVisited ? 1 : 0;
+                }
+                return count / mStatesVisitedToday.length;
+            case ESCAPE:
+                return (float)mEscapeCountInOneDay / 3f;
+            case CREW_NEGOTIATOR:
+                return (float)mCompromiseWithCrewCount / 2f;
+            case WIND:
+                return (float)mWrongNavigationCountInOneDay / 3f;
+            case TIRED_FIGHTER:
+                return (float)mWinPiratesCountInOneDay / 3f;
+            case ALWAYS_FIGHTER:
+                return (float)mWinPiratesCount / 10f;
+            case GOOD_DAY_1:
+                return (mValueAtStartOfDay > 0) ? ((float)totalValue / (mValueAtStartOfDay * 2)) : 0f;
+            case GOOD_DAY_2:
+                return (mValueAtStartOfDay > 0) ? ((float)totalValue / (mValueAtStartOfDay * 5)) : 0f;
+            case GOOD_DAY_3:
+                return (mValueAtStartOfDay > 0) ? ((float)totalValue / (mValueAtStartOfDay * 8)) : 0f;
+            case GREECE_VISITOR:
+            case FEDERAL_RESERVE:
+            case GERMAN_TIME:
+                return (float)totalValue / 1000000f;
+            case ECONOMICAL_SAIL:
+                return (float)totalValue / 2000000f;
+            case NIGHT_MERCHANT:
+            case SAFE_SAIL:
+                return (float)totalValue / 10000000f;
+            default:
+                return 0f;
+        }
+    }
+
     public boolean canGetThisMedal(Medal medal) {
         switch (medal) {
             default:
