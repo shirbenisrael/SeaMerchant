@@ -34,6 +34,7 @@
     <string name="FOG_OF_WAR_TITLE">Fog of War</string>
     <string name="NIGHT_MERCHANT_TITLE">Night Merchant</string>
     <string name="SAFE_SAIL_TITLE">Safe Sail</string>
+    <string name="ISLAMIC_STATE_TITLE">Islamic State</string>
 
     <string name="TREASURE_1_CONDITION">Get 10,000$ in cash</string>
     <string name="TREASURE_2_CONDITION">Get 100,000$ in cash</string>
@@ -69,6 +70,7 @@
     <string name="FOG_OF_WAR_CONDITION">Encounter two pirates and one fog in one sail</string>
     <string name="NIGHT_MERCHANT_CONDITION">Profit in each night and earn 10 million $</string>
     <string name="SAFE_SAIL_CONDITION">Do not suffer damages at sails and earn 10 million $</string>
+    <string name="ISLAMIC_STATE_CONDITION">Profit 5 million $ from direct turkey-egypt sails</string>
 
     <string name="TREASURE_5_BONUS">Start the game with 10,000$</string>
     <string name="CAPACITY_3_BONUS">Start the game with capacity of 200 tonne</string>

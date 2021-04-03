@@ -72,6 +72,7 @@ public class Logic {
     private boolean mIsMedalAchieved[] = new boolean[Medal.values().length];
     private boolean mStatesVisitedToday[] = new boolean[State.values().length];
     private int mGreeceVisitCount;
+    public long mIslamicProfit;
     public int mEscapeCountInOneDay;
     public int mCompromiseWithCrewCount;
     public int mWrongNavigationCountInOneDay;
@@ -200,6 +201,7 @@ public class Logic {
             mStatesVisitedToday[state.getValue()] = (state == START_STATE);
         }
 
+        mIslamicProfit = 0;
         mEscapeCountInOneDay = 0;
         mCompromiseWithCrewCount = 0;
         mWrongNavigationCountInOneDay = 0;
@@ -297,6 +299,19 @@ public class Logic {
                 break;
             }
         }
+
+        if ((mCurrentState == State.EGYPT && mSail.mDestination == State.TURKEY) ||
+                (mCurrentState == State.TURKEY && mSail.mDestination == State.EGYPT)) {
+            for (Goods goods : Goods.values()) {
+                if (getInventory(goods) > 0) {
+                    long diff = mPriceTable.getPrice(mSail.mDestination, goods) - mPriceTable.getPrice(mCurrentState, goods);
+                    if (diff > 0) {
+                        mIslamicProfit += diff * getInventory(goods);
+                    }
+                }
+            }
+        }
+
         mCurrentState = mSail.mDestination;
         mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
         if (!hasMedal(Medal.ECONOMICAL_SAIL)) {
@@ -754,6 +769,7 @@ public class Logic {
         editor.putInt(getString(R.string.mWinPiratesCountInOneDay), mWinPiratesCountInOneDay);
         editor.putInt(getString(R.string.mWinPiratesCount), mWinPiratesCount);
         editor.putLong(getString(R.string.mValueAtStartOfDay), mValueAtStartOfDay);
+        editor.putLong(getString(R.string.mIslamicProfit), mIslamicProfit);
         editor.putInt(getString(R.string.mGreeceVisitCount), mGreeceVisitCount);
         editor.putInt(getString(R.string.mNightProfitCount), mNightProfitCount);
         editor.putBoolean(getString(R.string.mBdsTurkey), mBdsTurkey);
@@ -863,6 +879,7 @@ public class Logic {
         mWinPiratesCountInOneDay = sharedPref.getInt(getString(R.string.mWinPiratesCountInOneDay), 0);
         mWinPiratesCount = sharedPref.getInt(getString(R.string.mWinPiratesCount), -10000);
         mValueAtStartOfDay = getLongOrInt(sharedPref, R.string.mValueAtStartOfDay, -10000);
+        mIslamicProfit = getLongOrInt(sharedPref, R.string.mIslamicProfit, 0);
         mGreeceVisitCount = sharedPref.getInt(getString(R.string.mGreeceVisitCount), 0);
         mNightProfitCount = sharedPref.getInt(getString(R.string.mNightProfitCount), 0);
         mBdsTurkey = sharedPref.getBoolean(getString(R.string.mBdsTurkey), false);
@@ -1091,6 +1108,10 @@ public class Logic {
             return Medal.SAFE_SAIL;
         }
 
+        if (!hasMedal(Medal.ISLAMIC_STATE) && mIslamicProfit >= 5000000) {
+            return Medal.ISLAMIC_STATE;
+        }
+
         return null;
     }
 
@@ -1148,6 +1169,8 @@ public class Logic {
             case NIGHT_MERCHANT:
             case SAFE_SAIL:
                 return (float)totalValue / 10000000f;
+            case ISLAMIC_STATE:
+                return (float)mIslamicProfit / 5000000f;
             default:
                 return 0f;
         }

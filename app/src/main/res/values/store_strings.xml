@@ -28,6 +28,7 @@
     <string name="mBdsTurkey" translatable="false">mBdsTurkey</string>
     <string name="mBdsOlives" translatable="false">mBdsOlives</string>
     <string name="mValueAtStartOfDay" translatable="false">mValueAtStartOfDay</string>
+    <string name="mIslamicProfit" translatable="false">mIslamicProfit</string>
     <string name="mGreeceVisitCount" translatable="false">mGreeceVisitCount</string>
     <string name="mNightProfitCount" translatable="false">mNightProfitCount</string>
     <string name="mAlwaysDeposit" translatable="false">mAlwaysDeposit</string>
