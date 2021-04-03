@@ -46,9 +46,9 @@ public class Logic {
             {-1, -1, -1,  6,  0}  // From Greece
     };
 
-    private void updateGreeceSailDuration() {
-        mSailDurations[State.GREECE.getValue()][State.CYPRUS.getValue()] = 5;
-        mSailDurations[State.CYPRUS.getValue()][State.GREECE.getValue()] = 5;
+    private void updateSailDuration(State state1, State state2) {
+        mSailDurations[state1.getValue()][state2.getValue()] = 5;
+        mSailDurations[state2.getValue()][state1.getValue()] = 5;
     }
 
     private Random mRand = new Random();
@@ -221,7 +221,11 @@ public class Logic {
         mGreeceVisitCount = mStatesVisitedToday[State.GREECE.getValue()] ? 1 : 0;
 
         if (hasMedal(Medal.GREECE_VISITOR)) {
-            updateGreeceSailDuration();
+            updateSailDuration(State.GREECE, State.CYPRUS);
+        }
+
+        if (hasMedal(Medal.ISLAMIC_STATE)) {
+            updateSailDuration(State.TURKEY, State.EGYPT);
         }
 
         mFortuneTellerInformation = null;
@@ -923,7 +927,11 @@ public class Logic {
         mValueAfterSail = 0;
 
         if (hasMedal(Medal.GREECE_VISITOR)) {
-            updateGreeceSailDuration();
+            updateSailDuration(State.GREECE, State.CYPRUS);
+        }
+
+        if (hasMedal(Medal.ISLAMIC_STATE)) {
+            updateSailDuration(State.TURKEY, State.EGYPT);
         }
 
         try {
@@ -1066,7 +1074,7 @@ public class Logic {
         }
 
         if (!hasMedal(Medal.GREECE_VISITOR) && (mGreeceVisitCount == 7) && (totalValue >= 1000000)) {
-            updateGreeceSailDuration();
+            updateSailDuration(State.GREECE, State.CYPRUS);
             return Medal.GREECE_VISITOR;
         }
 
@@ -1109,6 +1117,7 @@ public class Logic {
         }
 
         if (!hasMedal(Medal.ISLAMIC_STATE) && mIslamicProfit >= 5000000) {
+            updateSailDuration(State.TURKEY, State.EGYPT);
             return Medal.ISLAMIC_STATE;
         }
 

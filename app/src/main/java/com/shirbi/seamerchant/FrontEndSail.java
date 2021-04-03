@@ -73,6 +73,14 @@ public class FrontEndSail extends FrontEndGeneric {
         findViewById(R.id.sail_duration_for_greece).setVisibility(View.VISIBLE);
     }
 
+    private void updateIslamicSailDuration() { // Turkey and Egypt direct route
+        putSquareObjectOnMap(findViewById(R.id.sail_duration_for_islamic),
+                0.56f,
+                0.17f,
+                0.045f);
+        findViewById(R.id.sail_duration_for_islamic).setVisibility(View.VISIBLE);
+    }
+
     public void initSailRoute() {
         findViewById(R.id.sail_or_cancel_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.sail_map).setBackgroundResource(R.drawable.map_with_details);
@@ -82,6 +90,9 @@ public class FrontEndSail extends FrontEndGeneric {
         putBoatOnHarbor();
         if (mLogic.hasMedal(Medal.GREECE_VISITOR)) {
             updateGreeceSailDuration();
+        }
+        if (mLogic.hasMedal(Medal.ISLAMIC_STATE)) {
+            updateIslamicSailDuration();
         }
         showGuardShips();
         showDangers();

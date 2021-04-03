@@ -994,8 +994,8 @@ public class MainActivity extends Activity {
             mFrontEnd.showWindow(Window.NEW_MEDAL_WINDOW);
             mFrontEndMedal.showNewMedal(medal);
 
-            if (medal == Medal.GREECE_VISITOR) {
-                // This specific medal updates the greece sail duration on the main screen so we need to do
+            if (medal == Medal.GREECE_VISITOR || medal == Medal.ISLAMIC_STATE) {
+                // These specific medals update the sail duration on the main screen so we need to do
                 // it immediately when we get the medal.
                 mFrontEnd.showState();
             }

@@ -232,6 +232,8 @@ public enum Medal {
                 return R.string.FOG_OF_WAR_BONUS;
             case SAFE_SAIL:
                 return R.string.SAFE_SAIL_BONUS;
+            case ISLAMIC_STATE:
+                return R.string.ISLAMIC_STATE_BONUS;
             default:
                 return 0;
         }
