@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/high_score_bg"
@@ -10,7 +11,7 @@
         android:id="@+id/current_score"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1.5"
         android:gravity="center_horizontal"
         android:textSize="20dp"
         android:text="" />
@@ -19,7 +20,7 @@
         android:id="@+id/high_score"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1.5"
         android:gravity="center_horizontal"
         android:textSize="20dp"
         android:text="" />
@@ -28,7 +29,7 @@
         android:id="@+id/note_on_google_games"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="1"
         android:gravity="center_horizontal"
         android:textSize="14dp"
         android:text="@string/SCORE_IS_HIDDEN"/>
@@ -36,7 +37,7 @@
     <LinearLayout
         android:id="@+id/scores_layout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="6">
     </LinearLayout>
@@ -44,7 +45,7 @@
     <LinearLayout
         android:id="@+id/capacity_layout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:visibility="gone"
         android:layout_weight="6">
@@ -52,7 +53,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <Button
@@ -61,6 +63,8 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:background="@drawable/wide_cash_button"
+            android:scaleType="fitXY"
             android:gravity="center"
             android:onClick="onScorePageClick"
             android:text="@string/SCORE_BUTTON" />
@@ -71,6 +75,8 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:background="@drawable/wide_capacity_button"
+            android:scaleType="fitXY"
             android:gravity="center"
             android:onClick="onScorePageClick"
             android:text="@string/CAPACITY_BUTTON" />
@@ -80,6 +86,8 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:background="@drawable/wide_empty_slim_button"
+            android:scaleType="fitXY"
             android:gravity="center"
             android:onClick="onExistHighScore"
             android:text="@string/BACK" />
