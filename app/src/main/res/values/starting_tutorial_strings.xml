@@ -3,12 +3,12 @@
     <string name="BUY_CHIP_GOODS">The %1$s in %2$s is cheap! We should buy it!</string>
     <string name="PRESS_GOODS_BUTTON_TO_BUY">Press on the %1$s button to buy.</string>
 
-    <string name="SAIL_TO_STATE_WITH_HIGH_PRICE">The %1$s\'s price in %2$s is high. Lets sail to there!</string>
+    <string name="SAIL_TO_STATE_WITH_HIGH_PRICE">The %1$s\'s price in %2$s is high. Let\'s sail to there!</string>
     <string name="PRESS_ON_FLAG_TO_SAIL_TO_STATE">Press on %1$s\'s flag to sail.</string>
 
-    <string name="REACH_STATE_AND_SELL_GOODS">We reached %1$s! Lets sell our %2$s is high price!</string>
-    <string name="REACH_STATE_AND_SELL_MOST_GOODS">We reached %1$s with most of our %2$s. Lets sell it high price!</string>
-    <string name="SELL_GOODS">Lets sell our %1$s is high price!</string>
+    <string name="REACH_STATE_AND_SELL_GOODS">We reached %1$s! Let\'s sell our %2$s is high price!</string>
+    <string name="REACH_STATE_AND_SELL_MOST_GOODS">We reached %1$s with most of our %2$s. Let\'s sell it high price!</string>
+    <string name="SELL_GOODS">Let\'s sell our %1$s is high price!</string>
     <string name="PRESS_GOODS_BUTTON_TO_SELL">Press on the %1$s button to sell it.</string>
 
     <string name="DEPOSIT_IN_BANK_BEFORE_SLEEP">We should deposit our cash in the bank before go to sleep.</string>
@@ -45,24 +45,24 @@
     <string name="PRESS_ON_BUTTON_AND_ON_V">Press on -%1$s- and then on the Green V</string>
     <string name="BUY_ENOUGH_NOW_SAIL">We bought enough. Now it is time to sail.</string>
     <string name="DONT_BUT_EXPENSIVE_GOODS">We should not buy %1$s. It is expensive here.</string>
-    <string name="LETS_BUY_GOODS">Lets buy %1$s.</string>
-    <string name="LETS_SELL_GOODS">Lets sell our %1$s.</string>
+    <string name="LETS_BUY_GOODS">Let\'s buy %1$s.</string>
+    <string name="LETS_SELL_GOODS">Let\'s sell our %1$s.</string>
     <string name="TO_LATE_FOR_MARKET_GO_TO_BANK">It is too late for market. Let\'s go to the bank.</string>
     <string name="TO_LATE_FOR_MARKET_GO_TO_SLEEP">It is too late for market. Let\'s go to the sleep.</string>
-    <string name="DRAW_FIRST_CACH_FROM_BANK">Lets first draw our money from the bank.</string>
-    <string name="FIX_SHIP_FIRST">Lets fix our ship first.</string>
+    <string name="DRAW_FIRST_CACH_FROM_BANK">Let\'s first draw our money from the bank.</string>
+    <string name="FIX_SHIP_FIRST">Let\'s fix our ship first.</string>
 
     <string name="BANK_DEPOSIT_TITLE">Bank deposit</string>
     <string name="BANK_DRAW_TITLE">Draw from bank</string>
 
-    <string name="SAIL_TO_DESTINATION">Lets sail to %1$s.</string>
+    <string name="SAIL_TO_DESTINATION">Let\'s sail to %1$s.</string>
 
-    <string name="TAKE_5_GUARDS_SHIPS">The sea is infested with bandits.Lets rent 5 guard ships. Press on the 5 button.</string>
+    <string name="TAKE_5_GUARDS_SHIPS">The sea is infested with bandits. Let\'s rent 5 guard ships. Press on the 5 button.</string>
 
     <string name="PIRATES_WITH_5_GUARDS">This time we are armoured with 5 guard ships!</string>
     <string name="PIRATES_WITH_NO_GUARDS">We didn\'t rent guard ships. We must try to escape!</string>
-    <string name="HOPE_ESCAPE_WORK">Lets hold fingers that escape will succeed.</string>
-    <string name="PIRATE_GO_TO_BATTLE">Lets fight the pirates!</string>
+    <string name="HOPE_ESCAPE_WORK">Let\'s hold fingers that escape will succeed.</string>
+    <string name="PIRATE_GO_TO_BATTLE">Let\'s fight the pirates!</string>
 
     <string name="FIX_SHIP_TITLE">Fix ship</string>
 
