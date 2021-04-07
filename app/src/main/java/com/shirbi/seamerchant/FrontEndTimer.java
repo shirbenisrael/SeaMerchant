@@ -39,9 +39,7 @@ public class FrontEndTimer {
             mFrontEndGeneric.timerBlinked(getThis() , mTimes);
 
             if (mTimes <= 0) {
-                mTimer.cancel();
-                mTimer = null;
-                mTimerTask = null;
+                stop();
             }
         }
     };
