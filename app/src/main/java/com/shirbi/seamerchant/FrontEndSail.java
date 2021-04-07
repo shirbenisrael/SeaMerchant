@@ -110,6 +110,7 @@ public class FrontEndSail extends FrontEndGeneric {
         mImageToAnimate = R.id.circle_on_map;
         mRealSail = false;
         findViewById(R.id.circle_on_map).setVisibility(View.VISIBLE);
+        findViewById(R.id.circle_on_map).bringToFront();
 
         startTimer();
 
