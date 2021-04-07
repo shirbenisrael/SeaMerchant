@@ -231,6 +231,7 @@ public class FrontEndSail extends FrontEndGeneric {
         findViewById(R.id.sail_map).setBackgroundResource(R.drawable.map_clean);
         findViewById(R.id.destination).setVisibility(View.INVISIBLE);
         findViewById(R.id.sail_duration_for_greece).setVisibility(View.INVISIBLE);
+        findViewById(R.id.sail_duration_for_islamic).setVisibility(View.INVISIBLE);
         setDangersIconEnable(false);
         setGuardsIconEnable(false);
 
