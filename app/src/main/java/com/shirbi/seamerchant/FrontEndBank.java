@@ -33,6 +33,9 @@ public class FrontEndBank extends FrontEndGeneric {
         String operationTimeString = mLogic.isBankOperationTakesTime() ?
                 getString(R.string.OPERATION_ONE_HOUR) : getString(R.string.OPERATION_NO_TIME);
         ((TextView)findViewById(R.id.bank_operation_time)).setText(operationTimeString);
+
+        String question = mActivity.getString(R.string.BANK_QUESTION, mDecimalFormat.format(mLogic.calculateInventoryValue()));
+        ((TextView)findViewById(R.id.bank_hold_question)).setText(question);
     }
 
     public void showDealState() {

@@ -163,7 +163,7 @@
     <string name="TUTORIAL_SLEEP">נהיה מאוחר. הגיע הזמן ללכת לישון עד למחרת.</string>
     <string name="TUTORIAL_FIX_SHIP">הספינה שבורה. בוא נתקן אותה לפני שהנזק יחמיר.</string>
 
-    <string name="BANK_QUESTION">כמה כסף להחזיק במזומן?</string>
+    <string name="BANK_QUESTION">כמה מזומן להחזיק? שווי הסחורה %1$s ש\"ח</string>
     <string name="BANK_TIP">טיפ: הפקדה לילית נותנת ריבית של %1$d%%.</string>
     <string name="BANK_DEPOSIT_ALL">הפקד הכל</string>
     <string name="BANK_DRAW_ALL">משוך הכל</string>

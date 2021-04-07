@@ -173,7 +173,7 @@
     <string name="TUTORIAL_SLEEP">It is getting late. Maybe it is time to sleep until tomorrow.</string>
     <string name="TUTORIAL_FIX_SHIP">The ship is broken. Let\'s fix it before the damage increases.</string>
 
-    <string name="BANK_QUESTION">How much to hold in cash?</string>
+    <string name="BANK_QUESTION">How much cash to hold? Goods worth %1$s$</string>
     <string name="BANK_TIP">Tip: A nightly deposit gives an interest rate of %1$d%%.</string>
     <string name="BANK_DEPOSIT_ALL">Deposit all</string>
     <string name="BANK_DRAW_ALL">Draw all</string>
