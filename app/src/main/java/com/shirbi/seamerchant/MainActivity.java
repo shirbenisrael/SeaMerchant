@@ -703,6 +703,10 @@ public class MainActivity extends Activity {
         }
     }
 
+    public void onCapacityButtonClick(View view) {
+        mFrontEnd.showCapacityMessage();
+    }
+
     public void onFixButtonClick(View view) {
         if (mLogic.isShipBroken()) {
             if (!mLogic.isEnoughTimeForFixShip()) {

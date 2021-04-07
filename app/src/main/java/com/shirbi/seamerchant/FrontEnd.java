@@ -131,7 +131,9 @@ public class FrontEnd extends FrontEndGeneric {
         textView.setText(generateWeatherString());
 
         textView = findViewById(R.id.wide_capacity_button);
-        textView.setText(String.valueOf(mLogic.mCapacity) + " " + getString(R.string.TONNE));
+        String capacityButtonString = mActivity.getString(R.string.CAPACITY_BUTTON_STRING,
+                mDecimalFormat.format(mLogic.calculateLoad()), mDecimalFormat.format(mLogic.mCapacity));
+        textView.setText(capacityButtonString);
 
         button = findViewById(R.id.wide_fix_button);
         @DrawableRes int resource = (mLogic.mDamage == 0) ? R.drawable.wide_ship_button : R.drawable.wide_fix_button;
@@ -470,6 +472,12 @@ public class FrontEnd extends FrontEndGeneric {
         } else {
             mActivity.onApproveDanger(null);
         }
+    }
+
+    public void showCapacityMessage() {
+        String capacityMessage = mActivity.getString(R.string.CAPACITY_MESSAGE,
+                mDecimalFormat.format(mLogic.mCapacity), mDecimalFormat.format(mLogic.calculateLoad()));
+        showAlertDialogMessage(capacityMessage, getString(R.string.CAPACITY_BUTTON), R.drawable.capacity_icon);
     }
 
     public void showTutorial() {

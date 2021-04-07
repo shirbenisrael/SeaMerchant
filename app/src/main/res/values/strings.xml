@@ -35,6 +35,9 @@
     <string name="CASH_STRING">Cash: %1$s\$</string>
     <string name="LOCK_STRING">Lock: %1$s\$</string>
 
+    <string name="CAPACITY_MESSAGE">Capacity size: %1$s tonne, Goods size %2$s tonne.</string>
+    <string name="CAPACITY_BUTTON_STRING" translatable="false">%1$s/%2$s</string>
+
     <string name="ONE_FREE_FIX">One free fix</string>
     <string name="ONE_FREE_FIX_QUESTION">Free complete fixing of the ship, once in the game?</string>
     <string name="FIXED_SHIP_QUESTION">How much to invest in repairing the ship?</string>

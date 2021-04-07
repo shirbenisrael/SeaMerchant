@@ -29,6 +29,8 @@
 
     <string name="CASH_STRING">מזומן: %1$s ש\"ח</string>
 
+    <string name="CAPACITY_MESSAGE">קיבולת הספינה: %1$s וטון, משקל הסחורה: %2$s טון.</string>
+
     <string name="ONE_FREE_FIX">תיקון אחד בחינם</string>
     <string name="ONE_FREE_FIX_QUESTION">לבצע תיקון מושלם אחד חינם במשחק?</string>
     <string name="FIXED_SHIP_QUESTION">כמה להשקיע בתיקון הספינה?</string>
