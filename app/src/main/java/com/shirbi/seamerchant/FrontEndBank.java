@@ -1,5 +1,6 @@
 package com.shirbi.seamerchant;
 
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -36,6 +37,9 @@ public class FrontEndBank extends FrontEndGeneric {
 
         String question = mActivity.getString(R.string.BANK_QUESTION, mDecimalFormat.format(mLogic.calculateInventoryValue()));
         ((TextView)findViewById(R.id.bank_hold_question)).setText(question);
+
+        ((Button)findViewById(R.id.bank_cash_for_guards_button)).setText(
+                mActivity.getString(R.string.BANK_CASH_FOR_GUARDS, mLogic.getDefaultNumGuards()));
     }
 
     public void showDealState() {

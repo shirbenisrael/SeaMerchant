@@ -165,8 +165,7 @@
             android:gravity="center"
             android:onClick="onMarketPercentageForGuardsClick"
             android:background="@drawable/wide_empty_button"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:text="@string/BANK_CASH_FOR_GUARDS" />
+            android:foreground="?attr/selectableItemBackgroundBorderless" />
 
     </LinearLayout>
 

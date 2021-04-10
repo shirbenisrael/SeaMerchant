@@ -1,6 +1,7 @@
 package com.shirbi.seamerchant;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -65,6 +66,9 @@ public class FrontEndMarket extends FrontEndGeneric {
         String operationTimeString = mLogic.isMarketOperationTakesTime() ?
                 getString(R.string.OPERATION_ONE_HOUR) : getString(R.string.OPERATION_NO_TIME);
         ((TextView)findViewById(R.id.market_operation_time)).setText(operationTimeString);
+
+        ((Button)findViewById(R.id.market_percentage_with_guards)).setText(
+                mActivity.getString(R.string.BANK_CASH_FOR_GUARDS, mLogic.getDefaultNumGuards()));
     }
 
     public void showAllButton() {

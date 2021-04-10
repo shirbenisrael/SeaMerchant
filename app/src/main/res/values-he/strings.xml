@@ -169,7 +169,7 @@
     <string name="BANK_TIP">טיפ: הפקדה לילית נותנת ריבית של %1$d%%.</string>
     <string name="BANK_DEPOSIT_ALL">הפקד הכל</string>
     <string name="BANK_DRAW_ALL">משוך הכל</string>
-    <string name="BANK_CASH_FOR_GUARDS">מזומן לספינות משמר</string>
+    <string name="BANK_CASH_FOR_GUARDS">מזומן ל-%1$d ספינות משמר</string>
     <string name="BANK_CLOSED">מאוחר מדי, הבנק כבר סגור.</string>
     <string name="BANK_FORBIDDEN">לא ניתן ללכת לבנק</string>
 

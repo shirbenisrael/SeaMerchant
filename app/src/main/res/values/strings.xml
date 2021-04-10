@@ -180,7 +180,7 @@
     <string name="BANK_TIP">Tip: A nightly deposit gives an interest rate of %1$d%%.</string>
     <string name="BANK_DEPOSIT_ALL">Deposit all</string>
     <string name="BANK_DRAW_ALL">Draw all</string>
-    <string name="BANK_CASH_FOR_GUARDS">Cash for Guards</string>
+    <string name="BANK_CASH_FOR_GUARDS">Cash for %1$d Guards</string>
     <string name="BANK_CLOSED">Too late, the bank is already closed.</string>
     <string name="BANK_FORBIDDEN">Can\'t go to bank.</string>
 
