@@ -273,7 +273,7 @@ public class MainActivity extends Activity {
             }
             mFrontEnd.cancelDelayedMessage();
         } else {
-            if (mLogic.mSail.mSelectedNumGuardShips == 0) {
+            if ((mLogic.mSail.mSelectedNumGuardShips == 0) && (mLogic.getDefaultNumGuards() != 0)) {
                 mFrontEndSail.showSailWithNoGuardsDialog();
                 return;
             }
