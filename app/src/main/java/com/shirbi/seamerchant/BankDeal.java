@@ -29,8 +29,8 @@ public class BankDeal {
 
         float cashForGuardsForInventoryAndCash = inventoryValue / (1/guardsForInventoryPart - 1);
 
-        long minCashForGuards = Sail.MIN_GUARD_SHIP_COST * Sail.MAX_GUARD_SHIPS;
-        if (logic.hasMedal(Medal.ALWAYS_FIGHTER)) {
+        long minCashForGuards = Sail.MIN_GUARD_SHIP_COST * logic.getDefaultNumGuards();
+        if (logic.hasMedal(Medal.ALWAYS_FIGHTER) && minCashForGuards > 0) {
             minCashForGuards -= Sail.MIN_GUARD_SHIP_COST;
         }
         cashForGuardsForInventoryAndCash = Math.max(cashForGuardsForInventoryAndCash, minCashForGuards);

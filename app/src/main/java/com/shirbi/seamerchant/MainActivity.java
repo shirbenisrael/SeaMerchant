@@ -478,7 +478,12 @@ public class MainActivity extends Activity {
     }
 
     public void onGuardShipClick(View view) {
-        mFrontEndSail.guardShipClick(view);
+        if (view.getParent() == findViewById(R.id.guards_layout)) {
+            mFrontEndSail.guardShipClick(view);
+        } else {
+            mFrontEnd.setDefaultGuardShipClick(view);
+            // default guard layout from menu.
+        }
     }
 
     public void onAttackClick(View view) {

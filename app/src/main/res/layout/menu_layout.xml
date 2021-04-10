@@ -152,4 +152,33 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        android:text="@string/DEFAULT_GUARD_SHIPS"
+        android:gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/default_guards_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="5dp"
+        android:orientation="horizontal">
+
+        <include layout="@layout/guard_button_layout" />
+
+        <include layout="@layout/guard_button_layout" />
+
+        <include layout="@layout/guard_button_layout" />
+
+        <include layout="@layout/guard_button_layout" />
+
+        <include layout="@layout/guard_button_layout" />
+
+        <include layout="@layout/guard_button_layout" />
+    </LinearLayout>
+
 </LinearLayout>

@@ -236,6 +236,7 @@
     <string name="FAST_ANIMATION">Fast animation</string>
     <string name="ENABLE_SOUND">Enable sound</string>
     <string name="CONNECT_TO_GOOGLE_GAME">Sign In to Google Play</string>
+    <string name="DEFAULT_GUARD_SHIPS">Default number of guard ships:</string>
 
     <string name="SIGN_IN_QUESTION">Sign in to google games?</string>
     <string name="SIGN_IN_BENIFITS">This will allow to store high scores and medals</string>

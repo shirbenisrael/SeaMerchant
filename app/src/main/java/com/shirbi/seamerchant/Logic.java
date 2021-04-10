@@ -23,8 +23,10 @@ public class Logic {
     private static final int MIN_VALUE_FOR_MERCHANT = 4500;
     public static final int BANK_NIGHTLY_INTEREST = 10;
     public static final int BANK_NIGHTLY_INTEREST_WITH_MEDAL = 15;
+    private static final int DEFAULT_NUM_GUARDS = Sail.MAX_GUARD_SHIPS;
 
     private MainActivity mActivity;
+
     public Logic(MainActivity activity) {
         mActivity = activity;
 
@@ -79,6 +81,7 @@ public class Logic {
     public int mWinPiratesCountInOneDay;
     public int mWinPiratesCount;
     private int mNightProfitCount;
+    private int mDefaultNumGuards = DEFAULT_NUM_GUARDS;
     public boolean mSafeSail;
     public boolean mBdsTurkey;
     public boolean mBdsOlives;
@@ -776,6 +779,7 @@ public class Logic {
         editor.putLong(getString(R.string.mIslamicProfit), mIslamicProfit);
         editor.putInt(getString(R.string.mGreeceVisitCount), mGreeceVisitCount);
         editor.putInt(getString(R.string.mNightProfitCount), mNightProfitCount);
+        editor.putInt(getString(R.string.mDefaultNumGuards), mDefaultNumGuards);
         editor.putBoolean(getString(R.string.mBdsTurkey), mBdsTurkey);
         editor.putBoolean(getString(R.string.mBdsOlives), mBdsOlives);
         editor.putBoolean(getString(R.string.mAlwaysDeposit), mAlwaysDeposit);
@@ -886,6 +890,7 @@ public class Logic {
         mIslamicProfit = getLongOrInt(sharedPref, R.string.mIslamicProfit, 0);
         mGreeceVisitCount = sharedPref.getInt(getString(R.string.mGreeceVisitCount), 0);
         mNightProfitCount = sharedPref.getInt(getString(R.string.mNightProfitCount), 0);
+        mDefaultNumGuards = sharedPref.getInt(getString(R.string.mDefaultNumGuards), DEFAULT_NUM_GUARDS);
         mBdsTurkey = sharedPref.getBoolean(getString(R.string.mBdsTurkey), false);
         mBdsOlives = sharedPref.getBoolean(getString(R.string.mBdsOlives), false);
         mAlwaysSleepAtMidnight = sharedPref.getBoolean(getString(R.string.mAlwaysSleepAtMidnight), false);
@@ -1359,9 +1364,9 @@ public class Logic {
     }
 
     public float maxValuePartForGuards() {
-        int maxGuards = Sail.MAX_GUARD_SHIPS;
-        if (hasMedal(Medal.ALWAYS_FIGHTER)) {
-            maxGuards --;
+        int maxGuards = getDefaultNumGuards();
+        if (hasMedal(Medal.ALWAYS_FIGHTER) && maxGuards > 0) {
+            maxGuards--;
         }
 
         return Sail.DEFAULT_GUARD_COST_PERCENT * maxGuards / 100;
@@ -1374,5 +1379,13 @@ public class Logic {
 
     public boolean isFreeFixButtonVisible() {
         return (!mIsFreeFixUsed) && (!mActivity.mIsStartTutorialActive) && hasMedal(Medal.SAFE_SAIL);
+    }
+
+    public void setDefaultNumGuards(int numGuards) {
+        mDefaultNumGuards = numGuards;
+    }
+
+    public int getDefaultNumGuards() {
+        return mDefaultNumGuards;
     }
 }

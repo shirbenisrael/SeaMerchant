@@ -85,6 +85,8 @@ public class FrontEnd extends FrontEndGeneric {
 
         putObjectOnRelativeLayout(findViewById(R.id.fortune_teller_button) ,
                 0.33f, 0.33f, 0.66f, 0.66f, mFortuneTellerButtonContainerSize);
+
+        showDefaultGuardShips();
     }
 
     public void showInventory() {
@@ -958,5 +960,39 @@ public class FrontEnd extends FrontEndGeneric {
     public void setStartingTutorialButtonText() {
         String text = mActivity.mIsStartTutorialActive ? getString(R.string.END_TUTORIAL) : getString(R.string.START_TUTORIAL);
         ((Button)findViewById(R.id.start_tutorial_button)).setText(text);
+    }
+
+    public void setDefaultGuardShipClick(View view) {
+        TextView textView = (TextView)view;
+        int numGuards = Integer.parseInt(textView.getText().toString());
+        mLogic.setDefaultNumGuards(numGuards);
+        updateDefaultGuardShipButtonColor(numGuards);
+    }
+
+    private void updateDefaultGuardShipButtonColor(int numGuards) {
+        LinearLayout guardsLayout = findViewById(R.id.default_guards_layout);
+        for (int i = 1; i <= numGuards; i++) {
+            Button button = (Button) guardsLayout.getChildAt(i);
+            button.setBackgroundResource(R.drawable.guard_ship);
+        }
+        for (int i = numGuards + 1; i <= Sail.MAX_GUARD_SHIPS; i++) {
+            Button button = (Button) guardsLayout.getChildAt(i);
+            button.setBackgroundResource(R.drawable.guard_ship_gray);
+        }
+    }
+
+    private void showDefaultGuardShips() {
+        Sail sail = mLogic.mSail;
+
+        LinearLayout guardsLayout = findViewById(R.id.default_guards_layout);
+        for (int i = 1; i <= sail.MAX_GUARD_SHIPS; i++) {
+            Button button = (Button)guardsLayout.getChildAt(i);
+            button.setText(String.valueOf(i));
+        }
+        Button button = (Button)guardsLayout.getChildAt(0);
+        button.setText(String.valueOf(0));
+        button.setBackgroundResource(R.drawable.guard_ship_gray);
+
+        updateDefaultGuardShipButtonColor(mLogic.getDefaultNumGuards());
     }
 }

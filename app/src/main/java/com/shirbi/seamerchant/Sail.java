@@ -31,7 +31,6 @@ public class Sail {
     static final float WIND_GUARD_COST_PERCENT_MULTIPLY = 1.5f;
     static final int MAX_GUARD_SHIPS = 5;
     static final int MIN_GUARD_SHIP_COST = 50;
-    static final int DEFAULT_NUM_GUARDS = 0;
     static final int[] mChancesToWinPirates = {1, 51, 76, 88, 94, 97};
     static final int PERCENT_OF_WRONG_NAVIGATION_ON_WIND = 33;
     static final int PERCENT_OF_STORM_APPEAR = 33;
@@ -128,7 +127,7 @@ public class Sail {
         mBrokenShip = (logic.mDamage != 0);
         mTooLoaded = (mTotalLoad > logic.mCapacity);
 
-        selectNumGuardShips(DEFAULT_NUM_GUARDS);
+        selectNumGuardShips(Math.min(mMaxGuardShips, mLogic.getDefaultNumGuards()));
 
         mSailEndedPeacefully = true;
 
