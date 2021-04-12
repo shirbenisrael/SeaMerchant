@@ -16,6 +16,12 @@ public class Tutorial {
                 continue;
             }
 
+            // 1 hour for sell and maybe 1 more hour to buy first.
+            if (mLogic.getSailDuration(state) + mLogic.mCurrentHour + 1 +
+                    (mLogic.mIsMarketOperationTakesTime ? 1 : 0) > mLogic.SLEEP_TIME) {
+                continue;
+            }
+
             if (mLogic.mPriceTable.getPrice(state, goods) >
                     mLogic.mPriceTable.getPrice(bestState, goods)) {
                 bestState = state;
@@ -58,10 +64,7 @@ public class Tutorial {
             if (bestState != mLogic.mCurrentState) {
                 mGoodsToDeal = goods;
                 mStateToSail = bestState;
-
-                if (mLogic.canReachToDestinationBeforeSleepTime(bestState)) {
-                    return true;
-                }
+                return true;
             }
         }
 
