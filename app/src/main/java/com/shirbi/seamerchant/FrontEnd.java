@@ -928,9 +928,8 @@ public class FrontEnd extends FrontEndGeneric {
         final Runnable timerTick = new Runnable() {
             public void run() {
                 if (getCurrentVisibleWindow() != Window.MENU_WINDOW) {
-                    mPreviousMessageTask.cancel();
+                    cancelDelayedMessage();
                     showAlertDialogMessage(string, title);
-                    mPreviousMessageTask = null;
                 }
             }
         };
@@ -943,9 +942,7 @@ public class FrontEnd extends FrontEndGeneric {
             }
         });
 
-        if (mPreviousMessageTask != null) {
-            mPreviousMessageTask.cancel();
-        }
+        cancelDelayedMessage();
 
         mPreviousMessageTask = timerTask;
 
