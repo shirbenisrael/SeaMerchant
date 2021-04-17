@@ -1,7 +1,11 @@
 package com.shirbi.seamerchant;
 
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,11 +47,28 @@ public class FrontEndOpenWindow extends FrontEndGeneric {
     private int mIterator = 0;
     private TextView mTextView = findViewById(R.id.open_message);
 
+    private void putNewObjectOnScreen(Medal requiredMedal, @DrawableRes int resource, float locationX, float locationY) {
+        if (mLogic.hasMedal(requiredMedal)) {
+            RelativeLayout openScreenLayout = findViewById(R.id.open_screen_layout);
+            ImageView imageView = new ImageView(mActivity);
+            imageView.setImageResource(resource);
+            openScreenLayout.addView(imageView);
+            putObjectOnRelativeLayout(imageView, locationX, locationY, 0.2f, 0.2f, getWindowSize());
+            imageView.bringToFront();
+        }
+    }
+
     public void startAnimate() {
         mMessageNum = 0;
         mIterator = 0;
         startTimer();
         updateMessage();
+
+        putNewObjectOnScreen(Medal.TREASURE_5, R.drawable.cash, 0.1f, 0.0f);
+        putNewObjectOnScreen(Medal.FEDERAL_RESERVE, R.drawable.lock, 0.4f, 0.0f);
+        putNewObjectOnScreen(Medal.CAPACITY_3, R.drawable.capacity_icon, 0.7f, 0.0f);
+        putNewObjectOnScreen(Medal.EGYPT_WHEAT, R.drawable.wheat, 0.1f, 0.8f);
+        putNewObjectOnScreen(Medal.DIET_MERCHANT, R.drawable.olives, 0.7f, 0.8f);
     }
 
     private void updateMessage() {
