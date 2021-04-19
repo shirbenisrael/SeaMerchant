@@ -1011,6 +1011,10 @@ public class MainActivity extends Activity {
 
             mBackEndGoogleApi.unlockMedal(medal);
 
+            // it is important to store the medal now so if app is
+            // being killed somehow, the medal won't lose.
+            storeState();
+
             return true;
         } else {
             return false;
