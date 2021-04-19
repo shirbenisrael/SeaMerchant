@@ -69,6 +69,8 @@ public class FrontEndOpenWindow extends FrontEndGeneric {
         putNewObjectOnScreen(Medal.CAPACITY_3, R.drawable.capacity_icon, 0.7f, 0.0f);
         putNewObjectOnScreen(Medal.EGYPT_WHEAT, R.drawable.wheat, 0.1f, 0.8f);
         putNewObjectOnScreen(Medal.DIET_MERCHANT, R.drawable.olives, 0.7f, 0.8f);
+        putNewObjectOnScreen(Medal.ALWAYS_FIGHTER, R.drawable.guard_ship, 0.1f, 0.6f);
+        putNewObjectOnScreen(Medal.TITANIC, R.drawable.rock_icon, 0.7f, 0.6f);
     }
 
     private void updateMessage() {
