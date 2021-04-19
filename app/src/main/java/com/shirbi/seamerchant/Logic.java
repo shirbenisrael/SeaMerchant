@@ -12,6 +12,7 @@ public class Logic {
     protected static final int START_GAME_CASH = 5000;
     private static final int START_GAME_CASH_WITH_MEDAL = 10000;
     public static final int START_HOUR = 6;
+    public static final int START_DAMAGE = 0;
     private static final Weather START_WEATHER = Weather.GOOD_SAILING;
     private static final State START_STATE = State.ISRAEL;
     private static final State START_WEATHER_STATE = State.ISRAEL;
@@ -192,7 +193,7 @@ public class Logic {
         mCurrentState = START_STATE;
         mWeatherState = START_WEATHER_STATE;
         mWeather = START_WEATHER;
-        mDamage = 0;
+        mDamage = START_DAMAGE;
         mCapacity = hasMedal(Medal.CAPACITY_3) ? START_CAPACITY_WITH_MEDAL : START_CAPACITY;
         clearInventory();
         mIsBankOperationTakesTime = true;
