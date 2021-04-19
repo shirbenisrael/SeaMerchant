@@ -50,6 +50,10 @@ public class FrontEndFixShip  extends FrontEndGeneric {
         String operationTimeString = mLogic.isFixOperationTakesTime() ?
                 getString(R.string.OPERATION_ONE_HOUR) : getString(R.string.OPERATION_NO_TIME);
         ((TextView)findViewById(R.id.fix_operation_time)).setText(operationTimeString);
+
+        String damageString =
+                mActivity.getString(R.string.DAMAGED_SHIP, mDecimalFormat.format(mLogic.mDamage));
+        ((TextView)findViewById(R.id.current_damage)).setText(damageString);
     }
 
     public void fixAsPossible() {
