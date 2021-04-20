@@ -55,6 +55,9 @@ public class FrontEndOpenWindow extends FrontEndGeneric {
             openScreenLayout.addView(imageView);
             putObjectOnRelativeLayout(imageView, locationX, locationY, 0.2f, 0.2f, getWindowSize());
             imageView.bringToFront();
+
+            FrontEndInflater inflater = new FrontEndInflater(mActivity);
+            inflater.inflate(imageView);
         }
     }
 
