@@ -55,6 +55,11 @@ public class FrontEndGeneric {
         object.setLayoutParams(params);
     }
 
+    public void showErrorMessage(String message, String title) {
+        mActivity.playSound(R.raw.cannot);
+        showAlertDialogMessage(message, title);
+    }
+
     public void showAlertDialogMessage(String message, String title) {
         showAlertDialogMessage(message, title, R.drawable.boat_right);
     }

@@ -103,8 +103,7 @@ public class MainActivity extends Activity {
         }
 
         if (!mLogic.canGoToMarket()) {
-            playSound(R.raw.cannot);
-            mFrontEnd.showAlertDialogMessage(getString(R.string.MARKET_CLOSED),
+            mFrontEnd.showErrorMessage(getString(R.string.MARKET_CLOSED),
                     getString(R.string.MARKET_FORBIDDEN));
 
             mFrontEnd.blinkSleep();
@@ -203,8 +202,7 @@ public class MainActivity extends Activity {
         }
 
         if (mLogic.getSailDuration(destination) == -1) {
-            playSound(R.raw.cannot);
-            mFrontEnd.showAlertDialogMessage(getString(R.string.GREECE_IS_TOO_FAR),
+            mFrontEnd.showErrorMessage(getString(R.string.GREECE_IS_TOO_FAR),
                     getString(R.string.CANNOT_SAIL_TITLE));
             return;
         }
@@ -215,22 +213,19 @@ public class MainActivity extends Activity {
         }
 
         if (mLogic.getDayPart() == DayPart.NIGHT) {
-            playSound(R.raw.cannot);
-            mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_SAIL_AT_NIGHT),
+            mFrontEnd.showErrorMessage(getString(R.string.CANNOT_SAIL_AT_NIGHT),
                     getString(R.string.CANNOT_SAIL_TITLE));
             return;
         }
 
         if (mLogic.isDamagePreventSail()) {
-            playSound(R.raw.cannot);
-            mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_SAIL_WITH_HEAVY_DAMAGE),
+            mFrontEnd.showErrorMessage(getString(R.string.CANNOT_SAIL_WITH_HEAVY_DAMAGE),
                     getString(R.string.CANNOT_SAIL_TITLE));
             return;
         }
 
         if (!mLogic.canReachToDestinationBeforeSleepTime(destination)) {
-            playSound(R.raw.cannot);
-            mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_REACH_BEFORE_SLEEP_TIME),
+            mFrontEnd.showErrorMessage(getString(R.string.CANNOT_REACH_BEFORE_SLEEP_TIME),
                     getString(R.string.CANNOT_SAIL_TITLE));
             return;
         }
@@ -643,8 +638,7 @@ public class MainActivity extends Activity {
         }
 
         if (!mLogic.canGoToBank()) {
-            playSound(R.raw.cannot);
-            mFrontEnd.showAlertDialogMessage(getString(R.string.BANK_CLOSED),
+            mFrontEnd.showErrorMessage(getString(R.string.BANK_CLOSED),
                     getString(R.string.BANK_FORBIDDEN));
 
             mFrontEnd.blinkSleep();
@@ -715,8 +709,7 @@ public class MainActivity extends Activity {
     public void onFixButtonClick(View view) {
         if (mLogic.isShipBroken()) {
             if (!mLogic.isEnoughTimeForFixShip()) {
-                playSound(R.raw.cannot);
-                mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_FIX_AT_NIGHT),
+                mFrontEnd.showErrorMessage(getString(R.string.CANNOT_FIX_AT_NIGHT),
                         getString(R.string.CANNOT_FIX_TITLE));
                 return;
             }
@@ -731,8 +724,7 @@ public class MainActivity extends Activity {
             mFrontEnd.showWindow(Window.FIX_SHIP_WINDOW);
         } else {
             mFrontEnd.stopBlinks();
-            playSound(R.raw.cannot);
-            mFrontEnd.showAlertDialogMessage(getString(R.string.CANNOT_FIX_FIXED_SHIP),
+            mFrontEnd.showErrorMessage(getString(R.string.CANNOT_FIX_FIXED_SHIP),
                     getString(R.string.CANNOT_FIX_TITLE));
         }
     }
