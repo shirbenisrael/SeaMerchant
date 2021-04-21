@@ -65,6 +65,10 @@ public class FrontEndGeneric {
     }
 
     public void showAlertDialogMessage(String message, String title, int icon) {
+        if(mActivity.isFinishing()) {
+          return;
+        }
+
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
 
         builder.setTitle(title);
