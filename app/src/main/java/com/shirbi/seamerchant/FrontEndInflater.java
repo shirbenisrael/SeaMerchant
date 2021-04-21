@@ -13,6 +13,7 @@ public class FrontEndInflater extends FrontEndGeneric {
 
     static final int MAX_FRAMES = 25;
     static final int FRAME_DURATION_MILLISECONDS = 100;
+    static final int MAX_DELAY_MILLISECONDS = 35000;
 
     private Timer mTimer;
     private TimerTask mTimerTask;
@@ -34,7 +35,7 @@ public class FrontEndInflater extends FrontEndGeneric {
             }
         });
         mIsFadeOut = false;
-        mTimer.schedule(mTimerTask, mLogic.generateRandom(8000), FRAME_DURATION_MILLISECONDS);
+        mTimer.schedule(mTimerTask, mLogic.generateRandom(MAX_DELAY_MILLISECONDS), FRAME_DURATION_MILLISECONDS);
         mImageView.setAlpha(0.0f);
     }
 

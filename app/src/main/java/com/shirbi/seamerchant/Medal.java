@@ -1,5 +1,6 @@
 package com.shirbi.seamerchant;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
 public enum Medal {
@@ -314,5 +315,54 @@ public enum Medal {
                 return R.string.achievement_medal_34;
         }
         throw new IllegalStateException("Unexpected value: " + this);
+    }
+
+    public @DrawableRes int getIcon() {
+        switch (this) {
+            case TREASURE_1:
+            case TREASURE_2:
+            case TREASURE_3:
+            case TREASURE_4:
+            case TREASURE_5:
+            case DOUBLE_SAIL:
+            case GOOD_DAY_1:
+            case GOOD_DAY_2:
+            case GOOD_DAY_3:
+            case FAST_EXIT:
+                return R.drawable.cash;
+            case IRON_BANK:
+            case FEDERAL_RESERVE:
+                return R.drawable.lock;
+            case CAPACITY_1:
+            case CAPACITY_2:
+            case CAPACITY_3:
+                return R.drawable.capacity_icon;
+            case EGYPT_WHEAT:
+                return R.drawable.wheat;
+            case DIET_MERCHANT:
+                return R.drawable.olives;
+            case ALL_GOODS:
+                return R.drawable.copper;
+            case BDS_TURKEY:
+                return R.drawable.flag_turkey;
+            case ISLAMIC_STATE:
+                return R.drawable.flag_egypt;
+            case GREECE_VISITOR:
+                return R.drawable.flag_greece;
+            case AROUND_THE_WORLD:
+                return R.drawable.flag_israel;
+            case YOUNG_FIGHTER:
+            case TIRED_FIGHTER:
+            case ALWAYS_FIGHTER:
+                return R.drawable.guard_ship;
+            case TITANIC:
+                return R.drawable.rock_icon;
+            case WIND:
+                return R.drawable.wind_icon;
+            case ESCAPE:
+                return R.drawable.pirates_icon;
+        }
+
+        return 0;
     }
 }

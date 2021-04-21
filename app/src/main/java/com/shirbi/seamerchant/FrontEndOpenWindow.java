@@ -47,14 +47,15 @@ public class FrontEndOpenWindow extends FrontEndGeneric {
     private int mIterator = 0;
     private TextView mTextView = findViewById(R.id.open_message);
 
-    private void putNewObjectOnScreen(Medal requiredMedal, @DrawableRes int resource, float locationX, float locationY) {
-        if (mLogic.hasMedal(requiredMedal)) {
+    private void putNewObjectOnScreen(Medal requiredMedal, @DrawableRes int resource) {
+        if (mLogic.hasMedal(requiredMedal) && (resource != 0)) {
             RelativeLayout openScreenLayout = findViewById(R.id.open_screen_layout);
             ImageView imageView = new ImageView(mActivity);
             imageView.setImageResource(resource);
-            openScreenLayout.addView(imageView);
+            openScreenLayout.addView(imageView, 0);
+            float locationX = 0.1f + mLogic.generateFloat() * 0.8f;
+            float locationY = 0.1f + mLogic.generateFloat() * 0.8f;
             putObjectOnRelativeLayout(imageView, locationX, locationY, 0.2f, 0.2f, getWindowSize());
-            imageView.bringToFront();
 
             FrontEndInflater inflater = new FrontEndInflater(mActivity);
             inflater.inflate(imageView);
@@ -67,13 +68,9 @@ public class FrontEndOpenWindow extends FrontEndGeneric {
         startTimer();
         updateMessage();
 
-        putNewObjectOnScreen(Medal.TREASURE_5, R.drawable.cash, 0.1f, 0.0f);
-        putNewObjectOnScreen(Medal.FEDERAL_RESERVE, R.drawable.lock, 0.4f, 0.0f);
-        putNewObjectOnScreen(Medal.CAPACITY_3, R.drawable.capacity_icon, 0.7f, 0.0f);
-        putNewObjectOnScreen(Medal.EGYPT_WHEAT, R.drawable.wheat, 0.1f, 0.8f);
-        putNewObjectOnScreen(Medal.DIET_MERCHANT, R.drawable.olives, 0.7f, 0.8f);
-        putNewObjectOnScreen(Medal.ALWAYS_FIGHTER, R.drawable.guard_ship, 0.1f, 0.6f);
-        putNewObjectOnScreen(Medal.TITANIC, R.drawable.rock_icon, 0.7f, 0.6f);
+        for (Medal medal : Medal.values()) {
+            putNewObjectOnScreen(medal, medal.getIcon());
+        }
     }
 
     private void updateMessage() {

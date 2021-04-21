@@ -178,6 +178,10 @@ public class Logic {
         return Math.abs(mRand.nextLong()) % Math.max(1, bound);
     }
 
+    public float generateFloat() {
+        return mRand.nextFloat();
+    }
+
     public void clearInventory() {
         for (int i = 0 ; i < mInventory.length ; i++) {
             mInventory[i] = 0;
