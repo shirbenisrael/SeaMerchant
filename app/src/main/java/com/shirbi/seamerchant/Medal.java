@@ -363,6 +363,6 @@ public enum Medal {
                 return R.drawable.pirates_icon;
         }
 
-        return 0;
+        return (getValue() % 2 == 0) ? R.drawable.boat_right : R.drawable.boat_left;
     }
 }
