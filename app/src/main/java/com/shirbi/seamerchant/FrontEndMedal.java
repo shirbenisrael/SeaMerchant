@@ -4,9 +4,13 @@ import android.graphics.Point;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
 
 public class FrontEndMedal extends FrontEndGeneric {
     public FrontEndMedal(MainActivity activity) {
@@ -72,6 +76,21 @@ public class FrontEndMedal extends FrontEndGeneric {
         showAlertDialogMessage(message, getString(medal.getTitle()), R.drawable.medal);
     }
 
+    private void putNewObjectOnScreen(Medal medal) {
+        @DrawableRes int resource = medal.getIcon();
+
+        RelativeLayout medalScreenLayout = findViewById(R.id.new_medal_layout);
+        ImageView imageView = new ImageView(mActivity);
+        imageView.setImageResource(resource);
+        medalScreenLayout.addView(imageView, 0);
+        float locationX = 0.1f + mLogic.generateFloat() * 0.8f;
+        float locationY = 0.1f + mLogic.generateFloat() * 0.8f;
+        putObjectOnRelativeLayout(imageView, locationX, locationY, 0.2f, 0.2f, getWindowSize());
+
+        FrontEndInflater inflater = new FrontEndInflater(mActivity, 25, 40, 5000);
+        inflater.inflate(imageView);
+    }
+
     public void showNewMedal(Medal medal) {
         TextView title = findViewById(R.id.medal_title);
         title.setText(getString(medal.getTitle()));
@@ -86,6 +105,10 @@ public class FrontEndMedal extends FrontEndGeneric {
         bonus.setText(bonusString);
 
         setMedalIcon(medal);
+
+        for (int i = 0; i < 40; i++) {
+            putNewObjectOnScreen(medal);
+        }
     }
 
     public void setMedalIcon(Medal medal) {
