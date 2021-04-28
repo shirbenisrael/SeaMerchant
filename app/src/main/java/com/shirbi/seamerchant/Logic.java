@@ -74,6 +74,7 @@ public class Logic {
     public boolean mIsFreeFixUsed;
     private boolean mIsMedalAchieved[] = new boolean[Medal.values().length];
     private boolean mStatesVisitedToday[] = new boolean[State.values().length];
+    private long mMedalTimestamp[] = new long[Medal.values().length];
     private int mGreeceVisitCount;
     public long mIslamicProfit;
     public int mEscapeCountInOneDay;
@@ -832,6 +833,12 @@ public class Logic {
         editor.putString(getString(R.string.mIsMedalAchieved), str.toString());
 
         str = new StringBuilder();
+        for (Medal medal : Medal.values()) {
+            str.append(mMedalTimestamp[medal.getValue()]).append(",");
+        }
+        editor.putString(getString(R.string.mMedalTimestamp), str.toString());
+
+        str = new StringBuilder();
         for (boolean bool : mStatesVisitedToday) {
             str.append(bool).append(",");
         }
@@ -854,6 +861,14 @@ public class Logic {
                 mIsMedalAchieved[medal.getValue()] = Boolean.parseBoolean(st.nextToken());
             } else {
                 mIsMedalAchieved[medal.getValue()] = false;
+            }
+        }
+
+        savedString = sharedPref.getString(getString(R.string.mMedalTimestamp), "");
+        st = new StringTokenizer(savedString, ",");
+        for (Medal medal : Medal.values()) {
+            if (st.hasMoreTokens()){
+                mMedalTimestamp[medal.getValue()] = Long.parseLong(st.nextToken());
             }
         }
 
@@ -971,8 +986,13 @@ public class Logic {
         return medal;
     }
 
-    public void restoreMedal(Medal medal) {
+    public void restoreMedal(Medal medal, long timestamp) {
         mIsMedalAchieved[medal.getValue()] = true;
+        mMedalTimestamp[medal.getValue()] = timestamp;
+    }
+
+    public long getMedalTimeStamp(Medal medal) {
+        return mMedalTimestamp[medal.getValue()];
     }
 
     private Medal whichMedalShouldAcquire() {

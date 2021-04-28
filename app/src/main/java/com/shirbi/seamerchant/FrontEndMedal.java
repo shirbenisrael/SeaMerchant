@@ -1,6 +1,7 @@
 package com.shirbi.seamerchant;
 
 import android.graphics.Point;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
+
+import java.util.Calendar;
+import java.util.Locale;
 
 public class FrontEndMedal extends FrontEndGeneric {
     public FrontEndMedal(MainActivity activity) {
@@ -72,6 +76,13 @@ public class FrontEndMedal extends FrontEndGeneric {
         } else {
             String bonus = getString(medalBonusId);
             message = mActivity.getString(R.string.MEDAL_WITH_BONUS, condition, bonus);
+        }
+
+        if (mLogic.getMedalTimeStamp(medal) > 0) {
+            Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+            cal.setTimeInMillis(mLogic.getMedalTimeStamp(medal));
+            String date = mActivity.getString(R.string.MEDAL_TIME, DateFormat.format("dd.MM.yyyy", cal).toString());
+            message = message + " - " + date;
         }
         showAlertDialogMessage(message, getString(medal.getTitle()), R.drawable.medal);
     }

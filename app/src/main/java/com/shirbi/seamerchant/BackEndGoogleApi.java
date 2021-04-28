@@ -239,8 +239,10 @@ public class BackEndGoogleApi {
                         if (unlocked) {
                             // This can happen when reinstall the app - restore the medal from google games.
                             if (!mLogic.hasMedal(medal)) {
-                                mLogic.restoreMedal(medal);
+                                mLogic.restoreMedal(medal, ach.getLastUpdatedTimestamp());
                                 mActivity.mFrontEndMedal.setMedalIcon(medal);
+                            } else {
+                                mLogic.restoreMedal(medal, ach.getLastUpdatedTimestamp());
                             }
                         } else {
                             // This can happen if didn't have internet connection when achieved the medal.

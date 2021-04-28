@@ -186,6 +186,8 @@
 
     <string name="MEDAL_WITH_BONUS">%1$s. בונוס: %2$s</string>
     <string name="ONLY_BONUS">בונוס: %1$s</string>
+    <string name="MEDAL_TIME">הושגה בתאריך: %1$s</string>
+
     <string name="ALL_GOODS_CONDITION">בהפלגה אחת העבר את כל סוגי הסחורות ברווח</string>
     <string name="CYPRUS">קפריסין</string>
     <string name="OLIVES">זיתים</string>

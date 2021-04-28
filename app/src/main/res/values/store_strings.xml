@@ -19,6 +19,7 @@
     <string name="mIsSoundEnable" translatable="false">mIsSoundEnable</string>
     <string name="mIsGoogleSignIn" translatable="false">mIsGoogleSignIn</string>
     <string name="mIsMedalAchieved" translatable="false">mIsMedalAchieved</string>
+    <string name="mMedalTimestamp" translatable="false">mMedalTimestamp</string>
     <string name="mStatesVisitedToday" translatable="false">mStatesVisitedToday</string>
     <string name="mEscapeCountInOneDay" translatable="false">mEscapeCountInOneDay</string>
     <string name="mCompromiseWithCrewCount" translatable="false">mCompromiseWithCrewCount</string>
