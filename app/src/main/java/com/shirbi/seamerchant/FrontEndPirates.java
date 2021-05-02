@@ -92,6 +92,7 @@ public class FrontEndPirates extends FrontEndGeneric {
             findViewById(R.id.capture_or_rob_pirates).setVisibility(View.VISIBLE);
 
             findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.capture_or_rob);
+            findViewById(R.id.battle_damage).setVisibility(View.GONE);
             return;
         } else {
             hideSelectWinPrizeButtons();
