@@ -481,6 +481,16 @@ public class MainActivity extends Activity {
         }
     }
 
+    public void onCapturePiratesClick(View view) {
+        mLogic.mSail.calculateCapturePiratesPrize();
+        mFrontEndPirates.showCapturePrize();
+    }
+
+    public void onRobPiratesClick(View view) {
+        mLogic.mSail.calculateRobPiratesPrize();
+        mFrontEndPirates.showRobPrize();
+    }
+
     public void onAttackClick(View view) {
         playSound(R.raw.battle);
 

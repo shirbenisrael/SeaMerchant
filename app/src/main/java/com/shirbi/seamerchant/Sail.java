@@ -42,6 +42,7 @@ public class Sail {
     public enum BattleResult {
         WIN_AND_CAPTURE,
         WIN_AND_TREASURE,
+        WIN_AND_DECIDE_WHAT_TO_GET,
         LOSE
     }
 
@@ -302,6 +303,18 @@ public class Sail {
         return isPirateAppear;
     }
 
+    public void calculateCapturePiratesPrize() {
+        mBattleResult = BattleResult.WIN_AND_CAPTURE;
+        mPiratesCapacity = mLogic.generateRandom(mLogic.mCapacity / 25) * 25 + 25;
+        mLogic.mCapacity += mPiratesCapacity;
+    }
+
+    public void calculateRobPiratesPrize() {
+        mBattleResult = BattleResult.WIN_AND_TREASURE;
+        mPiratesTreasure = 1 + mLogic.generateRandom(mValueOnShip + mLogic.mBankDeposit) / 3;
+        mLogic.mCash += mPiratesTreasure;
+    }
+
     public void calculateBattleResult() {
         mPiratesDamage = 0;
 
@@ -340,14 +353,14 @@ public class Sail {
         mLogic.mWinPiratesCountInOneDay++;
         mLogic.mWinPiratesCount++;
 
-        if (isWinCapturePirates()) {
-            mBattleResult = BattleResult.WIN_AND_CAPTURE;
-            mPiratesCapacity = mLogic.generateRandom(mLogic.mCapacity / 25) * 25 + 25;
-            mLogic.mCapacity += mPiratesCapacity;
+        if (mLogic.canSelectAttackPiratesPrize()) {
+            mBattleResult = BattleResult.WIN_AND_DECIDE_WHAT_TO_GET;
         } else {
-            mBattleResult = BattleResult.WIN_AND_TREASURE;
-            mPiratesTreasure = 1 + mLogic.generateRandom(mValueOnShip + mLogic.mBankDeposit) / 3;
-            mLogic.mCash += mPiratesTreasure;
+            if (isWinCapturePirates()) {
+                calculateCapturePiratesPrize();
+            } else {
+                calculateRobPiratesPrize();
+            }
         }
 
         if (mRand.nextInt(6) >= mSelectedNumGuardShips) {

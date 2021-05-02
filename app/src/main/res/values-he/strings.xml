@@ -57,6 +57,7 @@
     <string name="PIRATES_MUST_ATTACK">אין ברירה אלא לתקוף אותם!</string>
     <string name="PIRATES_REFUSE_OFFER">הפיראטים מסרבים להצעתך!</string>
     <string name="WIN_THE_BATTLE">ניצחת בקרב!</string>
+    <string name="SELECT_WIN_PRIZE">באפשרותך ללכוד את הספינה כדי להגדיל את הקיבולת או לשדוד אותה ולמצוא עליה אוצר</string>
     <string name="WIN_TREASURE">מצאת על ספינת הפיראטים אוצר בשווי %1$s ש\"ח</string>
     <string name="WIN_WITH_DAMAGE">לרוע המזל, במהלך הקרב נגרם לספינתך נזק בשווי %1$s ש\"ח</string>
     <string name="LOSE_BATTLE_AND_CASH">הפיראטים ניצחו בקרב ושדדו %1$s ש\"ח</string>
@@ -67,6 +68,8 @@
     <string name="NUM_GUARDS_AGAINST_PIRATES">יש לך %1$d ספינות משמר.</string>
     <string name="PIRATES_CHANCES_WIN_ESCAPE">הסיכוי לניצחון הוא %1$d%% והסיכוי לבריחה הוא %2$d%%.</string>
     <string name="PIRATES_TIP">טיפ: ניצחון ילווה בפרס. הפסד יהיה כואב</string>
+    <string name="CAPTURE">ללכוד</string>
+    <string name="ROB">לשדוד</string>
     <string name="ATTACK">להתקיף</string>
     <string name="ESCAPE">לברוח</string>
     <string name="ESCAPE_DONE">הצלחת לברוח מהם.</string>

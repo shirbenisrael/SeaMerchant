@@ -1413,4 +1413,8 @@ public class Logic {
     public int getDefaultNumGuards() {
         return mDefaultNumGuards;
     }
+
+    public boolean canSelectAttackPiratesPrize() {
+        return false; // TODO: Do this according a new medal.
+    }
 }

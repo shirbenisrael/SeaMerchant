@@ -38,12 +38,49 @@
         android:text="" />
 
     <Button
+        android:id="@+id/attack_pirates_done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/yes_button"
         android:gravity="center_horizontal"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:onClick="onBattleWinDoneClick" />
+
+    <LinearLayout
+        android:id="@+id/capture_or_rob_pirates"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <include layout="@layout/empty_horizontal_text" />
+
+        <Button
+            android:id="@+id/capture_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:onClick="onCapturePiratesClick"
+            android:text="@string/CAPTURE"/>
+
+        <include layout="@layout/empty_horizontal_text" />
+
+        <Button
+            android:id="@+id/rob_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:onClick="onRobPiratesClick"
+            android:text="@string/ROB"/>
+
+        <include layout="@layout/empty_horizontal_text" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"

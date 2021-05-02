@@ -38,22 +38,39 @@ public class FrontEndPirates extends FrontEndGeneric {
         findViewById(R.id.pirates_tip).setVisibility(View.INVISIBLE);
     }
 
-    public void showWinPiratesMessage() {
+    public void showCapturePrize() {
+        showCapturePrizeMessage();
+        showWinDamageResult();
+        hideSelectWinPrizeButtons();
+    }
+
+    public void showRobPrize() {
+        showRobPrizeMessage();
+        showWinDamageResult();
+        hideSelectWinPrizeButtons();
+    }
+
+    private void hideSelectWinPrizeButtons() {
+        findViewById(R.id.attack_pirates_done).setVisibility(View.VISIBLE);
+        findViewById(R.id.capture_or_rob_pirates).setVisibility(View.GONE);
+    }
+
+    private void showCapturePrizeMessage() {
+        String result = mActivity.getString(R.string.WIN_CAPACITY, mDecimalFormat.format(mLogic.mSail.mPiratesCapacity));
+        ((TextView) findViewById(R.id.battle_result)).setText(result);
+
+        findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.capture);
+    }
+
+    private void showRobPrizeMessage() {
+        String result = mActivity.getString(R.string.WIN_TREASURE, mDecimalFormat.format(mLogic.mSail.mPiratesTreasure));
+        ((TextView) findViewById(R.id.battle_result)).setText(result);
+
+        findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.treasure);
+    }
+
+    public void showWinDamageResult() {
         Sail sail = mLogic.mSail;
-
-        ((TextView) findViewById(R.id.battle_result_title)).setText(R.string.WIN_THE_BATTLE);
-
-        if (sail.mBattleResult == Sail.BattleResult.WIN_AND_CAPTURE) {
-            String result = mActivity.getString(R.string.WIN_CAPACITY, mDecimalFormat.format(sail.mPiratesCapacity));
-            ((TextView) findViewById(R.id.battle_result)).setText(result);
-
-            findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.capture);
-        } else {
-            String result = mActivity.getString(R.string.WIN_TREASURE, mDecimalFormat.format(sail.mPiratesTreasure));
-            ((TextView) findViewById(R.id.battle_result)).setText(result);
-
-            findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.treasure);
-        }
 
         if (sail.mPiratesDamage > 0) {
             String damage = mActivity.getString(R.string.WIN_WITH_DAMAGE, mDecimalFormat.format(sail.mPiratesDamage));
@@ -62,7 +79,31 @@ public class FrontEndPirates extends FrontEndGeneric {
         } else {
             findViewById(R.id.battle_damage).setVisibility(View.GONE);
         }
+    }
 
+    public void showWinPiratesMessage() {
+        Sail sail = mLogic.mSail;
+
+        ((TextView) findViewById(R.id.battle_result_title)).setText(R.string.WIN_THE_BATTLE);
+
+        if (mLogic.canSelectAttackPiratesPrize()) {
+            ((TextView) findViewById(R.id.battle_result)).setText(R.string.SELECT_WIN_PRIZE);
+            findViewById(R.id.attack_pirates_done).setVisibility(View.GONE);
+            findViewById(R.id.capture_or_rob_pirates).setVisibility(View.VISIBLE);
+
+            findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.capture_or_rob);
+            return;
+        } else {
+            hideSelectWinPrizeButtons();
+        }
+
+        if (sail.mBattleResult == Sail.BattleResult.WIN_AND_CAPTURE) {
+            showCapturePrizeMessage();
+        } else {
+            showRobPrizeMessage();
+        }
+
+        showWinDamageResult();
     }
 
     public void showLoseToPiratesMessage() {
