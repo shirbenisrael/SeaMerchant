@@ -77,6 +77,7 @@ public class Logic {
     private long mMedalTimestamp[] = new long[Medal.values().length];
     private int mGreeceVisitCount;
     public long mIslamicProfit;
+    public long mPirateCapacity;
     public int mEscapeCountInOneDay;
     public int mCompromiseWithCrewCount;
     public int mWrongNavigationCountInOneDay;
@@ -211,6 +212,7 @@ public class Logic {
         }
 
         mIslamicProfit = 0;
+        mPirateCapacity = 0;
         mEscapeCountInOneDay = 0;
         mCompromiseWithCrewCount = 0;
         mWrongNavigationCountInOneDay = 0;
@@ -783,6 +785,7 @@ public class Logic {
         editor.putInt(getString(R.string.mWinPiratesCount), mWinPiratesCount);
         editor.putLong(getString(R.string.mValueAtStartOfDay), mValueAtStartOfDay);
         editor.putLong(getString(R.string.mIslamicProfit), mIslamicProfit);
+        editor.putLong(getString(R.string.mPirateCapacity), mPirateCapacity);
         editor.putInt(getString(R.string.mGreeceVisitCount), mGreeceVisitCount);
         editor.putInt(getString(R.string.mNightProfitCount), mNightProfitCount);
         editor.putInt(getString(R.string.mDefaultNumGuards), mDefaultNumGuards);
@@ -908,6 +911,7 @@ public class Logic {
         mWinPiratesCount = sharedPref.getInt(getString(R.string.mWinPiratesCount), -10000);
         mValueAtStartOfDay = getLongOrInt(sharedPref, R.string.mValueAtStartOfDay, -10000);
         mIslamicProfit = getLongOrInt(sharedPref, R.string.mIslamicProfit, 0);
+        mPirateCapacity = getLongOrInt(sharedPref, R.string.mPirateCapacity, 0);
         mGreeceVisitCount = sharedPref.getInt(getString(R.string.mGreeceVisitCount), 0);
         mNightProfitCount = sharedPref.getInt(getString(R.string.mNightProfitCount), 0);
         mDefaultNumGuards = sharedPref.getInt(getString(R.string.mDefaultNumGuards), DEFAULT_NUM_GUARDS);
@@ -1151,6 +1155,10 @@ public class Logic {
             return Medal.ISLAMIC_STATE;
         }
 
+        if (!hasMedal(Medal.PIRATE_FLEET) && mPirateCapacity >= 10000) {
+            return Medal.PIRATE_FLEET;
+        }
+
         return null;
     }
 
@@ -1210,6 +1218,8 @@ public class Logic {
                 return (float)totalValue / 10000000f;
             case ISLAMIC_STATE:
                 return (float)mIslamicProfit / 5000000f;
+            case PIRATE_FLEET:
+                return (float)mPirateCapacity / 10000f;
             default:
                 return 0f;
         }
@@ -1415,6 +1425,6 @@ public class Logic {
     }
 
     public boolean canSelectAttackPiratesPrize() {
-        return false; // TODO: Do this according a new medal.
+        return hasMedal(Medal.PIRATE_FLEET);
     }
 }

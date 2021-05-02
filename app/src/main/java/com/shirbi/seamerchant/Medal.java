@@ -38,7 +38,8 @@ public enum Medal {
     FOG_OF_WAR(31), // encounter two pirates and one fog in one sail
     NIGHT_MERCHANT(32), // profit in each night and value of 10,000,000
     SAFE_SAIL(33), // no damage at sail and value of 10,000,000
-    ISLAMIC_STATE(34); // profit of 5,000,000 between Egypt and Turkey
+    ISLAMIC_STATE(34), // profit of 5,000,000 between Egypt and Turkey
+    PIRATE_FLEET(35); // capture 3000 tonne of capacity from pirates
 
     private final int value;
     Medal(int value){
@@ -121,6 +122,8 @@ public enum Medal {
                 return R.string.SAFE_SAIL_TITLE;
             case ISLAMIC_STATE:
                 return R.string.ISLAMIC_STATE_TITLE;
+            case PIRATE_FLEET:
+                return R.string.PIRATE_FLEET_TITLE;
         }
         throw new IllegalStateException("Unexpected value: " + this);
     }
@@ -197,6 +200,8 @@ public enum Medal {
                 return R.string.SAFE_SAIL_CONDITION;
             case ISLAMIC_STATE:
                 return R.string.ISLAMIC_STATE_CONDITION;
+            case PIRATE_FLEET:
+                return R.string.PIRATE_FLEET_CONDITION;
         }
         throw new IllegalStateException("Unexpected value: " + this);
     }
@@ -235,6 +240,8 @@ public enum Medal {
                 return R.string.SAFE_SAIL_BONUS;
             case ISLAMIC_STATE:
                 return R.string.ISLAMIC_STATE_BONUS;
+            case PIRATE_FLEET:
+                return R.string.PIRATE_FLEET_BONUS;
             default:
                 return 0;
         }
@@ -313,6 +320,8 @@ public enum Medal {
                 return R.string.achievement_medal_33;
             case ISLAMIC_STATE:
                 return R.string.achievement_medal_34;
+            case PIRATE_FLEET:
+                return R.string.achievement_medal_35;
         }
         throw new IllegalStateException("Unexpected value: " + this);
     }
@@ -354,6 +363,7 @@ public enum Medal {
             case YOUNG_FIGHTER:
             case TIRED_FIGHTER:
             case ALWAYS_FIGHTER:
+            case PIRATE_FLEET:
                 return R.drawable.guard_ship;
             case TITANIC:
                 return R.drawable.rock_icon;

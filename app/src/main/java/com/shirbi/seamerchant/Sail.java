@@ -307,6 +307,7 @@ public class Sail {
         mBattleResult = BattleResult.WIN_AND_CAPTURE;
         mPiratesCapacity = mLogic.generateRandom(mLogic.mCapacity / 25) * 25 + 25;
         mLogic.mCapacity += mPiratesCapacity;
+        mLogic.mPirateCapacity += mPiratesCapacity;
     }
 
     public void calculateRobPiratesPrize() {

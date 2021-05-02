@@ -35,6 +35,7 @@
     <string name="NIGHT_MERCHANT_TITLE">סוחר לילה</string>
     <string name="SAFE_SAIL_TITLE">הפלגה זהירה</string>
     <string name="ISLAMIC_STATE_TITLE">המדינה האיסלאמית</string>
+    <string name="PIRATE_FLEET_TITLE">צי הפיראטים</string>
 
     <string name="TREASURE_1_CONDITION">השג 10,000 ש"ח במזומן</string>
     <string name="TREASURE_2_CONDITION">השג 100,000 ש"ח במזומן</string>
@@ -70,6 +71,7 @@
     <string name="NIGHT_MERCHANT_CONDITION">הרווח משמירת סחורה בכל הלילות והשג עשרה מליון ש\"ח</string>
     <string name="SAFE_SAIL_CONDITION">השג עשרה מליון ש\"ח בלי לספוג נזק בהפלגה</string>
     <string name="ISLAMIC_STATE_CONDITION">הרווח 5 מליון ש\"ח ממסחר ישיר בין תורכיה ומצרים</string>
+    <string name="PIRATE_FLEET_CONDITION">הגדלת הקיבולת ב 10,000 טון מהפיראטים</string>
 
     <string name="TREASURE_5_BONUS">התחל את המשחק עם 10,000 ש\"ח</string>
     <string name="CAPACITY_3_BONUS">התחל את המשחק עם קיבולת של 200 טון</string>
@@ -87,4 +89,5 @@
     <string name="FOG_OF_WAR_BONUS">בחירת יעד חדש כשנתקלים בערפל</string>
     <string name="SAFE_SAIL_BONUS">תיקון ספינה אחד מושלם בחינם במשחק</string>
     <string name="ISLAMIC_STATE_BONUS">המסע בין תורכיה ובין מצרים יתקצר ל 5 שעות</string>
+    <string name="PIRATE_FLEET_BONUS">אפשר לבחור את הפרס בניצחון על פיראטים - קיבולת או אוצר</string>
 </resources>

@@ -30,6 +30,7 @@
     <string name="mBdsOlives" translatable="false">mBdsOlives</string>
     <string name="mValueAtStartOfDay" translatable="false">mValueAtStartOfDay</string>
     <string name="mIslamicProfit" translatable="false">mIslamicProfit</string>
+    <string name="mPirateCapacity" translatable="false">mPirateCapacity</string>
     <string name="mGreeceVisitCount" translatable="false">mGreeceVisitCount</string>
     <string name="mNightProfitCount" translatable="false">mNightProfitCount</string>
     <string name="mDefaultNumGuards" translatable="false">mDefaultNumGuards</string>
