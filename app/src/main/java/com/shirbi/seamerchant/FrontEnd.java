@@ -842,7 +842,8 @@ public class FrontEnd extends FrontEndGeneric {
         long profit = (destinationPrice - sourcePrice) * maxUnits;
 
         String calculatorString =
-                "(" + destinationPrice + "-" + sourcePrice + ")X" + maxUnits + "=" + profit;
+                "(" + mDecimalFormat.format(destinationPrice )+ "-" + mDecimalFormat.format(sourcePrice) + ")X" +
+                        mDecimalFormat.format(maxUnits) + "=" + mDecimalFormat.format(profit);
         ((TextView)findViewById(R.id.calculator)).setText(calculatorString);
     }
 
