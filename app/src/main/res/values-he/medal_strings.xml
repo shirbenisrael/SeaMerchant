@@ -64,7 +64,7 @@
     <string name="FEDERAL_RESERVE_CONDITION">בכל אחד מששת הלילות, הפקד בבנק לפחות 90% מרכושך והרווח מליון ש\"ח בסוף המשחק</string>
     <string name="FAST_EXIT_CONDITION">הרווח מליון ש\"ח לפני סוף יום שלישי</string>
     <string name="DIET_MERCHANT_CONDITION">הרווח מליון ש\"ח בלי לסחור בזיתים</string>
-    <string name="HERO_DIE_CONDITION">ספוג נזק של 2 מליון ש\"ח בקרב בו ניצחתך את הפיראטים</string>
+    <string name="HERO_DIE_CONDITION">ספוג נזק של 2 מליון ש\"ח בקרב בו ניצחת את הפיראטים</string>
     <string name="GERMAN_TIME_CONDITION">סיים את כל ימי המסחר בדיוק בחצות והרווח מליון ש\"ח</string>
     <string name="ECONOMICAL_SAIL_CONDITION">הרווח 2 מליון ש\"ח ללא הפלגה בה מרבית רכושך הוא במזומן</string>
     <string name="FOG_OF_WAR_CONDITION">פגוש שתי ספינות שודדים וערפל אחד בהפלגה אחת</string>
