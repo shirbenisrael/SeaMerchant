@@ -1,5 +1,6 @@
 package com.shirbi.seamerchant;
 
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -71,6 +72,9 @@ public class FrontEndInflater extends FrontEndGeneric {
             if (mCurrentFrameNumber >= mMaxFrames) {
                 if (mIsFadeOut) {
                     stopTimer();
+                    if (mImageView.getParent() != null) {
+                        ((ViewGroup)mImageView.getParent()).removeView(mImageView);
+                    }
                 } else {
                     mIsFadeOut = true;
                     mCurrentFrameNumber = 0;
