@@ -1432,6 +1432,6 @@ public class Logic {
     }
 
     public boolean canSelectAttackPiratesPrize() {
-        return hasMedal(Medal.PIRATE_FLEET);
+        return hasMedal(Medal.PIRATE_FLEET) && (!mActivity.mIsStartTutorialActive);
     }
 }
