@@ -23,6 +23,11 @@ public class FrontEndSail extends FrontEndGeneric {
     private int mProgress;
     private @IdRes int mImageToAnimate;
     private boolean mRealSail;
+    private float mCurrentShipSize = SHIP_SIZE_BEFORE_SAIL;
+
+    private static final float SHIP_SIZE_BEFORE_SAIL = 0.10f;
+    private static final float SHIP_SIZE_IN_SAIL = 0.05f;
+    private static final float CIRCLE_SIZE_BEFORE_SAIL = 0.05f;
 
     public FrontEndSail(MainActivity activity) {
         super(activity);
@@ -51,10 +56,12 @@ public class FrontEndSail extends FrontEndGeneric {
     }
 
     private void putBoatOnHarbor() {
+        mCurrentShipSize = SHIP_SIZE_BEFORE_SAIL;
+
         putSquareObjectOnMap(findViewById(R.id.boat_on_map),
                 mLogic.mSail.mSource.toLocationX(),
                 mLogic.mSail.mSource.toLocationY(),
-                0.10f);
+                mCurrentShipSize);
 
         ImageView boat = findViewById(R.id.boat_on_map);
 
@@ -156,10 +163,14 @@ public class FrontEndSail extends FrontEndGeneric {
             locationX = actualProgress * endX + (1.0f - actualProgress) * startX;
             locationY = actualProgress * endY + (1.0f - actualProgress) * startY;
 
+            float size = mRealSail ? mCurrentShipSize : CIRCLE_SIZE_BEFORE_SAIL;
             putSquareObjectOnMap(findViewById(mImageToAnimate),
                     locationX,
                     locationY,
-                    0.05f);
+                    size);
+
+            mCurrentShipSize -= 0.001f;
+            mCurrentShipSize = Math.max(mCurrentShipSize, SHIP_SIZE_IN_SAIL);
 
             // slow down long sail
             mProgress += (mLogic.getSailDuration(mLogic.mSail.mDestination) > 3) ? 1 : 2;
