@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="mInvalidState" translatable="false">mInvalidState</string>
     <string name="mCash" translatable="false">mCash</string>
     <string name="mBankDeposit" translatable="false">mBankDeposit</string>
     <string name="mCurrentDay" translatable="false">mCurrentDay</string>

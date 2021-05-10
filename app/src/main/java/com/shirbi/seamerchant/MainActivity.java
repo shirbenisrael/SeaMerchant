@@ -185,6 +185,7 @@ public class MainActivity extends Activity {
             mStartTutorial.onMarketDealDoneClick();
         } else {
             mFrontEnd.blinkButtons();
+            storeState();
         }
     }
 
@@ -278,6 +279,8 @@ public class MainActivity extends Activity {
     }
 
     public void startSail() {
+        storeInvalidState();
+
         playSound(R.raw.sail);
         mLogic.startSail();
         mFrontEndSail.startSail();
@@ -301,6 +304,8 @@ public class MainActivity extends Activity {
         if (mLogic.canFixShip()) {
             mFrontEnd.blinkFixShip();
         }
+
+        storeState();
     }
 
     public void onFortuneTellerClick(View view) {
@@ -327,6 +332,7 @@ public class MainActivity extends Activity {
         mFrontEndFortuneTeller.showFortune();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
+        storeState();
     }
 
     public void onSleepClick(View view) {
@@ -339,6 +345,8 @@ public class MainActivity extends Activity {
     }
 
     public void onApproveSleep(View view) {
+        storeInvalidState();
+
         mFrontEnd.stopBlinks();
 
         if (!mLogic.mCurrentDay.isLastDay()) {
@@ -424,6 +432,7 @@ public class MainActivity extends Activity {
         } else {
             mFrontEnd.showWindow(Window.MAIN_WINDOW);
             mFrontEnd.showState();
+            storeState();
         }
     }
 
@@ -443,10 +452,12 @@ public class MainActivity extends Activity {
             } else {
                 mFrontEnd.showWindow(Window.MAIN_WINDOW);
                 mFrontEnd.showState();
+                storeState();
             }
         } else {
             mFrontEnd.showWindow(Window.MAIN_WINDOW);
             mFrontEnd.showState();
+            storeState();
         }
 
         if (checkForNewMedal()) {
@@ -466,6 +477,7 @@ public class MainActivity extends Activity {
         mLogic.acceptOffer();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
         mFrontEnd.showState();
+        storeState();
 
         if (checkForNewMedal()) {
             return;
@@ -707,8 +719,11 @@ public class MainActivity extends Activity {
 
         if (mIsStartTutorialActive) {
             mStartTutorial.onBankDealDoneClick();
-        } else if (checkForNewMedal()) {
-            return;
+        } else {
+            storeState();
+            if (checkForNewMedal()) {
+                return;
+            }
         }
     }
 
@@ -755,6 +770,8 @@ public class MainActivity extends Activity {
 
         if (mIsStartTutorialActive) {
             mStartTutorial.fixDone();
+        } else {
+            storeState();
         }
     }
 
@@ -767,6 +784,7 @@ public class MainActivity extends Activity {
         mLogic.applyFreeShipFixDeal();
         mFrontEnd.showState();
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
+        storeState();
     }
 
     public void onCancelBecauseOfDanger(View view) {
@@ -964,6 +982,14 @@ public class MainActivity extends Activity {
 
     public void onStartNewGameClick(View view) {
         mFrontEnd.showNewGameDialog();
+    }
+
+    public void storeInvalidState() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        mLogic.storeInvalidState(editor);
+        editor.apply();
     }
 
     public void storeState() {

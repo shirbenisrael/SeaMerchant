@@ -766,7 +766,12 @@ public class Logic {
         return mActivity.getString(resId);
     }
 
-    public void storeState( SharedPreferences.Editor editor) {
+    public void storeInvalidState(SharedPreferences.Editor editor) {
+        editor.putBoolean(getString(R.string.mInvalidState), true);
+    }
+
+    public void storeState(SharedPreferences.Editor editor) {
+        editor.putBoolean(getString(R.string.mInvalidState), false);
         editor.putLong(getString(R.string.mCash), mCash);
         editor.putLong(getString(R.string.mBankDeposit), mBankDeposit);
         editor.putInt(getString(R.string.mCurrentDay), mCurrentDay.getValue());
@@ -888,7 +893,9 @@ public class Logic {
             mActivity.mIsStartTutorialActive = true;
         }
 
-        if (mActivity.mIsStartTutorialActive) {
+        boolean invalidState = sharedPref.getBoolean(getString(R.string.mInvalidState), false);
+
+        if (mActivity.mIsStartTutorialActive || invalidState) {
             startNewGame();
             // First time enter the game - start tutorial by mActivity later.
             return;
