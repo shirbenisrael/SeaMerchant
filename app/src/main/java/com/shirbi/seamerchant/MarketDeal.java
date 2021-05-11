@@ -36,7 +36,7 @@ public class MarketDeal {
         }
 
         long valueForGuardPrice = logic.calculateInventoryValue() + logic.mCash;
-        long guardPrice = (int)(valueForGuardPrice * guardsForInventoryPart);
+        long guardPrice = (long)(valueForGuardPrice * (double)guardsForInventoryPart);
 
         long totalMoneyCanBeUsedForGuards = mCash + getGoodsValue();
         mMaxUnitsWithEnoughGuardShips = Math.max(0, totalMoneyCanBeUsedForGuards - guardPrice) / mPrice;
