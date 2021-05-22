@@ -97,6 +97,8 @@ public class Logic {
     public long mHighCapacity = 0;
     public int[] mRank = {-1, -1};
     public FortuneTellerInformation mFortuneTellerInformation;
+    public long[] mProgressSamples = new long[(SLEEP_TIME - START_HOUR + 1) * WeekDay.NUM_WEEK_DAYS];
+    public int mNumProgressSamples;
 
     public class FortuneTellerInformation {
         public State state;
@@ -240,6 +242,9 @@ public class Logic {
         }
 
         mFortuneTellerInformation = null;
+
+        mProgressSamples[0] = mCash;
+        mNumProgressSamples = 1;
     }
 
     public void initMarketDeal(Goods goods) {
@@ -255,7 +260,7 @@ public class Logic {
         mMarketDeal = null;
         if (mIsMarketOperationTakesTime) {
             mIsMarketOperationTakesTime = false;
-            mCurrentHour++;
+            increaseHour(1);
         }
     }
 
@@ -267,7 +272,7 @@ public class Logic {
         mCash = mBankDeal.mCash;
         mBankDeposit = mBankDeal.mDeposit;
         if (mIsBankOperationTakesTime) {
-            mCurrentHour++;
+            increaseHour(1);
             mIsBankOperationTakesTime = false;
         }
     }
@@ -282,7 +287,7 @@ public class Logic {
 
         if (mIsFixOperationTakesTime) {
             mIsFixOperationTakesTime = false;
-            mCurrentHour++;
+            increaseHour(1);
         }
     }
 
@@ -292,7 +297,7 @@ public class Logic {
 
         if (mIsFixOperationTakesTime) {
             mIsFixOperationTakesTime = false;
-            mCurrentHour++;
+            increaseHour(1);
         }
     }
 
@@ -328,7 +333,7 @@ public class Logic {
         }
 
         mCurrentState = mSail.mDestination;
-        mCurrentHour += getSailDuration(mSail.mSource, mCurrentState);
+        increaseHour(getSailDuration(mSail.mSource, mCurrentState));
         if (!hasMedal(Medal.ECONOMICAL_SAIL)) {
             mIsBankOperationTakesTime = true;
         }
@@ -398,6 +403,12 @@ public class Logic {
                     mPriceTable.getPrice(mCurrentState, goods);
         }
 
+        if (mCurrentHour != SLEEP_TIME) {
+            mAlwaysSleepAtMidnight = false;
+        }
+
+        increaseHour(SLEEP_TIME - mCurrentHour + 1);
+
         mLoseDayByStrike = 0;
         mPriceTable.generateRandomPrices();
 
@@ -406,9 +417,6 @@ public class Logic {
         }
         mFortuneTellerInformation = null;
 
-        if (mCurrentHour != SLEEP_TIME) {
-            mAlwaysSleepAtMidnight = false;
-        }
         mCurrentHour = START_HOUR;
         mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
         mWeather = Weather.values()[mRand.nextInt(Weather.NUM_WEATHER_TYPES)];
@@ -460,6 +468,8 @@ public class Logic {
         mWrongNavigationCountInOneDay = 0;
         mWinPiratesCountInOneDay = 0;
         mValueAtStartOfDay = calculateTotalValue();
+
+        refreshCurrentHourProgressSample();
     }
 
     private void generateFishBoatCollision() {
@@ -492,6 +502,7 @@ public class Logic {
             mGoodsUnitsToBurn = generateRandom(mGoodsUnitsToBurn / 2) + 1;
             mNewDayEvent = NewDayEvent.FIRE;
             removeGoodsFromInventory(mGoodsToBurn, mGoodsUnitsToBurn);
+            refreshCurrentHourProgressSample();
             return true;
         } else {
             return false;
@@ -534,6 +545,8 @@ public class Logic {
             default:
                 throw new IllegalStateException("Unexpected value: " + mNewDayEvent);
         }
+
+        refreshCurrentHourProgressSample();
     }
 
     private void acceptMerchantDeal() {
@@ -635,6 +648,8 @@ public class Logic {
                 mSpecialPriceGoods.generateRandomLow();
 
         mPriceTable.setPrice(mSpecialPriceState, mSpecialPriceGoods, specialPrice);
+
+        refreshCurrentHourProgressSample();
     }
 
     public long calculateInventoryValue() {
@@ -809,6 +824,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mIsGoogleSignIn), mActivity.mIsGoogleSignIn);
         editor.putBoolean(getString(R.string.mIsStartTutorialActive), mActivity.mIsStartTutorialActive);
         editor.putString(getString(R.string.mCurrentLanguage), mActivity.mCurrentLanguage);
+        editor.putInt(getString(R.string.mNumProgressSamples), mNumProgressSamples);
 
         if (mFortuneTellerInformation != null) {
             editor.putInt(getString(R.string.mFortuneTellerState), mFortuneTellerInformation.state.getValue());
@@ -851,6 +867,12 @@ public class Logic {
             str.append(bool).append(",");
         }
         editor.putString(getString(R.string.mStatesVisitedToday), str.toString());
+
+        str = new StringBuilder();
+        for (int i = 0; i < mNumProgressSamples; i++) {
+            str.append(mProgressSamples[i]).append(",");
+        }
+        editor.putString(getString(R.string.mProgressSamples), str.toString());
     }
 
     private long getLongOrInt(SharedPreferences sharedPref, int stringId, int defaultValue) {
@@ -932,6 +954,7 @@ public class Logic {
         mIsMarketOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsMarketOperationTakesTime), true);
         mIsFixOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsFixOperationTakesTime), true);
         mIsFreeFixUsed = sharedPref.getBoolean(getString(R.string.mIsFreeFixUsed), false);
+        mNumProgressSamples = sharedPref.getInt(getString(R.string.mNumProgressSamples), 0);
 
         savedString = sharedPref.getString(getString(R.string.mInventory), "");
         st = new StringTokenizer(savedString, ",");
@@ -982,6 +1005,16 @@ public class Logic {
 
         } catch (Exception e) {
             mFortuneTellerInformation = null;
+        }
+
+        savedString = sharedPref.getString(getString(R.string.mProgressSamples), "");
+        st = new StringTokenizer(savedString, ",");
+        for (int i = 0 ; i < mNumProgressSamples; i ++) {
+            if (st.hasMoreTokens()){
+                mProgressSamples[i] = Long.parseLong(st.nextToken());
+            } else {
+                mProgressSamples[i] = 0;
+            }
         }
     }
 
@@ -1392,7 +1425,7 @@ public class Logic {
             mFortuneTellerInformation.price = mPriceTable.setSpecialPrice(mFortuneTellerInformation.price);
         }
 
-        mCurrentHour++;
+        increaseHour(1);
     }
 
     // fortune teller will appear only at evening.
@@ -1433,5 +1466,32 @@ public class Logic {
 
     public boolean canSelectAttackPiratesPrize() {
         return hasMedal(Medal.PIRATE_FLEET) && (!mActivity.mIsStartTutorialActive);
+    }
+
+    private void increaseHour(int numHoursToAdd) {
+        mCurrentHour += numHoursToAdd;
+
+        long shipValue = calculateTotalValue();
+        while (numHoursToAdd > 0) {
+            mProgressSamples[mNumProgressSamples++] = shipValue;
+            numHoursToAdd--;
+        }
+    }
+
+    private void refreshCurrentHourProgressSample() {
+        if (mNumProgressSamples == 0) {
+            return;
+        }
+
+        long shipValue = calculateTotalValue();
+        mProgressSamples[mNumProgressSamples - 1] = shipValue;
+    }
+
+    public void loseDaysByStrike() {
+        mCurrentDay = mCurrentDay.add(mLoseDayByStrike);
+        while (mLoseDayByStrike > 0) {
+            increaseHour(SLEEP_TIME - START_HOUR + 1);
+            mLoseDayByStrike--;
+        }
     }
 }

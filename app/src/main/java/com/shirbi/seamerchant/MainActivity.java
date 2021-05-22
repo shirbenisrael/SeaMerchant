@@ -82,6 +82,8 @@ public class MainActivity extends Activity {
         if (mCurrentLanguage != null) {
             mFrontEnd.setLocale(mCurrentLanguage);
         }
+
+        ((ProgressGraphCanvas)findViewById(R.id.progress_canvas_layout)).mLogic = mLogic;
     }
 
     public void onExitOpenScreen(View view) {
@@ -445,8 +447,7 @@ public class MainActivity extends Activity {
     public void onExitSimpleNewDayEventWindow(View view) {
         if (mLogic.mNewDayEvent == Logic.NewDayEvent.STRIKE) {
             if (mLogic.mLoseDayByStrike > 0) {
-                mLogic.mCurrentDay = mLogic.mCurrentDay.add(mLogic.mLoseDayByStrike);
-                mLogic.mLoseDayByStrike = 0;
+                mLogic.loseDaysByStrike();
                 mFrontEnd.showWindow(Window.WEATHER_WINDOW);
                 mFrontEnd.showNewWeather();
             } else {

@@ -46,5 +46,7 @@
     <string name="mFortuneTellerState" translatable="false">mFortuneTellerState</string>
     <string name="mFortuneTellerGoods" translatable="false">mFortuneTellerGoods</string>
     <string name="mFortuneTellerPrice" translatable="false">mFortuneTellerPrice</string>
+    <string name="mNumProgressSamples" translatable="false">mNumProgressSamples</string>
+    <string name="mProgressSamples" translatable="false">mProgressSamples</string>
 
 </resources>
