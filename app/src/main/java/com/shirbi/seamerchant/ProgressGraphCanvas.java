@@ -12,15 +12,23 @@ public class ProgressGraphCanvas extends View {
         super(cxt, attrs);
         setMinimumHeight(100);
         setMinimumWidth(100);
+        mStartTime = System.currentTimeMillis();
+        postInvalidate();
     }
 
     public Logic mLogic;
+    public static final int FRAMES_PER_SECOND = 60;
+    public static final int ANIMATION_MILLISECONDS = 3000;
+    public static final int PAUSE_ANIMATION_MILLISECONDS = 2000;
+    long mStartTime;
 
     @Override
     protected void onDraw(Canvas canvas) {
         if (mLogic == null || mLogic.mNumProgressSamples == 0) {
             return;
         }
+
+        long elapsedTime = System.currentTimeMillis() - mStartTime;
 
         Paint paint = new Paint();
         paint.setColor(Color.GREEN);
@@ -37,6 +45,11 @@ public class ProgressGraphCanvas extends View {
         int canvasWidth = getWidth();
         int canvasHeight = getHeight();
         int sampleWidth = canvasWidth / numSamples;
+
+        int currentStep = (int)(elapsedTime % (ANIMATION_MILLISECONDS + PAUSE_ANIMATION_MILLISECONDS));
+        currentStep = Math.min(currentStep, ANIMATION_MILLISECONDS);
+        int maxX = canvasWidth * currentStep / ANIMATION_MILLISECONDS;
+
         int currentHour = Logic.START_HOUR;
         for (int i = 0; i < numSamples-1; i++) {
             long startY = canvasHeight - ((mLogic.mProgressSamples[i] - minHeight) * canvasHeight / (maxHeight - minHeight + 1));
@@ -53,8 +66,17 @@ public class ProgressGraphCanvas extends View {
                 currentHour++;
             }
 
-            paint.setColor(Color.GREEN);
-            canvas.drawLine(startX, startY, endX, endY, paint);
+            if (startX <= maxX) {
+                paint.setColor(Color.GREEN);
+                if (endX <= maxX) {
+                    canvas.drawLine(startX, startY, endX, endY, paint);
+                } else {
+                    float slope = (float)(endY - startY) / sampleWidth;
+                    canvas.drawLine(startX, startY, maxX, startY + (slope * (maxX - startX)), paint);
+                }
+            }
         }
+
+        postInvalidateDelayed(1000 / FRAMES_PER_SECOND);
     }
 }
