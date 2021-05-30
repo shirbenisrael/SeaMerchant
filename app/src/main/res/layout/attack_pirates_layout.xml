@@ -62,6 +62,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center"
+            android:background="@drawable/empty_button"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:onClick="onCapturePiratesClick"
             android:text="@string/CAPTURE"/>
@@ -74,6 +75,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center"
+            android:background="@drawable/empty_button"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:onClick="onRobPiratesClick"
             android:text="@string/ROB"/>
