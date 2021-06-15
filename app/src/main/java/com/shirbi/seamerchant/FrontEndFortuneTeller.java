@@ -33,11 +33,11 @@ public class FrontEndFortuneTeller extends FrontEndGeneric {
         mActivity.playSound(R.raw.up);
 
         String questionString = mActivity.getString(R.string.FORTUNE_TELLER_ANSWER, goodsString, stateString, price);
-        showAlertDialogMessage(questionString, getString(R.string.FORTUNE_TELLER));
+        showAlertDialogMessage(questionString, getString(R.string.FORTUNE_TELLER), R.drawable.crystal_ball);
     }
 
     public void showFortuneTellerNotAvailable() {
         mActivity.playSound(R.raw.cannot);
-        showAlertDialogMessage(getString(R.string.FORTUNE_TELLER_ALSSEP), getString(R.string.FORTUNE_TELLER));
+        showAlertDialogMessage(getString(R.string.FORTUNE_TELLER_ALSSEP), getString(R.string.FORTUNE_TELLER), R.drawable.crystal_ball);
     }
 }
