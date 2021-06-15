@@ -21,6 +21,8 @@ public class FrontEndFortuneTeller extends FrontEndGeneric {
 
         ((ImageView)findViewById(R.id.fortune_teller_goods_image)).setImageResource(goods.toMainImageId());
         ((ImageView)findViewById(R.id.fortune_teller_flag_image)).setImageResource(state.toFlagId());
+
+        mActivity.playSound(R.raw.special_offer);
     }
 
     public void showFortune() {
@@ -28,11 +30,14 @@ public class FrontEndFortuneTeller extends FrontEndGeneric {
         String goodsString = getGoodsString(mLogic.mFortuneTellerInformation.goods);
         int price = mLogic.mFortuneTellerInformation.price;
 
+        mActivity.playSound(R.raw.up);
+
         String questionString = mActivity.getString(R.string.FORTUNE_TELLER_ANSWER, goodsString, stateString, price);
         showAlertDialogMessage(questionString, getString(R.string.FORTUNE_TELLER));
     }
 
     public void showFortuneTellerNotAvailable() {
+        mActivity.playSound(R.raw.cannot);
         showAlertDialogMessage(getString(R.string.FORTUNE_TELLER_ALSSEP), getString(R.string.FORTUNE_TELLER));
     }
 }
