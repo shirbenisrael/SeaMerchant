@@ -1430,12 +1430,7 @@ public class Logic {
 
     // fortune teller will appear only at evening.
     public boolean isFortuneTellButtonShown() {
-        // TODO: Enable FortuneTeller once get the relevant medal.
-        if (getDayPart() == DayPart.SUN_SHINES || true) {
-            return false ;
-        }
-
-        return true;
+        return (getDayPart() != DayPart.SUN_SHINES) && hasMedal(Medal.NIGHT_MERCHANT);
     }
 
     public float maxValuePartForGuards() {

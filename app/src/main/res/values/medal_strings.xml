@@ -89,6 +89,7 @@
     <string name="GERMAN_TIME_BONUS">Night sail will start at 18:00 instead of 17:00</string>
     <string name="ECONOMICAL_SAIL_BONUS">Direct bank - all visits in all banks in one day will take  only one hour</string>
     <string name="FOG_OF_WAR_BONUS">Select new destination after fog</string>
+    <string name="NIGHT_MERCHANT_BONUS">Fortune teller will be unlocked</string>
     <string name="SAFE_SAIL_BONUS">One free complete fix in the game</string>
     <string name="ISLAMIC_STATE_BONUS">The journey between Turkey and Egypt will be shortened to 5 hours</string>
     <string name="PIRATE_FLEET_BONUS">Select which prize get from pirates - capacity or cash</string>

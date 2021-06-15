@@ -87,6 +87,7 @@
     <string name="GERMAN_TIME_BONUS">הפלגת לילה תתחיל ב 18:00 במקום ב 17:00</string>
     <string name="ECONOMICAL_SAIL_BONUS">בנקאות ישירה - כל הביקורים בכל הבנקים ביום אחד יקחו שעה אחת בלבד</string>
     <string name="FOG_OF_WAR_BONUS">בחירת יעד חדש כשנתקלים בערפל</string>
+    <string name="NIGHT_MERCHANT_BONUS">מגדת העתידות תופיע</string>
     <string name="SAFE_SAIL_BONUS">תיקון ספינה אחד מושלם בחינם במשחק</string>
     <string name="ISLAMIC_STATE_BONUS">המסע בין תורכיה ובין מצרים יתקצר ל 5 שעות</string>
     <string name="PIRATE_FLEET_BONUS">אפשר לבחור את הפרס בניצחון על פיראטים - קיבולת או אוצר</string>
