@@ -417,7 +417,6 @@ public class Logic {
         }
         mFortuneTellerInformation = null;
 
-        mCurrentHour = START_HOUR;
         mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
         mWeather = Weather.values()[mRand.nextInt(Weather.NUM_WEATHER_TYPES)];
         mWeatherState = State.values()[mRand.nextInt(State.NUM_STATES)];
@@ -1470,6 +1469,10 @@ public class Logic {
         while (numHoursToAdd > 0) {
             mProgressSamples[mNumProgressSamples++] = shipValue;
             numHoursToAdd--;
+        }
+
+        if (mCurrentHour > SLEEP_TIME) {
+            mCurrentHour = START_HOUR;
         }
     }
 
