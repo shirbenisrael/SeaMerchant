@@ -373,6 +373,8 @@ public enum Medal {
                 return R.drawable.wind_icon;
             case ESCAPE:
                 return R.drawable.pirates_icon;
+            case NIGHT_MERCHANT:
+                return R.drawable.crystal_ball;
         }
 
         return (getValue() % 2 == 0) ? R.drawable.boat_right : R.drawable.boat_left;
