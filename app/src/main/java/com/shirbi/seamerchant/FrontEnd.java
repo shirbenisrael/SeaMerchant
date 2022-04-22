@@ -75,6 +75,8 @@ public class FrontEnd extends FrontEndGeneric {
             RelativeLayout flagButtonWrapper = (RelativeLayout)stateLayout.getChildAt(0);
             Button flagButton = (Button)flagButtonWrapper.getChildAt(0);
             flagButton.setBackgroundResource(state.toFlagId());
+            flagButton.setText(state.toStringId());
+            flagButton.setTextAppearance(R.style.ShadowText);
 
             ImageView flagSailDuration = (ImageView)flagButtonWrapper.getChildAt(1);
             putObjectOnRelativeLayout(flagSailDuration, 0, 0, 0.33f, 0.5f, mFlagSize );
