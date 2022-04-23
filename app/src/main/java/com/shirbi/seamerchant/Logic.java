@@ -1429,6 +1429,9 @@ public class Logic {
 
     // fortune teller will appear only at evening.
     public boolean isFortuneTellButtonShown() {
+        if (mActivity.mIsStartTutorialActive) {
+            return false;
+        }
         return (getDayPart() != DayPart.SUN_SHINES) && hasMedal(Medal.NIGHT_MERCHANT);
     }
 
