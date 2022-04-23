@@ -68,6 +68,9 @@ public class BackEndGoogleApi {
     }
 
     public void submitScore() {
+        if (mLogic.isAfterEnd()) {
+            return;
+        }
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
         if (account == null) {
             signIn();

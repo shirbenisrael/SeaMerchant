@@ -11,6 +11,8 @@
     <string name="FRIDAY">Friday</string>
     <string name="SATURDAY">Saturday</string>
 
+    <string name="DAY_NUMBER">Day #%1$d</string>
+
     <string name="EGYPT">Egypt</string>
     <string name="ISRAEL">Israel</string>
     <string name="TURKEY">Turkey</string>
@@ -203,6 +205,11 @@
 
     <string name="EXIT_GAME_TITLE">Exit game?</string>
     <string name="START_GAME_TITLE">Start game?</string>
+
+    <string name="CONTINUE_AFTER_END_TITLE">Continue play?</string>
+    <string name="CONTINUE_AFTER_END_MESSAGE">(No new medals or record score)</string>
+    <string name="CONTINUE">Continue</string>
+    <string name="START_NEW_GAME">Start new game</string>
 
     <string name="MEDAL_WITH_BONUS">%1$s. Bonus: %2$s</string>
     <string name="ONLY_BONUS">Bonus: %1$s</string>

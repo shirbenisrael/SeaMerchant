@@ -25,6 +25,7 @@ public class Logic {
     public static final int BANK_NIGHTLY_INTEREST = 10;
     public static final int BANK_NIGHTLY_INTEREST_WITH_MEDAL = 15;
     private static final int DEFAULT_NUM_GUARDS = Sail.MAX_GUARD_SHIPS;
+    private static final WeekDay STARTING_DAY = WeekDay.SUNDAY;
 
     private MainActivity mActivity;
 
@@ -99,6 +100,7 @@ public class Logic {
     public FortuneTellerInformation mFortuneTellerInformation;
     public long[] mProgressSamples = new long[(SLEEP_TIME - START_HOUR + 1) * WeekDay.NUM_WEEK_DAYS];
     public int mNumProgressSamples;
+    public int mActualDayNum;
 
     public class FortuneTellerInformation {
         public State state;
@@ -196,7 +198,7 @@ public class Logic {
         mPriceTable.generateRandomPrices();
         mCash = hasMedal(Medal.TREASURE_5) ? START_GAME_CASH_WITH_MEDAL : START_GAME_CASH;
         mBankDeposit = 0;
-        mCurrentDay = WeekDay.SUNDAY;
+        mCurrentDay = STARTING_DAY;
         mCurrentHour = START_HOUR;
         mCurrentState = START_STATE;
         mWeatherState = START_WEATHER_STATE;
@@ -208,6 +210,7 @@ public class Logic {
         mIsMarketOperationTakesTime = true;
         mIsFixOperationTakesTime = true;
         mIsFreeFixUsed = false;
+        mActualDayNum = STARTING_DAY.getValue();
 
         for (State state : State.values()) {
             mStatesVisitedToday[state.getValue()] = (state == START_STATE);
@@ -396,6 +399,19 @@ public class Logic {
         return DayPart.NIGHT;
     }
 
+    public String getCurrentDayString() {
+        if (isAfterEnd()) {
+            // Humans start counting from 1 instead of 0.
+            return mActivity.getString(R.string.DAY_NUMBER, mActualDayNum + 1);
+        } else {
+            return mActivity.getString(mCurrentDay.toStringId());
+        }
+    }
+
+    public boolean isAfterEnd() {
+        return mActualDayNum != mCurrentDay.getValue();
+    }
+
     public void startNewDay() {
         int[] pricesBeforeNight = new int[Goods.NUM_GOODS_TYPES];
         for (Goods goods : Goods.values()) {
@@ -417,7 +433,10 @@ public class Logic {
         }
         mFortuneTellerInformation = null;
 
-        mCurrentDay = WeekDay.values()[mCurrentDay.getValue() + 1];
+        mActualDayNum++;
+        if (!mCurrentDay.isLastDay()) {
+            mCurrentDay = mCurrentDay.add(1);
+        }
         mWeather = Weather.values()[mRand.nextInt(Weather.NUM_WEATHER_TYPES)];
         mWeatherState = State.values()[mRand.nextInt(State.NUM_STATES)];
 
@@ -824,6 +843,7 @@ public class Logic {
         editor.putBoolean(getString(R.string.mIsStartTutorialActive), mActivity.mIsStartTutorialActive);
         editor.putString(getString(R.string.mCurrentLanguage), mActivity.mCurrentLanguage);
         editor.putInt(getString(R.string.mNumProgressSamples), mNumProgressSamples);
+        editor.putInt("mActualDayNum", mActualDayNum);
 
         if (mFortuneTellerInformation != null) {
             editor.putInt(getString(R.string.mFortuneTellerState), mFortuneTellerInformation.state.getValue());
@@ -954,6 +974,7 @@ public class Logic {
         mIsFixOperationTakesTime = sharedPref.getBoolean(getString(R.string.mIsFixOperationTakesTime), true);
         mIsFreeFixUsed = sharedPref.getBoolean(getString(R.string.mIsFreeFixUsed), false);
         mNumProgressSamples = sharedPref.getInt(getString(R.string.mNumProgressSamples), 0);
+        mActualDayNum = sharedPref.getInt("mActualDayNum", mCurrentDay.getValue());
 
         savedString = sharedPref.getString(getString(R.string.mInventory), "");
         st = new StringTokenizer(savedString, ",");
@@ -1039,6 +1060,9 @@ public class Logic {
     }
 
     private Medal whichMedalShouldAcquire() {
+        if (isAfterEnd()) {
+            return null;
+        }
         long totalValue = calculateTotalValue();
 
         if ((!hasMedal(Medal.TREASURE_1)) && (mCash >= 10000)) {
@@ -1469,9 +1493,12 @@ public class Logic {
         mCurrentHour += numHoursToAdd;
 
         long shipValue = calculateTotalValue();
-        while (numHoursToAdd > 0) {
-            mProgressSamples[mNumProgressSamples++] = shipValue;
-            numHoursToAdd--;
+
+        if (!isAfterEnd()) {
+            while (numHoursToAdd > 0) {
+                mProgressSamples[mNumProgressSamples++] = shipValue;
+                numHoursToAdd--;
+            }
         }
 
         if (mCurrentHour > SLEEP_TIME) {

@@ -48,5 +48,5 @@
     <string name="mFortuneTellerPrice" translatable="false">mFortuneTellerPrice</string>
     <string name="mNumProgressSamples" translatable="false">mNumProgressSamples</string>
     <string name="mProgressSamples" translatable="false">mProgressSamples</string>
-
+    <string name="mActualDayNum" translatable="false">mActualDayNum</string>
 </resources>

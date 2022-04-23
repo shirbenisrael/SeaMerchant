@@ -145,7 +145,7 @@ public class FrontEnd extends FrontEndGeneric {
         mFrontEndTimeAnimation.updateTime(mLogic.mCurrentHour);
 
         textView = findViewById(R.id.current_day_text_view);
-        textView.setText(getString(mLogic.mCurrentDay.toStringId()));
+        textView.setText(mLogic.getCurrentDayString());
 
         textView = findViewById(R.id.current_state_text_view);
         textView.setText(getString(mLogic.mCurrentState.toStringId()));
@@ -166,7 +166,7 @@ public class FrontEnd extends FrontEndGeneric {
         button.setText(damageString);
 
         button = findViewById(R.id.wide_sleep_button);
-        @DrawableRes int sleepButtonResource = (mLogic.mCurrentDay.isLastDay())
+        @DrawableRes int sleepButtonResource = (mLogic.mCurrentDay.isLastDay() && (!mLogic.isAfterEnd()))
                 ? R.drawable.wide_end_game_button : R.drawable.wide_sleep_button;
         button.setBackgroundResource(sleepButtonResource);
 
@@ -251,7 +251,7 @@ public class FrontEnd extends FrontEndGeneric {
 
     public void showNewWeather() {
         ((TextView)findViewById(R.id.calculator)).setText(R.string.CALCULATOR);
-        ((TextView)findViewById(R.id.day_message)).setText(mLogic.mCurrentDay.toStringId());
+        ((TextView)findViewById(R.id.day_message)).setText(mLogic.getCurrentDayString());
         ((TextView)findViewById(R.id.weather_message)).setText(generateWeatherString());
     }
 
@@ -368,7 +368,7 @@ public class FrontEnd extends FrontEndGeneric {
         @IdRes int idToShow;
         @IdRes int idToHide;
         int soundId = 0;
-        ((TextView)findViewById(R.id.day_message_with_event)).setText(mLogic.mCurrentDay.toStringId());
+        ((TextView)findViewById(R.id.day_message_with_event)).setText(mLogic.getCurrentDayString());
         switch (mLogic.mNewDayEvent) {
             case MERCHANT:
                 idToShow = R.id.agree_or_cancel_layout;
@@ -420,7 +420,7 @@ public class FrontEnd extends FrontEndGeneric {
         mActivity.playSound(soundId);
     }
 
-    private void showCrewNegotiationResult(@StringRes int part1, @StringRes int part2 ) {
+    private void showCrewNegotiationResult(String part1, @StringRes int part2 ) {
         findViewById(R.id.approve_event).setVisibility(View.VISIBLE);
         findViewById(R.id.agree_or_cancel_layout).setVisibility(View.GONE);
         ((TextView)findViewById(R.id.day_message_with_event)).setText(part1);
@@ -429,17 +429,17 @@ public class FrontEnd extends FrontEndGeneric {
 
     public void showCrewNegotiationFail() {
         findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.booing);
-        showCrewNegotiationResult(R.string.CREW_REFUSE_OFFER, R.string.LOSE_2_DAYS);
+        showCrewNegotiationResult(getString(R.string.CREW_REFUSE_OFFER), R.string.LOSE_2_DAYS);
     }
 
     public void showCrewNegotiationSucceed() {
         findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.crew_accept_offer);
-        showCrewNegotiationResult(mLogic.mCurrentDay.toStringId(), R.string.CREW_OFFER_ACCEPTED);
+        showCrewNegotiationResult(mLogic.getCurrentDayString(), R.string.CREW_OFFER_ACCEPTED);
     }
 
     public void showNewCrewNextDay() {
         findViewById(R.id.simple_new_day_event_layout).setBackgroundResource(R.drawable.strike);
-        showCrewNegotiationResult(mLogic.mCurrentDay.toStringId(), R.string.NEXT_DAY_NEW_CREW);
+        showCrewNegotiationResult(mLogic.getCurrentDayString(), R.string.NEXT_DAY_NEW_CREW);
     }
 
     public void showSailWarning() {
@@ -613,7 +613,7 @@ public class FrontEnd extends FrontEndGeneric {
 
     private void blinkSleepButton(boolean isRed) {
         @DrawableRes int backGroundId;
-        if (mLogic.mCurrentDay.isLastDay()) {
+        if (mLogic.mCurrentDay.isLastDay() && !mLogic.isAfterEnd()) {
             backGroundId = isRed ? R.drawable.wide_end_game_button_red : R.drawable.wide_end_game_button;
         } else {
             backGroundId = isRed ? R.drawable.wide_sleep_button_red : R.drawable.wide_sleep_button;
@@ -709,7 +709,7 @@ public class FrontEnd extends FrontEndGeneric {
     }
 
     public void showSleepQuestion() {
-        ((TextView)findViewById(R.id.sleep_message)).setText(mLogic.mCurrentDay.isLastDay() ?
+        ((TextView)findViewById(R.id.sleep_message)).setText(mLogic.mCurrentDay.isLastDay() && !mLogic.isAfterEnd() ?
                 R.string.END_GAME_QUESTION:R.string.SLEEP_QUESTION);
     }
 
@@ -725,6 +725,25 @@ public class FrontEnd extends FrontEndGeneric {
         builder.setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // Do nothing
+            }
+        });
+        builder.setIcon(R.drawable.boat_right);
+        builder.show();
+    }
+
+    void showNewGameOrContinuePlay() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+
+        builder.setTitle(getString(R.string.CONTINUE_AFTER_END_TITLE));
+        builder.setMessage(getString(R.string.CONTINUE_AFTER_END_MESSAGE));
+        builder.setPositiveButton(getString(R.string.CONTINUE), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.onApproveContinuePlayAfterEnd();
+            }
+        });
+        builder.setNegativeButton(getString(R.string.START_NEW_GAME), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.startNewGame();
             }
         });
         builder.setIcon(R.drawable.boat_right);

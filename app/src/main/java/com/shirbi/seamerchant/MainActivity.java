@@ -346,12 +346,19 @@ public class MainActivity extends Activity {
         mFrontEnd.showWindow(Window.MAIN_WINDOW);
     }
 
+    public void onApproveContinuePlayAfterEnd() {
+        playSound(R.raw.new_day);
+        mLogic.startNewDay();
+        mFrontEnd.showWindow(Window.WEATHER_WINDOW);
+        mFrontEnd.showNewWeather();
+    }
+
     public void onApproveSleep(View view) {
         storeInvalidState();
 
         mFrontEnd.stopBlinks();
 
-        if (!mLogic.mCurrentDay.isLastDay()) {
+        if (mLogic.isAfterEnd() || !mLogic.mCurrentDay.isLastDay()) {
             playSound(R.raw.new_day);
             mLogic.startNewDay();
             if (mIsStartTutorialActive) {
@@ -410,7 +417,7 @@ public class MainActivity extends Activity {
     public void onExistHighScore(View view) {
         if (mIsGameEnded) {
             mIsGameEnded = false;
-            startNewGame();
+            mFrontEnd.showNewGameOrContinuePlay();
         } else {
             mFrontEnd.showWindow(Window.MENU_WINDOW);
         }

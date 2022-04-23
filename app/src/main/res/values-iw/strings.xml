@@ -9,6 +9,8 @@
     <string name="FRIDAY">יום שישי</string>
     <string name="SATURDAY">יום שבת</string>
 
+    <string name="DAY_NUMBER">יום #%1$d</string>
+
     <string name="EGYPT">מצרים</string>
     <string name="ISRAEL">ישראל</string>
     <string name="TURKEY">תורכיה</string>
@@ -186,6 +188,11 @@
 
     <string name="EXIT_GAME_TITLE">יציאה מהמשחק?</string>
     <string name="START_GAME_TITLE">התחלת משחק חדש?</string>
+
+    <string name="CONTINUE_AFTER_END_TITLE">להמשיך לשחק?</string>
+    <string name="CONTINUE_AFTER_END_MESSAGE">(ללא מדליות חדשות או שמירת שיאים)</string>
+    <string name="CONTINUE">המשך</string>
+    <string name="START_NEW_GAME">התחל משחק חדש</string>
 
     <string name="MEDAL_WITH_BONUS">%1$s. בונוס: %2$s</string>
     <string name="ONLY_BONUS">בונוס: %1$s</string>
