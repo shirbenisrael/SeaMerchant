@@ -116,6 +116,25 @@ public class FrontEnd extends FrontEndGeneric {
         }
     }
 
+    public void highLightPrice(State state, Goods goods, boolean isHighLighted) {
+        LinearLayout statesLayout = findViewById(R.id.prices_layout);
+        LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
+        TextView goodLayout = (TextView)stateLayout.getChildAt(goods.getValue() + 1);
+        goodLayout.setBackgroundColor(mActivity.getColor(isHighLighted ? R.color.transparent_yellow : R.color.transparent));
+    }
+
+    public void removeHighLightPrices() {
+        PriceTable priceTable = mLogic.mPriceTable;
+        LinearLayout statesLayout = findViewById(R.id.prices_layout);
+        for (State state : State.values()) {
+            LinearLayout stateLayout = (LinearLayout)statesLayout.getChildAt(state.getValue());
+            for (Goods goods: Goods.values()) {
+                TextView goodLayout = (TextView)stateLayout.getChildAt(goods.getValue() + 1);
+                goodLayout.setBackgroundColor(mActivity.getColor(R.color.transparent));
+            }
+        }
+    }
+
     public void showState() {
         showPrices();
         showInventory();

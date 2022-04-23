@@ -2,14 +2,21 @@
 <resources>
     <string name="BUY_CHIP_GOODS">מחיר ה%1$s ב%2$s נמוך! כדאי לנו לקנות!</string>
     <string name="PRESS_GOODS_BUTTON_TO_BUY">לחץ על כפתור ה%1$s כדי לקנות.</string>
+    <string name="BUY_CHIP_GOODS_WITH_QUESTION">איזו סחורה זולה ב%1$s? כדאי לנו לרכוש אותה!</string>
+    <string name="PRESS_GOODS_BUTTON_TO_BUY_WITH_QUESTION">לחץ על הכפתור שלה כדי לקנות.</string>
 
     <string name="SAIL_TO_STATE_WITH_HIGH_PRICE">מחיר ה%1$s ב%2$s גבוה. בוא נפליג לשם!</string>
     <string name="PRESS_ON_FLAG_TO_SAIL_TO_STATE">לחץ על הדגל של %1$s כדי להפליג.</string>
 
+    <string name="SAIL_TO_STATE_WITH_HIGH_PRICE_WITH_QEUSTION">לאיזו מדינה כדאי לנו להפליג על מנת למכור את ה%1$s שלנו במחיר גבוה?</string>
+    <string name="PRESS_ON_FLAG_TO_SAIL_TO_STATE_WITH_QUESTION">לחץ על דגלה כדי להפליג.</string>
+
     <string name="REACH_STATE_AND_SELL_GOODS">הגענו ל%1$s! בוא נמכור את ה%2$s שלנו במחיר גבוה!</string>
+    <string name="REACH_STATE_AND_SELL_GOODS_WITH_QUESTION">הגענו אל %1$s! מה נוכל למכור כאן במחיר גבוה?</string>
     <string name="REACH_STATE_AND_SELL_MOST_GOODS">הגענו ל%1$s עם מרבית ה%2$s שלנו. בוא נמכור את הסחורה במחיר גבוה!</string>
     <string name="SELL_GOODS">בוא נמכור את ה%1$s שלנו במחיר גבוה!</string>
     <string name="PRESS_GOODS_BUTTON_TO_SELL">לחץ על כפתור ה%1$s כדי למכור את הסחורה.</string>
+    <string name="PRESS_GOODS_BUTTON_TO_SELL_WITHOUT_STATE">לחץ על כפתור הסחורה כדי למכור אותה.</string>
 
     <string name="DEPOSIT_IN_BANK_BEFORE_SLEEP">כדאי לנו להפקיד את כספנו בבנק לפני שנלך לישון.</string>
     <string name="PRESS_BANK_BUTTON_TO_DEPOSIT">לחץ על כפתור הבנק כדי להקיד את הכסף.</string>
@@ -28,10 +35,15 @@
 
     <string name="WE_SHOULD_NOT">לא כדאי</string>
 
+    <string name="WE_SHOULD_SELL_SOMETHING_ELSE">כדאי קודם למכור את הסחורה שלנו.</string>
     <string name="WE_SHOULD_SELL_FIRST">כדאי קודם למכור את ה%1$s.</string>
+    <string name="CHEAPPER_GOOD_TO_BUY">יש סחורה זולה יותר לרכישה כאן.</string>
+    <string name="WE_SHOULD_BUY_FIRST_GOODS">כדאי שקודם נקנה סחורה.</string>
     <string name="WE_SHOULD_BUY_FIRST">כדאי קודם לקנות %1$s.</string>
+    <string name="WE_SHOULD_BUY_GOODS">כדאי שנקנה עכשיו סחורה.</string>
     <string name="GOODS_PRICE_IS_TO_LOW_IN_STATE">מחיר ה%1$s ב%2$s נמוך מדי.</string>
     <string name="GOODS_PRICE_IS_TO_HIGHER_IN_STATE">מחיר ה%1$s ב%2$s גבוה יותר.</string>
+    <string name="GOODS_PRICE_HIGHER_IN_OTHER_STATE">מחיר ה%1$s גבוה יותר במדינה אחרת.</string>
     <string name="TO_LATE_FOR_LONG_SAIL">המסע ארוך מדי לשעה כה מאוחרת.</string>
     <string name="TO_LATE_FOR_SAIL">מאוחר מדי בשביל להפליג.</string>
     <string name="TO_LATE_FOR_SAIL_GO_TO_BANK">מאוחר מדי בשביל להפליג. עלינו ללכת לבנק.</string>
@@ -44,9 +56,11 @@
     <string name="SELL_GOODS_TITLE">מכירת %1$s</string>
     <string name="PRESS_ON_BUTTON_AND_ON_V">לחץ על -%1$s- ואז על הוי הירוק.</string>
     <string name="BUY_ENOUGH_NOW_SAIL">קנינו מספיק. עכשיו הזמן להפליג.</string>
-    <string name="DONT_BUT_EXPENSIVE_GOODS">לא כדאי לנו לקנות %1$s. המחיר כאן גבוה.</string>
+    <string name="DONT_BUY_EXPENSIVE_GOODS">לא כדאי לנו לקנות %1$s. המחיר כאן גבוה.</string>
     <string name="LETS_BUY_GOODS">בוא נקנה %1$s.</string>
-    <string name="LETS_SELL_GOODS">בוא נמכור את ה %1$s שלנו.</string>
+    <string name="LETS_BUY_SOME_GOODS">בוא נקנה סחורה.</string>
+    <string name="LETS_SELL_GOODS">בוא נמכור את ה%1$s שלנו.</string>
+    <string name="LETS_SELL_OTHER_GOODS">בוא נמכור את הסחורה שלנו.</string>
     <string name="TO_LATE_FOR_MARKET_GO_TO_BANK">מאוחר מדי ללכת לשוק. בוא נלך לבנק.</string>
     <string name="TO_LATE_FOR_MARKET_GO_TO_SLEEP">מאוחר מדי ללכת לשוק. בוא נלך לישון.</string>
     <string name="DRAW_FIRST_CACH_FROM_BANK">בוא נמשוך קודם את כספנו מהבנק.</string>
@@ -56,6 +70,7 @@
     <string name="BANK_DRAW_TITLE">משיכה מהבנק</string>
 
     <string name="SAIL_TO_DESTINATION">בוא נפליג ל%1$s.</string>
+    <string name="SAIL_TO_SOMEWHERE">זה הזמן להפליג.</string>
 
     <string name="TAKE_5_GUARDS_SHIPS">הים שורץ שודדים. בוא נשכור 5 ספינות משמר. לחץ על כפתור ה 5.</string>
 

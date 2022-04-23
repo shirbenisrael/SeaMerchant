@@ -2,14 +2,21 @@
 <resources>
     <string name="BUY_CHIP_GOODS">The %1$s in %2$s is cheap! We should buy it!</string>
     <string name="PRESS_GOODS_BUTTON_TO_BUY">Press on the %1$s button to buy.</string>
+    <string name="BUY_CHIP_GOODS_WITH_QUESTION">Which goods is cheap in %1$s? We should buy it!</string>
+    <string name="PRESS_GOODS_BUTTON_TO_BUY_WITH_QUESTION">Press on its button to buy.</string>
 
     <string name="SAIL_TO_STATE_WITH_HIGH_PRICE">The %1$s\'s price in %2$s is high. Let\'s sail to there!</string>
     <string name="PRESS_ON_FLAG_TO_SAIL_TO_STATE">Press on %1$s\'s flag to sail.</string>
 
+    <string name="SAIL_TO_STATE_WITH_HIGH_PRICE_WITH_QEUSTION">Which state we should reach to sell our %1$s in high price?</string>
+    <string name="PRESS_ON_FLAG_TO_SAIL_TO_STATE_WITH_QUESTION">Press on its flag to sail.</string>
+
     <string name="REACH_STATE_AND_SELL_GOODS">We reached %1$s! Let\'s sell our %2$s is high price!</string>
+    <string name="REACH_STATE_AND_SELL_GOODS_WITH_QUESTION">We reached %1$s! What can we sell here in high price?</string>
     <string name="REACH_STATE_AND_SELL_MOST_GOODS">We reached %1$s with most of our %2$s. Let\'s sell it high price!</string>
     <string name="SELL_GOODS">Let\'s sell our %1$s is high price!</string>
     <string name="PRESS_GOODS_BUTTON_TO_SELL">Press on the %1$s button to sell it.</string>
+    <string name="PRESS_GOODS_BUTTON_TO_SELL_WITHOUT_STATE">Press on the goods button to sell it.</string>
 
     <string name="DEPOSIT_IN_BANK_BEFORE_SLEEP">We should deposit our cash in the bank before go to sleep.</string>
     <string name="PRESS_BANK_BUTTON_TO_DEPOSIT">Press on the bank button to deposit the money.</string>
@@ -28,10 +35,15 @@
 
     <string name="WE_SHOULD_NOT">We shouldn\'t</string>
 
+    <string name="WE_SHOULD_SELL_SOMETHING_ELSE">We should first sell our goods.</string>
     <string name="WE_SHOULD_SELL_FIRST">We should first sell our %1$s.</string>
+    <string name="CHEAPPER_GOOD_TO_BUY">There is a cheaper goods to buy here.</string>
+    <string name="WE_SHOULD_BUY_FIRST_GOODS">We should first buy some goods.</string>
     <string name="WE_SHOULD_BUY_FIRST">We should first buy %1$s.</string>
+    <string name="WE_SHOULD_BUY_GOODS">We should buy goods now.</string>
     <string name="GOODS_PRICE_IS_TO_LOW_IN_STATE">The %1$s\'s price is too low in %2$s.</string>
     <string name="GOODS_PRICE_IS_TO_HIGHER_IN_STATE">The %1$s\'s price in %2$s is higher.</string>
+    <string name="GOODS_PRICE_HIGHER_IN_OTHER_STATE">The %1$s\'s price is higher in other state.</string>
     <string name="TO_LATE_FOR_LONG_SAIL">The voyage is too long for such a late hour.</string>
     <string name="TO_LATE_FOR_SAIL">Too late for sail.</string>
     <string name="TO_LATE_FOR_SAIL_GO_TO_BANK">Too late for sail. We should go to bank.</string>
@@ -44,9 +56,11 @@
     <string name="SELL_GOODS_TITLE">Sell %1$s</string>
     <string name="PRESS_ON_BUTTON_AND_ON_V">Press on -%1$s- and then on the Green check</string>
     <string name="BUY_ENOUGH_NOW_SAIL">We bought enough. Now it is time to sail.</string>
-    <string name="DONT_BUT_EXPENSIVE_GOODS">We should not buy %1$s. It is expensive here.</string>
+    <string name="DONT_BUY_EXPENSIVE_GOODS">We should not buy %1$s. It is expensive here.</string>
     <string name="LETS_BUY_GOODS">Let\'s buy %1$s.</string>
+    <string name="LETS_BUY_SOME_GOODS">Let\'s buy some goods.</string>
     <string name="LETS_SELL_GOODS">Let\'s sell our %1$s.</string>
+    <string name="LETS_SELL_OTHER_GOODS">Let\'s sell our goods first.</string>
     <string name="TO_LATE_FOR_MARKET_GO_TO_BANK">It is too late for market. Let\'s go to the bank.</string>
     <string name="TO_LATE_FOR_MARKET_GO_TO_SLEEP">It is too late for market. Let\'s go to the sleep.</string>
     <string name="DRAW_FIRST_CACH_FROM_BANK">Let\'s first draw our money from the bank.</string>
@@ -56,6 +70,7 @@
     <string name="BANK_DRAW_TITLE">Draw from bank</string>
 
     <string name="SAIL_TO_DESTINATION">Let\'s sail to %1$s.</string>
+    <string name="SAIL_TO_SOMEWHERE">Let\'s sail now.</string>
 
     <string name="TAKE_5_GUARDS_SHIPS">The sea is infested with bandits. Let\'s rent 5 guard ships. Press on the 5 button.</string>
 
