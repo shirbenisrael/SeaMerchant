@@ -7,7 +7,7 @@ android {
         applicationId "com.shirbi.seamerchant"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 35
+        versionCode 36
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
