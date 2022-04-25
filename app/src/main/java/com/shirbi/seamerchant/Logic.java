@@ -1496,7 +1496,10 @@ public class Logic {
 
         if (!isAfterEnd()) {
             while (numHoursToAdd > 0) {
-                mProgressSamples[mNumProgressSamples++] = shipValue;
+                // On Saturday, there is a chance for overflow.
+                if (mNumProgressSamples < mProgressSamples.length) {
+                    mProgressSamples[mNumProgressSamples++] = shipValue;
+                }
                 numHoursToAdd--;
             }
         }
