@@ -56,15 +56,27 @@ public class FrontEndPirates extends FrontEndGeneric {
     }
 
     private void showCapturePrizeMessage() {
+        ((TextView) findViewById(R.id.battle_result_title)).setTextColor(mActivity.getColor(R.color.black));
+        ((TextView) findViewById(R.id.battle_result_title)).setBackgroundColor(0);
+
         String result = mActivity.getString(R.string.WIN_CAPACITY, mDecimalFormat.format(mLogic.mSail.mPiratesCapacity));
         ((TextView) findViewById(R.id.battle_result)).setText(result);
+        ((TextView) findViewById(R.id.battle_result)).setTextColor(mActivity.getColor(R.color.black));
+        ((TextView) findViewById(R.id.battle_result)).setBackgroundColor(0);
+
+        ((TextView) findViewById(R.id.battle_damage)).setTextColor(mActivity.getColor(R.color.black));
+        ((TextView) findViewById(R.id.battle_damage)).setBackgroundColor(0);
 
         findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.capture);
+
+
     }
 
     private void showRobPrizeMessage() {
         String result = mActivity.getString(R.string.WIN_TREASURE, mDecimalFormat.format(mLogic.mSail.mPiratesTreasure));
         ((TextView) findViewById(R.id.battle_result)).setText(result);
+        ((TextView) findViewById(R.id.battle_result)).setTextColor(mActivity.getColor(R.color.yellow));
+        ((TextView) findViewById(R.id.battle_result)).setBackgroundColor(mActivity.getColor(R.color.transparent_black));
 
         findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.treasure);
     }
@@ -75,6 +87,8 @@ public class FrontEndPirates extends FrontEndGeneric {
         if (sail.mPiratesDamage > 0) {
             String damage = mActivity.getString(R.string.WIN_WITH_DAMAGE, mDecimalFormat.format(sail.mPiratesDamage));
             ((TextView) findViewById(R.id.battle_damage)).setText(damage);
+            ((TextView) findViewById(R.id.battle_damage)).setTextColor(mActivity.getColor(R.color.yellow));
+            ((TextView) findViewById(R.id.battle_damage)).setBackgroundColor(mActivity.getColor(R.color.transparent_black));
             findViewById(R.id.battle_damage).setVisibility(View.VISIBLE);
         } else {
             findViewById(R.id.battle_damage).setVisibility(View.GONE);
@@ -88,6 +102,9 @@ public class FrontEndPirates extends FrontEndGeneric {
 
         if (mLogic.canSelectAttackPiratesPrize()) {
             ((TextView) findViewById(R.id.battle_result)).setText(R.string.SELECT_WIN_PRIZE);
+            ((TextView) findViewById(R.id.battle_result)).setTextColor(mActivity.getColor(R.color.black));
+            ((TextView) findViewById(R.id.battle_result)).setBackgroundColor(0);
+
             findViewById(R.id.attack_pirates_done).setVisibility(View.GONE);
             findViewById(R.id.capture_or_rob_pirates).setVisibility(View.VISIBLE);
 
@@ -110,6 +127,7 @@ public class FrontEndPirates extends FrontEndGeneric {
     public void showLoseToPiratesMessage() {
         Sail sail = mLogic.mSail;
         ((TextView)findViewById(R.id.battle_result_title)).setText(R.string.PIRATES);
+        ((TextView)findViewById(R.id.battle_result_title)).setTextColor(mActivity.getColor(R.color.yellow));
 
         String stolen;
         if (sail.mIsPirateStoleGoods) {
@@ -119,9 +137,12 @@ public class FrontEndPirates extends FrontEndGeneric {
             stolen = mActivity.getString(R.string.LOSE_BATTLE_AND_CASH, mDecimalFormat.format(sail.mPiratesStolen));
         }
         ((TextView)findViewById(R.id.battle_result)).setText(stolen);
+        ((TextView)findViewById(R.id.battle_result)).setTextColor(mActivity.getColor(R.color.yellow));
+        ((TextView)findViewById(R.id.battle_result)).setBackgroundColor(0);
 
         String damage = mActivity.getString(R.string.LOSE_BATTLE_DAMAGE, mDecimalFormat.format(sail.mPiratesDamage));
         ((TextView)findViewById(R.id.battle_damage)).setText(damage);
+        ((TextView)findViewById(R.id.battle_damage)).setTextColor(mActivity.getColor(R.color.yellow));
         findViewById(R.id.battle_damage).setVisibility(View.VISIBLE);
 
         findViewById(R.id.attack_pirates_layout).setBackgroundResource(R.drawable.battle);

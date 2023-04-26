@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="לנוח עד למחרת?"
+        android:textColor="@color/yellow"
         android:textSize="20dp" />
 
     <TextView
