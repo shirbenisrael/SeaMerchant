@@ -1523,6 +1523,7 @@ public class Logic {
         while (mLoseDayByStrike > 0) {
             increaseHour(SLEEP_TIME - START_HOUR + 1);
             mLoseDayByStrike--;
+            mActualDayNum++;
         }
     }
 }
