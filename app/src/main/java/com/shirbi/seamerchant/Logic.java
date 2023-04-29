@@ -1420,8 +1420,8 @@ public class Logic {
             return;
         }
 
-        //Fortune teller works only at evening
-        if (getDayPart() != DayPart.EVENING) {
+        //Fortune teller doesn't work at night
+        if (getDayPart() == DayPart.NIGHT) {
             return;
         }
 
@@ -1432,7 +1432,7 @@ public class Logic {
     }
 
     public boolean canAskFortuneTeller() {
-        return (mFortuneTellerInformation != null) && (mFortuneTellerInformation.price == 0) && (getDayPart() == DayPart.EVENING);
+        return (mFortuneTellerInformation != null) && (mFortuneTellerInformation.price == 0) && (getDayPart() != DayPart.NIGHT);
     }
 
     public boolean  isInfoFromFortuneTellerAvailable() {
@@ -1456,7 +1456,7 @@ public class Logic {
         if (mActivity.mIsStartTutorialActive) {
             return false;
         }
-        return (getDayPart() != DayPart.SUN_SHINES) && hasMedal(Medal.NIGHT_MERCHANT);
+        return hasMedal(Medal.NIGHT_MERCHANT);
     }
 
     public float maxValuePartForGuards() {
