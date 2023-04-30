@@ -19,6 +19,10 @@ public enum State {
             R.drawable.flag_egypt, R.drawable.flag_israel, R.drawable.flag_turkey,
             R.drawable.flag_cyprus, R.drawable.flag_greece};
 
+    private static final int[] mEndOfSailImages = {
+            R.drawable.end_of_sail_egypt, R.drawable.end_of_sail_israel, R.drawable.end_of_sail_turkey,
+            R.drawable.end_of_sail_cyprus, R.drawable.end_of_sail_greece};
+
     public static final float[] mLocationsX = {0.55f, 0.90f, 0.87f, 0.63f, 0.07f};
     public static final float[] mLocationsY = {0.75f, 0.53f, 0.03f, 0.27f, 0.05f};
 
@@ -52,6 +56,8 @@ public enum State {
     public int toFlagId() {
         return mFlags[value];
     }
+
+    public int toEndOfSailId() { return mEndOfSailImages[value]; }
 
     public float toLocationX() {
         return mLocationsX[value];

@@ -256,6 +256,8 @@ public class FrontEndSail extends FrontEndGeneric {
         mLogic.finishSail();
         mActivity.mFrontEnd.showWindow(Window.SAIL_END_WINDOW);
 
+        findViewById(R.id.end_of_sail_layout).setBackgroundResource(mLogic.mCurrentState.toEndOfSailId());
+
         String stateString = getString(mLogic.mCurrentState.toStringId());
         @StringRes int stringId = mLogic.mSail.mSailEndedPeacefully ? R.string.SAIL_ENDED_PEACEFULLY :
                 R.string.SAIL_ENDED_BAD;
