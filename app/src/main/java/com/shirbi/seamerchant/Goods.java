@@ -35,6 +35,9 @@ public enum Goods {
     private static final int[] mPriceUpImageId = {
             R.drawable.price_up_wheat, R.drawable.price_up_olives, R.drawable.price_up_copper};
 
+    private static final int[] mPriceDownImageId = {
+            R.drawable.price_down_wheat, R.drawable.price_down_olives, R.drawable.price_down_copper};
+
     private static final int[] mStringId = {R.string.WHEAT, R.string.OLIVES, R.string.COPPER};
 
     private final int value;
@@ -80,6 +83,10 @@ public enum Goods {
 
     public int toPriceUpImageId() {
         return mPriceUpImageId[value];
+    }
+
+    public int toPriceDownImageId() {
+        return mPriceDownImageId[value];
     }
 
     public int toStringId() {

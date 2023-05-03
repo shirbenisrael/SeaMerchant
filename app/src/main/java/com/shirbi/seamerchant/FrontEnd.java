@@ -404,7 +404,7 @@ public class FrontEnd extends FrontEndGeneric {
             case SPECIAL_PRICE:
                 idToShow = R.id.approve_event;
                 idToHide = R.id.agree_or_cancel_layout;
-                backgroundId = mLogic.mIsSpecialPriceHigh ? mLogic.mSpecialPriceGoods.toPriceUpImageId() : R.drawable.price_down;
+                backgroundId = mLogic.mIsSpecialPriceHigh ? mLogic.mSpecialPriceGoods.toPriceUpImageId() : mLogic.mSpecialPriceGoods.toPriceDownImageId();
                 message = generateNewDaySpecialPriceString();
                 soundId = mLogic.mIsSpecialPriceHigh ? R.raw.up : R.raw.down;
                 break;
