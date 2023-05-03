@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.shirbi.seamerchant"
         minSdkVersion 24
-        targetSdkVersion 30
-        versionCode 36
+        targetSdkVersion 31
+        versionCode 37
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
