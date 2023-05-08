@@ -15,13 +15,14 @@ import com.google.android.gms.games.AchievementsClient;
 import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.LeaderboardsClient;
+import com.google.android.gms.games.Player;
+import com.google.android.gms.games.PlayersClient;
 import com.google.android.gms.games.achievement.Achievement;
 import com.google.android.gms.games.achievement.AchievementBuffer;
 import com.google.android.gms.games.leaderboard.LeaderboardScore;
 import com.google.android.gms.games.leaderboard.LeaderboardScoreBuffer;
 import com.google.android.gms.games.leaderboard.LeaderboardVariant;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
@@ -61,7 +62,6 @@ public class BackEndGoogleApi {
     }
 
     private void getAllDataFromGoogle() {
-        getLeaderBoard();
         getTopScore();
         getCenteredScore();
         loadAchievements();
@@ -100,8 +100,25 @@ public class BackEndGoogleApi {
 
     private void getCenteredScore() {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
-        LeaderboardsClient client = Games.getLeaderboardsClient(mActivity, account);
+        PlayersClient playerClient = Games.getPlayersClient(mActivity, account);
+        Task<Player> playerTask = playerClient.getCurrentPlayer();
+        playerTask.addOnCompleteListener(new OnCompleteListener<Player>() {
+                                             @Override
+                                             public void onComplete(@NonNull Task<Player> task) {
+                                                 Player player = task.getResult();
+                                                 String playerId = null;
+                                                 if (player != null) {
+                                                     playerId = player.getPlayerId();
+                                                 }
+                                                 getCenteredScoreInternal(playerId);
+                                             }
+                                         }
+        );
+    }
 
+    private void getCenteredScoreInternal(final String playerId) {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
+        LeaderboardsClient client = Games.getLeaderboardsClient(mActivity, account);
         for (final Logic.ScoreType scoreType : Logic.ScoreType.values()) {
             client.loadPlayerCenteredScores(getString(scoreType.getGoogleId()), LeaderboardVariant.TIME_SPAN_ALL_TIME,
                     LeaderboardVariant.COLLECTION_PUBLIC, 5, true).
@@ -112,15 +129,28 @@ public class BackEndGoogleApi {
                             LeaderboardScoreBuffer scoreBuffer = leaderboardScoresAnnotatedData.get().getScores();
                             Iterator<LeaderboardScore> it = scoreBuffer.iterator();
                             int i = 0;
+                            boolean foundCurrentPlayer = false;
                             while (((Iterator) it).hasNext()) {
                                 LeaderboardScore temp = it.next();
                                 long score = temp.getRawScore();
                                 int rank = (int) temp.getRank();
+                                String name = temp.getScoreHolderDisplayName();
+
+                                // else if the player has 0 score it will retrieve top player
+                                if(temp.getScoreHolder() != null && playerId != null &&
+                                        playerId.equals(temp.getScoreHolder().getPlayerId()))  {
+                                    mLogic.setUserScore(rank, name, score, scoreType);
+                                    foundCurrentPlayer = true;
+                                }
+
                                 if (rank != LeaderboardScore.LEADERBOARD_RANK_UNKNOWN) {
-                                    String name = temp.getScoreHolderDisplayName();
                                     mLogic.setCenterScore(rank, name, score, i, scoreType);
                                     i++;
                                 }
+                            }
+
+                            if (!foundCurrentPlayer) {
+                                submitScore();
                             }
 
                             scoreBuffer.release();
@@ -156,45 +186,6 @@ public class BackEndGoogleApi {
                             }
 
                             scoreBuffer.release();
-                        }
-                    });
-        }
-    }
-
-    private void getLeaderBoard() {
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(mActivity);
-        LeaderboardsClient client = Games.getLeaderboardsClient(mActivity, account);
-
-        for (final Logic.ScoreType scoreType : Logic.ScoreType.values()) {
-            client.loadCurrentPlayerLeaderboardScore(getString(scoreType.getGoogleId()),
-                    LeaderboardVariant.TIME_SPAN_ALL_TIME, LeaderboardVariant.COLLECTION_PUBLIC)
-                    .addOnSuccessListener(mActivity, new OnSuccessListener<AnnotatedData<LeaderboardScore>>() {
-                        @Override
-                        public void onSuccess(AnnotatedData<LeaderboardScore> leaderboardScoreAnnotatedData) {
-                            long score = 0;
-                            if (leaderboardScoreAnnotatedData != null) {
-                                LeaderboardScore leaderBoardscore = leaderboardScoreAnnotatedData.get();
-                                if (leaderBoardscore != null) {
-                                    score = leaderBoardscore.getRawScore();
-                                    int rank = (int) leaderBoardscore.getRank();
-                                    if (rank != LeaderboardScore.LEADERBOARD_RANK_UNKNOWN) {
-                                        String name = leaderBoardscore.getScoreHolderDisplayName();
-                                        mLogic.setUserScore(rank, name, score, scoreType);
-                                        mActivity.mFrontEndHighScore.fillScores();
-                                    }
-                                } else {
-                                    submitScore();
-                                }
-                            } else {
-                                submitScore();
-                            }
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            mActivity.mFrontEnd.showAlertDialogMessage("FAILURE " + e, "");
-                            mActivity.mFrontEnd.showSignGoogleDialog();
                         }
                     });
         }
