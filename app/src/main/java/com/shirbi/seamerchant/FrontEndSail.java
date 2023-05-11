@@ -29,6 +29,26 @@ public class FrontEndSail extends FrontEndGeneric {
     private static final float SHIP_SIZE_IN_SAIL = 0.05f;
     private static final float CIRCLE_SIZE_BEFORE_SAIL = 0.05f;
 
+    public enum MiddleSailEvent {
+        MIDDLE_SAIL_EVENT_SINK(0),
+        MIDDLE_SAIL_EVENT_MORE_DAMAGE(1),
+        MIDDLE_SAIL_EVENT_SHOAL(2),
+        MIDDLE_SAIL_EVENT_BAD_WEATHER(3),
+        MIDDLE_SAIL_EVENT_ABANDONED_SHIP(4),
+        MIDDLE_SAIL_EVENT_PIRATE(5);
+        private final int value;
+
+        MiddleSailEvent(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
+
+    private MiddleSailEvent mMiddleSailEvent;
+
     public FrontEndSail(MainActivity activity) {
         super(activity);
     }
@@ -179,23 +199,23 @@ public class FrontEndSail extends FrontEndGeneric {
                 if (mActivity.mIsStartTutorialActive) {
                     mActivity.mStartTutorial.onMiddleSail();
                 } else if (mLogic.mSail.isSinkInSail()) {
-                    pauseSail();
-                    mActivity.showSink();
+                    mMiddleSailEvent = MiddleSailEvent.MIDDLE_SAIL_EVENT_SINK;
+                    showShipStoppedMessage();
                 } else if (mLogic.mSail.isMoreDamageInSail()) {
-                    pauseSail();
-                    mActivity.showMoreDamage();
+                    mMiddleSailEvent = MiddleSailEvent.MIDDLE_SAIL_EVENT_MORE_DAMAGE;
+                    showShipStoppedMessage();
                 } else if (mLogic.mSail.isShoalInSail()) {
-                    pauseSail();
-                    mActivity.showShoal();
+                    mMiddleSailEvent = MiddleSailEvent.MIDDLE_SAIL_EVENT_SHOAL;
+                    showShipStoppedMessage();
                 } else if (mLogic.mSail.isBadWeatherInSail()) {
-                    pauseSail();
-                    mActivity.showBadWeatherInSail();
+                    mMiddleSailEvent = MiddleSailEvent.MIDDLE_SAIL_EVENT_BAD_WEATHER;
+                    showShipStoppedMessage();
                 } else if (mLogic.mSail.isAbandonedShipAppear()) {
-                    pauseSail();
-                    mActivity.showAbandonedShip();
+                    mMiddleSailEvent = MiddleSailEvent.MIDDLE_SAIL_EVENT_ABANDONED_SHIP;
+                    showShipStoppedMessage();
                 } else if (mLogic.mSail.isPirateAppear()) {
-                    pauseSail();
-                    mActivity.showPirates();
+                    mMiddleSailEvent = MiddleSailEvent.MIDDLE_SAIL_EVENT_PIRATE;
+                    showShipStoppedMessage();
                 }
             }
 
@@ -211,6 +231,66 @@ public class FrontEndSail extends FrontEndGeneric {
                     }
                 }
                 mProgress = 0;
+            }
+        }
+    };
+
+    private void showShipStoppedMessage() {
+        pauseSail();
+        putObjectOnRelativeLayout(findViewById(R.id.ship_stopped_message),
+                0, 0, mMapSize.x, mMapSize.y,
+                mMapSize);
+        findViewById(R.id.ship_stopped_message).setVisibility(View.VISIBLE);
+        startTimerForMiddleEvent();
+        mActivity.playSound(R.raw.ship_stopped);
+    }
+
+    private void startTimerForMiddleEvent() {
+        if (mTimer != null) {
+            mTimer.cancel();
+        }
+        mTimer = new Timer();
+        mTimerTask = (new TimerTask() {
+            @Override
+            public void run() {
+                mActivity.runOnUiThread(mTimerTickForMiddleEvent);
+            }
+        });
+
+        int delay = mActivity.mIsFastAnimation ? 3000 : 6000;
+        mTimer.schedule(mTimerTask, delay);
+    }
+
+    Runnable mTimerTickForMiddleEvent = new Runnable() {
+        public void run() {
+            mTimer.cancel();
+
+            findViewById(R.id.ship_stopped_message).setVisibility(View.GONE);
+
+            switch (mMiddleSailEvent) {
+                case MIDDLE_SAIL_EVENT_SINK:
+                    mActivity.showSink();
+                    break;
+
+                case MIDDLE_SAIL_EVENT_MORE_DAMAGE:
+                    mActivity.showMoreDamage();
+                    break;
+
+                case MIDDLE_SAIL_EVENT_SHOAL:
+                    mActivity.showShoal();
+                    break;
+
+                case MIDDLE_SAIL_EVENT_BAD_WEATHER:
+                    mActivity.showBadWeatherInSail();
+                    break;
+
+                case MIDDLE_SAIL_EVENT_ABANDONED_SHIP:
+                    mActivity.showAbandonedShip();
+                    break;
+
+                case MIDDLE_SAIL_EVENT_PIRATE:
+                    mActivity.showPirates();
+                    break;
             }
         }
     };
