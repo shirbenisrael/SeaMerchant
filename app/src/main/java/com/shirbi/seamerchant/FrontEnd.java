@@ -449,7 +449,7 @@ public class FrontEnd extends FrontEndGeneric {
             String message;
             switch (mLogic.mSail.mWarning) {
                 case DAMAGED_SHIP:
-                    backgroundId = R.drawable.broken_ship;
+                    backgroundId = R.drawable.broken_ship_warn;
                     message = getString(R.string.DANGER_BROKEN_SHIP_MESSAGE);
                     break;
                 case OVERLOAD:
