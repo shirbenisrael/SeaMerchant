@@ -86,5 +86,8 @@
     <string name="START_TUTORIAL_QUESTION">להתחיל הדרכה?</string>
     <string name="END_TUTORIAL_QUESTION">לסיים הדרכה?</string>
 
+    <string name="TUTORIAL_ENDED">ההדרכה הסתיימה</string>
+    <string name="TUTORIAL_END_MESSAGE">ההדרכה הסתיימה. היזהר מסכנות! בהצלחה!</string>
+
 
 </resources>

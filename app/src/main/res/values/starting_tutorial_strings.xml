@@ -86,5 +86,7 @@
     <string name="START_TUTORIAL_QUESTION">Start tutorial?</string>
     <string name="END_TUTORIAL_QUESTION">End tutorial?</string>
 
+    <string name="TUTORIAL_ENDED">Tutorial Ended</string>
+    <string name="TUTORIAL_END_MESSAGE">Tutorial Ended. Watch out for dangers! Good luck!</string>
 
 </resources>

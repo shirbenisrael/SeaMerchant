@@ -96,8 +96,8 @@ public class FrontEndGeneric {
     public void startNewGameAfterTutorial() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
 
-        builder.setTitle("סיום הדרכה");
-        builder.setMessage("ההדרכה הסתימה. בהצלחה במסחר. היזהר מסכנות!");
+        builder.setTitle(getString(R.string.TUTORIAL_ENDED));
+        builder.setMessage(getString(R.string.TUTORIAL_END_MESSAGE));
         builder.setPositiveButton(getString(R.string.CONFIRM), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 mActivity.startNewGame();
